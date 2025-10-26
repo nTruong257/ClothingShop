@@ -93,3 +93,20 @@
 
     lastScroll = currentScroll;
 });
+  const mainImage = document.getElementById('mainImage');
+  const thumbnails = document.querySelectorAll('.row_bottom_detail img');
+
+  thumbnails.forEach(img => {
+    img.addEventListener('click', () => {
+      // Đổi ảnh chính thành ảnh nhỏ vừa click
+      mainImage.src = img.src;
+
+      // Xóa class "active" ở các ảnh nhỏ khác
+      thumbnails.forEach(i => i.classList.remove('active'));
+
+      // Thêm class "active" vào ảnh vừa được chọn
+      img.classList.add('active');
+    });
+  });
+
+
