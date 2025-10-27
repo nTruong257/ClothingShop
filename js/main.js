@@ -108,5 +108,11 @@
       img.classList.add('active');
     });
   });
+  const imgs = document.querySelectorAll('.row_bottom_detail img');
+imgs.forEach(img => {
+  img.style.objectFit = 'cover';
+  img.style.objectPosition = 'top'; // có thể đổi sang 'center' hoặc 'bottom'
+});
+
 
 

@@ -44,14 +44,13 @@
 
 .row_bottom_detail img {
     width: 120px;
-    height: 220px;
+    height: 150px;
     border-radius: 6px;
     object-fit: cover;
     cursor: pointer;
     opacity: 0.8;
     transition: all 0.2s ease;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 30px 15px;
     background-color: #fff;
     padding: 5px;
 }
@@ -64,4 +63,254 @@
 .row_bottom_detail img.active {
     opacity: 1;
     transform: scale(1.05);
+}
+
+/**/
+/* Toàn bộ khối sản phẩm */
+.product_details_content {
+    font-family: "Poppins", sans-serif;
+    color: #111;
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    background: white;
+}
+
+.product_details_content .container {
+    max-width: 720px;
+    /* Giới hạn chiều rộng để nội dung gọn */
+    width: 100%;
+    text-align: center;
+    /* Căn giữa toàn bộ text */
+}
+
+/* Tiêu đề sản phẩm */
+.product_detail_text h4 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Đánh giá sao */
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    /* khoảng cách giữa sao và chữ */
+}
+
+.start {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    /* khoảng cách giữa các sao */
+}
+
+.start img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    /* bỏ khoảng trống dưới ảnh */
+}
+
+.rating span {
+    font-size: 15px;
+    color: #555;
+    margin-top: 3px;
+}
+
+
+/* Giá tiền */
+h3 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+h3 span {
+    text-decoration: line-through;
+    color: #aaa;
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+/* Mô tả sản phẩm */
+.product_detail_text p {
+    margin-bottom: 40px;
+}
+
+p {
+    font-size: 15px;
+    font-family: "Nunito Sans", sans-serif;
+    color: #3d3d3d;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 0 0 15px 0;
+}
+
+/* Khu chọn size + màu */
+.product_detail_option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    gap: 80px;
+}
+
+/* Khối Size */
+.product_detail_size {
+    display: flex;
+    align-items: center;
+    /* căn giữa dọc với khối Color */
+    gap: 1px;
+
+}
+
+/* Khối Color */
+.product_detail_color {
+    display: flex;
+    align-items: center;
+    /* căn giữa dọc */
+    gap: 1px;
+}
+
+.product_detail_size label {
+    color: #111111;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    border: 1px solid #e5e5e5;
+    padding: 6px 15px;
+    margin-bottom: 0;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.product_detail_color label {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 0;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.product_detail_size input[type="radio"] {
+    display: none;
+}
+
+.product_detail_size label.active {
+    font-weight: bold;
+    color: #333;
+}
+
+.product_detail_color img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* Nút Add to cart và số lượng */
+.add_to_cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.add_to_cart input[type="number"] {
+    width: 60px;
+    height: 40px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 16px;
+}
+
+.add_to_cart button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.add_to_cart button:hover {
+    background: #333;
+}
+
+/* Wishlist & Compare */
+.product_detail_btn_option {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+.product_detail_btn_option p {
+    display: inline-block;
+    font-size: 13px;
+    color: #3d3d3d;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+.product_detail_btn_option p:hover {
+    text-decoration: underline;
+}
+
+/* Vùng “Guaranteed Safe Checkout” */
+.product_detail_last_option {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.product_detail_last_option h5 {
+   
+    color: black;
+    font-weight: 600;
+    display: inline-block;
+    padding: 0px 30px;
+   
+    margin-bottom: 20px;
+}
+
+.product_detail_last_option img {
+   width: 100%;
+}
+
+.product_detail_last_option ul {
+    padding-top: 40px;
+    font-size: 14px;
+    color: #555;
+   
+}
+
+.product_detail_last_option ul li {
+    list-style: none;
+    font-size: 15px;
+    color: #111111;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.product_detail_last_option ul span {
+    font-weight: 400;
+    color: #000;
 }
