@@ -77,7 +77,7 @@
 }
 
 .product_details_content .container {
-    max-width: 720px;
+    max-width: 1100px;
     /* Giới hạn chiều rộng để nội dung gọn */
     width: 100%;
     text-align: center;
@@ -261,6 +261,7 @@ p {
     margin-bottom: 30px;
     font-size: 14px;
 }
+
 .product_detail_btn_option p {
     display: inline-block;
     font-size: 13px;
@@ -282,24 +283,22 @@ p {
 }
 
 .product_detail_last_option h5 {
-   
     color: black;
     font-weight: 600;
     display: inline-block;
     padding: 0px 30px;
-   
     margin-bottom: 20px;
+    font-size: 22px;
 }
-
 .product_detail_last_option img {
-   width: 100%;
+    width: 70%;
 }
 
 .product_detail_last_option ul {
     padding-top: 40px;
     font-size: 14px;
     color: #555;
-   
+
 }
 
 .product_detail_last_option ul li {
@@ -313,4 +312,85 @@ p {
 .product_detail_last_option ul span {
     font-weight: 400;
     color: #000;
+}
+
+/*mo ta chi tiet*/
+.product_detail_tab {
+    width: 1100px;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+.product_detail_tab .nav {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    gap: 60px;
+    /* khoảng cách giữa các tab */
+}
+
+.product_detail_tab .nav_item {
+    list-style: none;
+}
+
+.product_detail_tab .nav-link {
+    text-decoration: none;
+    color: #999;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.product_detail_tab .nav-link.active {
+    color: #111;
+    font-weight: 700;
+}
+
+.product_detail_tab .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background-color: #e53637;
+    /* màu đỏ gạch chân */
+    border-radius: 2px;
+}
+
+.product_details_tab_content {
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #333;
+}
+
+.product_details_tab_content .note {
+    color: #111111;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.product_details_tab_content h5 {
+    color: #111111;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.product_details_tab_content p {
+    font-size: 15px;
+    font-family: "Nunito Sans", sans-serif;
+    color: #3d3d3d;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 0 0 15px 0;
 }
