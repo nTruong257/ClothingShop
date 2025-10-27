@@ -1,4 +1,3 @@
-
 async function loadLayout() {
     try {
         const response = await fetch('../../index.html');
@@ -24,6 +23,8 @@ async function loadLayout() {
             ImagePaths(footerContainer);
             NavigationLinks(footerContainer);
         }
+        initMobileMenuAfterLoad();
+        initBootstrapComponents();
 
     } catch (error) {
         console.error('Lỗi khi tải header/footer:', error);
@@ -61,8 +62,62 @@ function NavigationLinks(container) {
         }
         else if (href && (href.includes('contactus.html') || href.includes('contact-us'))) {
             link.setAttribute('href', '#');
-            link.style.color = '#3498db';
-            link.style.fontWeight = '700';
         }
     });
+}
+
+function initMobileMenuAfterLoad() {
+    // Toggle Mobile Menu
+    window.toggleMobileMenu = function() {
+        const mainNav = document.getElementById('mainNavigation');
+        if (mainNav) {
+            mainNav.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        }
+    }
+
+    const navItems = document.querySelectorAll('.nav-item');
+
+    navItems.forEach(item => {
+        const hasSubmenu = item.querySelector('.submenu-container');
+
+        if (hasSubmenu) {
+            const mainLink = item.querySelector('.nav-link-primary');
+
+            mainLink.addEventListener('click', function(e) {
+                if (window.innerWidth <= 991) {
+                    e.preventDefault();
+                    item.classList.toggle('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', function(event) {
+        const mainNav = document.getElementById('mainNavigation');
+        const toggleBtn = document.querySelector('.mobile-menu-toggle');
+
+        if (mainNav && toggleBtn) {
+            const isClickInside = mainNav.contains(event.target) || toggleBtn.contains(event.target);
+
+            if (!isClickInside && mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                document.body.style.overflow = '';
+
+                // Remove active class from all nav items
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        }
+    });
+}
+
+function initBootstrapComponents() {
+    if (typeof bootstrap !== 'undefined') {
+        const dropdownElementList = document.querySelectorAll('[data-bs-toggle="dropdown"]');
+        const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl));
+    } else {
+        console.warn('Bootstrap is not loaded yet');
+    }
 }
