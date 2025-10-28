@@ -9,6 +9,7 @@
     text-align: center;
     margin: 20px 0;
     font-size: 18px;
+    
 }
 
 .product__details__breadcrumb a {
@@ -70,7 +71,6 @@
 .product_details_content {
     font-family: "Poppins", sans-serif;
     color: #111;
-    padding: 60px 0;
     display: flex;
     justify-content: center;
     background: white;
@@ -88,7 +88,8 @@
 .product_detail_text h4 {
     font-size: 28px;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin: 20px 0;
+   
 }
 
 /* Đánh giá sao */
@@ -139,7 +140,7 @@ h3 span {
 
 /* Mô tả sản phẩm */
 .product_detail_text p {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 p {
@@ -148,7 +149,7 @@ p {
     color: #3d3d3d;
     font-weight: 400;
     line-height: 25px;
-    margin: 0 0 15px 0;
+    margin: 0 0 15px 0
 }
 
 /* Khu chọn size + màu */
@@ -217,63 +218,6 @@ p {
     height: 20px;
     border-radius: 50%;
     object-fit: cover;
-}
-
-
-/* Nút Add to cart và số lượng */
-.add_to_cart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    margin: 25px 0;
-}
-
-.add_to_cart input[type="number"] {
-    width: 60px;
-    height: 40px;
-    border: 1px solid #ccc;
-    text-align: center;
-    font-size: 16px;
-}
-
-.add_to_cart button {
-    background: #000;
-    color: #fff;
-    border: none;
-    padding: 10px 25px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: 0.3s;
-}
-
-.add_to_cart button:hover {
-    background: #333;
-}
-
-/* Wishlist & Compare */
-.product_detail_btn_option {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-    font-size: 14px;
-}
-
-.product_detail_btn_option p {
-    display: inline-block;
-    font-size: 13px;
-    color: #3d3d3d;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-right: 20px;
-}
-
-.product_detail_btn_option p:hover {
-    text-decoration: underline;
 }
 
 /* Vùng “Guaranteed Safe Checkout” */
@@ -393,4 +337,127 @@ p {
     font-weight: 400;
     line-height: 25px;
     margin: 0 0 15px 0;
+}
+.re{
+   background-color: white;;
+}
+.related {
+    transform: scale(0.9);
+    padding: 30px 0;
+    background-color: white;
+    text-align: center;
+}
+
+.related-title {
+    color: #111111;
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.col_1, .col_2, .col_3, .col_4 {
+    max-width: 280px;
+    padding: 10px;
+}
+
+.product_item {
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.product_item:hover {
+    transform: translateY(-6px);
+}
+.product_item_pic1,
+.product_item_pic2,
+.product_item_pic3,
+.product_item_pic4 {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* hình vuông */
+    background-color:#aaa;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center center;
+}
+.product_item_pic1 img,
+.product_item_pic2 img,
+.product_item_pic3 img,
+.product_item_pic4 img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}
+
+/* Nhãn “NEW” & “SALE” */
+.product_item_pic1 .label,
+.product_item_pic3 .label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: black;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.product_item_pic1 .label {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+/* Phần chữ */
+.product_item_text {
+    margin-top: 20px;
+}
+
+.product_item_text h6 {
+    font-size: 16px;
+    color: #222;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.product_item_text h5 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+}
+/* Nút thêm vào giỏ hàng */
+.add-to-cart-btn {
+    background-color: #8b6f47; 
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #a07b50; 
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
