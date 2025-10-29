@@ -17,6 +17,10 @@ p{
     text-align: justify;
 
 }
+/*.myTable{*/
+/*    !*margin-left: 15px;*!*/
+/*    background-color: #3e1313;*/
+/*}*/
 .form {
     padding: 30px 0;
 }
@@ -31,11 +35,7 @@ p{
 }
 
 .contact_form {
-    background-color: #494643;
-    padding: 30px;
-    border-radius: 12px;
-    border: 2px solid #111313;
-    box-shadow: 10px 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px 0px;
 }
 
 .input_txt {
