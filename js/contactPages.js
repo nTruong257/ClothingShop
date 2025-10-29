@@ -1,6 +1,6 @@
 async function loadLayout() {
     try {
-        const response = await fetch('../../index.html');
+        const response = await fetch('/index.html');
         const htmlText = await response.text();
 
         const parser = new DOMParser();
@@ -24,7 +24,6 @@ async function loadLayout() {
             NavigationLinks(footerContainer);
         }
         initMobileMenuAfterLoad();
-        initBootstrapComponents();
 
     } catch (error) {
         console.error('Lỗi khi tải header/footer:', error);
@@ -39,7 +38,7 @@ function ImagePaths(container) {
     images.forEach(img => {
         const src = img.getAttribute('src');
         if (src && src.startsWith('images/')) {
-            img.setAttribute('src', '../../' + src);
+            img.setAttribute('src', src);
         }
     });
 }
@@ -49,16 +48,16 @@ function NavigationLinks(container) {
     links.forEach(link => {
         const href = link.getAttribute('href');
         if (href === '/') {
-            link.setAttribute('href', '../../index.html');
+            link.setAttribute('href', 'index.html');
         }
         else if (href && href.startsWith('/collections/')) {
-            link.setAttribute('href', '../../' + href.substring(1));
+            link.setAttribute('href', href.substring(1));
         }
         else if (href && href.startsWith('/pages/')) {
-            link.setAttribute('href', '../' + href.substring(1));
+            link.setAttribute('href', href.substring(1));
         }
         else if (href && href.startsWith('/') && !href.startsWith('//')) {
-            link.setAttribute('href', '../../' + href.substring(1));
+            link.setAttribute('href', href.substring(1));
         }
         else if (href && (href.includes('contactus.html') || href.includes('contact-us'))) {
             link.setAttribute('href', '#');
@@ -67,7 +66,6 @@ function NavigationLinks(container) {
 }
 
 function initMobileMenuAfterLoad() {
-    // Toggle Mobile Menu
     window.toggleMobileMenu = function() {
         const mainNav = document.getElementById('mainNavigation');
         if (mainNav) {
@@ -103,21 +101,10 @@ function initMobileMenuAfterLoad() {
             if (!isClickInside && mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
                 document.body.style.overflow = '';
-
-                // Remove active class from all nav items
                 document.querySelectorAll('.nav-item').forEach(item => {
                     item.classList.remove('active');
                 });
             }
         }
     });
-}
-
-function initBootstrapComponents() {
-    if (typeof bootstrap !== 'undefined') {
-        const dropdownElementList = document.querySelectorAll('[data-bs-toggle="dropdown"]');
-        const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl));
-    } else {
-        console.warn('Bootstrap is not loaded yet');
-    }
 }
