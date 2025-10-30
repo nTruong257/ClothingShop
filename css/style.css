@@ -198,6 +198,7 @@ img {
     font-size: 13px;
     transition: color 0.3s, padding-left 0.3s;
     display: block;
+    border-bottom: 2px solid #eed;
 }
 
 .submenu-items a:hover {
@@ -624,7 +625,7 @@ img {
     }
 
     .nav-item {
-        border-bottom: 1px solid #eee;
+        border-bottom: 2px solid #EED;
     }
 
     .nav-link-primary {
@@ -825,7 +826,7 @@ img {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.5);
+
         z-index: -1;
     }
 }
