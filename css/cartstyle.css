@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #F5F0E6;
+    font-size: 14px;
+    line-height: 1.5;
+
+}
+.table th,
+.table td{
+    vertical-align: middle;
+    text-align: center;
+}
+.quantity-item  input{
+    border: none;
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin: 0;
+}
+.my_button a{
+    display: inline-block;
+}
+.continute_btn{
+    background-color: #efe7e7;
+    padding: 14px 35px;
+    color: #000;
+    font-weight: 600;
+    float: left;
+    border: 1px solid #e1e1e1;
+    box-shadow: 1px 2px 5px 2px #59cfac;
+    border-radius: 30px;
+}
+.updated_btn{
+    background-color: #393737;
+    padding: 14px 35px;
+    color: #efeded;
+    font-weight: 600;
+    float: right;
+    box-shadow: 1px 2px 5px 2px #59cfac;
+    border-radius: 30px;
+}
+.closed{
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 60%;
+    box-shadow: 2px 0px 3px 1px #59cfac;
+}
+.closed:hover{
+    transform: translateY(6px);
+    transition: 0.5s;
+}
+.closed:active{
+    transform: translateY(0px);
+    transition: 0.3s;
+}
+.cart_price{
+    font-weight: bold;
+}
+.fa-less-than,
+.fa-greater-than{
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.fa-less-than:hover{
+    transform: translateY(2px);
+    transition: 0.3s;
+}
+.fa-greater-than:hover{
+    transform: translateY(2px);
+    transition: 0.3s;
+}
+.my_button:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+.updated_btn:active{
+    background-color: #8f9b9c;
+    transition: 0.5s;
+}
+.continute_btn:active{
+    background-color: #8f9b9c;
+    transition: 0.5s;
+}
+
+
+
+
+
