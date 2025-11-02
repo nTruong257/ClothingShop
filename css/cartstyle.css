@@ -14,6 +14,11 @@ body {
     vertical-align: middle;
     text-align: center;
 }
+
+.img_product img{
+    max-width: 80px;
+
+}
 .quantity-item  input{
     border: none;
     width: 50px;
@@ -76,7 +81,7 @@ body {
     transition: 0.3s;
 }
 .my_button:hover{
-    transform: scale(1.05);
+    transform: scale(1.025);
     transition: 0.5s;
 }
 .updated_btn:active{
@@ -87,6 +92,82 @@ body {
     background-color: #8f9b9c;
     transition: 0.5s;
 }
+
+.cart_total{
+    background: #ddcebd;
+    padding: 35px 30px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.cart_total h5{
+    font-weight: bold;
+}
+.cart_total ul{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+.cart_total ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 2px solid #59615e;
+
+}
+.cart_total ul li .value{
+    font-weight: bold;
+    font-size: 15px;
+    color: #cc1b1b;
+}
+
+.cart-actions{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart_total .btn{
+    width: 100%;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 20px;
+    border: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-success,
+.btn-danger{
+    display: block;
+}
+.btn-success:hover{
+    transform: rotateZ(-1deg);
+    transition: 0.6s;
+}
+.btn-danger:hover{
+    transform: rotateZ(-1deg);
+    transition: 0.6s;
+}
+.btn .btn-success:active{
+    transform: rotateZ(0deg);
+    transition: 0.6s;
+   background-color: yellow;
+}
+.btn .btn-danger:active{
+    transform: rotateZ(0deg);
+    transition: 0.6s;
+    background-color: yellow;
+    opacity: 0.5;
+}
+.form-right {
+    margin-top: 20px;
+    }
+
+
 
 
 
