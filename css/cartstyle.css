@@ -37,6 +37,11 @@ body {
     box-sizing: border-box;
     margin: 0;
 }
+.my_button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 .my_button a{
     display: inline-block;
     text-decoration: none;
@@ -46,19 +51,7 @@ body {
     padding: 14px 35px;
     color: #000;
     font-weight: 600;
-    float: left;
     border: 1px solid #e1e1e1;
-    box-shadow: 1px 2px 5px 2px #59cfac;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-
-}
-.updated_btn{
-    background-color: #393737;
-    padding: 14px 35px;
-    color: #efeded;
-    font-weight: 600;
-    float: right;
     box-shadow: 1px 2px 5px 2px #59cfac;
     border-radius: 30px;
     transition: all 0.3s ease;
@@ -99,10 +92,7 @@ body {
     transform: scale(1.025);
     transition: 0.5s;
 }
-.updated_btn:active{
-    background-color: #8f9b9c;
-    transition: all 0.5s ease;
-}
+
 .continute_btn:active{
     background-color: #8f9b9c;
     transition: all 0.5s ease;
@@ -178,18 +168,10 @@ body {
     margin-top: 20px;
     }
 
-@media (max-width: 993px) {
+@media (min-width: 992px) {
     .form-right {
         padding-left: 20px;
         margin-top: 0;
-    }
-
-    .continute_btn {
-        float: left;
-    }
-
-    .updated_btn {
-        float: right;
     }
 }
 @media (min-width: 768px) and (max-width: 992px) {
@@ -208,16 +190,12 @@ body {
         margin: 0 auto;
     }
 
-    .continute_btn,
-    .updated_btn {
+    .continute_btn{
         float: none;
         width: 100%;
         margin-bottom: 10px;
     }
 
-    .my_button {
-        width: 100%;
-    }
 }
 @media (min-width: 300px) and (max-width: 767px) {
     .form-right {
@@ -286,13 +264,9 @@ body {
         font-size: 13px;
     }
 
-    .my_button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
 
-    .continute_btn,
-    .updated_btn {
+
+    .continute_btn{
         width: 100%;
         padding: 12px 25px;
         font-size: 13px;
