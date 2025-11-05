@@ -1,4 +1,7 @@
-/*Thông tin người nhận*/
+
+body{
+  background-color:#F5F0E6;
+}/*Thông tin người nhận*/
 legend {
     margin-bottom: 20px
 }
@@ -319,7 +322,7 @@ table th {
 }
 
 #validate_order:hover {
-  color:#e2554a;
+  color: bisque;
 }
 
 /* Checkbox đồng ý điều khoản */
