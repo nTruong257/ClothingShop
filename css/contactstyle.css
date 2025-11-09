@@ -99,3 +99,133 @@ p{
     overflow: hidden;
     background-color: #7f8c8d;
 }
+@media (max-width: 991px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .title_small {
+        font-size: 0.95rem;
+    }
+
+    .description_text {
+        font-size: 13px;
+    }
+
+    .contact_form {
+        padding: 20px 0px;
+    }
+
+    #gg_map {
+        height: 350px;
+        margin-top: 30px;
+    }
+
+    .input_txt, .input_textArea {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .form {
+        padding: 20px 0;
+    }
+
+    .container {
+        padding: 10px 10px;
+    }
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .title_small {
+        font-size: 0.9rem;
+    }
+
+    .description_text {
+        font-size: 12px;
+    }
+
+    .address, .telephone {
+        font-size: 13px;
+    }
+
+    .contact_form {
+        padding: 15px 0px;
+    }
+
+    .input_txt, .input_textArea {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .input_textArea {
+        height: 150px;
+    }
+
+    .mybutton {
+        font-size: 13px;
+        line-height: 45px;
+        border-radius: 8px;
+    }
+
+    #gg_map {
+        height: 300px;
+        border-radius: 15px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .title_small {
+        font-size: 0.85rem;
+    }
+
+    .description_text {
+        font-size: 11px;
+    }
+
+    .address, .telephone {
+        font-size: 12px;
+    }
+
+    .input_txt, .input_textArea {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+
+    .mybutton {
+        font-size: 12px;
+        line-height: 40px;
+    }
+
+    #gg_map {
+        height: 250px;
+    }
+}
+
+@media (max-width: 400px) {
+    .form {
+        padding: 15px 0;
+    }
+
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .input_textArea {
+        height: 120px;
+    }
+
+    #gg_map {
+        height: 220px;
+        border-radius: 10px;
+    }
+}
