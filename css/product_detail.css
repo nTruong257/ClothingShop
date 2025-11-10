@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
 }
 
 .product__details__breadcrumb {
@@ -40,7 +40,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .row_bottom_detail img {
@@ -52,7 +52,7 @@
     opacity: 0.8;
     transition: all 0.2s ease;
     margin: 30px 15px;
-    background-color: #fff;
+    background-color:#f7f3ec;
     padding: 5px;
 }
 
@@ -238,25 +238,6 @@ p {
     width: 70%;
 }
 
-.product_detail_last_option ul {
-    padding-top: 40px;
-    font-size: 14px;
-    color: #555;
-
-}
-
-.product_detail_last_option ul li {
-    list-style: none;
-    font-size: 15px;
-    color: #111111;
-    font-weight: 700;
-    line-height: 30px;
-}
-
-.product_detail_last_option ul span {
-    font-weight: 400;
-    color: #000;
-}
 
 /*mo ta chi tiet*/
 .product_detail_tab {
@@ -361,7 +342,7 @@ p {
     justify-content: center;
     align-items: stretch;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 10px;
 }
 
 .col_1, .col_2, .col_3, .col_4 {
