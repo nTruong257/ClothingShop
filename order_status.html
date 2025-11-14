@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Huỷ Đơn Hàng - StyleEra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/order_status.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="header-container">
+        <div class="header-main-row">
+            <!-- Left Section -->
+            <div class="header-left-section">
+                <button class="mobile-menu-toggle" aria-label="Open menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Logo -->
+            <div class="brand-logo">
+                <a href="index.html" aria-label="home">
+                    <img src="images/logo.png" alt="StyleEra"/>
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="main-navigation" id="mainNavigation">
+                <div class="mobile-nav-actions">
+                    <button class="search-trigger-btn" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="mobile-close-btn" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <ul class="primary-nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="index.html">TRANG CHỦ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="/collections/san-pham-nam">NAM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="/collections/san-pham-nu">NỮ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="/collections/cp-thoi-trang-doi">ĐỒ ĐÔI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="contactus.html">LIÊN HỆ</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right Section -->
+            <div class="header-right-section">
+                <a href="/account/login" class="account-link">
+                    <i class="far fa-user"></i>
+                </a>
+                <a class="cart-link" href="cart.html">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="status-container">
+        <div class="order-header">
+            <h2>Đơn Hàng của bạn</h2>
+            <p class="order-id">Mã đơn hàng: <strong>#985106</strong></p>
+        </div>
+        <div class="timeline">
+                <div class="timeline-item completed">
+                    <div class="timeline-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Chờ Vận Chuyển</div>
+                        <div class="timeline-desc">Đơn hàng đã được xác nhận và đang chờ lấy hàng</div>
+                        <div class="timeline-time">14/11/2025 - 10:30</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item active">
+                    <div class="timeline-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Đang Vận Chuyển</div>
+                        <div class="timeline-desc">Đơn hàng đang trên đường giao đến bạn</div>
+                        <div class="timeline-time">15/11/2025 - 09:15</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item pending">
+                    <div class="timeline-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Đã Giao Hàng</div>
+                        <div class="timeline-desc">Đơn hàng sẽ được giao đến địa chỉ của bạn</div>
+                        <div class="timeline-time">Dự kiến: 17/11/2025</div>
+                    </div>
+                </div>
+            </div>
+    <div class="box-header">
+        <div class="header">        
+            <h4>Chi tiết đơn hàng</h4>
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <span class="text-gray">Mã đơn hàng:</span>
+            <span>#985106</span>
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <span class="text-gray">Hình ảnh:</span>
+            <span> <img src="./images/product_item_women/6/6-1/trangphuc.png" style="height: 80px;"> </span>
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <span class="text-gray">Tên đơn hàng:</span>
+            <span>Đầm nữ</span>
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <span class="text-gray">Ngày đặt hàng:</span>
+            <span>14 tháng 11 năm 2025</span>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-between">
+            <span class="text-gray">Phương thức thanh toán:</span>
+            <span>Thanh toán khi nhận hàng</span>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-between">
+            <span class="text-gray">Ngày vận chuyển:</span>
+            <span>15 tháng 11 năm 2025</span>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-between">
+            <span class="text-gray">Trạng thái đơn hàng:</span>
+            <span>Ch vận chuyển</span>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-between">
+            <span class="text-gray">Ngày giao hàng dự kiến:</span>
+            <span>17 tháng 11 năm 2025</span>
+        </div>
+       
+
+    </div>
+        <div class="box-footer">
+            <div class="header">
+                 <h4>Tổng quan đơn hàng</h4>
+            </div>
+        <div class="d-flex justify-content-between mt-3">
+            <span class="text-gray">Phí tạm tính: </span>
+            <span>130.000 đ</span>
+        </div>
+
+        <div class="d-flex justify-content-between mt-2">
+            <span class="text-gray">Số lượng: </span>
+            <span>1</span>
+        </div>
+
+        <div class="d-flex justify-content-between mt-2">
+            <span class="text-gray">Phí Vận chuyển: </span>
+            <span>0đ</span>
+        </div>
+        <div class="d-flex justify-content-between mt-2">
+            <strong>Tổng: </strong>
+            <strong>130.000 đ</strong>
+        </div>
+         <a class="btn btn-primary btn-back" href="cart.html">
+            <i class="fas fa-arrow-left"></i> Quay lại
+        </a>
+        
+        <button class="btn btn-primary btn-danger">
+             Huỷ Đơn Hàng
+        </button>
+    </div>
+
+    <!-- Chi tiết đơn hàng -->
+   
+</div>
+        
+    </div>
+</main>
+
+
+<footer class="site-footer">
+    <div class="footer-top-bar">
+        <div class="footer-contact-row">
+            <div class="footer-contact-item">
+                <a href="tel:+84000000000">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Hotline: +84 000 000 000</span>
+                </a>
+            </div>
+            <div class="footer-contact-item">
+                <a href="mailto:contact@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-main-content">
+        <div class="footer-columns">
+            <!-- Social & Newsletter Column -->
+            <div class="footer-social-column">
+                <h2 class="footer-column-title">Đăng ký nhận tin khuyến mãi</h2>
+
+                <form class="newsletter-form" action="/account/contact" method="post">
+                    <input name="form_type" type="hidden" value="customer">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="contact[tags]" value="khách hàng tiềm năng, bản tin"/>
+
+                    <div class="newsletter-input-wrapper">
+                        <input required type="email" name="contact[email]" class="newsletter-email-input" placeholder="Nhập email của bạn">
+                        <button class="newsletter-submit-btn" type="submit" aria-label="submit form">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="social-links-list">
+                    <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/" aria-label="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/" aria-label="YouTube" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/" aria-label="TikTok" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://zalo.me/" aria-label="Zalo" target="_blank">
+                        <i class="fas fa-comment-dots"></i>
+                    </a>
+                </div>
+
+                <div class="app-download-section">
+                    <h3>Tải app</h3>
+                    <div class="app-download-links">
+                        <a href="https://apps.apple.com/" target="_blank" class="app-badge">
+                            <img src="images/appstore.png">
+                        </a>
+                        <a href="https://play.google.com/" target="_blank" class="app-badge">
+                            <img src="images/googleplaystore.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Column -->
+            <div class="footer-column">
+                <h3 class="footer-column-title">Về StyleEra</h3>
+                <ul class="footer-menu-list">
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Giới Thiệu</a></li>
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Công Nghệ Sản Xuất</a></li>
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Cơ Hội Việc Làm</a></li>
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Hệ Thống Cửa Hàng</a></li>
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Tạp Chí Thời Trang</a></li>
+                </ul>
+            </div>
+
+            <!-- Account Column -->
+            <div class="footer-column">
+                <h3 class="footer-column-title">Tài khoản</h3>
+                <ul class="footer-menu-list">
+                    <li><a href="/account/login"><i class="fas fa-chevron-right"></i> Đăng nhập/Đăng ký</a></li>
+                    <li><a href="/account"><i class="fas fa-chevron-right"></i> Lịch sử mua hàng</a></li>
+                    <li><a href="/account/addresses"><i class="fas fa-chevron-right"></i> Danh sách địa chỉ</a></li>
+                </ul>
+            </div>
+
+            <!-- Support Column -->
+            <div class="footer-column">
+                <h3 class="footer-column-title">Hỗ trợ khách hàng</h3>
+                <ul class="footer-menu-list">
+                    <li><a href="/pages/chinh-sach-thanh-vien"><i class="fas fa-chevron-right"></i> Chính Sách Thành Viên</a></li>
+                    <li><a href="/pages/chinh-sach-doi-hang"><i class="fas fa-chevron-right"></i> Chính Sách Đổi Hàng</a></li>
+                    <li><a href="/pages/chinh-sach-bao-hanh"><i class="fas fa-chevron-right"></i> Chính Sách Bảo Hành</a></li>
+                    <li><a href="/pages/huong-dan-mua-hang"><i class="fas fa-chevron-right"></i> Hướng Dẫn Mua Hàng</a></li>
+                    <li><a href="/pages/huong-dan-chon-size"><i class="fas fa-chevron-right"></i> Hướng Dẫn Chọn Size</a></li>
+                    <li><a href="/pages/contact-us"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+        <i class="far fa-copyright"></i> 2025 StyleEra. All rights reserved.
+    </div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/cancel_order.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/order_status.js"></script>
+
+
+</body>
+<div class="modal fade" id="cancelSuccessModal" tabindex="-1" aria-labelledby="cancelSuccessLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="cancelSuccessLabel">Thông báo</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body text-center">
+        <i class="fas fa-check-circle text-success" style="font-size: 48px; margin-bottom: 10px;"></i>
+        <p class="mt-2 mb-0"><strong>Bạn đã huỷ đơn hàng thành công!  </strong> </p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</html>
