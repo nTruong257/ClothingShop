@@ -65,3 +65,36 @@ document.addEventListener('DOMContentLoaded', function () {
     districtSelect.disabled = false;
   });
 });
+//xac nhan don hang
+    
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const viewOrderBtn = document.getElementById('viewOrderBtn');
+    const trackBtn = document.getElementById('trackBtn');
+    const homeBtn = document.getElementById('homeBtn');
+    // Demo: open modal when clicking "Xem đơn hàng"
+    viewOrderBtn.addEventListener('click', ()=> openModal());
+    trackBtn.addEventListener('click', ()=> location.href = '/orders/985723');
+    homeBtn.addEventListener('click', ()=> location.href = '/');
+
+    function openModal(){
+      modalBackdrop.classList.add('show');
+      modalBackdrop.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){
+      modalBackdrop.classList.remove('show');
+      modalBackdrop.setAttribute('aria-hidden','true');
+    }
+    (function populateFromQuery(){
+      const params = new URLSearchParams(location.search);
+      if(params.has('order')){
+        const id = params.get('order');
+        document.getElementById('orderId').textContent = 'Mã đơn hàng: #' + id;
+        document.getElementById('modalOrder').textContent = '#' + id;
+      }
+      if(params.has('name')) document.getElementById('shipName').textContent = params.get('name');
+      if(params.has('phone')) document.getElementById('shipPhone').textContent = params.get('phone');
+      if(params.has('addr')) document.getElementById('shipAddress').textContent = params.get('addr');
+      if(params.has('eta')) document.getElementById('shipETA').textContent = params.get('eta');
+      if(params.has('pay')) document.getElementById('payMethod').textContent = params.get('pay');
+    })();
+
