@@ -294,4 +294,55 @@
     min-width: 150px;
 }
 
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+    .filter-box {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 576px) {
+    .size-list button {
+        padding: 2px 6px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== Mobile Filter Toggle ===== */
+@media (max-width: 768px) {
+    .filter-box {
+        display: none; /* ẩn mặc định trên mobile */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 80%;
+        max-width: 300px;
+        background: #fff;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .filter-box.show {
+        display: block;
+    }
+
+    .filter-toggle-btn {
+        display: block;
+        margin-bottom: 15px;
+        background: #D4AF37;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+}
 
