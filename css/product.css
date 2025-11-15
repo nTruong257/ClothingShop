@@ -75,3 +75,126 @@
     color: #D4AF37;
     font-weight: 600;
 }
+
+/* Size buttons */
+.size-list li {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.size-list button {
+    border: 1px solid #212121;
+    background-color: #fff;
+    color: #212121;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.size-list button:hover {
+    background-color: #D4AF37;
+    color: #fff;
+    border-color: #D4AF37;
+}
+
+/* Color dots */
+.color-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #212121;
+}
+
+.color-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+}
+
+/* ===== Product Listing ===== */
+.category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+/* Sort bar */
+.sort-bar select {
+    border-radius: 6px;
+    border: 1px solid #212121;
+    color: #212121;
+}
+
+
+/* ===== FILTER & CATEGORY PAGE ===== */
+.filter-box {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 15px;
+}
+
+.filter-section h6 {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.filter-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.filter-section ul li {
+    margin-bottom: 5px;
+}
+
+.size-list li,
+.color-list li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.size-list button {
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.size-list button:hover {
+    background: #f1f1f1;
+}
+
+.color-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.category-title {
+    margin-bottom: 15px;
+}
+
+.sort-bar select {
+    min-width: 150px;
+}
+
+
