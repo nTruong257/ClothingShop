@@ -1,0 +1,77 @@
+/* ===== product.css ===== */
+
+/* Main page container */
+.product-page {
+    background-color: #F5F0E6;
+    padding: 30px 15px 50px 15px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: transparent;
+    padding-left: 0;
+}
+
+.breadcrumb a {
+    color: #212121;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #D4AF37;
+}
+
+.breadcrumb .active {
+    color: #212121;
+    font-weight: 600;
+}
+
+/* ===== Sidebar Filter ===== */
+.filter-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.filter-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #212121;
+    margin-bottom: 10px;
+}
+
+.filter-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.filter-section ul li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.filter-section ul li a {
+    color: #212121;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.filter-section ul li a:hover,
+.filter-section ul li a.active {
+    color: #D4AF37;
+    font-weight: 600;
+}
