@@ -24,11 +24,11 @@ body {
   border-radius: 0;
   margin-bottom: 0;
   padding: 25px 20px;
-  background: linear-gradient(135deg, #2d0bd5 0%, #5a2e8f 100%);
+  background:linear-gradient( #dcdcca 30%, #d6d6c8 70%);
 }
 
 .order-header h2 {
-  color: white;
+  color: #1c1717;
   margin-bottom: 12px;
   padding: 0;
   font-size: 26px;
@@ -36,7 +36,7 @@ body {
 }
 
 .order-header p {
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(44, 36, 36, 0.95);
   margin: 6px 0;
   font-size: 15px;
 }
@@ -200,29 +200,28 @@ body {
 }
 
 .btn-back {
-  color: white;
+  background-color: #2b2a27;
+  color: #ffffff;
 }
 
 .btn-back:hover {
-  background-color: #5a6268;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(90, 98, 104, 0.25);
+    background-color: #636360;
+
 }
 
 .btn-danger {
-  background-color: #dc3545;
-  color: white;
+  background-color: #c83e4b;
+  color: #ffffff;
 }
 
 .btn-danger:hover {
-  background-color: #c82333;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.25);
+    background-color: #dd838e;
+    transform: translateY(-2px);
 }
 
 .btn-danger:active,
 .btn-back:active {
-  opacity: 0.85;
   transform: translateY(0);
 }
 
