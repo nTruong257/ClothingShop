@@ -227,6 +227,7 @@
     overflow: hidden;
     transition: all 0.3s;
     border: 1px solid var(--color-dark-beige);
+    position: relative;
 }
 
 .product-card:hover {
@@ -779,11 +780,6 @@
 
     .category-group-header h2 {
         font-size: 1.8rem;
-    }
-
-    .category-items-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 15px;
     }
 
     .category-items-grid > [class*="col-"] {
