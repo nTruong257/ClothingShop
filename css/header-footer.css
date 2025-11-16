@@ -281,6 +281,14 @@ img {
     height: 22px;
 }
 
+.account-dropdown-menu {
+    display: none;
+}
+
+.account-dropdown-menu.active {
+    display: block;
+}
+
 .cart-badge {
     position: absolute;
     top: -6px;

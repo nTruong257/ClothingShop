@@ -93,3 +93,21 @@ window.addEventListener('scroll', () => {
 
     lastScroll = currentScroll;
 });
+
+// ===== Account dropdown toggle =====
+const accountLink = document.getElementById('accountLink');
+const accountMenu = document.getElementById('accountMenu');
+
+if (accountLink && accountMenu) {
+    accountLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        accountMenu.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!accountLink.contains(e.target) && !accountMenu.contains(e.target)) {
+            accountMenu.classList.remove('active');
+        }
+    });
+}
