@@ -135,6 +135,13 @@
 }
 
 /* ===== PRODUCT CARD ===== */
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative; /* Thêm relative để btn-cart position absolute bên trong */
+}
+
 .product-card {
     border: 1px solid #eee;
     border-radius: 8px;
@@ -143,8 +150,8 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
     min-height: 360px;
+    position: relative;
 }
 
 .product-card:hover {
@@ -162,6 +169,11 @@
 .product-image img {
     width: 100%;
     border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
 }
 
 .product-badge {
@@ -205,12 +217,13 @@
     font-size: 0.85rem;
 }
 
+/* Cart button nằm trong khung sản phẩm */
 .btn-cart {
-    background: #fff;
+    background: #E0D6C8;
     border: none;
     border-radius: 50%;
-    width: 32px;     /* icon nhỏ */
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -219,16 +232,18 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
-    padding: 0;
+    z-index: 10; /* đảm bảo trên cùng */
+    transition: all 0.2s;
+    pointer-events: auto;
 }
 
 .btn-cart i {
-    color: #333;
+    color: #212121;
     font-size: 16px;
 }
 
 .btn-cart:hover {
-    background: #f1f1f1;
+    background: #d4c8b0;
     transform: scale(1.1);
 }
 
@@ -345,4 +360,3 @@
         cursor: pointer;
     }
 }
-
