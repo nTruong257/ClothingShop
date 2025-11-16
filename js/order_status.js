@@ -9,4 +9,19 @@ document.addEventListener('DOMContentLoaded', function () {
             cancelSuccessModal.show();
         });
     }
+
+    const closeButton = document.querySelector('#cancelSuccessModal .btn-close');
+    const closeModalButton = document.querySelector('#cancelSuccessModal .btn-success');
+
+    if (closeButton) {
+        closeButton.addEventListener('click', function () {
+            window.location.href = 'index.html';
+        });
+    }
+
+    if (closeModalButton) {
+        closeModalButton.addEventListener('click', function () {
+            window.location.href = 'index.html';
+        });
+    }
 });
