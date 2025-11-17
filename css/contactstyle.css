@@ -6,7 +6,7 @@
 
 body {
     background-color: #F5F0E6;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.5;
 }
 p{
@@ -15,12 +15,29 @@ p{
     text-align: justify;
 
 }
+.breadcrumb {
+    padding: 10px;
+}
+
+.breadcrumb a {
+    color: #212121;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #D4AF37;
+}
+
+.breadcrumb .active {
+    color: #212121;
+    font-weight: 600;
+}
 .description_text{
     font-size: 14px;
 }
 
 .form {
-    padding: 30px 0;
+    padding: 0px;
 }
 
 .container {
