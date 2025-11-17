@@ -12,7 +12,7 @@ function toggleMobileMenu() {
 }
 
 // Close mobile menu when clicking outside
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const nav = document.getElementById('mainNavigation');
     const menuToggle = document.querySelector('.mobile-menu-toggle');
 
@@ -25,7 +25,7 @@ document.addEventListener('click', function(event) {
 
 // Mobile submenu toggle
 document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', function(e) {
+    item.addEventListener('click', function (e) {
         if (window.innerWidth <= 991) {
             const submenu = this.querySelector('.submenu-container');
             if (submenu) {
@@ -93,3 +93,21 @@ window.addEventListener('scroll', () => {
 
     lastScroll = currentScroll;
 });
+
+// ===== Account dropdown toggle =====
+// const accountLink = document.getElementById('accountLink');
+// const accountMenu = document.getElementById('accountMenu');
+//
+// if (accountLink && accountMenu) {
+//     accountLink.addEventListener('click', function(e) {
+//         e.preventDefault();
+//         accountMenu.classList.toggle('active');
+//     });
+//
+//     // Close dropdown when clicking outside
+//     document.addEventListener('click', function(e) {
+//         if (!accountLink.contains(e.target) && !accountMenu.contains(e.target)) {
+//             accountMenu.classList.remove('active');
+//         }
+//     });
+// }

@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (closeButton) {
         closeButton.addEventListener('click', function () {
-            window.location.href = 'index.html';
+            window.location.href = 'home.html';
         });
     }
 
     if (closeModalButton) {
         closeModalButton.addEventListener('click', function () {
-            window.location.href = 'index.html';
+            window.location.href = 'home.html';
         });
     }
 });
