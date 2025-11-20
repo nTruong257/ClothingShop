@@ -1,341 +1,476 @@
-
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StyleEra - Quản Lý Sản Phẩm</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/admin.css">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
 
-<body>
-<div class="admin-container">
-    <!-- ===== SIDEBAR ===== -->
-     <aside class="admin-sidebar">
+  <body>
+    <div class="admin-container">
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="admin-sidebar">
         <div class="sidebar-header">
-            <div class="brand-logo">
-                <i class="fas fa-tshirt" style="font-size: 28px;"></i>
-            </div>
-            <h2 class="brand-name">Admin</h2>
+          <div class="brand-logo">
+            <i class="fas fa-tshirt" style="font-size: 28px"></i>
+          </div>
+          <h2 class="brand-name">Admin</h2>
         </div>
 
         <nav class="sidebar-menu">
-            <div class="menu-label">MENU</div>
-            <ul class="menu-list">
-                <li class="menu-item">
-                    <a href="admin-dashboard.html" class="menu-link">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Bảng Điều Khiển</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="admin-products.html" class="menu-link active">
-                        <i class="fas fa-box"></i>
-                        <span>Sản Phẩm</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="admin-orders.html" class="menu-link">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span>Đơn Hàng</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="admin-profile.html" class="menu-link">
-                        <i class="fas fa-users"></i>
-                        <span>Người Dùng</span>
-                    </a>
-                </li>
-            </ul>
-
-           
+          <div class="menu-label">MENU</div>
+          <ul class="menu-list">
+            <li class="menu-item">
+              <a href="admin-dashboard.html" class="menu-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Bảng Điều Khiển</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-products.html" class="menu-link active">
+                <i class="fas fa-box"></i>
+                <span>Sản Phẩm</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-orders.html" class="menu-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Đơn Hàng</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-profile.html" class="menu-link">
+                <i class="fas fa-users"></i>
+                <span>Người Dùng</span>
+              </a>
+            </li>
+          </ul>
         </nav>
 
         <div class="sidebar-footer">
-            <button class="btn-logout" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Đăng Xuất</span>
-            </button>
+          <button class="btn-logout" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Đăng Xuất</span>
+          </button>
         </div>
-    </aside>
+      </aside>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <div class="admin-main">
+      <!-- ===== MAIN CONTENT ===== -->
+      <div class="admin-main">
         <!-- ===== HEADER ===== -->
-            <header class="admin-header">
-            <div class="header-left">
-                <button class="icon-btn d-lg-none" id="sidebarToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="header-search">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder=" Tìm kiếm...">
-                    </div>
-                </div>
+        <header class="admin-header">
+          <div class="header-left">
+            <button class="icon-btn d-lg-none" id="sidebarToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-search">
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder=" Tìm kiếm..." />
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-icons">
+              <button class="icon-btn" title="Notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+              </button>
             </div>
 
-            <div class="header-right">
-                <div class="header-icons">
-                    <button class="icon-btn" title="Notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
-    
-                </div>
-
-                <div class="admin-profile">
-                    <img src="images/logo.png" alt="Admin" class="profile-img">
-                    <div class="profile-info">
-                        <div class="profile-name">Quản Trị Viên</div>
-                        <div class="profile-role">Admin</div>
-                    </div>
-                    <button class="icon-btn profile-dropdown" type="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="admin-profile.html">Hồ Sơ</a></li>
-                        <li><a class="dropdown-item" href="admin-profile.html">Cài Đặt</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="admin-login.html">Đăng Xuất</a></li>
-                    </ul>
-                </div>
+            <div class="admin-profile">
+              <img src="images/logo.png" alt="Admin" class="profile-img" />
+              <div class="profile-info">
+                <div class="profile-name">Quản Trị Viên</div>
+                <div class="profile-role">Admin</div>
+              </div>
+              <button
+                class="icon-btn profile-dropdown"
+                type="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="admin-profile.html">Hồ Sơ</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="admin-profile.html">Cài Đặt</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="admin-login.html">Đăng Xuất</a>
+                </li>
+              </ul>
             </div>
+          </div>
         </header>
 
         <!-- ===== CONTENT ===== -->
         <main class="admin-content">
-            <!-- Page Header -->
-            <div class="page-header mb-5">
-                <div>
-                    <h1 class="page-title">Quản Lý Sản Phẩm</h1>
+          <!-- Page Header -->
+          <div class="page-header mb-5">
+            <div>
+              <h1 class="page-title">Quản Lý Sản Phẩm</h1>
+            </div>
+            <div class="page-actions">
+              <a href="admin-form.html" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Thêm Sản Phẩm
+              </a>
+            </div>
+          </div>
+
+          <!-- Filters & Search -->
+          <div class="card shadow-sm mb-4">
+            <div class="card-body">
+              <div class="row g-3 align-items-end">
+                <div class="col-md-4">
+                  <label class="form-label">Tìm Kiếm</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="searchInput"
+                    placeholder="Tên sản phẩm..."
+                  />
                 </div>
-                <div class="page-actions">
-                    <a href="admin-form.html" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Thêm Sản Phẩm
-                    </a>
+                <div class="col-md-3">
+                  <label class="form-label">Danh Mục</label>
+                  <select class="form-select" id="categoryFilter">
+                    <option value="">Tất Cả Danh Mục</option>
+                    <option value="nam">Nam</option>
+                    <option value="nu">Nữ</option>
+                    <option value="doi">Đồ Đôi</option>
+                  </select>
                 </div>
+                <div class="col-md-3">
+                  <label class="form-label">Trạng Thái</label>
+                  <select class="form-select" id="statusFilter">
+                    <option value="">Tất Cả Trạng Thái</option>
+                    <option value="active">Hoạt Động</option>
+                    <option value="inactive">Tạm Dừng</option>
+                    <option value="outofstock">Hết Hàng</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <button
+                    class="btn btn-outline-secondary w-100"
+                    onclick="resetFilters()"
+                  >
+                    <i class="fas fa-redo"></i> Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Table -->
+          <div class="card shadow-sm">
+            <div
+              class="card-header bg-light border-bottom d-flex justify-content-between align-items-center"
+            >
+              <h6 class="mb-0">Danh Sách Sản Phẩm</h6>
+              <span class="text-muted small"
+                >Tổng cộng: <strong>5</strong> sản phẩm</span
+              >
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-hover mb-0" id="productsTable">
+                  <thead class="table-light">
+                    <tr>
+                      <th style="width: 50px">
+                        <input type="checkbox" class="form-check-input" />
+                      </th>
+                      <th>ID</th>
+                      <th style="min-width: 250px">Sản Phẩm</th>
+                      <th>Danh Mục</th>
+                      <th>Giá</th>
+                      <th>Kho</th>
+                      <th>Trạng Thái</th>
+                      <th style="width: 150px">Hành Động</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input type="checkbox" class="form-check-input" />
+                      </td>
+                      <td>#001</td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="product-img-wrapper me-3">
+                            <img
+                              src="../images/product_item_nam/1/1.1/aokhoac_nam.avif"
+                              alt="Áo Khoác Nam"
+                              class="product-img"
+                            />
+                          </div>
+                          <div>
+                            <strong>Áo Khoác Nam</strong>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-info">Nam</span></td>
+                      <td>350,000đ</td>
+                      <td><span class="badge bg-success">45</span></td>
+                      <td><span class="badge bg-success">Hoạt Động</span></td>
+                      <td>
+                        <a
+                          href="admin-form.html"
+                          class="btn btn-sm btn-warning"
+                          title="Chỉnh sửa"
+                        >
+                          <i class="fas fa-edit"></i>
+                        </a>
+                        <button
+                          class="btn btn-sm btn-danger"
+                          title="Xóa"
+                          onclick="deleteProduct(1)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="checkbox" class="form-check-input" />
+                      </td>
+                      <td>#002</td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="product-img-wrapper me-3">
+                            <img
+                              src="../images/product_item_women/6/6-1/trangphuc.png"
+                              alt="Đầm Nữ"
+                              class="product-img"
+                            />
+                          </div>
+                          <div>
+                            <strong>Đầm Nữ</strong>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-success">Nữ</span></td>
+                      <td>450,000đ</td>
+                      <td><span class="badge bg-success">32</span></td>
+                      <td><span class="badge bg-success">Hoạt Động</span></td>
+                      <td>
+                        <a
+                          href="admin-form.html"
+                          class="btn btn-sm btn-warning"
+                          title="Chỉnh sửa"
+                        >
+                          <i class="fas fa-edit"></i>
+                        </a>
+                        <button
+                          class="btn btn-sm btn-danger"
+                          title="Xóa"
+                          onclick="deleteProduct(2)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="checkbox" class="form-check-input" />
+                      </td>
+                      <td>#003</td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="product-img-wrapper me-3">
+                            <img
+                              src="../images/product_item_nam/7/7.2/quanjeans_nam.webp"
+                              alt="Quần Jean Nam"
+                              class="product-img"
+                            />
+                          </div>
+                          <div>
+                            <strong>Quần Jean Nam</strong>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-info">Nam</span></td>
+                      <td>280,000đ</td>
+                      <td><span class="badge bg-danger">0</span></td>
+                      <td><span class="badge bg-danger">Hết Hàng</span></td>
+                      <td>
+                        <a
+                          href="admin-form.html"
+                          class="btn btn-sm btn-warning"
+                          title="Chỉnh sửa"
+                        >
+                          <i class="fas fa-edit"></i>
+                        </a>
+                        <button
+                          class="btn btn-sm btn-danger"
+                          title="Xóa"
+                          onclick="deleteProduct(3)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="checkbox" class="form-check-input" />
+                      </td>
+                      <td>#004</td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="product-img-wrapper me-3">
+                            <img
+                              src="../images/product_item_women/4/4-5/trangphuc.png"
+                              alt="Áo Sơ mi Nữ"
+                              class="product-img"
+                            />
+                          </div>
+                          <div>
+                            <strong>Áo Sơ mi Nữ</strong>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-success">Nữ</span></td>
+                      <td>150,000đ</td>
+                      <td><span class="badge bg-success">78</span></td>
+                      <td><span class="badge bg-success">Hoạt Động</span></td>
+                      <td>
+                        <a
+                          href="admin-form.html"
+                          class="btn btn-sm btn-warning"
+                          title="Chỉnh sửa"
+                        >
+                          <i class="fas fa-edit"></i>
+                        </a>
+                        <button
+                          class="btn btn-sm btn-danger"
+                          title="Xóa"
+                          onclick="deleteProduct(4)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="checkbox" class="form-check-input" />
+                      </td>
+                      <td>#005</td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="product-img-wrapper me-3">
+                            <img
+                              src="../images/product_item_nam/3/3.1/aopolo_nam.webp"
+                              alt="Áo Polo nam"
+                              class="product-img"
+                            />
+                          </div>
+                          <div>
+                            <strong>Áo Polo nam</strong>
+                          </div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-info">Nam</span></td>
+                      <td>520,000đ</td>
+                      <td><span class="badge bg-success">15</span></td>
+                      <td><span class="badge bg-success">Hoạt Động</span></td>
+                      <td>
+                        <a
+                          href="admin-form.html"
+                          class="btn btn-sm btn-warning"
+                          title="Chỉnh sửa"
+                        >
+                          <i class="fas fa-edit"></i>
+                        </a>
+                        <button
+                          class="btn btn-sm btn-danger"
+                          title="Xóa"
+                          onclick="deleteProduct(5)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
-            <!-- Filters & Search -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <div class="row g-3 align-items-end">
-                        <div class="col-md-4">
-                            <label class="form-label">Tìm Kiếm</label>
-                            <input type="text" class="form-control" id="searchInput" placeholder="Tên sản phẩm, SKU...">
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Danh Mục</label>
-                            <select class="form-select" id="categoryFilter">
-                                <option value="">Tất Cả Danh Mục</option>
-                                <option value="nam">Nam</option>
-                                <option value="nu">Nữ</option>
-                                <option value="doi">Đồ Đôi</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Trạng Thái</label>
-                            <select class="form-select" id="statusFilter">
-                                <option value="">Tất Cả Trạng Thái</option>
-                                <option value="active">Hoạt Động</option>
-                                <option value="inactive">Tạm Dừng</option>
-                                <option value="outofstock">Hết Hàng</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-outline-secondary w-100" onclick="resetFilters()">
-                                <i class="fas fa-redo"></i> Reset
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Pagination -->
+            <div class="card-footer bg-light">
+              <nav aria-label="Page navigation">
+                <ul class="pagination mb-0 justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Trước</a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                  </li>
 
-            <!-- Products Table -->
-            <div class="card shadow-sm">
-                <div class="card-header bg-light border-bottom d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0">Danh Sách Sản Phẩm</h6>
-                    <span class="text-muted small">Tổng cộng: <strong>342</strong> sản phẩm</span>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover mb-0" id="productsTable">
-                            <thead class="table-light">
-                                <tr>
-                                    <th style="width: 50px;">
-                                        <input type="checkbox" class="form-check-input">
-                                    </th>
-                                    <th>ID</th>
-                                    <th>Tên Sản Phẩm</th>
-                                    <th>Danh Mục</th>
-                                    <th>Giá</th>
-                                    <th>Kho</th>
-                                    <th>Trạng Thái</th>
-                                    <th style="width: 150px;">Hành Động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" class="form-check-input"></td>
-                                    <td>#001</td>
-                                    <td>
-                                        <strong>Áo Khoác Nam</strong>
-                                        <br><small class="text-muted">SKU: AO-001</small>
-                                    </td>
-                                    <td><span class="badge bg-info">Nam</span></td>
-                                    <td>350,000đ</td>
-                                    <td>
-                                        <span class="badge bg-success">45</span>
-                                    </td>
-                                    <td><span class="badge bg-success">Hoạt Động</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-info" title="Xem" onclick="viewProduct(1)"><i class="fas fa-eye"></i></button>
-                                        <a href="admin-form.html" class="btn btn-sm btn-warning" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" title="Xóa" onclick="deleteProduct(1)"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="form-check-input"></td>
-                                    <td>#002</td>
-                                    <td>
-                                        <strong>Đầm Nữ</strong>
-                                        <br><small class="text-muted">SKU: DAM-001</small>
-                                    </td>
-                                    <td><span class="badge bg-success">Nữ</span></td>
-                                    <td>450,000đ</td>
-                                    <td>
-                                        <span class="badge bg-success">32</span>
-                                    </td>
-                                    <td><span class="badge bg-success">Hoạt Động</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-info" title="Xem" onclick="viewProduct(2)"><i class="fas fa-eye"></i></button>
-                                        <a href="admin-form.html" class="btn btn-sm btn-warning" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" title="Xóa" onclick="deleteProduct(2)"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="form-check-input"></td>
-                                    <td>#003</td>
-                                    <td>
-                                        <strong>Quần Jean Nam</strong>
-                                        <br><small class="text-muted">SKU: QJN-001</small>
-                                    </td>
-                                    <td><span class="badge bg-info">Nam</span></td>
-                                    <td>280,000đ</td>
-                                    <td>
-                                        <span class="badge bg-danger">0</span>
-                                    </td>
-                                    <td><span class="badge bg-danger">Hết Hàng</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-info" title="Xem" onclick="viewProduct(3)"><i class="fas fa-eye"></i></button>
-                                        <a href="admin-form.html" class="btn btn-sm btn-warning" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" title="Xóa" onclick="deleteProduct(3)"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="form-check-input"></td>
-                                    <td>#004</td>
-                                    <td>
-                                        <strong>Áo Phông Nữ</strong>
-                                        <br><small class="text-muted">SKU: APH-001</small>
-                                    </td>
-                                    <td><span class="badge bg-success">Nữ</span></td>
-                                    <td>150,000đ</td>
-                                    <td>
-                                        <span class="badge bg-success">78</span>
-                                    </td>
-                                    <td><span class="badge bg-success">Hoạt Động</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-info" title="Xem" onclick="viewProduct(4)"><i class="fas fa-eye"></i></button>
-                                        <a href="admin-form.html" class="btn btn-sm btn-warning" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" title="Xóa" onclick="deleteProduct(4)"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="form-check-input"></td>
-                                    <td>#005</td>
-                                    <td>
-                                        <strong>Cặp Đôi Áo</strong>
-                                        <br><small class="text-muted">SKU: CDP-001</small>
-                                    </td>
-                                    <td><span class="badge bg-warning text-dark">Đồ Đôi</span></td>
-                                    <td>520,000đ</td>
-                                    <td>
-                                        <span class="badge bg-success">15</span>
-                                    </td>
-                                    <td><span class="badge bg-success">Hoạt Động</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-info" title="Xem" onclick="viewProduct(5)"><i class="fas fa-eye"></i></button>
-                                        <a href="admin-form.html" class="btn btn-sm btn-warning" title="Chỉnh sửa"><i class="fas fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" title="Xóa" onclick="deleteProduct(5)"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Pagination -->
-                <div class="card-footer bg-light">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination mb-0 justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Trước</a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Sau</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Sau</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
+          </div>
         </main>
+      </div>
     </div>
-</div>
+    <footer class="bg-dark text-white py-3">
+      <div class="container-fluid text-center">
+        <p class="mb-0">&copy; 2025 StyleEra Admin. All rights reserved.</p>
+      </div>
+    </footer>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom JS -->
-<script src="js/admin-common.js"></script>
-<script>
-    // Sidebar toggle for mobile
-    document.getElementById('sidebarToggle').addEventListener('click', function() {
-        document.querySelector('.admin-sidebar').classList.toggle('active');
-    });
-
-    // Filter functions
-    function resetFilters() {
-        document.getElementById('searchInput').value = '';
-        document.getElementById('categoryFilter').value = '';
-        document.getElementById('statusFilter').value = '';
-    }
-
-    function viewProduct(id) {
-        alert('Xem chi tiết sản phẩm #' + id);
-    }
-
-    function deleteProduct(id) {
-        if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
-            alert('Sản phẩm #' + id + ' đã được xóa!');
-        }
-    }
-
-    // Search functionality
-    document.getElementById('searchInput').addEventListener('keyup', function(e) {
-        const searchTerm = e.target.value.toLowerCase();
-        const rows = document.querySelectorAll('#productsTable tbody tr');
-        rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            row.style.display = text.includes(searchTerm) ? '' : 'none';
+    <!-- Custom JS -->
+    <script src="js/admin-common.js"></script>
+    <script>
+      // Sidebar toggle for mobile
+      document
+        .getElementById("sidebarToggle")
+        .addEventListener("click", function () {
+          document.querySelector(".admin-sidebar").classList.toggle("active");
         });
-    });
-</script>
-</body>
+
+      // Filter functions
+      function resetFilters() {
+        document.getElementById("searchInput").value = "";
+        document.getElementById("categoryFilter").value = "";
+        document.getElementById("statusFilter").value = "";
+      }
+
+      function deleteProduct(id) {
+        if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+          alert("Sản phẩm #" + id + " đã được xóa!");
+        }
+      }
+
+      // Search functionality
+      document
+        .getElementById("searchInput")
+        .addEventListener("keyup", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          const rows = document.querySelectorAll("#productsTable tbody tr");
+          rows.forEach((row) => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(searchTerm) ? "" : "none";
+          });
+        });
+    </script>
+  </body>
 </html>
