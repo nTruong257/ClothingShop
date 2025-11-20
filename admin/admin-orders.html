@@ -31,7 +31,7 @@
           <div class="menu-label">MENU</div>
           <ul class="menu-list">
             <li class="menu-item">
-              <a href="admin-dashboard.html" class="menu-link">
+              <a href="admin-dashboard.html" class="menu-link active">
                 <i class="fas fa-chart-line"></i>
                 <span>Bảng Điều Khiển</span>
               </a>
@@ -43,15 +43,21 @@
               </a>
             </li>
             <li class="menu-item">
-              <a href="admin-orders.html" class="menu-link active">
+              <a href="admin-orders.html" class="menu-link">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Đơn Hàng</span>
               </a>
             </li>
             <li class="menu-item">
               <a href="admin-profile.html" class="menu-link">
+                <i class="fa-solid fa-user"></i>
+                <span>Quản Trị Viên</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-customer-edit.html" class="menu-link">
                 <i class="fas fa-users"></i>
-                <span>Người Dùng</span>
+                <span> Người Dùng</span>
               </a>
             </li>
           </ul>
@@ -133,7 +139,7 @@
               <div class="card text-center shadow-sm">
                 <div class="card-body">
                   <h3 class="mb-1">156</h3>
-                  <p class="text-muted small mb-0">Chờ Xác Nhận</p>
+                  <p class="text-muted small mb-0">Chờ Vận chuyển</p>
                 </div>
               </div>
             </div>
@@ -141,7 +147,7 @@
               <div class="card text-center shadow-sm">
                 <div class="card-body">
                   <h3 class="mb-1 text-warning">84</h3>
-                  <p class="text-muted small mb-0">Đang Giao</p>
+                  <p class="text-muted small mb-0">Đang Vận chuyển</p>
                 </div>
               </div>
             </div>
@@ -179,8 +185,8 @@
                   <label class="form-label">Trạng Thái</label>
                   <select class="form-select">
                     <option value="">Tất Cả Trạng Thái</option>
-                    <option value="pending">Chờ Xác Nhận</option>
-                    <option value="shipping">Đang Giao</option>
+                    <option value="pending">Chờ Vận chuyển</option>
+                    <option value="shipping">Đang Vận chuyển</option>
                     <option value="delivered">Đã Giao</option>
                     <option value="cancelled">Đã Hủy</option>
                   </select>
@@ -228,7 +234,7 @@
                       <td>phamvand@email.com</td>
                       <td>15/11/2025</td>
                       <td><strong>890,000đ</strong></td>
-                      <td><span class="badge bg-info">Chờ Xác Nhận</span></td>
+                      <td><span class="badge bg-info">Chờ Vận chuyển</span></td>
                       <td>
                         <button
                           class="btn btn-sm btn-info"
@@ -247,7 +253,7 @@
                       <td><strong>620,000đ</strong></td>
                       <td>
                         <span class="badge bg-warning text-dark"
-                          >Đang Giao</span
+                          >Đang Vận chuyển</span
                         >
                       </td>
                       <td>
