@@ -30,7 +30,7 @@
           <div class="menu-label">MENU</div>
           <ul class="menu-list">
             <li class="menu-item">
-              <a href="admin-dashboard.html" class="menu-link">
+              <a href="admin-dashboard.html" class="menu-link active">
                 <i class="fas fa-chart-line"></i>
                 <span>Bảng Điều Khiển</span>
               </a>
@@ -48,9 +48,15 @@
               </a>
             </li>
             <li class="menu-item">
-              <a href="admin-profile.html" class="menu-link active">
+              <a href="admin-profile.html" class="menu-link">
+                <i class="fa-solid fa-user"></i>
+                <span>Quản Trị Viên</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-customer-edit.html" class="menu-link">
                 <i class="fas fa-users"></i>
-                <span>Người Dùng</span>
+                <span> Người dùng</span>
               </a>
             </li>
           </ul>
@@ -122,7 +128,7 @@
           <!-- Page Header -->
           <div class="page-header mb-5">
             <div>
-              <h1 class="page-title">Quản Lý Người Dùng</h1>
+              <h1 class="page-title">Quản Trị Viên</h1>
             </div>
           </div>
 
@@ -139,11 +145,7 @@
                     <i class="fas fa-user-circle"></i> Hồ Sơ Admin
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#userList" data-bs-toggle="tab">
-                    <i class="fas fa-list"></i> Danh Sách Khách Hàng
-                  </a>
-                </li>
+
                 <li class="nav-item">
                   <a class="nav-link" href="#settings" data-bs-toggle="tab">
                     <i class="fas fa-cog"></i> Cài Đặt
@@ -205,7 +207,7 @@
                           <label class="form-label text-muted"
                             >Số Điện Thoại</label
                           >
-                          <p class="fw-bold">0912345678</p>
+                          <p class="fw-bold">0904899626</p>
                         </div>
                         <div class="col-md-6">
                           <label class="form-label text-muted">Vai Trò</label>
@@ -217,7 +219,10 @@
                       <div class="row">
                         <div class="col-12">
                           <label class="form-label text-muted">Địa Chỉ</label>
-                          <p class="fw-bold">123 Đường ABC, Quận 1, TP. HCM</p>
+                          <p class="fw-bold">
+                            376, khu phố 6, Thủ Đức, Thành phố Hồ Chí Minh, Việt
+                            Nam
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -259,90 +264,6 @@
                         </button>
                       </form>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- User List Tab -->
-            <div class="tab-pane fade" id="userList">
-              <div class="card shadow-sm">
-                <div
-                  class="card-header bg-light border-bottom d-flex justify-content-between align-items-center"
-                >
-                  <h6 class="mb-0">Danh Sách Khách Hàng</h6>
-                  <input
-                    type="text"
-                    class="form-control form-control-sm"
-                    style="max-width: 200px"
-                    placeholder="Tìm kiếm..."
-                  />
-                </div>
-                <div class="card-body p-0">
-                  <div class="table-responsive">
-                    <table class="table table-hover mb-0">
-                      <thead class="table-light">
-                        <tr>
-                          <th>ID</th>
-                          <th>Tên</th>
-                          <th>Email</th>
-                          <th>Số ĐT</th>
-                          <th>Ngày Tham Gia</th>
-                          <th>Trạng Thái</th>
-                          <th>Hành Động</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>#U001</td>
-                          <td>Nguyễn Văn A</td>
-                          <td>nguyenvana@email.com</td>
-                          <td>0912345678</td>
-                          <td>05/01/2025</td>
-                          <td>
-                            <span class="badge bg-success">Hoạt Động</span>
-                          </td>
-                          <td>
-                            <button class="btn btn-sm btn-info" title="Xem">
-                              <i class="fas fa-eye"></i>
-                            </button>
-                            <button
-                              class="btn btn-sm btn-warning"
-                              title="Chỉnh sửa"
-                            >
-                              <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn btn-sm btn-danger" title="Xóa">
-                              <i class="fas fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>#U002</td>
-                          <td>Trần Thị B</td>
-                          <td>tranthib@email.com</td>
-                          <td>0987654321</td>
-                          <td>10/02/2025</td>
-                          <td>
-                            <span class="badge bg-success">Hoạt Động</span>
-                          </td>
-                          <td>
-                            <button class="btn btn-sm btn-info" title="Xem">
-                              <i class="fas fa-eye"></i>
-                            </button>
-                            <button
-                              class="btn btn-sm btn-warning"
-                              title="Chỉnh sửa"
-                            >
-                              <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn btn-sm btn-danger" title="Xóa">
-                              <i class="fas fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>

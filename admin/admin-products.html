@@ -30,13 +30,13 @@
           <div class="menu-label">MENU</div>
           <ul class="menu-list">
             <li class="menu-item">
-              <a href="admin-dashboard.html" class="menu-link">
+              <a href="admin-dashboard.html" class="menu-link active">
                 <i class="fas fa-chart-line"></i>
                 <span>Bảng Điều Khiển</span>
               </a>
             </li>
             <li class="menu-item">
-              <a href="admin-products.html" class="menu-link active">
+              <a href="admin-products.html" class="menu-link">
                 <i class="fas fa-box"></i>
                 <span>Sản Phẩm</span>
               </a>
@@ -49,8 +49,14 @@
             </li>
             <li class="menu-item">
               <a href="admin-profile.html" class="menu-link">
+                <i class="fa-solid fa-user"></i>
+                <span>Quản Trị Viên</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="admin-customer-edit.html" class="menu-link">
                 <i class="fas fa-users"></i>
-                <span>Người Dùng</span>
+                <span> Người Dùng</span>
               </a>
             </li>
           </ul>
@@ -158,7 +164,6 @@
                   <select class="form-select" id="statusFilter">
                     <option value="">Tất Cả Trạng Thái</option>
                     <option value="active">Hoạt Động</option>
-                    <option value="inactive">Tạm Dừng</option>
                     <option value="outofstock">Hết Hàng</option>
                   </select>
                 </div>
@@ -188,7 +193,7 @@
                       <th style="min-width: 250px">Sản Phẩm</th>
                       <th>Danh Mục</th>
                       <th>Giá</th>
-                      <th>Kho</th>
+                      <th>Số lượng</th>
                       <th>Trạng Thái</th>
                       <th style="width: 150px">Hành Động</th>
                     </tr>
