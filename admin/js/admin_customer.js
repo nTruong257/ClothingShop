@@ -188,11 +188,23 @@ if (addUserForm) {
       return;
     }
 
-    // Tạo ID mới
+    // Tạo ID mới dựa vào role (Admin = A, User = U)
     const users = getUsers();
-    const lastUser = users[users.length - 1];
-    const lastNum = parseInt(lastUser.id.substring(1));
-    const newId = lastUser.id[0] + String(lastNum + 1).padStart(3, "0");
+    const role = document.getElementById("addRole").value;
+    const prefix = role === "admin" ? "A" : "U";
+
+    // Tìm số lớn nhất của cùng loại người dùng
+    let maxNum = 0;
+    users.forEach((user) => {
+      if (user.id.startsWith(prefix)) {
+        const num = parseInt(user.id.substring(1));
+        if (num > maxNum) {
+          maxNum = num;
+        }
+      }
+    });
+
+    const newId = prefix + String(maxNum + 1).padStart(3, "0");
 
     const newUserData = {
       id: newId,
@@ -200,7 +212,7 @@ if (addUserForm) {
       email: document.getElementById("addEmail").value,
       phone: document.getElementById("addPhone").value,
       gender: document.getElementById("addGender").value,
-      role: document.getElementById("addRole").value,
+      role: role,
       address: document.getElementById("addAddress").value,
       city: document.getElementById("addCity").value,
       district: document.getElementById("addDistrict").value,
