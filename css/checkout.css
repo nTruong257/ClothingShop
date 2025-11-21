@@ -89,8 +89,6 @@ label {
 #checkout-confirm {
   position: sticky;
   top: 20px;
-  max-height: calc(100vh - 40px);
- 
 }
 
 /* Khoảng cách và bo góc nhẹ */
@@ -199,6 +197,7 @@ legend {
 .order-item .fw-bold {
   font-size: 15px;
   margin-bottom: 4px;
+ 
 }
 
 /* Nút tăng/giảm số lượng */
