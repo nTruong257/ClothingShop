@@ -1,22 +1,17 @@
- const mainImage = document.getElementById('mainImage');
-  const thumbnails = document.querySelectorAll('.row_bottom_detail img');
+const mainImage = document.getElementById('mainImage');
+const thumbnails = document.querySelectorAll('.product_thumbs img');
 
-  thumbnails.forEach(img => {
-    img.addEventListener('click', () => {
-      // Đổi ảnh chính thành ảnh nhỏ vừa click
-      mainImage.src = img.src;
+thumbnails.forEach(img => {
+  img.addEventListener('click', () => {
+    // Thay đổi src ảnh lớn
+    mainImage.src = img.src;
 
-      // Xóa class "active" ở các ảnh nhỏ khác
-      thumbnails.forEach(i => i.classList.remove('active'));
+    // Xóa class active ở tất cả ảnh nhỏ
+    thumbnails.forEach(i => i.classList.remove('active'));
 
-      // Thêm class "active" vào ảnh vừa được chọn
-      img.classList.add('active');
-    });
+    // Thêm class active cho ảnh nhỏ vừa click
+    img.classList.add('active');
   });
-  const imgs = document.querySelectorAll('.row_bottom_detail img');
-imgs.forEach(img => {
-  img.style.objectFit = 'cover';
-  img.style.objectPosition = 'top'; // có thể đổi sang 'center' hoặc 'bottom'
 });
 
 
@@ -45,5 +40,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+const btnIncrease = document.getElementById('btn-increase');
+const btnDecrease = document.getElementById('btn-decrease');
+const quantityInput = document.getElementById('quantity');
+
+btnIncrease.addEventListener('click', () => {
+  let currentValue = parseInt(quantityInput.value);
+  quantityInput.value = currentValue + 1;
+});
+
+btnDecrease.addEventListener('click', () => {
+  let currentValue = parseInt(quantityInput.value);
+  if (currentValue > 1) {
+    quantityInput.value = currentValue - 1;
+  }
+});
+const sizeLabels = document.querySelectorAll('.product_detail_size label');
+
+sizeLabels.forEach(label => {
+  label.addEventListener('click', () => {
+    // Xóa class active ở tất cả label
+    sizeLabels.forEach(l => l.classList.remove('active'));
+    // Thêm class active cho label vừa click
+    label.classList.add('active');
+  });
+});
+
 
 

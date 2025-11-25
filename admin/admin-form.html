@@ -30,13 +30,13 @@
           <div class="menu-label">MENU</div>
           <ul class="menu-list">
             <li class="menu-item">
-              <a href="admin-dashboard.html" class="menu-link active">
+              <a href="admin-dashboard.html" class="menu-link">
                 <i class="fas fa-chart-line"></i>
                 <span>Bảng Điều Khiển</span>
               </a>
             </li>
             <li class="menu-item">
-              <a href="admin-products.html" class="menu-link">
+              <a href="admin-products.html" class="menu-link active">
                 <i class="fas fa-box"></i>
                 <span>Sản Phẩm</span>
               </a>
@@ -129,7 +129,7 @@
           <!-- Page Header -->
           <div class="page-header mb-5">
             <div>
-              <h1 class="page-title">Thêm Sản Phẩm Mới</h1>
+              <h1 class="page-title" id="pageTitle">Thêm Sản Phẩm Mới</h1>
             </div>
             <div class="page-actions">
               <a href="admin-products.html" class="btn btn-outline-secondary">
@@ -160,12 +160,33 @@
 
                     <div class="row">
                       <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold">Danh Mục</label>
+                        <label class="form-label fw-bold">Phân Loại</label>
                         <select class="form-select" required>
-                          <option value="">-- Chọn Danh Mục --</option>
+                          <option value="">-- Chọn Thể Loại --</option>
                           <option value="1">Nam</option>
                           <option value="2">Nữ</option>
                           <option value="3">Đồ Đôi</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Danh Mục</label>
+                        <select class="form-select" required>
+                          <option value="">-- Chọn Danh Mục --</option>
+                          <option value="nam">Áo Thun Nam</option>
+                          <option value="nam">Áo Polo Nam</option>
+                          <option value="nam">Áo Khoác Nam</option>
+                          <option value="nam">Quần Jean Nam</option>
+                          <option value="nam">Quần Ngắn Nam</option>
+                          <option value="nam">Áo Thun Nữ</option>
+                          <option value="nam">Áo Polo Nữ</option>
+                          <option value="nu">Áo Khoác Nữ</option>
+                          <option value="nu">Váy Nữ</option>
+                          <option value="nu">Đầm Nữ</option>
+                          <option value="nu">Quần dài Nữ</option>
+                          <option value="nu">Quần ngắn Nữ</option>
+                          <option value="doi">Áo khoác đôi</option>
+                          <option value="doi">Áo thun đôi</option>
+                          <option value="doi">Đồ bộ Đôi</option>
                         </select>
                       </div>
                     </div>
@@ -216,7 +237,7 @@
                         <label class="form-label fw-bold">Trạng Thái</label>
                         <select class="form-select" required>
                           <option value="1">Hoạt Động</option>
-                          <option value="0">Tạm Dừng</option>
+                          <option value="0">Hết Hàng</option>
                         </select>
                       </div>
                     </div>
@@ -254,6 +275,7 @@
               <div class="d-flex gap-2">
                 <button
                   type="submit"
+                  form="productForm"
                   class="btn btn-primary btn-lg flex-grow-1"
                 >
                   <i class="fas fa-save"></i> Thêm Sản Phẩm

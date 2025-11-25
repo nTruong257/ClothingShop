@@ -1,343 +1,499 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>ContactUs - StyleEra</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/header-footer.css">
-    <link rel="stylesheet" href="css/contactstyle.css">
-
-</head>
-<body>
-<!--Header-->
-<header class="site-header">
-    <div class="header-container">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/header-footer.css" />
+    <link rel="stylesheet" href="css/contactstyle.css" />
+  </head>
+  <body>
+    <!--Header-->
+    <header class="site-header">
+      <div class="header-container">
         <div class="header-main-row">
-            <!-- Left Section -->
-            <div class="header-left-section">
-                <button class="mobile-menu-toggle" aria-label="Open menu" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
+          <!-- Left Section -->
+          <div class="header-left-section">
+            <button
+              class="mobile-menu-toggle"
+              aria-label="Open menu"
+              onclick="toggleMobileMenu()"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+
+          <!-- Logo -->
+          <div class="brand-logo">
+            <a href="index.html" aria-label="home">
+              <img src="images/logo.png" alt="StyleEra" />
+            </a>
+          </div>
+
+          <!-- Navigation Menu -->
+          <nav class="main-navigation" id="mainNavigation">
+            <div class="mobile-nav-actions">
+              <button class="search-trigger-btn" aria-label="Search">
+                <i class="fas fa-search"></i>
+              </button>
+              <button
+                class="mobile-close-btn"
+                aria-label="Close"
+                onclick="toggleMobileMenu()"
+              >
+                <i class="fas fa-times"></i>
+              </button>
             </div>
 
-            <!-- Logo -->
-            <div class="brand-logo">
-                <a href="index.html" aria-label="home">
-                    <img src="images/logo.png" alt="StyleEra"/>
-                </a>
-            </div>
+            <ul class="primary-nav-list">
+              <li class="nav-item">
+                <a class="nav-link-primary" href="index.html">TRANG CHỦ</a>
+              </li>
 
-            <!-- Navigation Menu -->
-            <nav class="main-navigation" id="mainNavigation">
-                <div class="mobile-nav-actions">
-                    <button class="search-trigger-btn" aria-label="Search">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button class="mobile-close-btn" aria-label="Close" onclick="toggleMobileMenu()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-
-                <ul class="primary-nav-list">
-                    <li class="nav-item">
-                        <a class="nav-link-primary" href="index.html">TRANG CHỦ</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link-primary" href="product.html">NAM</a>
-                        <div class="submenu-container">
-                            <div class="submenu-column">
-                                <a href="product.html" class="submenu-title">ÁO NAM</a>
-                                <ul class="submenu-items">
-                                    <li><a href="product.html">Áo Khoác Nam</a></li>
-                                    <li><a href="product.html">Áo Thun</a></li>
-                                    <li><a href="product.html">Áo Polo</a></li>
-                                    <li><a href="product.html">Áo Sơ Mi</a></li>
-                                </ul>
-                            </div>
-                            <div class="submenu-column">
-                                <a href="product.html" class="submenu-title">QUẦN NAM</a>
-                                <ul class="submenu-items">
-                                    <li><a href="product.html">Quần ngắn</a></li>
-                                    <li><a href="product.html">Quần dài</a></li>
-                                    <li><a href="product.html">Quần Jean</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link-primary" href="product.html">NỮ</a>
-                        <div class="submenu-container">
-                            <div class="submenu-column">
-                                <a href="product.html" class="submenu-title">ÁO NỮ</a>
-                                <ul class="submenu-items">
-                                    <li><a href="product.html">Áo Khoác</a></li>
-                                    <li><a href="product.html">Áo Thun</a></li>
-                                    <li><a href="product.html">Áo Polo</a></li>
-                                    <li><a href="product.html">Áo Sơ Mi</a></li>
-                                </ul>
-                            </div>
-                            <div class="submenu-column">
-                                <a href="product.html" class="submenu-title">QUẦN / VÁY NỮ</a>
-                                <ul class="submenu-items">
-                                    <li><a href="product.html">Váy</a></li>
-                                    <li><a href="product.html">Đầm</a></li>
-                                    <li><a href="product.html">Quần ngắn</a></li>
-                                    <li><a href="product.html">Quần dài</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link-primary" href="product.html">Đồ đôi</a>
-                        <div class="submenu-container">
-                            <ul class="submenu-items">
-                                    <li><a href="product.html">Áo khoác đôi</a></li>
-                                    <li><a href="product.html">Áo thun đôi</a></li>
-                                    <li><a href="product.html">Đồ bộ đôi</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link-primary" href="contact.html">LIÊN HỆ</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- Right Section -->
-            <div class="header-right-section">
-                <div class="search-form-wrapper" id="searchForm">
-                    <form action="/search" class="search-input-group">
-                        <input type="hidden" name="type" value="product"/>
-                        <button class="search-submit-btn" type="submit" aria-label="Search">
-                            <i class="fas fa-search"></i>
-                        </button>
-                        <input name="q" maxlength="40" autocomplete="off" class="search-input-field" type="text" placeholder="Tìm kiếm..." aria-label="Search">
-                    </form>
-                </div>
-
-                <div class="account-dropdown-wrapper">
-                    <a href="login.html" class="account-link">
-                        <i class="fa fa-user"></i>
-                    </a>
-                    <ul class="account-dropdown-menu">
-                        <li><a href="account.html">Tài khoản của tôi</a></li>
-                        <li><a href="#">Đăng xuất</a></li>
+              <li class="nav-item">
+                <a class="nav-link-primary" href="product.html">NAM</a>
+                <div class="submenu-container">
+                  <div class="submenu-column">
+                    <a href="product.html" class="submenu-title">ÁO NAM</a>
+                    <ul class="submenu-items">
+                      <li><a href="product.html">Áo Khoác Nam</a></li>
+                      <li><a href="product.html">Áo Thun</a></li>
+                      <li><a href="product.html">Áo Polo</a></li>
+                      <li><a href="product.html">Áo Sơ Mi</a></li>
                     </ul>
+                  </div>
+                  <div class="submenu-column">
+                    <a href="product.html" class="submenu-title">QUẦN NAM</a>
+                    <ul class="submenu-items">
+                      <li><a href="product.html">Quần ngắn</a></li>
+                      <li><a href="product.html">Quần dài</a></li>
+                      <li><a href="product.html">Quần Jean</a></li>
+                    </ul>
+                  </div>
                 </div>
+              </li>
 
-                <a class="cart-link" href="cart.html">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge">0</span>
-                </a>
+              <li class="nav-item">
+                <a class="nav-link-primary" href="product.html">NỮ</a>
+                <div class="submenu-container">
+                  <div class="submenu-column">
+                    <a href="product.html" class="submenu-title">ÁO NỮ</a>
+                    <ul class="submenu-items">
+                      <li><a href="product.html">Áo Khoác</a></li>
+                      <li><a href="product.html">Áo Thun</a></li>
+                      <li><a href="product.html">Áo Polo</a></li>
+                      <li><a href="product.html">Áo Sơ Mi</a></li>
+                    </ul>
+                  </div>
+                  <div class="submenu-column">
+                    <a href="product.html" class="submenu-title"
+                      >QUẦN / VÁY NỮ</a
+                    >
+                    <ul class="submenu-items">
+                      <li><a href="product.html">Váy</a></li>
+                      <li><a href="product.html">Đầm</a></li>
+                      <li><a href="product.html">Quần ngắn</a></li>
+                      <li><a href="product.html">Quần dài</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
 
+              <li class="nav-item">
+                <a class="nav-link-primary" href="product.html">Đồ đôi</a>
+                <div class="submenu-container">
+                  <ul class="submenu-items">
+                    <li><a href="product.html">Áo khoác đôi</a></li>
+                    <li><a href="product.html">Áo thun đôi</a></li>
+                    <li><a href="product.html">Đồ bộ đôi</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link-primary" href="contact.html">LIÊN HỆ</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Right Section -->
+          <div class="header-right-section">
+            <div class="search-form-wrapper" id="searchForm">
+              <form action="/search" class="search-input-group">
+                <input type="hidden" name="type" value="product" />
+                <button
+                  class="search-submit-btn"
+                  type="submit"
+                  aria-label="Search"
+                >
+                  <i class="fas fa-search"></i>
+                </button>
+                <input
+                  name="q"
+                  maxlength="40"
+                  autocomplete="off"
+                  class="search-input-field"
+                  type="text"
+                  placeholder="Tìm kiếm..."
+                  aria-label="Search"
+                />
+              </form>
             </div>
-        </div>
-    </div>
-</header>
 
-<main class="container product-page">
-    <nav aria-label="breadcrumb" class="mt-3 mb-3">
+            <div class="account-dropdown-wrapper">
+              <a href="login.html" class="account-link">
+                <i class="fa fa-user"></i>
+              </a>
+              <ul class="account-dropdown-menu">
+                <li><a href="account.html">Tài khoản của tôi</a></li>
+                <li><a href="#">Đăng xuất</a></li>
+              </ul>
+            </div>
+
+            <a class="cart-link" href="cart.html">
+              <i class="fas fa-shopping-bag"></i>
+              <span class="cart-badge">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container product-page">
+      <nav aria-label="breadcrumb" class="mt-3 mb-3">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
-            <li class="breadcrumb-item active" id="breadcrumb-category">Liên hệ</li>
+          <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
+          <li class="breadcrumb-item active" id="breadcrumb-category">
+            Liên hệ
+          </li>
         </ol>
-    </nav>
-    <div class="form">
+      </nav>
+      <div class="form">
         <div class="container">
-            <div class="row g-3 g-md-4">
-                <!--contact_text-->
-                <div class="col-12 col-lg-6 px-3 px-lg-4">
-                    <div class="contact_text">
-                        <h5 class="title_small mt-2">
-                            <i class="fa-solid fa-address-card"></i> Thông tin
-                        </h5>
-                        <h1 class="title">LIÊN HỆ VỚI CHÚNG TÔI</h1>
-                        <p class="description_text mt-3">
-                            Chúng tôi luôn sẵn sàng lắng nghe ý kiến của bạn.
-                            Nếu bạn có bất kỳ thắc mắc nào về sản phẩm áo thời trang hoặc đơn hàng,
-                            hãy liên hệ ngay để được hỗ trợ nhanh chóng. Xin cảm ơn Khách hàng ủng hộ
-                        </p>
+          <div class="row g-3 g-md-4">
+            <!--contact_text-->
+            <div class="col-12 col-lg-6 px-3 px-lg-4">
+              <div class="contact_text">
+                <h5 class="title_small mt-2">
+                  <i class="fa-solid fa-address-card"></i> Thông tin
+                </h5>
+                <h1 class="title">LIÊN HỆ VỚI CHÚNG TÔI</h1>
+                <p class="description_text mt-3">
+                  Chúng tôi luôn sẵn sàng lắng nghe ý kiến của bạn. Nếu bạn có
+                  bất kỳ thắc mắc nào về sản phẩm áo thời trang hoặc đơn hàng,
+                  hãy liên hệ ngay để được hỗ trợ nhanh chóng. Xin cảm ơn Khách
+                  hàng ủng hộ
+                </p>
+              </div>
+              <div class="mt-3 mt-md-4">
+                <!--contact_form-->
+                <div class="contact_form">
+                  <div class="row g-3 g-md-3">
+                    <div class="col-12 col-sm-6">
+                      <input
+                        class="input_txt"
+                        type="text"
+                        id="userName"
+                        name="name"
+                        placeholder="Tên của bạn"
+                        required
+                      />
                     </div>
-                    <div class="mt-3 mt-md-4">
-                        <!--contact_form-->
-                        <div class="contact_form">
-                            <div class="row g-3 g-md-3">
-                                <div class="col-12 col-sm-6">
-                                    <input class="input_txt" type="text" id="userName" name="name" placeholder="Tên của bạn" required>
-                                </div>
 
-                                <div class="col-12 col-sm-6">
-                                    <input class="input_txt" type="email" id="userEmail" name="email" placeholder="Nhập Email" required>
-                                </div>
+                    <div class="col-12 col-sm-6">
+                      <input
+                        class="input_txt"
+                        type="email"
+                        id="userEmail"
+                        name="email"
+                        placeholder="Nhập Email"
+                        required
+                      />
+                    </div>
 
-                                <div class="col-12">
-                                    <textarea class="input_textArea" id="userMessage" name="message" placeholder="Nội dung tin nhắn" required></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="mybutton">
-                                        <i class="fas fa-paper-plane"></i> Gửi thông tin
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-12">
+                      <textarea
+                        class="input_textArea"
+                        id="userMessage"
+                        name="message"
+                        placeholder="Nội dung tin nhắn"
+                        required
+                      ></textarea>
                     </div>
+                    <div class="col-12">
+                      <button class="mybutton">
+                        <i class="fas fa-paper-plane"></i> Gửi thông tin
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-12 col-lg-6 px-3 px-lg-4">
-                    <div class="mt-3 mt-md-4">
-                        <h4 class="title">
-                            Chi nhánh Tp.HCM
-                        </h4>
-                        <p class="address"><strong><i class="fa-solid fa-house"></i> Địa chỉ:</strong>
-                            376, khu phố 6, Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam
-                        </p>
-                        <p class="telephone"><strong><i class="fa-solid fa-phone-volume"></i> Số Điện Thoại:</strong>
-                            0904899626
-                        </p>
-                        <p  class="address"><strong><i class="fa-solid fa-envelope"></i> Email liên hệ:</strong>
-                            vp@hcmuaf.edu.vn
-                        </p>
-                    </div>
-                    <div id="gg_map">
-                        <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5488.065716817417!2d106.79212642177389!3d10.873288603147373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276398969f7b%3A0x9672b7efd0893fc4!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOw7RuZyBMw6JtIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1761562316225!5m2!1svi!2s"
-                                width="100%"
-                                height="100%"
-                                style="border:0;"
-                                allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
+              </div>
             </div>
+            <div class="col-12 col-lg-6 px-3 px-lg-4">
+              <div class="mt-3 mt-md-4">
+                <h4 class="title">Chi nhánh Tp.HCM</h4>
+                <p class="address">
+                  <strong><i class="fa-solid fa-house"></i> Địa chỉ:</strong>
+                  376, khu phố 6, Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam
+                </p>
+                <p class="telephone">
+                  <strong
+                    ><i class="fa-solid fa-phone-volume"></i> Số Điện
+                    Thoại:</strong
+                  >
+                  0904899626
+                </p>
+                <p class="address">
+                  <strong
+                    ><i class="fa-solid fa-envelope"></i> Email liên hệ:</strong
+                  >
+                  vp@hcmuaf.edu.vn
+                </p>
+              </div>
+              <div id="gg_map">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5488.065716817417!2d106.79212642177389!3d10.873288603147373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276398969f7b%3A0x9672b7efd0893fc4!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOw7RuZyBMw6JtIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1761562316225!5m2!1svi!2s"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                >
+                </iframe>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</main>
-<!--Footer-->
-<footer class="site-footer">
-    <div class="footer-top-bar">
+      </div>
+    </main>
+    <!--Footer-->
+    <footer class="site-footer">
+      <div class="footer-top-bar">
         <div class="footer-contact-row">
-            <div class="footer-contact-item">
-                <a href="tel:+84000000000">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>Hotline: +84 000 000 000</span>
-                </a>
-            </div>
-            <div class="footer-contact-item">
-                <a href="mailto:contact@gmail.com">
-                    <i class="fas fa-envelope"></i>
-                    <span>contact@gmail.com</span>
-                </a>
-            </div>
+          <div class="footer-contact-item">
+            <a href="tel:+84000000000">
+              <i class="fas fa-phone-alt"></i>
+              <span>Hotline: +84 000 000 000</span>
+            </a>
+          </div>
+          <div class="footer-contact-item">
+            <a href="mailto:contact@gmail.com">
+              <i class="fas fa-envelope"></i>
+              <span>contact@gmail.com</span>
+            </a>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="footer-main-content">
+      <div class="footer-main-content">
         <div class="footer-columns">
-            <!-- Social & Newsletter Column -->
-            <div class="footer-social-column">
-                <h2 class="footer-column-title">Đăng ký nhận tin khuyến mãi</h2>
+          <!-- Social & Newsletter Column -->
+          <div class="footer-social-column">
+            <h2 class="footer-column-title">Đăng ký nhận tin khuyến mãi</h2>
 
-                <form class="newsletter-form" action="/account/contact" method="post">
-                    <input name="form_type" type="hidden" value="customer">
-                    <input name="utf8" type="hidden" value="✓">
-                    <input type="hidden" name="contact[tags]" value="khách hàng tiềm năng, bản tin"/>
+            <form
+              class="newsletter-form"
+              action="/account/contact"
+              method="post"
+            >
+              <input name="form_type" type="hidden" value="customer" />
+              <input name="utf8" type="hidden" value="✓" />
+              <input
+                type="hidden"
+                name="contact[tags]"
+                value="khách hàng tiềm năng, bản tin"
+              />
 
-                    <div class="newsletter-input-wrapper">
-                        <input required type="email" name="contact[email]" class="newsletter-email-input" placeholder="Nhập email của bạn" >
-                        <button class="newsletter-submit-btn" type="submit" aria-label="submit form">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </form>
+              <div class="newsletter-input-wrapper">
+                <input
+                  required
+                  type="email"
+                  name="contact[email]"
+                  class="newsletter-email-input"
+                  placeholder="Nhập email của bạn"
+                />
+                <button
+                  class="newsletter-submit-btn"
+                  type="submit"
+                  aria-label="submit form"
+                >
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </form>
 
-                <div class="social-links-list">
-                    <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/" aria-label="LinkedIn" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.youtube.com/" aria-label="YouTube" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/" aria-label="TikTok" target="_blank">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://zalo.me/" aria-label="Zalo" target="_blank">
-                        <i class="fas fa-comment-dots"></i>
-                    </a>
-                </div>
-
-                <div class="app-download-section">
-                    <h3>Tải app</h3>
-                    <div class="app-download-links">
-                        <a href="https://apps.apple.com/" target="_blank" class="app-badge">
-                            <img src="images/app-download/appstore.png" alt="App Store">
-                        </a>
-                        <a href="https://play.google.com/" target="_blank" class="app-badge">
-                            <img src="images/app-download/googleplaystore.png" alt="Play Store">
-                        </a>
-                    </div>
-                </div>
+            <div class="social-links-list">
+              <a
+                href="https://www.facebook.com/"
+                aria-label="Facebook"
+                target="_blank"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/"
+                aria-label="LinkedIn"
+                target="_blank"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                aria-label="Instagram"
+                target="_blank"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/"
+                aria-label="YouTube"
+                target="_blank"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/"
+                aria-label="TikTok"
+                target="_blank"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a href="https://zalo.me/" aria-label="Zalo" target="_blank">
+                <i class="fas fa-comment-dots"></i>
+              </a>
             </div>
 
-            <!-- About Column -->
-            <div class="footer-column">
-                <h3 class="footer-column-title">Về StyleEra</h3>
-                <ul class="footer-menu-list">
-                    <li><a href=""><i class="fas fa-chevron-right"></i> Giới Thiệu</a></li>
-                    <li><a href=""><i class="fas fa-chevron-right"></i> Công Nghệ Sản Xuất</a></li>
-                    <li><a href=""><i class="fas fa-chevron-right"></i> Cơ Hội Việc Làm</a></li>
-                    <li><a href=""><i class="fas fa-chevron-right"></i> Hệ Thống Cửa Hàng</a></li>
-                    <li><a href=""><i class="fas fa-chevron-right"></i> Tạp Chí Thời Trang</a></li>
-                </ul>
+            <div class="app-download-section">
+              <h3>Tải app</h3>
+              <div class="app-download-links">
+                <a
+                  href="https://apps.apple.com/"
+                  target="_blank"
+                  class="app-badge"
+                >
+                  <img src="images/app-download/appstore.png" alt="App Store" />
+                </a>
+                <a
+                  href="https://play.google.com/"
+                  target="_blank"
+                  class="app-badge"
+                >
+                  <img
+                    src="images/app-download/googleplaystore.png"
+                    alt="Play Store"
+                  />
+                </a>
+              </div>
             </div>
+          </div>
 
-            <!-- Account Column -->
-            <div class="footer-column">
-                <h3 class="footer-column-title">Tài khoản</h3>
-                <ul class="footer-menu-list">
-                    <li><a href="/account/login"><i class="fas fa-chevron-right"></i> Đăng nhập/Đăng ký</a></li>
-                    <li><a href="/account"><i class="fas fa-chevron-right"></i> Lịch sử mua hàng</a></li>
-                    <li><a href="/account/addresses"><i class="fas fa-chevron-right"></i> Danh sách địa chỉ</a></li>
-                </ul>
-            </div>
+          <!-- About Column -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Về StyleEra</h3>
+            <ul class="footer-menu-list">
+              <li>
+                <a href=""><i class="fas fa-chevron-right"></i> Giới Thiệu</a>
+              </li>
+              <li>
+                <a href=""
+                  ><i class="fas fa-chevron-right"></i> Công Nghệ Sản Xuất</a
+                >
+              </li>
+              <li>
+                <a href=""
+                  ><i class="fas fa-chevron-right"></i> Cơ Hội Việc Làm</a
+                >
+              </li>
+              <li>
+                <a href=""
+                  ><i class="fas fa-chevron-right"></i> Hệ Thống Cửa Hàng</a
+                >
+              </li>
+              <li>
+                <a href=""
+                  ><i class="fas fa-chevron-right"></i> Tạp Chí Thời Trang</a
+                >
+              </li>
+            </ul>
+          </div>
 
-            <!-- Support Column -->
-            <div class="footer-column">
-                <h3 class="footer-column-title">Hỗ trợ khách hàng</h3>
-                <ul class="footer-menu-list">
-                    <li><a href="/pages/chinh-sach-thanh-vien"><i class="fas fa-chevron-right"></i> Chính Sách Thành Viên</a></li>
-                    <li><a href="/pages/chinh-sach-doi-hang"><i class="fas fa-chevron-right"></i> Chính Sách Đổi Hàng</a></li>
-                    <li><a href="/pages/chinh-sach-bao-hanh"><i class="fas fa-chevron-right"></i> Chính Sách Bảo Hành</a></li>
-                    <li><a href="/pages/huong-dan-mua-hang"><i class="fas fa-chevron-right"></i> Hướng Dẫn Mua Hàng</a></li>
-                    <li><a href="/pages/huong-dan-chon-size"><i class="fas fa-chevron-right"></i> Hướng Dẫn Chọn Size</a></li>
-                    <li><a href="/pages/contact-us"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a></li>
-                </ul>
-            </div>
+          <!-- Account Column -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Tài khoản</h3>
+            <ul class="footer-menu-list">
+              <li>
+                <a href="/account/login"
+                  ><i class="fas fa-chevron-right"></i> Đăng nhập/Đăng ký</a
+                >
+              </li>
+              <li>
+                <a href="/account"
+                  ><i class="fas fa-chevron-right"></i> Lịch sử mua hàng</a
+                >
+              </li>
+              <li>
+                <a href="/account/addresses"
+                  ><i class="fas fa-chevron-right"></i> Danh sách địa chỉ</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Support Column -->
+          <div class="footer-column">
+            <h3 class="footer-column-title">Hỗ trợ khách hàng</h3>
+            <ul class="footer-menu-list">
+              <li>
+                <a href="/pages/chinh-sach-thanh-vien"
+                  ><i class="fas fa-chevron-right"></i> Chính Sách Thành Viên</a
+                >
+              </li>
+              <li>
+                <a href="/pages/chinh-sach-doi-hang"
+                  ><i class="fas fa-chevron-right"></i> Chính Sách Đổi Hàng</a
+                >
+              </li>
+              <li>
+                <a href="/pages/chinh-sach-bao-hanh"
+                  ><i class="fas fa-chevron-right"></i> Chính Sách Bảo Hành</a
+                >
+              </li>
+              <li>
+                <a href="/pages/huong-dan-mua-hang"
+                  ><i class="fas fa-chevron-right"></i> Hướng Dẫn Mua Hàng</a
+                >
+              </li>
+              <li>
+                <a href="/pages/huong-dan-chon-size"
+                  ><i class="fas fa-chevron-right"></i> Hướng Dẫn Chọn Size</a
+                >
+              </li>
+              <li>
+                <a href="/pages/contact-us"
+                  ><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="footer-bottom-bar">
+      <div class="footer-bottom-bar">
         <i class="far fa-copyright"></i> 2025 StyleEra. All rights reserved.
-    </div>
-</footer>
-<script src="js/contactPages.js"></script>
-<script src="js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
-</body>
+      </div>
+    </footer>
+    <script src="js/contactPages.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
-
