@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StyleEra - Thời Trang Cho Mọi Người</title>
+    <title>Đánh giá sản phẩm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/header-footer.css">
-    <link rel="stylesheet" href="css/order-history.css">
+    <link rel="stylesheet" href="css/review.css">
 </head>
-
 <body>
-<!-- ===== HEADER ===== -->
 <header class="site-header">
     <div class="header-container">
         <div class="header-main-row">
@@ -140,156 +138,70 @@
         </div>
     </div>
 </header>
+<div class="review-container">
+    <h2>Đánh giá sản phẩm</h2>
 
-<!-- ===== MAIN CONTENT ===== -->
-<main class="orders-history py-5" style="background: #f5f0e6;">
-    <div class="container">
-        <!-- Page Header -->
-        <div class="text-center mb-5">
-            <h1 class="fw-bold" style="color: #212121;">Lịch sử đơn hàng</h1>
-            <p class="text-muted">Xem lại các đơn hàng bạn đã đặt trước đây</p>
-        </div>
-
-        <!-- Orders Table -->
-        <div class="table-responsive">
-            <table class="orders-table">
-                <thead>
-                <tr>
-                    <th>Mã đơn</th>
-                    <th>Ngày đặt</th>
-                    <th>Hình ảnh</th>
-                    <th>Trạng thái</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Đơn hàng 1 -->
-                <tr class="order-row">
-                    <td>ORD12345</td>
-                    <td>16/11/2025</td>
-                    <td><img src="images/category-banner/category/man/ao-thun-nam.png" alt="Áo thun nam"
-                             class="order-product-img"></td>
-                    <td>Hoàn tất</td>
-                    <td>
-                        <button class="btn-primary btn-view-details">Xem chi tiết</button>
-                        <button class="btn-secondary btn-reorder">Mua lại</button>
-                        <button class="btn-secondary btn-reorder" onclick="location.href='review.html'">Đánh giá</button>
-                    </td>
-                </tr>
-                <tr class="order-details" style="display: none;">
-                    <td colspan="5">
-                        <div class="details-content">
-                            <p>Sản phẩm: Áo thun nam</p>
-                            <p>Số lượng: 2</p>
-                            <p>Tổng tiền: 500.000đ</p>
-                        </div>
-                    </td>
-                </tr>
-
-                <!-- Đơn hàng 2 -->
-                <tr class="order-row">
-                    <td>ORD12346</td>
-                    <td>15/11/2025</td>
-                    <td><img src="images/category-banner/category/man/quan-jean-nam.png" alt="Quần Jean nam"
-                             class="order-product-img"></td>
-                    <td>Đang giao</td>
-                    <td>
-                        <button class="btn-primary btn-view-details">Xem chi tiết</button>
-                        <button class="btn-secondary btn-reorder">Mua lại</button>
-                        <button class="btn-secondary btn-reorder" onclick="location.href='review.html'">Đánh giá</button>
-                    </td>
-                </tr>
-                <tr class="order-details" style="display: none;">
-                    <td colspan="5">
-                        <div class="details-content">
-                            <p>Sản phẩm: Quần Jean nam</p>
-                            <p>Số lượng: 1</p>
-                            <p>Tổng tiền: 350.000đ</p>
-                        </div>
-                    </td>
-                </tr>
-
-                <!-- Đơn hàng 3 -->
-                <tr class="order-row">
-                    <td>ORD12347</td>
-                    <td>12/11/2025</td>
-                    <td><img src="images/category-banner/category/woman/vay-nu.png" alt="Váy nữ"
-                             class="order-product-img"></td>
-                    <td>Hoàn tất</td>
-                    <td>
-                        <button class="btn-primary btn-view-details">Xem chi tiết</button>
-                        <button class="btn-secondary btn-reorder">Mua lại</button>
-                        <button class="btn-secondary btn-reorder" onclick="location.href='review.html'">Đánh giá</button>
-                    </td>
-                </tr>
-                <tr class="order-details" style="display: none;">
-                    <td colspan="5">
-                        <div class="details-content">
-                            <p>Sản phẩm: Váy nữ</p>
-                            <p>Số lượng: 1</p>
-                            <p>Tổng tiền: 450.000đ</p>
-                        </div>
-                    </td>
-                </tr>
-
-                <!-- Đơn hàng 4 -->
-                <tr class="order-row">
-                    <td>ORD12348</td>
-                    <td>10/11/2025</td>
-                    <td><img src="images/category-banner/category/man/ao-khoac-nam.png" alt="Áo khoác nam"
-                             class="order-product-img"></td>
-                    <td>Đang xử lý</td>
-                    <td>
-                        <button class="btn-primary btn-view-details">Xem chi tiết</button>
-                        <button class="btn-secondary btn-reorder">Mua lại</button>
-                        <button class="btn-secondary btn-reorder" onclick="location.href='review.html'">Đánh giá</button>
-                    </td>
-                </tr>
-                <tr class="order-details" style="display: none;">
-                    <td colspan="5">
-                        <div class="details-content">
-                            <p>Sản phẩm: Áo khoác nam</p>
-                            <p>Số lượng: 1</p>
-                            <p>Tổng tiền: 600.000đ</p>
-                        </div>
-                    </td>
-                </tr>
-
-                <!-- Đơn hàng 5 -->
-                <tr class="order-row">
-                    <td>ORD12349</td>
-                    <td>08/11/2025</td>
-                    <td><img src="images/category-banner/category/woman/ao-polo-nu.png" alt="Áo Polo nữ"
-                             class="order-product-img"></td>
-                    <td>Hoàn tất</td>
-                    <td>
-                        <button class="btn-primary btn-view-details">Xem chi tiết</button>
-                        <button class="btn-secondary btn-reorder">Mua lại</button>
-                        <button class="btn-secondary btn-reorder" onclick="location.href='review.html'">Đánh giá</button>
-                    </td>
-                </tr>
-                <tr class="order-details" style="display: none;">
-                    <td colspan="5">
-                        <div class="details-content">
-                            <p>Sản phẩm: Áo Polo nữ</p>
-                            <p>Số lượng: 2</p>
-                            <p>Tổng tiền: 700.000đ</p>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- No Orders Message (if empty) -->
-        <div class="text-center mt-5 d-none" id="no-orders-msg">
-            <p class="text-muted fs-5">Bạn chưa có đơn hàng nào.</p>
+    <!-- Chọn sao -->
+    <div class="rating-section">
+        <label>Chất lượng sản phẩm</label>
+        <div class="stars">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
         </div>
     </div>
-</main>
 
+    <!-- Màu sắc -->
+    <div class="input-group">
+        <label>Màu sắc</label>
+        <select id="color">
+            <option value="Đen">Đen</option>
+            <option value="Trắng">Trắng</option>
+            <option value="Xám">Đỏ</option>
+            <option value="Xanh Navy">Xanh</option>
+        </select>
+    </div>
 
-<!-- ===== FOOTER ===== -->
+    <!-- Size -->
+    <div class="input-group">
+        <label>Size</label>
+        <select id="size">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XL">XXL</option>
+        </select>
+    </div>
+
+    <!-- Ghi chú -->
+    <div class="input-group">
+        <label>Ghi chú</label>
+        <textarea id="note" placeholder="Hãy chia sẻ cảm nhận của bạn..."></textarea>
+    </div>
+
+    <!-- Tải ảnh -->
+    <div class="input-group">
+        <label>Ảnh sản phẩm</label>
+        <input type="file" id="images" multiple accept="image/*">
+        <div id="preview"></div>
+    </div>
+
+    <!-- Submit -->
+    <button class="btn-submit">Gửi đánh giá</button>
+    <!-- Popup thông báo thành công -->
+<div class="success-popup" id="successPopup">
+    <div class="popup-box">
+        <h3>🎉 Gửi đánh giá thành công!</h3>
+        <p>Cảm ơn bạn đã chia sẻ trải nghiệm.</p>
+        <button id="closePopup" onclick="location.href='index.html'">Đóng</button>
+        
+    </div>
+</div>
+
+</div>
 <footer class="site-footer">
     <div class="footer-top-bar">
         <div class="footer-contact-row">
@@ -320,8 +232,7 @@
                     <input type="hidden" name="contact[tags]" value="khách hàng tiềm năng, bản tin"/>
 
                     <div class="newsletter-input-wrapper">
-                        <input required type="email" name="contact[email]" class="newsletter-email-input"
-                               placeholder="Nhập email của bạn">
+                        <input required type="email" name="contact[email]" class="newsletter-email-input" placeholder="Nhập email của bạn" >
                         <button class="newsletter-submit-btn" type="submit" aria-label="submit form">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -388,16 +299,11 @@
             <div class="footer-column">
                 <h3 class="footer-column-title">Hỗ trợ khách hàng</h3>
                 <ul class="footer-menu-list">
-                    <li><a href="/pages/chinh-sach-thanh-vien"><i class="fas fa-chevron-right"></i> Chính Sách Thành
-                        Viên</a></li>
-                    <li><a href="/pages/chinh-sach-doi-hang"><i class="fas fa-chevron-right"></i> Chính Sách Đổi
-                        Hàng</a></li>
-                    <li><a href="/pages/chinh-sach-bao-hanh"><i class="fas fa-chevron-right"></i> Chính Sách Bảo
-                        Hành</a></li>
-                    <li><a href="/pages/huong-dan-mua-hang"><i class="fas fa-chevron-right"></i> Hướng Dẫn Mua Hàng</a>
-                    </li>
-                    <li><a href="/pages/huong-dan-chon-size"><i class="fas fa-chevron-right"></i> Hướng Dẫn Chọn
-                        Size</a></li>
+                    <li><a href="/pages/chinh-sach-thanh-vien"><i class="fas fa-chevron-right"></i> Chính Sách Thành Viên</a></li>
+                    <li><a href="/pages/chinh-sach-doi-hang"><i class="fas fa-chevron-right"></i> Chính Sách Đổi Hàng</a></li>
+                    <li><a href="/pages/chinh-sach-bao-hanh"><i class="fas fa-chevron-right"></i> Chính Sách Bảo Hành</a></li>
+                    <li><a href="/pages/huong-dan-mua-hang"><i class="fas fa-chevron-right"></i> Hướng Dẫn Mua Hàng</a></li>
+                    <li><a href="/pages/huong-dan-chon-size"><i class="fas fa-chevron-right"></i> Hướng Dẫn Chọn Size</a></li>
                     <li><a href="/pages/contact-us"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a></li>
                 </ul>
             </div>
@@ -408,12 +314,6 @@
         <i class="far fa-copyright"></i> 2025 StyleEra. All rights reserved.
     </div>
 </footer>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom JavaScript -->
-<script src="js/main.js"></script>
-<script src="js/order-history.js"></script>
+<script src="js/review.js"></script>
 </body>
 </html>
