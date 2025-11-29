@@ -5,14 +5,14 @@ function updateCurrentDate() {
     const dateElement = document.getElementById('current-date');
     if (dateElement) {
         const today = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
         const formattedDate = today.toLocaleDateString('vi-VN', options);
         dateElement.textContent = formattedDate;
     }
 }
 
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateCurrentDate();
     initializeTooltips();
 });
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize Bootstrap tooltips
 function initializeTooltips() {
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function(tooltipTriggerEl) {
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 }
@@ -36,7 +36,7 @@ function showSuccess(message) {
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     `;
     document.body.appendChild(alertDiv);
-    
+
     setTimeout(() => {
         alertDiv.remove();
     }, 5000);
@@ -53,7 +53,7 @@ function showError(message) {
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     `;
     document.body.appendChild(alertDiv);
-    
+
     setTimeout(() => {
         alertDiv.remove();
     }, 5000);
@@ -69,7 +69,7 @@ function formatCurrency(amount) {
 
 // Format date
 function formatDate(date) {
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const options = {year: 'numeric', month: '2-digit', day: '2-digit'};
     return new Date(date).toLocaleDateString('vi-VN', options);
 }
 
@@ -84,7 +84,7 @@ function logout() {
 function setActiveNavLink() {
     const currentPage = window.location.pathname.split('/').pop();
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-    
+
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage) {
@@ -96,7 +96,7 @@ function setActiveNavLink() {
 }
 
 // Initialize navbar
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     setActiveNavLink();
 });
 
@@ -121,14 +121,14 @@ function isValidPhone(phone) {
 function exportToCSV(tableSelector, fileName) {
     const table = document.querySelector(tableSelector);
     let csv = [];
-    
+
     // Get headers
     const headers = [];
     table.querySelectorAll('thead th').forEach(th => {
         headers.push(th.textContent.trim());
     });
     csv.push(headers.join(','));
-    
+
     // Get rows
     table.querySelectorAll('tbody tr').forEach(tr => {
         const row = [];
@@ -139,7 +139,7 @@ function exportToCSV(tableSelector, fileName) {
         });
         csv.push(row.join(','));
     });
-    
+
     // Create download link
     const csvContent = 'data:text/csv;charset=utf-8,' + csv.join('\n');
     const link = document.createElement('a');
@@ -174,7 +174,7 @@ const Storage = {
 // API helpers
 const API = {
     baseUrl: 'https://api.example.com',
-    
+
     get: async (endpoint) => {
         try {
             const response = await fetch(API.baseUrl + endpoint);
@@ -184,12 +184,12 @@ const API = {
             showError('Lỗi khi tải dữ liệu!');
         }
     },
-    
+
     post: async (endpoint, data) => {
         try {
             const response = await fetch(API.baseUrl + endpoint, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data)
             });
             return await response.json();
