@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleEra - Đánh giá sản phẩm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/header-footer.css">
+    <link rel="stylesheet" href="../../css/review.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="header-container">
+        <div class="header-main-row">
+            <!-- Left Section -->
+            <div class="header-left-section">
+                <button class="mobile-menu-toggle" aria-label="Open menu" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Logo -->
+            <div class="brand-logo">
+                <a href="home.html" aria-label="home">
+                    <img src="../../images/logo.png" alt="StyleEra"/>
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="main-navigation" id="mainNavigation">
+                <div class="mobile-nav-actions">
+                    <button class="search-trigger-btn" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="mobile-close-btn" aria-label="Close" onclick="toggleMobileMenu()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <ul class="primary-nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="home.html">TRANG CHỦ</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="product.jsp">NAM</a>
+                        <div class="submenu-container">
+                            <div class="submenu-column">
+                                <a href="product.jsp" class="submenu-title">ÁO NAM</a>
+                                <ul class="submenu-items">
+                                    <li><a href="product.jsp">Áo Khoác Nam</a></li>
+                                    <li><a href="product.jsp">Áo Thun</a></li>
+                                    <li><a href="product.jsp">Áo Polo</a></li>
+                                    <li><a href="product.jsp">Áo Sơ Mi</a></li>
+                                </ul>
+                            </div>
+                            <div class="submenu-column">
+                                <a href="product.jsp" class="submenu-title">QUẦN NAM</a>
+                                <ul class="submenu-items">
+                                    <li><a href="product.jsp">Quần ngắn</a></li>
+                                    <li><a href="product.jsp">Quần dài</a></li>
+                                    <li><a href="product.jsp">Quần Jean</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="product.jsp">NỮ</a>
+                        <div class="submenu-container">
+                            <div class="submenu-column">
+                                <a href="product.jsp" class="submenu-title">ÁO NỮ</a>
+                                <ul class="submenu-items">
+                                    <li><a href="product.jsp">Áo Khoác</a></li>
+                                    <li><a href="product.jsp">Áo Thun</a></li>
+                                    <li><a href="product.jsp">Áo Polo</a></li>
+                                    <li><a href="product.jsp">Áo Sơ Mi</a></li>
+                                </ul>
+                            </div>
+                            <div class="submenu-column">
+                                <a href="product.jsp" class="submenu-title">QUẦN / VÁY NỮ</a>
+                                <ul class="submenu-items">
+                                    <li><a href="product.jsp">Váy</a></li>
+                                    <li><a href="product.jsp">Đầm</a></li>
+                                    <li><a href="product.jsp">Quần ngắn</a></li>
+                                    <li><a href="product.jsp">Quần dài</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="product.jsp">Đồ đôi</a>
+                        <div class="submenu-container">
+                            <ul class="submenu-items">
+                                <li><a href="product.jsp">Áo khoác đôi</a></li>
+                                <li><a href="product.jsp">Áo thun đôi</a></li>
+                                <li><a href="product.jsp">Đồ bộ đôi</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link-primary" href="contact.jsp">LIÊN HỆ</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right Section -->
+            <div class="header-right-section">
+                <div class="search-form-wrapper" id="searchForm">
+                    <form action="/search" class="search-input-group">
+                        <input type="hidden" name="type" value="product"/>
+                        <button class="search-submit-btn" type="submit" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <input name="q" maxlength="40" autocomplete="off" class="search-input-field" type="text"
+                               placeholder="Tìm kiếm..." aria-label="Search">
+                    </form>
+                </div>
+
+                <div class="account-dropdown-wrapper">
+                    <a href="login.jsp" class="account-link">
+                        <i class="fa fa-user"></i>
+                    </a>
+                    <ul class="account-dropdown-menu">
+                        <li><a href="account.jsp">Tài khoản của tôi</a></li>
+                        <li><a href="#">Đăng xuất</a></li>
+                    </ul>
+                </div>
+
+                <a class="cart-link" href="cart.jsp">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</header>
+<div class="review-container">
+    <h2>Đánh giá sản phẩm</h2>
+
+    <!-- Chọn sao -->
+    <div class="rating-section">
+        <label>Chất lượng sản phẩm</label>
+        <div class="stars">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+
+    <!-- Màu sắc -->
+    <div class="input-group">
+        <label>Màu sắc</label>
+        <select id="color">
+            <option value="Đen">Đen</option>
+            <option value="Trắng">Trắng</option>
+            <option value="Xám">Đỏ</option>
+            <option value="Xanh Navy">Xanh</option>
+        </select>
+    </div>
+
+    <!-- Size -->
+    <div class="input-group">
+        <label>Size</label>
+        <select id="size">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XL">XXL</option>
+        </select>
+    </div>
+
+    <!-- Ghi chú -->
+    <div class="input-group">
+        <label>Ghi chú</label>
+        <textarea id="note" placeholder="Hãy chia sẻ cảm nhận của bạn..."></textarea>
+    </div>
+
+    <!-- Tải ảnh -->
+    <div class="input-group">
+        <label>Ảnh sản phẩm</label>
+        <input type="file" id="images" multiple accept="image/*">
+        <div id="preview"></div>
+    </div>
+
+    <!-- Submit -->
+    <button class="btn-submit">Gửi đánh giá</button>
+    <!-- Popup thông báo thành công -->
+    <div class="success-popup" id="successPopup">
+        <div class="popup-box">
+            <h3>Gửi đánh giá thành công!</h3>
+            <p>Cảm ơn bạn đã chia sẻ trải nghiệm.</p>
+            <button id="closePopup" onclick="location.href='index.html'">Đóng</button>
+
+        </div>
+    </div>
+
+</div>
+<footer class="site-footer">
+    <div class="footer-top-bar">
+        <div class="footer-contact-row">
+            <div class="footer-contact-item">
+                <a href="tel:+84000000000">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Hotline: +84 000 000 000</span>
+                </a>
+            </div>
+            <div class="footer-contact-item">
+                <a href="mailto:contact@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-main-content">
+        <div class="footer-columns">
+            <!-- Social & Newsletter Column -->
+            <div class="footer-social-column">
+                <h2 class="footer-column-title">Đăng ký nhận tin khuyến mãi</h2>
+
+                <form class="newsletter-form" action="/account/contact" method="post">
+                    <input name="form_type" type="hidden" value="customer">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="contact[tags]" value="khách hàng tiềm năng, bản tin"/>
+
+                    <div class="newsletter-input-wrapper">
+                        <input required type="email" name="contact[email]" class="newsletter-email-input"
+                               placeholder="Nhập email của bạn">
+                        <button class="newsletter-submit-btn" type="submit" aria-label="submit form">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="social-links-list">
+                    <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/" aria-label="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/" aria-label="YouTube" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/" aria-label="TikTok" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://zalo.me/" aria-label="Zalo" target="_blank">
+                        <i class="fas fa-comment-dots"></i>
+                    </a>
+                </div>
+
+                <div class="app-download-section">
+                    <h3>Tải app</h3>
+                    <div class="app-download-links">
+                        <a href="https://apps.apple.com/" target="_blank" class="app-badge">
+                            <img src="../../images/app-download/appstore.png" alt="App Store">
+                        </a>
+                        <a href="https://play.google.com/" target="_blank" class="app-badge">
+                            <img src="../../images/app-download/googleplaystore.png" alt="Play Store">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Column -->
+            <div class="footer-column">
+                <h3 class="footer-column-title">Về StyleEra</h3>
+                <ul class="footer-menu-list">
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Giới Thiệu</a></li>
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Công Nghệ Sản Xuất</a></li>
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Cơ Hội Việc Làm</a></li>
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Hệ Thống Cửa Hàng</a></li>
+                    <li><a href=""><i class="fas fa-chevron-right"></i> Tạp Chí Thời Trang</a></li>
+                </ul>
+            </div>
+
+            <!-- Account Column -->
+            <div class="footer-column">
+                <h3 class="footer-column-title">Tài khoản</h3>
+                <ul class="footer-menu-list">
+                    <li><a href="/account/login"><i class="fas fa-chevron-right"></i> Đăng nhập/Đăng ký</a></li>
+                    <li><a href="/account"><i class="fas fa-chevron-right"></i> Lịch sử mua hàng</a></li>
+                    <li><a href="/account/addresses"><i class="fas fa-chevron-right"></i> Danh sách địa chỉ</a></li>
+                </ul>
+            </div>
+
+            <!-- Support Column -->
+            <div class="footer-column">
+                <h3 class="footer-column-title">Hỗ trợ khách hàng</h3>
+                <ul class="footer-menu-list">
+                    <li><a href="/pages/chinh-sach-thanh-vien"><i class="fas fa-chevron-right"></i> Chính Sách Thành
+                        Viên</a></li>
+                    <li><a href="/pages/chinh-sach-doi-hang"><i class="fas fa-chevron-right"></i> Chính Sách Đổi
+                        Hàng</a></li>
+                    <li><a href="/pages/chinh-sach-bao-hanh"><i class="fas fa-chevron-right"></i> Chính Sách Bảo
+                        Hành</a></li>
+                    <li><a href="/pages/huong-dan-mua-hang"><i class="fas fa-chevron-right"></i> Hướng Dẫn Mua Hàng</a>
+                    </li>
+                    <li><a href="/pages/huong-dan-chon-size"><i class="fas fa-chevron-right"></i> Hướng Dẫn Chọn
+                        Size</a></li>
+                    <li><a href="/pages/contact-us"><i class="fas fa-chevron-right"></i> Câu Hỏi Thường Gặp</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+        <i class="far fa-copyright"></i> 2025 StyleEra. All rights reserved.
+    </div>
+</footer>
+<script src="../../js/review.js"></script>
+</body>
+</html>

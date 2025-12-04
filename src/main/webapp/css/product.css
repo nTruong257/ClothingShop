@@ -1,0 +1,362 @@
+/* ===== product.css ===== */
+
+/* Main page container */
+.product-page {
+    background-color: #F5F0E6;
+    padding: 30px 15px 50px 15px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: transparent;
+    padding-left: 0;
+}
+
+.breadcrumb a {
+    color: #212121;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #D4AF37;
+}
+
+.breadcrumb .active {
+    color: #212121;
+    font-weight: 600;
+}
+
+/* ===== Sidebar Filter ===== */
+.filter-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.filter-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #212121;
+    margin-bottom: 10px;
+}
+
+.filter-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.filter-section ul li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.filter-section ul li a {
+    color: #212121;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.filter-section ul li a:hover,
+.filter-section ul li a.active {
+    color: #D4AF37;
+    font-weight: 600;
+}
+
+/* Size buttons */
+.size-list li {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.size-list button {
+    border: 1px solid #212121;
+    background-color: #fff;
+    color: #212121;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.size-list button:hover {
+    background-color: #D4AF37;
+    color: #fff;
+    border-color: #D4AF37;
+}
+
+/* Color dots */
+.color-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #212121;
+}
+
+.color-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+}
+
+/* ===== Product Listing ===== */
+.category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+/* Sort bar */
+.sort-bar select {
+    border-radius: 6px;
+    border: 1px solid #212121;
+    color: #212121;
+}
+
+/* ===== PRODUCT CARD ===== */
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative; /* Thêm relative để btn-cart position absolute bên trong */
+}
+
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 12px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 360px;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    position: relative;
+    margin-bottom: 10px;
+    height: 180px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.badge-new { background: #28a745; }
+.badge-bestseller { background: #ffc107; }
+
+.product-name {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 5px 0;
+}
+
+.product-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #e63946;
+    margin-top: 8px;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.product-rating i {
+    color: #f4c150;
+    margin-right: 2px;
+    font-size: 0.85rem;
+}
+
+/* Cart button nằm trong khung sản phẩm */
+.btn-cart {
+    background: #E0D6C8;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10; /* đảm bảo trên cùng */
+    transition: all 0.2s;
+    pointer-events: auto;
+}
+
+.btn-cart i {
+    color: #212121;
+    font-size: 16px;
+}
+
+.btn-cart:hover {
+    background: #d4c8b0;
+    transform: scale(1.1);
+}
+
+/* ===== FILTER & CATEGORY PAGE ===== */
+.filter-box {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 15px;
+}
+
+.filter-section h6 {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.filter-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.filter-section ul li {
+    margin-bottom: 5px;
+}
+
+.size-list li,
+.color-list li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.size-list button {
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.size-list button:hover {
+    background: #f1f1f1;
+}
+
+.color-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.category-title {
+    margin-bottom: 15px;
+}
+
+.sort-bar select {
+    min-width: 150px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+    .filter-box {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 576px) {
+    .size-list button {
+        padding: 2px 6px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== Mobile Filter Toggle ===== */
+@media (max-width: 768px) {
+    .filter-box {
+        display: none; /* ẩn mặc định trên mobile */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 80%;
+        max-width: 300px;
+        background: #fff;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .filter-box.show {
+        display: block;
+    }
+
+    .filter-toggle-btn {
+        display: block;
+        margin-bottom: 15px;
+        background: #D4AF37;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+}
