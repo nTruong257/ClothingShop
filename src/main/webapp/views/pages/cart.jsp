@@ -48,111 +48,30 @@
                                 </td>
                                 <td>
                                     <div class="product-item">
-                                        <p>Đầm Nữ</p>
-                                        <h6>130.00 VNĐ</h6>
+                                        <p>${item.productName}</p>
+                                        <h6>${item.price}</h6>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="quantity-item">
                                         <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="1"/>
+                                        <input type="text" value="${item.quantity}"/>
                                         <span class="fa-solid fa-greater-than"></span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="price-item">
-                                        <div class="cart_price">130.000 VNĐ</div>
+                                        <div class="cart_price">${item.totalPrice} VNĐ</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="product-item img_product">
-                                        <img src="../../images/product_item_women/1/1-1/trangphuc.png"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="product-item">
-                                        <p>Áo Khoác Nữ</p>
-                                        <h6>130.00 VNĐ</h6>
-                                    </div>
-                                </td>
+                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"
+                                       onclick="removeItemCart(${item.productId})"
+                                    ></i>
 
-                                <td>
-                                    <div class="quantity-item">
-                                        <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="1"/>
-                                        <span class="fa-solid fa-greater-than"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="price-item">
-                                        <div class="cart_price">130.000 VNĐ</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="product-item img_product">
-                                        <img src="../../images/product_item_women/5/5-1/vaynu.png"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="product-item">
-                                        <p>Váy Nữ</p>
-                                        <h6>240.00 VNĐ</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="quantity-item">
-                                        <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="1"/>
-                                        <span class="fa-solid fa-greater-than"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="price-item">
-                                        <div class="cart_price">240.000 VNĐ</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="product-item img_product">
-                                        <img src="../../images/product_item_women/2/2-1/trangphuc.png"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="product-item">
-                                        <p>Áo thun Nữ</p>
-                                        <h6>96.00 VNĐ</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="quantity-item">
-                                        <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="1"/>
-                                        <span class="fa-solid fa-greater-than"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="price-item">
-                                        <div class="cart_price">96.000 VNĐ</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
-                                </td>
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>
