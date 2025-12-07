@@ -1,7 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -11,8 +10,8 @@
     <title>StyleEra - Sản phẩm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="${root}/css/header-footer.css">
-    <link rel="stylesheet" href="${root}/css/product_detail.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header-footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/product_detail.css">
 </head>
 
 <body>
@@ -331,7 +330,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col_top">
-                        <h3 class="related-title">SẢN PHẨM NỔI BẬT</h3>
+                        <h3 class="related-title">SẢN PHẨM LIÊN QUAN</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -368,7 +367,7 @@
                         <div class="product_item sale">
                             <div class="product_item_pic3">
                                 <img src="../../images/image_product/anh1.2.png">
-                                <span class="label">Sale</span>
+
                             </div>
                             <div class="product_item_text">
                                 <h6>Áo Sơ Mi Nam Tay Dài Chất Liệu BAMBOO Cao Cấp</h6>
