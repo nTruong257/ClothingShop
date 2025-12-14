@@ -1,3 +1,5 @@
+<%@ page import="com.clothingshop.styleera.model.CartItem" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
@@ -40,37 +42,58 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <%
+                                List<CartItem> cartitem = (List<CartItem>) request.getAttribute("cartItems");
+                                if(cartitem == null || cartitem.isEmpty()){
+                            %>
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <p>Giỏ hàng bạn đang trống</p>
+                                </td>
+                            </tr>
+                            <%
+                            } else {
+
+                                for (CartItem c : cartitem){
+
+                            %>
                             <tr>
                                 <td>
                                     <div class="product-item img_product">
-                                        <img src="${root}/images/product_item_women/6/6-1/trangphuc.png"/>
+                                        <img src="${root}<%=c.getImageUrl()%>"/>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="product-item">
-                                        <p>${item.productName}</p>
-                                        <h6>${item.price}</h6>
+                                        <p><%= c.getProductName() %></p>
+                                        <h6><%= c.getPrice() %></h6>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="quantity-item">
                                         <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="${item.quantity}"/>
+                                        <input type="text" value="<%= c.getQuantity() %>"/>
                                         <span class="fa-solid fa-greater-than"></span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="price-item">
-                                        <div class="cart_price">${item.totalPrice} VNĐ</div>
+                                        <div class="cart_price"><%= c.getTotalPrice()%> VNĐ</div>
                                     </div>
                                 </td>
                                 <td>
                                     <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"
-                                       onclick="removeItemCart(${item.productId})"
+                                       onclick="removeItemCart(<%= c.getUserId()%>)"
                                     ></i>
 
                                 </td>
                             </tr>
+                            <%
+                                    }
+
+                                }
+
+                            %>
 
                             </tbody>
                         </table>
