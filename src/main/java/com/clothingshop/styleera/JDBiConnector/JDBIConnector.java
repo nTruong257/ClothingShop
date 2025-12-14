@@ -23,8 +23,8 @@ public class JDBIConnector {
         dataSource.setUrl("jdbc:mysql://"+PropertyDB.HOST+":"+PropertyDB.PORT+"/"+PropertyDB.DBNAME);
         dataSource.setUser(PropertyDB.USERNAME);
         try{
-                dataSource.setAutoReconnect(true);
-                dataSource.setUseCompression(true);
+            dataSource.setAutoReconnect(true);
+            dataSource.setUseCompression(true);
         } catch (Exception e){
             throw new RuntimeException(e);
         }

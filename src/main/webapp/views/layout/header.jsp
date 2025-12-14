@@ -32,7 +32,7 @@
         </li>
 
         <li class="nav-item">
-        <a class="nav-link-primary" href="${root}/views/pages/product.jsp">NAM</a>
+        <a class="nav-link-primary" href="${root}/ProductController">NAM</a>
         <div class="submenu-container">
         <div class="submenu-column">
         <a href="${root}/views/pages/product.jsp" class="submenu-title">ÁO NAM</a>
@@ -55,7 +55,7 @@
         </li>
 
         <li class="nav-item">
-        <a class="nav-link-primary" href="${root}/views/pages/product.jsp">NỮ</a>
+        <a class="nav-link-primary" href="${root}/ProductController">NỮ</a>
         <div class="submenu-container">
         <div class="submenu-column">
         <a href="${root}/views/pages/product.jsp" class="submenu-title">ÁO NỮ</a>
@@ -79,7 +79,7 @@
         </li>
 
         <li class="nav-item">
-        <a class="nav-link-primary" href="${root}/views/pages/product.jsp">Đồ đôi</a>
+        <a class="nav-link-primary" href="${root}/ProductController">Đồ đôi</a>
         <div class="submenu-container">
         <ul class="submenu-items">
         <li><a href="${root}/views/pages/product.jsp">Áo khoác đôi</a></li>

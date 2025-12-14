@@ -1,3 +1,7 @@
+<%@ page import="com.clothingshop.styleera.model.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.clothingshop.styleera.model.Image" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
@@ -15,6 +19,11 @@
 </head>
 
 <body>
+<%
+    List<Product> products = (List<Product>) request.getAttribute("products");
+    Map<Integer, Image> thumbnailImg = (Map<Integer, Image>) request.getAttribute("thumbnailImg");
+
+%>
 <!-- ===== HEADER ===== -->
 <jsp:include page="/views/layout/header.jsp" />
 
@@ -139,18 +148,24 @@
 
             <!-- Danh sách sản phẩm -->
             <div class="row g-3" id="product-list">
+                <% for (Product p: products){
+                    Image thumb = (thumbnailImg == null) ? null : thumbnailImg.get(p.getProduct_id());
+                    String imgPath = request.getContextPath() + "/images/no-image.png";
+                    if (thumb != null && thumb.getImagePath() != null) {
+                        imgPath = request.getContextPath() + thumb.getImagePath();
+                    }
 
+                %>
                 <!-- ===== SẢN PHẨM NAM ===== -->
-                <div class="col-lg-4 col-md-6 col-6">
-                    <a href="product_detail.jsp" class="product-card-link">
+                <div class="col-lg-4 col-md-6 col-6"  id="<%=p.getProduct_id()%>">
+                    <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>"  class="product-card-link">
                         <div class="product-card">
                             <div class="product-image">
                                 <span class="product-badge badge-new">NEW</span>
-                                <img src="../../images/category-banner/category/man/ao-khoac-nam.png"
-                                     alt="Áo Khoác Nam Basic">
+                                <img src="<%= imgPath %>" alt="<%=p.getProduct_name()%>">
                             </div>
-                            <h5 class="product-name">Áo Khoác Nam Basic</h5>
-                            <p class="product-price">1.680.000₫</p>
+                            <h5 class="product-name"><%=p.getProduct_name()%></h5>
+                            <p class="product-price"><%=p.getPrice()%> VNĐ</p>
                             <div class="product-rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -165,123 +180,7 @@
                     </a>
 
                 </div>
-
-                <div class="col-lg-4 col-md-6 col-6">
-                    <a href="product_detail.jsp" class="product-card-link">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <span class="product-badge badge-new">NEW</span>
-                                <img src="../../images/category-banner/category/man/ao-thun-nam.png" alt="Áo Thun Nam">
-                            </div>
-                            <h5 class="product-name">Áo Thun Nam</h5>
-                            <p class="product-price">784.250₫</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                        <button class="btn-cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-6">
-                    <a href="product_detail.jsp" class="product-card-link">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <span class="product-badge badge-bestseller">BEST SELLER</span>
-                                <img src="../../images/category-banner/category/man/ao-polo-nam.png" alt="Áo Polo Nam">
-                            </div>
-                            <h5 class="product-name">Áo Polo Nam</h5>
-                            <p class="product-price">1.520.000₫</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                        <button class="btn-cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <!-- ===== SẢN PHẨM NỮ ===== -->
-                <div class="col-lg-4 col-md-6 col-6">
-                    <a href="product_detail.jsp" class="product-card-link">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <span class="product-badge badge-bestseller">BEST SELLER</span>
-                                <img src="../../images/category-banner/category/woman/ao-khoac-nu.png" alt="Áo Khoác Nữ">
-                            </div>
-                            <h5 class="product-name">Áo Khoác Nữ</h5>
-                            <p class="product-price">2.458.725₫</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                        <button class="btn-cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-6">
-                    <a href="product_detail.jsp" class="product-card-link">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <span class="product-badge badge-new">NEW</span>
-                                <img src="../../images/category-banner/category/woman/ao-thun-nu.png" alt="Áo Thun Nữ">
-                            </div>
-                            <h5 class="product-name">Áo Thun Nữ</h5>
-                            <p class="product-price">1.241.500₫</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                        <button class="btn-cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </a>
-                </div>
-
-                <!-- ===== SẢN PHẨM ĐÔI ===== -->
-                <div class="col-lg-4 col-md-6 col-6">
-                    <a href="product_detail.jsp" class="product-card-link">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <span class="product-badge badge-new">NEW</span>
-                                <img src="../../images/category-banner/category/couple/ao-thun-doi.png" alt="Áo Thun Đôi">
-                            </div>
-                            <h5 class="product-name">Áo Thun Đôi</h5>
-                            <p class="product-price">799.000₫</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                        <button class="btn-cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </a>
-                </div>
+                <% } %>
 
             </div>
 

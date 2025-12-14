@@ -90,8 +90,8 @@
                 <button type="button" class="btn btn-primary validate_order"
                         onclick="window.location.href='checkout.jsp'">Mua hàng
                 </button>
-                <button type="button" class="btn btn-primary validate_order">Thêm vào giỏ hàng
-                </button>
+                <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng
+                </a>
             </div>
         </div>
     </div>
