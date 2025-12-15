@@ -1,3 +1,5 @@
+<%@ page import="com.clothingshop.styleera.model.CartItem" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
@@ -40,119 +42,59 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <%
+                                List<CartItem> cartitem = (List<CartItem>) request.getAttribute("cartItems");
+                                if(cartitem == null || cartitem.isEmpty()){
+                            %>
                             <tr>
-                                <td>
-                                    <div class="product-item img_product">
-                                        <img src="${root}/images/product_item_women/6/6-1/trangphuc.png"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="product-item">
-                                        <p>Đầm Nữ</p>
-                                        <h6>130.00 VNĐ</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="quantity-item">
-                                        <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="1"/>
-                                        <span class="fa-solid fa-greater-than"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="price-item">
-                                        <div class="cart_price">130.000 VNĐ</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
+                                <td colspan="5" class="text-center">
+                                    <p>Giỏ hàng bạn đang trống</p>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="product-item img_product">
-                                        <img src="../../images/product_item_women/1/1-1/trangphuc.png"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="product-item">
-                                        <p>Áo Khoác Nữ</p>
-                                        <h6>130.00 VNĐ</h6>
-                                    </div>
-                                </td>
+                            <%
+                            } else {
 
-                                <td>
-                                    <div class="quantity-item">
-                                        <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="1"/>
-                                        <span class="fa-solid fa-greater-than"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="price-item">
-                                        <div class="cart_price">130.000 VNĐ</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
-                                </td>
-                            </tr>
+                                for (CartItem c : cartitem){
+
+                            %>
                             <tr>
                                 <td>
                                     <div class="product-item img_product">
-                                        <img src="../../images/product_item_women/5/5-1/vaynu.png"/>
+                                        <img src="${root}<%=c.getImageUrl()%>"/>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="product-item">
-                                        <p>Váy Nữ</p>
-                                        <h6>240.00 VNĐ</h6>
+                                        <p><%= c.getProductName() %></p>
+                                        <h6><%= c.getPrice() %></h6>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="quantity-item">
                                         <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="1"/>
+                                        <input type="text" value="<%= c.getQuantity() %>"/>
                                         <span class="fa-solid fa-greater-than"></span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="price-item">
-                                        <div class="cart_price">240.000 VNĐ</div>
+                                        <div class="cart_price"><%= c.getTotalPrice()%> VNĐ</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
+                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"
+                                       onclick="removeItemCart(<%= c.getUserId()%>)"
+                                    ></i>
+
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="product-item img_product">
-                                        <img src="../../images/product_item_women/2/2-1/trangphuc.png"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="product-item">
-                                        <p>Áo thun Nữ</p>
-                                        <h6>96.00 VNĐ</h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="quantity-item">
-                                        <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="1"/>
-                                        <span class="fa-solid fa-greater-than"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="price-item">
-                                        <div class="cart_price">96.000 VNĐ</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
-                                </td>
-                            </tr>
+                            <%
+                                    }
+
+                                }
+
+                            %>
+
                             </tbody>
                         </table>
                     </div>
