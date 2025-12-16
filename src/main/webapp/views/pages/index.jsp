@@ -1,7 +1,9 @@
+<%@ page import="com.clothingshop.styleera.model.Product" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
+<c:set var="root" value="${pageContext.request.contextPath}" scope="request"/>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -17,7 +19,7 @@
 
 <body>
 <!-- ===== HEADER ===== -->
-<jsp:include page="/views/layout/header.jsp" />
+<jsp:include page="/views/layout/header.jsp"/>
 
 <!-- ===== MAIN CONTENT ===== -->
 <main class="main-content">
@@ -85,112 +87,39 @@
                 <p>Cập nhật những xu hướng thời trang mới nhất</p>
             </div>
             <div class="products-grid">
-                <!-- Product 1 -->
-                <a href="product_detail.jsp" class="product-card-link">
+                <%
+                    List<Product> newArrivals = (List<Product>) request.getAttribute("newArrivals");
+                    if (newArrivals != null) {
+                        for (Product p : newArrivals) {
+                            // Kiểm tra null cho ảnh
+                            String imgPath = (p.getThumbnail() != null) ? request.getContextPath() + p.getThumbnail() : request.getContextPath() + "/images/no-image.png";
+                %>
+                <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
                     <div class="product-card">
                         <div class="product-image">
                             <span class="product-badge badge-new">NEW</span>
-                            <img src="${root}/images/category-banner/category/man/ao-khoac-nam.png" alt="Piqué Biker Jacket">
+                            <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>">
                         </div>
                         <div class="product-info">
-                            <h4>Piqué Biker Jacket</h4>
+                            <h4><%=p.getProduct_name()%>
+                            </h4>
                             <div class="product-rating">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                             <div class="product-price">
-                                <span class="price">1.680.000₫</span>
+                                <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
                             </div>
-                            <button class="btn-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
+                            <button class="btn-cart"><i class="fas fa-shopping-cart"></i></button>
                         </div>
                     </div>
                 </a>
-
-                <!-- Product 2 -->
-                <a href="product_detail.jsp" class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="product-badge badge-new">NEW</span>
-                            <img src="${root}/images/category-banner/category/man/ao-polo-nam.png" alt="Multi-pocket Chest Bag">
-                        </div>
-                        <div class="product-info">
-                            <h4>Multi-pocket Chest Bag</h4>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <div class="product-price">
-                                <span class="price">1.520.000₫</span>
-                            </div>
-                            <button class="btn-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Product 3 -->
-                <a href="product_detail.jsp" class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="product-badge badge-new">NEW</span>
-                            <img src="${root}/images/category-banner/category/man/ao-so-mi-nam.png" alt="Diagonal Textured Cap">
-                        </div>
-                        <div class="product-info">
-                            <h4>Diagonal Textured Cap</h4>
-                            <div class="product-rating">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <div class="product-price">
-                                <span class="price">1.522.500₫</span>
-                            </div>
-                            <button class="btn-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Product 4 -->
-                <a href="product_detail.jsp" class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="product-badge badge-new">NEW</span>
-                            <img src="${root}/images/category-banner/category/man/ao-thun-nam.png" alt="Lether Backpack">
-                        </div>
-                        <div class="product-info">
-                            <h4>Lether Backpack</h4>
-                            <div class="product-rating">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <div class="product-price">
-                                <span class="price">784.250₫</span>
-                            </div>
-                            <button class="btn-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </a>
+                <% }
+                }
+                %>
             </div>
             <div class="section-footer">
-                <a href="product.jsp" class="btn-view-all">Xem Tất Cả</a>
+                <a href="${root}/product?sort=newest" class="btn-view-all">Xem Tất Cả</a>
             </div>
         </div>
     </section>
@@ -203,114 +132,43 @@
                 <p>Những sản phẩm được yêu thích nhất</p>
             </div>
             <div class="products-grid">
-                <!-- Product 1 -->
-                <a href="product_detail.jsp" class="product-card-link">
+                <%
+                    List<Product> bestSellers = (List<Product>) request.getAttribute("bestSellers");
+                    if (bestSellers != null && !bestSellers.isEmpty()) {
+                        for (Product p : bestSellers) {
+                            // Xử lý ảnh thumbnail
+                            String imgPath = (p.getThumbnail() != null)
+                                    ? request.getContextPath() + p.getThumbnail()
+                                    : request.getContextPath() + "/images/no-image.png";
+                %>
+                <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
                     <div class="product-card">
                         <div class="product-image">
                             <span class="product-badge badge-bestseller">BEST SELLER</span>
-                            <img src="${root}/images/category-banner/category/woman/ao-khoac-nu.png" alt="Ankle Boots">
+                            <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>">
                         </div>
                         <div class="product-info">
-                            <h4>Ankle Boots</h4>
+                            <h4><%=p.getProduct_name()%>
+                            </h4>
                             <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                             <div class="product-price">
-                                <span class="price">2.458.725₫</span>
+                                <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
                             </div>
-                            <button class="btn-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
+                            <button class="btn-cart"><i class="fas fa-shopping-cart"></i></button>
                         </div>
                     </div>
                 </a>
-
-                <!-- Product 2 -->
-                <a href="product_detail.jsp" class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="product-badge badge-bestseller">BEST SELLER</span>
-                            <img src="${root}/images/category-banner/category/woman/ao-thun-nu.png"
-                                 alt="T-shirt Contrast Pocket">
-                        </div>
-                        <div class="product-info">
-                            <h4>T-shirt Contrast Pocket</h4>
-                            <div class="product-rating">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <div class="product-price">
-                                <span class="price">1.241.500₫</span>
-                            </div>
-                            <button class="btn-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Product 3 -->
-                <a href="product_detail.jsp" class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="product-badge badge-bestseller">BEST SELLER</span>
-                            <img src="${root}/images/category-banner/category/woman/ao-polo-nu.png" alt="Basic Flowing Scarf">
-                        </div>
-                        <div class="product-info">
-                            <h4>Basic Flowing Scarf</h4>
-                            <div class="product-rating">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <div class="product-price">
-                                <span class="price">657.000₫</span>
-                            </div>
-                            <button class="btn-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Product 4 -->
-                <a href="product_detail.jsp" class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <span class="product-badge badge-bestseller">BEST SELLER</span>
-                            <img src="${root}/images/category-banner/category/woman/ao-so-mi-nu.png"
-                                 alt="Textured Knit Sweater">
-                        </div>
-                        <div class="product-info">
-                            <h4>Textured Knit Sweater</h4>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="product-price">
-                                <span class="price">1.890.000₫</span>
-                            </div>
-                            <button class="btn-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </a>
+                <% }
+                } else {
+                %>
+                <p class="text-center">Đang cập nhật sản phẩm bán chạy...</p>
+                <% } %>
             </div>
             <div class="section-footer">
-                <a href="product.jsp" class="btn-view-all">Xem Tất Cả</a>
+                <a href="${root}/product?sort=bestseller" class="btn-view-all">Xem Tất Cả</a>
             </div>
         </div>
     </section>
@@ -327,17 +185,18 @@
                 <div class="collection-overlay">
                     <h3>Thời Trang Nam</h3>
                     <p>Phong cách lịch lãm - Năng động - Cá tính</p>
-                    <a href="product.jsp" class="collection-link">
+                    <a href="${root}/product?parentId=1" class="collection-link">
                         Khám Phá <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
+
             <div class="collection-card">
                 <img src="${root}/images/category-banner/banner/female-fashion.jpg" alt="Thời trang nữ">
                 <div class="collection-overlay">
                     <h3>Thời Trang Nữ</h3>
                     <p>Thanh lịch - Tinh tế - Quyến rũ</p>
-                    <a href="product.jsp" class="collection-link">
+                    <a href="${root}/product?parentId=2" class="collection-link">
                         Khám Phá <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -363,7 +222,7 @@
                     <h3 class="mb-0">Thời Trang Nam</h3>
                 </div>
                 <div class="category-items-grid row g-4">
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=1" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/man/ao-khoac-nam.png" alt="Áo Khoác Nam"
                                  class="img-fluid rounded">
@@ -373,7 +232,7 @@
                             <p>Phong cách & ấm áp</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=2" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/man/ao-thun-nam.png" alt="Áo Thun Nam">
                         </div>
@@ -382,7 +241,7 @@
                             <p>Thoải mái & năng động</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=3" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/man/ao-polo-nam.png" alt="Áo Polo Nam">
                         </div>
@@ -391,7 +250,7 @@
                             <p>Lịch sự & thanh lịch</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=4" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/man/ao-so-mi-nam.png" alt="Áo Sơ Mi Nam">
                         </div>
@@ -400,16 +259,17 @@
                             <p>Chuyên nghiệp & sang trọng</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=5" class="category-item-card">
                         <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/man/quan-short-nam.png" alt="Quần Short Nam">
+                            <img src="${root}/images/category-banner/category/man/quan-short-nam.png"
+                                 alt="Quần Short Nam">
                         </div>
                         <div class="category-item-content">
                             <h4>Quần Short Nam</h4>
                             <p>Mát mẻ & thoải mái</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=6" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/man/quan-tay-nam.png" alt="Quần Dài Nam">
                         </div>
@@ -418,9 +278,10 @@
                             <p>Lịch lãm & trẻ trung</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=7" class="category-item-card">
                         <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/man/quan-jean-nam.png" alt="Quần Jean Nam">
+                            <img src="${root}/images/category-banner/category/man/quan-jean-nam.png"
+                                 alt="Quần Jean Nam">
                         </div>
                         <div class="category-item-content">
                             <h4>Quần Jean Nam</h4>
@@ -439,7 +300,7 @@
                     <h2>Thời Trang Nữ</h2>
                 </div>
                 <div class="category-items-grid">
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=8" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/woman/ao-khoac-nu.png" alt="Áo Khoác Nữ">
                         </div>
@@ -448,7 +309,7 @@
                             <p>Sang trọng & ấm áp</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=9" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/woman/ao-thun-nu.png" alt="Áo Thun Nữ">
                         </div>
@@ -457,7 +318,7 @@
                             <p>Năng động & trẻ trung</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=10" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/woman/ao-polo-nu.png" alt="Áo Polo Nữ">
                         </div>
@@ -466,7 +327,7 @@
                             <p>Năng động & thanh lịch</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=11" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/woman/ao-so-mi-nu.png" alt="Áo Sơ Mi Nữ">
                         </div>
@@ -475,7 +336,7 @@
                             <p>Thanh lịch & nữ tính</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=12" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/woman/vay-nu.png" alt="Váy Nữ">
                         </div>
@@ -484,7 +345,7 @@
                             <p>Duyên dáng & quyến rũ</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=13" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/woman/dam-nu.png" alt="Đầm Nữ">
                         </div>
@@ -493,16 +354,17 @@
                             <p>Sang trọng & lộng lẫy</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=14" class="category-item-card">
                         <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/woman/quan-short-nu.png" alt="Quần Short Nữ">
+                            <img src="${root}/images/category-banner/category/woman/quan-short-nu.png"
+                                 alt="Quần Short Nữ">
                         </div>
                         <div class="category-item-content">
                             <h4>Quần Short Nữ</h4>
                             <p>Thoải mái & năng động</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=15" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/woman/quan-dai-nu.png" alt="Quần Dài Nữ">
                         </div>
@@ -523,7 +385,7 @@
                     <h3 class="mb-0">Đồ Đôi</h3>
                 </div>
                 <div class="category-items-grid">
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=16" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/couple/ao-thun-doi.png" alt="Áo Thun Đôi"
                                  class="img-fluid rounded">
@@ -533,9 +395,10 @@
                             <p>Tình yêu & gắn kết</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=17" class="category-item-card">
                         <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/couple/ao-khoac-doi.png" alt="Áo Khoác Đôi"
+                            <img src="${root}/images/category-banner/category/couple/ao-khoac-doi.png"
+                                 alt="Áo Khoác Đôi"
                                  class="img-fluid rounded">
                         </div>
                         <div class="category-item-content">
@@ -543,7 +406,7 @@
                             <p>Ấm áp & lãng mạn</p>
                         </div>
                     </a>
-                    <a href="product.jsp" class="category-item-card">
+                    <a href="${root}/product?cateId=18" class="category-item-card">
                         <div class="category-item-image">
                             <img src="${root}/images/category-banner/category/couple/do-bo-doi.png" alt="Đồ Bộ Đôi"
                                  class="img-fluid rounded">
@@ -561,7 +424,7 @@
 
 
 <!-- ===== FOOTER ===== -->
-<jsp:include page="/views/layout/footer.jsp" />
+<jsp:include page="/views/layout/footer.jsp"/>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
