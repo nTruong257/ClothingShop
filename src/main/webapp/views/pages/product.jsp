@@ -149,22 +149,22 @@
             <!-- Danh sách sản phẩm -->
             <div class="row g-3" id="product-list">
                 <% for (Product p: products){
-                    Image thumb = (thumbnailImg == null) ? null : thumbnailImg.get(p.getProduct_id());
+                    Image thumb = (thumbnailImg == null || thumbnailImg.isEmpty()) ? null : thumbnailImg.get(p.getId());
                     String imgPath = request.getContextPath() + "/images/no-image.png";
-                    if (thumb != null && thumb.getImagePath() != null) {
+                    if (thumb != null && thumb.getImagePath() != null && !thumb.getImagePath().isEmpty()) {
                         imgPath = request.getContextPath() + thumb.getImagePath();
                     }
 
                 %>
                 <!-- ===== SẢN PHẨM NAM ===== -->
-                <div class="col-lg-4 col-md-6 col-6"  id="<%=p.getProduct_id()%>">
-                    <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>"  class="product-card-link">
+                <div class="col-lg-4 col-md-6 col-6"  id="<%=p.getId()%>">
+                    <a href="${root}/Product_DetailController?id=<%=p.getId()%>"  class="product-card-link">
                         <div class="product-card">
                             <div class="product-image">
                                 <span class="product-badge badge-new">NEW</span>
-                                <img src="<%= imgPath %>" alt="<%=p.getProduct_name()%>">
+                                <img src="<%= imgPath %>" alt="<%=p.getProductName()%>">
                             </div>
-                            <h5 class="product-name"><%=p.getProduct_name()%></h5>
+                            <h5 class="product-name"><%=p.getProductName()%></h5>
                             <p class="product-price"><%=p.getPrice()%> VNĐ</p>
                             <div class="product-rating">
                                 <i class="fas fa-star"></i>

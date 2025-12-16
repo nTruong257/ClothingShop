@@ -26,9 +26,17 @@ public class ProductController extends HttpServlet {
         List<Product> products = serviceProduct.findAll();
 
         for (Product p : products) {
-            List<Image> imgs = serviceImg.findByProductId(p.getProduct_id());
-            Image thumbnail = (imgs == null)?null:imgs.get(0);
-            thumbnailImg.put(p.getProduct_id(), thumbnail);
+            List<Image> imgs = serviceImg.findByProductId(p.getId());
+            Image thumbnail = (imgs == null || imgs.isEmpty())?null:imgs.get(0);
+            System.out.println("Product ID: " + p.getId());
+
+            if (thumbnail == null) {
+                System.out.println("  -> thumbnail = NULL");
+            } else {
+                System.out.println("  -> imagePath = " + thumbnail.getImagePath());
+            }
+
+            thumbnailImg.put(p.getId(), thumbnail);
         }
 
 

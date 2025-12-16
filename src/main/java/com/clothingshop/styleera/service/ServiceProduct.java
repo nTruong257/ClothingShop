@@ -11,7 +11,10 @@ public class ServiceProduct {
         return productDAO.findAll();
     }
     public Product findById(int id){
-        return productDAO.findById(id).stream().findFirst().get();
+        return productDAO.findById(id)
+                .stream()
+                .findFirst()
+                .orElse(null);
     }
 
 }
