@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class Product implements Serializable {
     private int product_id;
-    private Subcategories subcategories;
+    private SubCategory subcategory;
     private String product_name;
     private double medium_rating;
     private String short_description;
@@ -13,14 +13,15 @@ public class Product implements Serializable {
     private double price;
     private Timestamp created_at;
     private Timestamp updated_at;
+    private String thumbnail;
 
     public  Product(){
 
     }
 
-    public Product(int product_id, Subcategories subcategories, String product_name, double medium_rating, String short_description, String detail_description, double price, Timestamp created_at, Timestamp updated_at) {
+    public Product(int product_id, SubCategory subcategories, String product_name, double medium_rating, String short_description, String detail_description, double price, Timestamp created_at, Timestamp updated_at) {
         this.product_id = product_id;
-        this.subcategories = subcategories;
+        this.subcategory = subcategories;
         this.product_name = product_name;
         this.medium_rating = medium_rating;
         this.short_description = short_description;
@@ -39,12 +40,12 @@ public class Product implements Serializable {
         this.product_id = product_id;
     }
 
-    public Subcategories getSubcategories() {
-        return subcategories;
+    public SubCategory getSubcategories() {
+        return subcategory;
     }
 
-    public void setSubcategories(Subcategories subcategories) {
-        this.subcategories = subcategories;
+    public void setSubcategories(SubCategory subcategories) {
+        this.subcategory = subcategories;
     }
 
     public String getProduct_name() {
@@ -101,5 +102,13 @@ public class Product implements Serializable {
 
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }
