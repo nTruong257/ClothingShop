@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
-// Chạy trên mọi request (/*)
 @WebFilter(filterName = "GlobalDataFilter", urlPatterns = {"/*"})
 public class GlobalDataFilter implements Filter {
 
@@ -19,23 +18,25 @@ public class GlobalDataFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         String path = req.getRequestURI();
 
-        // 1. TỐI ƯU: Bỏ qua các file tĩnh (ảnh, css, js) để không gọi Database thừa
-        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".png") || path.endsWith(".jpg") || path.endsWith(".jpeg")) {
+        // Setup biến 'root' để dùng trong JSP
+        request.setAttribute("root", req.getContextPath());
+
+        // Tối ưu: Bỏ qua file tĩnh
+        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".png") || path.endsWith(".jpg") || path.endsWith(".jpeg") || path.endsWith(".woff2")) {
             chain.doFilter(request, response);
             return;
         }
 
-        // 2. LOGIC MENU: Kiểm tra nếu chưa có danh sách 'parents' thì mới gọi DB
+        // Load Menu Categories (chỉ load khi chưa có)
         if (request.getAttribute("parents") == null) {
             try {
                 List<ParentCategory> listCategories = categoryService.getAllCategories();
                 request.setAttribute("parents", listCategories);
             } catch (Exception e) {
-                e.printStackTrace(); // Ghi log nếu lỗi DB
+                e.printStackTrace();
             }
         }
 
-        // 3. Cho phép đi tiếp vào Servlet/JSP đích
         chain.doFilter(request, response);
     }
 }

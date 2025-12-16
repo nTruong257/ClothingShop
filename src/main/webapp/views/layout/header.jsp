@@ -11,7 +11,7 @@
         </div>
 
         <div class="brand-logo">
-        <a href="${root}/views/pages/index.jsp" aria-label="home">
+        <a href="${root}/home" aria-label="home">
         <img src="${root}/images/logo.png" alt="StyleEra"/>
         </a>
         </div>
@@ -26,78 +26,84 @@
         </button>
         </div>
 
-            <ul class="primary-nav-list">
+        <ul class="primary-nav-list">
+        <li class="nav-item">
+        <a class="nav-link-primary" href="${root}/home">TRANG CHỦ</a>
+        </li>
+
+        <c:forEach items="${parents}" var="p">
             <li class="nav-item">
-            <a class="nav-link-primary" href="${root}/home">TRANG CHỦ</a>
+            <%-- SỬA LỖI: Trỏ về Servlet /product thay vì file .jsp --%>
+            <a class="nav-link-primary" href="${root}/product?parentId=${p.id}">
+            ${p.name.toUpperCase()}
+            </a>
+
+            <c:if test="${not empty p.subCategories}">
+                <div class="submenu-container">
+                <c:choose>
+                    <%-- TRƯỜNG HỢP 1: ĐỒ ĐÔI --%>
+                    <c:when test="${p.name == 'Đồ Đôi'}">
+                        <div class="submenu-column">
+                        <ul class="submenu-items">
+                        <c:forEach items="${p.subCategories}" var="s">
+                            <li>
+                            <%-- SỬA LỖI: Trỏ về Servlet /product --%>
+                            <a href="${root}/product?cateId=${s.id}">${s.name}</a>
+                            </li>
+                        </c:forEach>
+                        </ul>
+                        </div>
+                    </c:when>
+
+                    <%-- TRƯỜNG HỢP 2: NAM / NỮ --%>
+                    <c:otherwise>
+                        <div class="submenu-column">
+                        <%-- Link tiêu đề cột Áo: Tạm thời trỏ về Parent --%>
+                        <a href="${root}/product?parentId=${p.id}" class="submenu-title">
+                        ÁO ${p.name.toUpperCase()}
+                        </a>
+                        <ul class="submenu-items">
+                        <c:forEach items="${p.subCategories}" var="s">
+                            <c:if test="${s.name.contains('Áo')}">
+                                <li>
+                                <%-- SỬA LỖI: Trỏ về Servlet /product --%>
+                                <a href="${root}/product?cateId=${s.id}">${s.name}</a>
+                                </li>
+                            </c:if>
+                        </c:forEach>
+                        </ul>
+                        </div>
+
+                        <div class="submenu-column">
+                        <%-- Link tiêu đề cột Quần: Tạm thời trỏ về Parent --%>
+                        <a href="${root}/product?parentId=${p.id}" class="submenu-title">
+                        <c:choose>
+                            <c:when test="${p.name == 'Nữ'}">QUẦN / VÁY NỮ</c:when>
+                            <c:otherwise>QUẦN ${p.name.toUpperCase()}</c:otherwise>
+                        </c:choose>
+                        </a>
+                        <ul class="submenu-items">
+                        <c:forEach items="${p.subCategories}" var="s">
+                            <c:if test="${!s.name.contains('Áo')}">
+                                <li>
+                                <%-- SỬA LỖI: Trỏ về Servlet /product --%>
+                                <a href="${root}/product?cateId=${s.id}">${s.name}</a>
+                                </li>
+                            </c:if>
+                        </c:forEach>
+                        </ul>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+                </div>
+            </c:if>
             </li>
+        </c:forEach>
 
-            <c:forEach items="${parents}" var="p">
-                    <li class="nav-item">
-                    <a class="nav-link-primary" href="${root}/views/pages/product.jsp?parentId=${p.id}">
-                    ${p.name.toUpperCase()}
-                    </a>
-
-                    <c:if test="${not empty p.subCategories}">
-                            <div class="submenu-container">
-
-                            <c:choose>
-
-                                    <%-- TRƯỜNG HỢP 1: NẾU LÀ ĐỒ ĐÔI (Hiển thị đơn giản, không tiêu đề con) --%>
-                                    <c:when test="${p.name == 'Đồ Đôi'}">
-                                            <div class="submenu-column">
-                                            <ul class="submenu-items">
-                                            <c:forEach items="${p.subCategories}" var="s">
-                                                    <li>
-                                                    <a href="${root}/views/pages/product.jsp?cateId=${s.id}">${s.name}</a>
-                                                    </li>
-                                            </c:forEach>
-                                            </ul>
-                                            </div>
-                                    </c:when>
-
-                                    <%-- TRƯỜNG HỢP 2: NAM HOẶC NỮ (Giữ nguyên logic chia cột cũ) --%>
-                                    <c:otherwise>
-                                            <div class="submenu-column">
-                                            <a href="${root}/views/pages/product.jsp?parentId=${p.id}&search=Áo" class="submenu-title">
-                                            ÁO ${p.name.toUpperCase()}
-                                            </a>
-                                            <ul class="submenu-items">
-                                            <c:forEach items="${p.subCategories}" var="s">
-                                                    <c:if test="${s.name.contains('Áo')}">
-                                                            <li><a href="${root}/views/pages/product.jsp?cateId=${s.id}">${s.name}</a></li>
-                                                    </c:if>
-                                            </c:forEach>
-                                            </ul>
-                                            </div>
-
-                                            <div class="submenu-column">
-                                            <a href="${root}/views/pages/product.jsp?parentId=${p.id}&search=Quần" class="submenu-title">
-                                            <c:choose>
-                                                    <c:when test="${p.name == 'Nữ'}">QUẦN / VÁY NỮ</c:when>
-                                                    <c:otherwise>QUẦN ${p.name.toUpperCase()}</c:otherwise>
-                                            </c:choose>
-                                            </a>
-                                            <ul class="submenu-items">
-                                            <c:forEach items="${p.subCategories}" var="s">
-                                                    <c:if test="${!s.name.contains('Áo')}">
-                                                            <li><a href="${root}/views/pages/product.jsp?cateId=${s.id}">${s.name}</a></li>
-                                                    </c:if>
-                                            </c:forEach>
-                                            </ul>
-                                            </div>
-                                    </c:otherwise>
-
-                            </c:choose>
-
-                            </div>
-                    </c:if>
-                    </li>
-            </c:forEach>
-
-            <li class="nav-item">
-            <a class="nav-link-primary" href="${root}/views/pages/contact.jsp">LIÊN HỆ</a>
-            </li>
-            </ul>
+        <li class="nav-item">
+        <a class="nav-link-primary" href="${root}/views/pages/contact.jsp">LIÊN HỆ</a>
+        </li>
+        </ul>
         </nav>
 
         <div class="header-right-section">
