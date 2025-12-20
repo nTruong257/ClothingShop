@@ -35,66 +35,53 @@
                         <table class="table">
                             <thead>
                             <tr class="table-dark">
-                                <th colspan="2">SẢN PHẨM</th>
+                                <th>STT</th>
+                                <th>Hình Ảnh</th>
+                                <th>SẢN PHẨM</th>
                                 <th>SỐ LƯỢNG</th>
                                 <th>TỔNG GIÁ TIỀN</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <%
-                                List<CartItem> cartitem = (List<CartItem>) request.getAttribute("cartItems");
-                                if(cartitem == null || cartitem.isEmpty()){
-                            %>
+                            <c:set var="count" value="1"/>
+                            <c:forEach items="${sessionScope.cart.item}" var="item">
                             <tr>
-                                <td colspan="5" class="text-center">
-                                    <p>Giỏ hàng bạn đang trống</p>
-                                </td>
-                            </tr>
-                            <%
-                            } else {
-
-                                for (CartItem c : cartitem){
-
-                            %>
-                            <tr>
+                                <td>${count}</td>
                                 <td>
                                     <div class="product-item img_product">
-                                        <img src="${root}<%=c.getImageUrl()%>"/>
+                                        <img src="${pageContext.request.contextPath}${item.variant.product.thumbnail}"
+                                        alt="${item.variant.product.product_name}"
+                                        style="width: 100px"/>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="product-item">
-                                        <p><%= c.getProductName() %></p>
-                                        <h6><%= c.getPrice() %></h6>
-                                    </div>
+                                <div class="product-item">
+                                    <p>${item.variant.product.product_name}</p>
+                                    <h6>${item.variant.product.price} VNĐ</h6>
+                                </div>
                                 </td>
                                 <td>
                                     <div class="quantity-item">
                                         <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="<%= c.getQuantity() %>"/>
+                                        <input type="text" value="${item.quantity}"/>
                                         <span class="fa-solid fa-greater-than"></span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="price-item">
-                                        <div class="cart_price"><%= c.getTotalPrice()%> VNĐ</div>
+                                        <div class="cart_price">0 VNĐ</div>
                                     </div>
                                 </td>
                                 <td>
                                     <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"
-                                       onclick="removeItemCart(<%= c.getUserId()%>)"
+                                       onclick=""
                                     ></i>
 
                                 </td>
                             </tr>
-                            <%
-                                    }
-
-                                }
-
-                            %>
-
+                                <c:set var="count" value="${count + 1}"/>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -110,7 +97,7 @@
                         <ul>
                             <li>
                                 <span class="label">TỔNG ĐƠN HÀNG:</span>
-                                <span class="value"><strong>0</strong></span>
+                                <span class="value"><strong>${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 1}</strong></span>
                             </li>
                             <li>
                                 <span class="label">TỔNG GIÁ TIỀN:</span>
