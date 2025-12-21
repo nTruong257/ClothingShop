@@ -38,50 +38,68 @@
                                 <th>STT</th>
                                 <th>Hình Ảnh</th>
                                 <th>SẢN PHẨM</th>
+                                <th>GIÁ TIỀN</th>
                                 <th>SỐ LƯỢNG</th>
                                 <th>TỔNG GIÁ TIỀN</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:set var="count" value="1"/>
-                            <c:forEach items="${sessionScope.cart.item}" var="item">
-                            <tr>
-                                <td>${count}</td>
-                                <td>
-                                    <div class="product-item img_product">
-                                        <img src="${pageContext.request.contextPath}${item.variant.product.thumbnail}"
-                                        alt="${item.variant.product.product_name}"
-                                        style="width: 100px"/>
-                                    </div>
-                                </td>
-                                <td>
-                                <div class="product-item">
-                                    <p>${item.variant.product.product_name}</p>
-                                    <h6>${item.variant.product.price} VNĐ</h6>
-                                </div>
-                                </td>
-                                <td>
-                                    <div class="quantity-item">
-                                        <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="${item.quantity}"/>
-                                        <span class="fa-solid fa-greater-than"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="price-item">
-                                        <div class="cart_price">0 VNĐ</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"
-                                       onclick=""
-                                    ></i>
+                            <c:choose>
+                                <c:when test="${sessionScope.cart == null || sessionScope.cart.item.size() == 0}">
+                                    <tr>
+                                        <td colspan="7" class="text-center py-4">
+                                            <i class="fa-solid fa-cart-shopping fa-2x mb-2"></i>
+                                            <p class="mt-2 mb-0 fw-bold">Giỏ hàng của bạn đang trống</p>
+                                        </td>
+                                    </tr>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:set var="count" value="1"/>
+                                    <c:forEach items="${sessionScope.cart.item}" var="item">
+                                        <tr>
+                                            <td>${count}</td>
+                                            <td>
+                                                <div class="product-item img_product">
+                                                    <img src="${pageContext.request.contextPath}${item.variant.product.thumbnail}"
+                                                         alt="${item.variant.product.product_name}"
+                                                         style="width: 100px"/>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="product-item">
+                                                    <p>${item.variant.product.product_name}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="product-item">
+                                                    <h6>${item.variant.product.price} VNĐ</h6>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="quantity-item">
+                                                    <span class="fa-solid fa-less-than"></span>
+                                                    <input type="text" value="${item.quantity}"/>
+                                                    <span class="fa-solid fa-greater-than"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="price-item">
+                                                    <div class="cart_price"> 0 VNĐ</div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <form method="post" action="${pageContext.request.contextPath}/del-item">
+                                                    <input type="hidden" name="variantId" value="${item.variant.variantId}">
+                                                    <button type="submit"> <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i></button>
+                                                </form>
 
-                                </td>
-                            </tr>
-                                <c:set var="count" value="${count + 1}"/>
-                            </c:forEach>
+                                            </td>
+                                        </tr>
+                                        <c:set var="count" value="${count + 1}"/>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                             </tbody>
                         </table>
                     </div>
