@@ -48,6 +48,17 @@ public class ProductDetailController extends HttpServlet {
                 // 3. Lấy danh sách biến thể (Size/Màu)
                 List<Variants> variantList = serviceProduct.getVariantsByProductId(productId);
 
+                if (product.getSubcategories() != null) {
+                    int subCategoryId = product.getSubcategories().getParentCategoryId();
+
+                    // Gọi Service để lấy danh sách (loại trừ ID sản phẩm hiện tại)
+                    List<Product> relatedProducts = serviceProduct.getRelatedProducts(subCategoryId, productId);
+                    // Lấy ID từ cột category_sub_id của sản phẩm đang xem
+                    int subId = product.getSubcategories().getId();
+                    List<Product> RelatedProducts = serviceProduct.getRelatedProducts(subId, product.getProduct_id());
+                    // Đẩy danh sách liên quan vào request
+                    request.setAttribute("relatedProducts", relatedProducts);
+                }
                 // 4. Đặt dữ liệu vào Request Scope
                 request.setAttribute("product", product);
                 request.setAttribute("imageList", imageList); // Đổi tên cho khớp với code JSP trước đó
@@ -63,4 +74,5 @@ public class ProductDetailController extends HttpServlet {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID.");
         }
     }
+
 }

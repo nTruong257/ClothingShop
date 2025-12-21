@@ -55,14 +55,13 @@
                         </c:choose>
                     </c:forEach>
 
-                    <span>- Đánh giá ${product.medium_rating}5</span>
+                    <span>- Đánh giá ${product.medium_rating}/5</span>
                 </div>
 
                 <h3 class="product_price">
-                    <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="đ"/>
-
+                    <fmt:formatNumber value="${product.price}" type="number" maxFractionDigits="0"/>đ
                     <span style="text-decoration: line-through; margin-left: 10px; font-size: 0.8em; color: gray;">
-                    <fmt:formatNumber value="${product.price + 50000}" type="currency" currencySymbol="đ"/>
+                    <fmt:formatNumber value="${product.price - 100000}" type="number" maxFractionDigits="0"/>đ
                     </span>
                 </h3>
 
@@ -85,11 +84,17 @@
 
                     <!-- COLOR -->
                     <div class="product_detail_color">
-                        <span>Color:</span>
-                        <img src="../../images/image_product/den.png">
-                        <img src="../../images/image_product/trắng.png">
-                        <img src="../../images/image_product/đỏ.png">
-                        <img src="../../images/image_product/xanhduong.png">
+                        <span>Color: <strong id="current-color-text">Chưa chọn</strong></span>
+                        <div class="color-wrapper" style="display: flex; gap: 8px; margin-top: 15px;">
+                            <c:forEach items="${colorList}" var="colorName">
+                                <img src="images/image_product/${colorName}.png"
+                                     class="color-option"
+                                     title="${colorName}"
+                                     onclick="selectColor('${colorName}', this)"
+                                     onerror="this.src='images/image_product/default.png'"
+                                     style="width: 35px; height: 35px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; cursor: pointer;">
+                            </c:forEach>
+                        </div>
                     </div>
                     <div class="product_detail_quantity">
                         <label for="quantity">Số lượng:</label>
@@ -99,7 +104,8 @@
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary validate_order"
-                        onclick="window.location.href='checkout.jsp'">Mua hàng
+                        onclick="window.location.href='${root}/CheckoutController'">
+                    Mua hàng
                 </button>
                 <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng
                 </a>
@@ -349,16 +355,13 @@
                     <div class="col_1">
                         <div class="product_item">
                             <div class="product_item_pic1">
-
-                                <img src="../../images/image_product/anh1.png">
+                                <%-- Chỉ cần contextPath + thumbnail (vì thumbnail đã chứa /images/...) --%>
+                                <img src="${pageContext.request.contextPath}${rp.thumbnail}" alt="${rp.product_name}">
                             </div>
                             <div class="product_item_text">
-                                <h6>Áo polo nam tay ngắn sọc phối patch.Fitted</h6>
-
-                                <h5>1.690.000đ</h5>
-                                <button class="add-to-cart-btn" onclick="location.href='cart.html'">Thêm vào giỏ
-                                    hàng
-                                </button>
+                                <h6>Quần jeans nam natural form tapered dáng suông </h6>
+                                <h5>1.510.000đ</h5>
+                                <button class="add-to-cart-btn" onclick="location.href='Product_DetailController?id=${relatedProducts[0].product_id}'">Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     </div>
@@ -416,17 +419,7 @@
 
 <!-- Custom JavaScript -->
 <script src="../../js/main.js"></script>
-<script>
-    function changeImage(imagePath) {
-        // 1. Tìm thẻ ảnh chính bằng ID
-        var mainImg = document.getElementById('mainImage');
-
-        // 2. Thay đổi đường dẫn ảnh của thẻ chính thành đường dẫn ảnh vừa bấm
-        if (mainImg) {
-            mainImg.src = imagePath;
-        }
-    }
-</script>
+<script src="${root}/js/product_detail.js"></script>
 </body>
 
 </html>

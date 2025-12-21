@@ -2,7 +2,7 @@ package com.clothingshop.styleera.service;
 
 import com.clothingshop.styleera.dao.ProductDAO;
 import com.clothingshop.styleera.model.Product;
-import com.clothingshop.styleera.model.ProductDetail;
+import  com.clothingshop.styleera.dao.ProductDetailDao;
 import com.clothingshop.styleera.model.Variants;
 import java.util.List;
 
@@ -38,4 +38,10 @@ public class ServiceProduct {
     public List<String> getImagesByProductId(int id) {return productDAO.findImagesByProductId(id);}
 
     public List<Variants> getVariantsByProductId(int id) {return productDAO.findVariantsByProductId(id);}
-}
+
+    // Trong ServiceProduct.java
+    public List<Product> getRelatedProducts(int subCategoryId, int currentProductId) {
+        // subCategoryId tương ứng với cột category_sub_id trong database
+        return productDAO.findRelatedProducts(subCategoryId, currentProductId);
+    }
+    }
