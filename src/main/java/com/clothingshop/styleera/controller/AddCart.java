@@ -54,6 +54,7 @@ public class AddCart extends HttpServlet {
 
         cart.addItem(variant, quantity);
         session.setAttribute("cart", cart);
+        session.setAttribute("successMsg", "Đã thêm sản phẩm vào giỏ hàng!");
 
         // Quay lại trang trước
         String referer = request.getHeader("Referer");
