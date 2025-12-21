@@ -77,15 +77,24 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="quantity-item">
-                                                    <span class="fa-solid fa-less-than"></span>
-                                                    <input type="text" value="${item.quantity}"/>
-                                                    <span class="fa-solid fa-greater-than"></span>
-                                                </div>
+                                                <form method="post"
+                                                      action="${pageContext.request.contextPath}/update-cart"
+                                                      class="quantity-item">
+
+                                                    <input type="hidden" name="variantId"
+                                                           value="${item.variant.variantId}" />
+
+                                                    <button type="submit" name="action" value="decrease" class="qty-btn"><i class="fa-solid fa-minus"></i></button>
+
+                                                    <input type="text" name="quantity"
+                                                           value="${item.quantity}" size="2"/>
+
+                                                    <button type="submit" name="action" value="increase" class="qty-btn"><i class="fa-solid fa-plus"></i></button>
+                                                </form>
                                             </td>
                                             <td>
                                                 <div class="price-item">
-                                                    <div class="cart_price"> 0 VNĐ</div>
+                                                    <div class="cart_price">${item.quantity * item.variant.product.price }VNĐ</div>
                                                 </div>
                                             </td>
                                             <td>
@@ -119,7 +128,7 @@
                             </li>
                             <li>
                                 <span class="label">TỔNG GIÁ TIỀN:</span>
-                                <span class="value"><strong>0 VNĐ</strong></span>
+                                <span class="value"><strong>${sessionScope.cart.total()} VNĐ</strong></span>
                             </li>
                         </ul>
                         <div class="cart-actions">
