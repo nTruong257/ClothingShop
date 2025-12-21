@@ -150,9 +150,9 @@
                                     <i class="fas fa-star"></i>
                                 </div>
 
-                                <button class="btn-cart" type="button">
+                                <a class="btn-cart" type="button" href="${pageContext.request.contextPath}/addcart?variantId=<%=p.getDefaultVariantId()%>&quantity=1">
                                     <i class="fas fa-shopping-cart"></i>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </a>
@@ -177,4 +177,14 @@
 
 <script src="${root}/js/main.js"></script>
 </body>
+<c:if test="${not empty sessionScope.successMsg}">
+    <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-4"
+         role="alert" style="z-index: 9999;">
+        <i class="fa-solid fa-circle-check"></i>
+            ${sessionScope.successMsg}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <c:remove var="successMsg" scope="session"/>
+</c:if>
 </html>

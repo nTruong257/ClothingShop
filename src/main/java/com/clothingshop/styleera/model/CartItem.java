@@ -22,6 +22,10 @@ public class CartItem implements Serializable {
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
+    public CartItem(Variants variant, int quantity) {
+        this.variant = variant;
+        this.quantity = quantity;
+    }
 
     public int getCartItemId() {
         return cartItemId;
@@ -77,9 +81,8 @@ public class CartItem implements Serializable {
         }
         return 0;
     }
-    public boolean addQuantity(int quantity){
+    public void addQuantity(int quantity){
         this.quantity += quantity;
-        return true;
     }
 }
 

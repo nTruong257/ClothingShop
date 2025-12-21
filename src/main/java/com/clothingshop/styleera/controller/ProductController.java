@@ -4,6 +4,7 @@ import com.clothingshop.styleera.dao.CategoryDAO;
 import com.clothingshop.styleera.dao.VariantDAO;
 import com.clothingshop.styleera.model.Product;
 import com.clothingshop.styleera.service.ServiceProduct;
+import com.clothingshop.styleera.service.ServiceVariant;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,6 +23,7 @@ public class ProductController extends HttpServlet {
         com.clothingshop.styleera.dao.ProductDAO productDAO = new com.clothingshop.styleera.dao.ProductDAO();
         com.clothingshop.styleera.dao.CategoryDAO categoryDAO = new com.clothingshop.styleera.dao.CategoryDAO();
         com.clothingshop.styleera.dao.VariantDAO variantDAO = new com.clothingshop.styleera.dao.VariantDAO();
+        ServiceVariant serviceVariant = new ServiceVariant();
 
         List<Product> products = null;
         String title = "Tất cả sản phẩm";
@@ -60,6 +62,13 @@ public class ProductController extends HttpServlet {
             }
         } catch (NumberFormatException e) {
             products = serviceProduct.findAll();
+        }
+        if(products != null && !products.isEmpty()) {
+            for (Product p: products) {
+                Integer defaultVariantId = serviceVariant.getDefaultVariantId(p.getProduct_id());
+                p.setDefaultVariantId(defaultVariantId);
+
+            }
         }
 
         // 3. Đẩy dữ liệu ra JSP
