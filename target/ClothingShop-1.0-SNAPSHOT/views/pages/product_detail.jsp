@@ -367,7 +367,7 @@
                         <div class="product_item sale">
                             <div class="product_item_pic3">
                                 <img src="../../images/image_product/anh1.2.png">
-                                
+
                             </div>
                             <div class="product_item_text">
                                 <h6>Áo Sơ Mi Nam Tay Dài Chất Liệu BAMBOO Cao Cấp</h6>
