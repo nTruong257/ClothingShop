@@ -27,14 +27,16 @@
             <!-- LEFT: PRODUCT IMAGES -->
             <div class="product_images">
                 <div class="product_main_image">
-                    <img id="mainImage" src="../../images/image_product/anh1.png" alt="Ảnh chính">
+                    <img id="mainImage" src="${root}${imageList[0]}" alt="${product.product_name}">
                 </div>
 
                 <div class="product_thumbs">
-                    <img src="../../images/image_product/anh1.png" alt="Ảnh nhỏ 1">
-                    <img src="../../images/image_product/anh4.png" alt="Ảnh nhỏ 1">
-                    <img src="../../images/image_product/anh2.png" alt="Ảnh nhỏ 2">
-                    <img src="../../images/image_product/anh3.png" alt="Ảnh nhỏ 3">
+                    <c:forEach items="${imageList}" var="imgUrl" begin="0" end="1">
+                        <img src="${root}${imgUrl}"
+                             alt="Thumbnail"
+                             onclick="changeImage('${root}${imgUrl}')"
+                             style="cursor: pointer;">
+                    </c:forEach>
                 </div>
             </div>
 
@@ -44,15 +46,25 @@
                     thanh lịch, sang trọng - POLOMANOR</h2>
 
                 <div class="rating">
-                    <img src="../../images/image_product/start.png">
-                    <img src="../../images/image_product/start.png">
-                    <img src="../../images/image_product/start.png">
-                    <img src="../../images/image_product/start.png">
-                    <img src="../../images/image_product/start.png">
-                    <span>- Đánh giá 5</span>
+                    <c:forEach begin="0" end="5" var="i">
+                        <c:choose>
+                            <c:when test="${i <= product.medium_rating}">
+                                <img src="${root}/images/image_product/start.png" alt="star" width="20">
+                            </c:when>
+
+                        </c:choose>
+                    </c:forEach>
+
+                    <span>- Đánh giá ${product.medium_rating}5</span>
                 </div>
 
-                <h3 class="product_price">1.173.000đ<span>99.000đ</span></h3>
+                <h3 class="product_price">
+                    <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="đ"/>
+
+                    <span style="text-decoration: line-through; margin-left: 10px; font-size: 0.8em; color: gray;">
+                    <fmt:formatNumber value="${product.price + 50000}" type="currency" currencySymbol="đ"/>
+                    </span>
+                </h3>
 
                 <p class="product_desc">
                     Áo polo nam chất liệu cá sấu cotton interlock cao cấp, bề mặt mềm mịn, thấm hút tốt;
@@ -89,8 +101,8 @@
                 <button type="button" class="btn btn-primary validate_order"
                         onclick="window.location.href='checkout.jsp'">Mua hàng
                 </button>
-                <button type="button" class="btn btn-primary validate_order">Thêm vào giỏ hàng
-                </button>
+                <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng
+                </a>
             </div>
         </div>
     </div>
@@ -404,7 +416,17 @@
 
 <!-- Custom JavaScript -->
 <script src="../../js/main.js"></script>
-<script src="../../js/product_detail.js"></script>
+<script>
+    function changeImage(imagePath) {
+        // 1. Tìm thẻ ảnh chính bằng ID
+        var mainImg = document.getElementById('mainImage');
+
+        // 2. Thay đổi đường dẫn ảnh của thẻ chính thành đường dẫn ảnh vừa bấm
+        if (mainImg) {
+            mainImg.src = imagePath;
+        }
+    }
+</script>
 </body>
 
 </html>
