@@ -2,6 +2,8 @@ package com.clothingshop.styleera.service;
 
 import com.clothingshop.styleera.dao.ProductDAO;
 import com.clothingshop.styleera.model.Product;
+import com.clothingshop.styleera.model.ProductDetail;
+import com.clothingshop.styleera.model.Variants;
 import java.util.List;
 
 public class ServiceProduct {
@@ -32,4 +34,8 @@ public class ServiceProduct {
     public List<Product> findBestSellers() {
         return productDAO.findBestSellers();
     }
+
+    public List<String> getImagesByProductId(int id) {return productDAO.findImagesByProductId(id);}
+
+    public List<Variants> getVariantsByProductId(int id) {return productDAO.findVariantsByProductId(id);}
 }

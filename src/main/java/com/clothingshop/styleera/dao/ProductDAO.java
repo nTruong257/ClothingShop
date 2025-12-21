@@ -1,5 +1,6 @@
 package com.clothingshop.styleera.dao;
 
+import com.clothingshop.styleera.model.Variants;
 import com.clothingshop.styleera.JDBiConnector.JDBIConnector;
 import com.clothingshop.styleera.model.Product;
 import org.jdbi.v3.core.Jdbi;
@@ -123,4 +124,50 @@ public class ProductDAO {
                     .list();
         });
     }
+    // 1. Tìm thông tin chi tiết sản phẩm
+    public Product findProductDetailById(int id) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        return jdbi.withHandle(handle -> {
+            String sql = "SELECT id AS product_id, product_name, price, detail_description, " +
+                    "short_description, average_rating AS medium_rating " +
+                    "FROM products WHERE id = ?";
+            return handle.createQuery(sql)
+                    .bind(0, id)
+                    .mapToBean(Product.class)
+                    .findOne()
+                    .orElse(null);
+        });
+    }
+
+    // 2. Lấy danh sách ảnh (List<String>)
+    public List<String> findImagesByProductId(int productId) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        return jdbi.withHandle(handle -> {
+            String sql = "SELECT path FROM images WHERE product_id = ?";
+            return handle.createQuery(sql)
+                    .bind(0, productId)
+                    .mapTo(String.class)
+                    .list();
+        });
+    }
+
+    // 3. Lấy danh sách Variants (Sửa lỗi mapping bằng cách map thủ công)
+    public List<Variants> findVariantsByProductId(int productId) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        return jdbi.withHandle(handle -> {
+            String sql = "SELECT id, size, color, quantity FROM variants WHERE product_id = ?";
+            return handle.createQuery(sql)
+                    .bind(0, productId)
+                    .map((rs, ctx) -> {
+                        Variants v = new Variants();
+                        v.setVariantId(rs.getInt("id")); // Map cột 'id' vào 'variantId'
+                        v.setSize(rs.getString("size"));
+                        v.setColor(rs.getString("color"));
+                        v.setQuantity(rs.getInt("quantity"));
+                        return v;
+                    })
+                    .list();
+        });
+    }
+
 }
