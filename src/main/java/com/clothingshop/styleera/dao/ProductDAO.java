@@ -124,7 +124,7 @@ public class ProductDAO {
                     .list();
         });
     }
-    // 1. Tìm thông tin chi tiết sản phẩm
+    // 8. Tìm thông tin chi tiết sản phẩm
     public Product findProductDetailById(int id) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
@@ -139,7 +139,7 @@ public class ProductDAO {
         });
     }
 
-    // 2. Lấy danh sách ảnh (List<String>)
+    // 9. Lấy danh sách ảnh (List<String>)
     public List<String> findImagesByProductId(int productId) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
@@ -151,7 +151,7 @@ public class ProductDAO {
         });
     }
 
-    // 3. Lấy danh sách Variants (Sửa lỗi mapping bằng cách map thủ công)
+    // 10. Lấy danh sách Variants
     public List<Variants> findVariantsByProductId(int productId) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
@@ -160,7 +160,7 @@ public class ProductDAO {
                     .bind(0, productId)
                     .map((rs, ctx) -> {
                         Variants v = new Variants();
-                        v.setVariantId(rs.getInt("id")); // Map cột 'id' vào 'variantId'
+                        v.setVariantId(rs.getInt("id"));
                         v.setSize(rs.getString("size"));
                         v.setColor(rs.getString("color"));
                         v.setQuantity(rs.getInt("quantity"));

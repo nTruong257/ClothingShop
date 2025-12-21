@@ -1,8 +1,8 @@
 package com.clothingshop.styleera.controller;
 
-import com.clothingshop.styleera.dao.ProductDetailDao;
 import com.clothingshop.styleera.model.Product;
-
+import com.clothingshop.styleera.model.Variants;
+import com.clothingshop.styleera.service.ServiceProduct;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,16 +11,16 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
-@WebServlet(name = "ProductDetailController", urlPatterns = {"/product-detail"})
+@WebServlet(name = "ProductDetailController", urlPatterns = {"/Product_DetailController"})
 public class ProductDetailController extends HttpServlet {
 
-    private ProductDetailDao productDetailDao;
+    // Thay đổi từ ProductDetailDao sang ServiceProduct
+    private ServiceProduct serviceProduct;
 
     @Override
     public void init() throws ServletException {
-        this.productDetailDao = new ProductDetailDao();
+        this.serviceProduct = new ServiceProduct();
     }
 
     @Override
@@ -31,36 +31,36 @@ public class ProductDetailController extends HttpServlet {
         String productIdStr = request.getParameter("id");
 
         if (productIdStr == null || productIdStr.isEmpty()) {
-            // Xử lý khi thiếu ID
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing product ID parameter.");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing product ID.");
             return;
         }
 
         try {
             int productId = Integer.parseInt(productIdStr);
 
-            // 1. Lấy sản phẩm từ DAO
-            Optional<Product> productOpt = productDetailDao.getProductById(productId);
+            // 1. Lấy thông tin sản phẩm từ Service
+            Product product = serviceProduct.findById(productId);
 
-            if (productOpt.isPresent()) {
-                Product product = productOpt.get();
+            if (product != null) {
+                // 2. Lấy danh sách ảnh (Gallery)
+                List<String> imageList = serviceProduct.getImagesByProductId(productId);
 
-                // 2. Lấy danh sách ảnh
-                List<String> imageUrls = productDetailDao.getProductImageUrls(productId);
+                // 3. Lấy danh sách biến thể (Size/Màu)
+                List<Variants> variantList = serviceProduct.getVariantsByProductId(productId);
 
-                // 3. Đặt các thuộc tính vào Request Scope
+                // 4. Đặt dữ liệu vào Request Scope
                 request.setAttribute("product", product);
-                request.setAttribute("imageUrls", imageUrls);
+                request.setAttribute("imageList", imageList); // Đổi tên cho khớp với code JSP trước đó
+                request.setAttribute("variantList", variantList);
 
-                // 4. Chuyển hướng đến JSP
-                request.getRequestDispatcher("/WEB-INF/views/product_detail.jsp").forward(request, response);
+                // 5. Chuyển hướng đến JSP
+                request.getRequestDispatcher("/views/pages/product_detail.jsp").forward(request, response);
             } else {
-                // Xử lý 404
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found.");
             }
 
         } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID format.");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID.");
         }
     }
 }
