@@ -61,22 +61,19 @@ navLinks.forEach(link => {
     }
 });
 
-// Cart functionality (demo)
-let cartCount = 0;
-const cartBadge = document.querySelector('.cart-badge');
+// hien thi so luong gio hang
+document.addEventListener("DOMContentLoaded", function () {
+    const cartBadge = document.querySelector('.cart-badge');
+    if (!cartBadge) return;
+    const count = parseInt(cartBadge.textContent.trim(), 10);
 
-function updateCartCount(count) {
-    cartCount = count;
-    cartBadge.textContent = cartCount;
-    if (cartCount > 0) {
+    if (count > 0) {
         cartBadge.style.display = 'flex';
     } else {
         cartBadge.style.display = 'none';
     }
-}
+});
 
-// Initialize cart count
-updateCartCount(0);
 
 // Header scroll effect
 let lastScroll = 0;

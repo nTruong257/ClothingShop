@@ -134,7 +134,7 @@
 
         <a class="cart-link" href="${root}/views/pages/cart.jsp">
         <i class="fas fa-shopping-bag"></i>
-        <span class="cart-badge">0</span>
+            <span class="cart-badge">${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</span>
         </a>
         </div>
         </div>
