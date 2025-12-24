@@ -13,7 +13,7 @@ body {
 a {
     text-decoration: none;
     transition: all 0.3s ease;
-    color: #F5F0E6;
+    color: inherit;
 }
 
 ul {
@@ -103,16 +103,21 @@ img {
     position: relative;
 }
 
-.nav-link-primary {
-    display: block;
-    padding: 10px 0;
-    color: #000;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
+#mainNavigation .nav-item .nav-link-primary,
+#mainNavigation .nav-item .nav-link-primary:link,
+#mainNavigation .nav-item .nav-link-primary:visited,
+#mainNavigation .nav-item .nav-link-primary:active,
+#mainNavigation .nav-item .nav-link-primary:focus {
+    color: #212121 !important;
+    font-weight: 600 !important;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-decoration: none !important;
+    display: block;
+    padding: 10px 0;
     position: relative;
+    background: transparent !important;
 }
 
 .nav-link-primary::after {

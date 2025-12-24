@@ -56,8 +56,8 @@ const navLinks = document.querySelectorAll('.nav-link-primary');
 
 navLinks.forEach(link => {
     if (link.getAttribute('href') === currentLocation) {
-        link.style.color = '#3498db';
-        link.style.fontWeight = '700';
+        link.style.color = '#000000';
+        link.style.fontWeight = '800';
     }
 });
 

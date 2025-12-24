@@ -28,7 +28,7 @@
 
         <ul class="primary-nav-list">
         <li class="nav-item">
-        <a class="nav-link-primary" href="${root}/home">TRANG CHỦ</a>
+        <a class="nav-link-primary" href="${root}/home" style=" color: #000; font-weight: 500;">TRANG CHỦ</a>
         </li>
 
         <c:forEach items="${parents}" var="p">
@@ -101,7 +101,7 @@
         </c:forEach>
 
         <li class="nav-item">
-        <a class="nav-link-primary" href="${root}/views/pages/contact.jsp">LIÊN HỆ</a>
+        <a class="nav-link-primary" href="${root}/views/pages/contact.jsp" style=" color: #000; font-weight: 500;">LIÊN HỆ</a>
         </li>
         </ul>
         </nav>
