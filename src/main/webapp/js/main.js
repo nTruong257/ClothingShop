@@ -16,7 +16,7 @@ document.addEventListener('click', function (event) {
     const nav = document.getElementById('mainNavigation');
     const menuToggle = document.querySelector('.mobile-menu-toggle');
 
-    if (nav.classList.contains('active') &&
+    if (nav && nav.classList.contains('active') &&
         !nav.contains(event.target) &&
         !menuToggle.contains(event.target)) {
         toggleMobileMenu();
@@ -36,75 +36,55 @@ document.querySelectorAll('.nav-item').forEach(item => {
     });
 });
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Add active class to current nav item
-const currentLocation = window.location.pathname;
-const navLinks = document.querySelectorAll('.nav-link-primary');
-
-navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentLocation) {
-        link.style.color = '#000000';
-        link.style.fontWeight = '800';
-    }
-});
-
-// hien thi so luong gio hang
+// Cart functionality (demo UI update)
 document.addEventListener("DOMContentLoaded", function () {
     const cartBadge = document.querySelector('.cart-badge');
-    if (!cartBadge) return;
-    const count = parseInt(cartBadge.textContent.trim(), 10);
-
-    if (count > 0) {
-        cartBadge.style.display = 'flex';
-    } else {
-        cartBadge.style.display = 'none';
+    if (cartBadge) {
+        const count = parseInt(cartBadge.textContent.trim(), 10);
+        cartBadge.style.display = count > 0 ? 'flex' : 'none';
     }
 });
-
 
 // Header scroll effect
-let lastScroll = 0;
 const header = document.querySelector('.site-header');
+if (header) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 0) {
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.05)';
+        }
+    });
+}
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+// ==========================================
+// USER ACCOUNT DROPDOWN LOGIC (NEW)
+// ==========================================
+document.addEventListener('DOMContentLoaded', function () {
+    // 1. Lấy phần tử kích hoạt (Nút Hello/Icon User đã đăng nhập)
+    const userTrigger = document.querySelector('.account-link.logged-in');
 
-    if (currentScroll <= 0) {
-        header.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.05)';
-    } else {
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    // 2. Lấy menu dropdown
+    const dropdownMenu = document.querySelector('.account-dropdown-menu');
+
+    // Chỉ chạy logic nếu người dùng ĐÃ đăng nhập (tức là tồn tại userTrigger)
+    if (userTrigger && dropdownMenu) {
+
+        // Sự kiện Click vào Icon/Tên User
+        userTrigger.addEventListener('click', function (e) {
+            e.preventDefault(); // Ngăn chặn chuyển trang nếu thẻ a có href
+            e.stopPropagation(); // Ngăn sự kiện lan ra ngoài (để không bị document click đóng ngay lập tức)
+
+            // Toggle class 'show' để ẩn/hiện menu
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // Sự kiện Click ra ngoài vùng menu thì đóng menu lại
+        document.addEventListener('click', function (e) {
+            // Nếu click KHÔNG nằm trong nút user VÀ KHÔNG nằm trong menu dropdown
+            if (!userTrigger.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
     }
-
-    lastScroll = currentScroll;
 });
-
-// ===== Account dropdown toggle =====
-// const accountLink = document.getElementById('accountLink');
-// const accountMenu = document.getElementById('accountMenu');
-//
-// if (accountLink && accountMenu) {
-//     accountLink.addEventListener('click', function(e) {
-//         e.preventDefault();
-//         accountMenu.classList.toggle('active');
-//     });
-//
-//     // Close dropdown when clicking outside
-//     document.addEventListener('click', function(e) {
-//         if (!accountLink.contains(e.target) && !accountMenu.contains(e.target)) {
-//             accountMenu.classList.remove('active');
-//         }
-//     });
-// }
