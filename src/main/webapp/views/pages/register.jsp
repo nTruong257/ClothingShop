@@ -31,35 +31,33 @@
                     </div>
 
                     <div class="auth-body">
-                        <form id="registerForm" onsubmit="handleRegister(event)">
+                        <form id="registerForm" action="${root}/register" method="post">
+
+                            <c:if test="${not empty error}">
+                                <div class="alert alert-danger text-center mb-3">${error}</div>
+                            </c:if>
+
                             <div class="form-group">
                                 <label class="form-label">Họ và tên <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-user form-control-icon"></i>
-                                    <input type="text" class="auth-input" id="registerName" placeholder="Nguyễn Văn A"
-                                           required>
+                                    <input type="text" class="auth-input" name="name" id="registerName" placeholder="Nguyễn Văn A" required value="${name}">
                                 </div>
-                                <div class="error-message" id="registerNameError">Vui lòng nhập họ tên</div>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Email <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-envelope form-control-icon"></i>
-                                    <input type="email" class="auth-input" id="registerEmail"
-                                           placeholder="example@email.com" required>
+                                    <input type="email" class="auth-input" name="email" id="registerEmail" placeholder="example@email.com" required value="${email}">
                                 </div>
-                                <div class="error-message" id="registerEmailError">Vui lòng nhập email hợp lệ</div>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Số điện thoại <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-phone form-control-icon"></i>
-                                    <input type="tel" class="auth-input" id="registerPhone" placeholder="0123456789"
-                                           required>
-                                </div>
-                                <div class="error-message" id="registerPhoneError">Vui lòng nhập số điện thoại hợp lệ
+                                    <input type="tel" class="auth-input" name="phone" id="registerPhone" placeholder="0123456789" required value="${phone}">
                                 </div>
                             </div>
 
@@ -67,21 +65,7 @@
                                 <label class="form-label">Mật khẩu <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-lock form-control-icon"></i>
-                                    <input type="password" class="auth-input" id="registerPassword"
-                                           placeholder="Nhập mật khẩu" required
-                                           oninput="checkPasswordStrength(this.value)">
-                                    <button type="button" class="password-toggle"
-                                            onclick="togglePassword('registerPassword')">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </div>
-                                <div class="password-strength">
-                                    <div class="strength-bar">
-                                        <div class="strength-bar-fill" id="strengthBar"></div>
-                                    </div>
-                                    <div class="strength-text" id="strengthText">Độ mạnh mật khẩu: Chưa nhập</div>
-                                </div>
-                                <div class="error-message" id="registerPasswordError">Mật khẩu phải có ít nhất 8 ký tự
+                                    <input type="password" class="auth-input" name="password" id="registerPassword" placeholder="Nhập mật khẩu" required oninput="checkPasswordStrength(this.value)">
                                 </div>
                             </div>
 
@@ -89,38 +73,11 @@
                                 <label class="form-label">Xác nhận mật khẩu <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-lock form-control-icon"></i>
-                                    <input type="password" class="auth-input" id="registerConfirmPassword"
-                                           placeholder="Nhập lại mật khẩu" required>
-                                    <button type="button" class="password-toggle"
-                                            onclick="togglePassword('registerConfirmPassword')">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </div>
-                                <div class="error-message" id="registerConfirmError">Mật khẩu không khớp</div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="remember-me">
-                                    <input type="checkbox" id="agreeTerms" required>
-                                    <label for="agreeTerms">Tôi đồng ý với <a href="#" style="color: #212121;">Điều
-                                        khoản sử dụng</a></label>
+                                    <input type="password" class="auth-input" name="confirmPassword" id="registerConfirmPassword" placeholder="Nhập lại mật khẩu" required>
                                 </div>
                             </div>
 
                             <button type="submit" class="auth-btn">Đăng Ký</button>
-
-                            <div class="divider">
-                                <span>Hoặc đăng ký với</span>
-                            </div>
-
-                            <div class="social-login">
-                                <button type="button" class="social-btn facebook">
-                                    <i class="fab fa-facebook-f"></i> Facebook
-                                </button>
-                                <button type="button" class="social-btn google">
-                                    <i class="fab fa-google"></i> Google
-                                </button>
-                            </div>
                         </form>
                     </div>
 
