@@ -4,6 +4,7 @@ import com.clothingshop.styleera.JDBiConnector.JDBIConnector;
 import com.clothingshop.styleera.model.ParentCategory;
 import com.clothingshop.styleera.model.SubCategory;
 import org.jdbi.v3.core.Jdbi;
+
 import java.util.List;
 
 public class CategoryDAO {
@@ -20,7 +21,8 @@ public class CategoryDAO {
 
             // 2. Lấy Sub (Áo thun, Quần jean...)
             // CHÚ Ý: Cột category_parent_id
-            String sqlSubs = "SELECT id, sub_name AS name, category_parent_id AS parentCategoryId " +
+            String sqlSubs = "SELECT id, sub_name AS name, category_parent_id AS parentCategoryId, " +
+                    "image, description " +
                     "FROM subcategories WHERE category_parent_id = :parentId";
 
             for (ParentCategory parent : parents) {
