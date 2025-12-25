@@ -1,7 +1,7 @@
 package com.clothingshop.styleera.controller;
 
 import com.clothingshop.styleera.model.Product;
-import com.clothingshop.styleera.service.ServiceProduct;
+import com.clothingshop.styleera.service.ProductService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -13,8 +13,8 @@ public class ProductDetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int productId = Integer.parseInt(request.getParameter("id"));
-        ServiceProduct serviceProduct = new ServiceProduct();
-        Product product = serviceProduct.findById(productId);
+        ProductService productService = new ProductService();
+        Product product = productService.findById(productId);
         request.setAttribute("product", product);
         request.getRequestDispatcher("/views/pages/product_detail.jsp").forward(request, response);
     }

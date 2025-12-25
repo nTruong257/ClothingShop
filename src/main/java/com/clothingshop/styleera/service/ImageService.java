@@ -5,7 +5,7 @@ import com.clothingshop.styleera.model.Image;
 
 import java.util.List;
 
-public class ServiceImg {
+public class ImageService {
     private ImageDao imageDao = new ImageDao();
     public List<Image> findByProductId(int productId){
         return imageDao.findByProductId(productId);

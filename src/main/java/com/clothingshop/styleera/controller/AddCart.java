@@ -2,7 +2,7 @@ package com.clothingshop.styleera.controller;
 
 import com.clothingshop.styleera.model.Cart;
 import com.clothingshop.styleera.model.Variants;
-import com.clothingshop.styleera.service.ServiceVariant;
+import com.clothingshop.styleera.service.VariantService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -43,7 +43,7 @@ public class AddCart extends HttpServlet {
             cart = new Cart();
         }
 
-        ServiceVariant variantService = new ServiceVariant();
+        VariantService variantService = new VariantService();
         Variants variant = variantService.getById(variantId);
 
         if (variant == null) {

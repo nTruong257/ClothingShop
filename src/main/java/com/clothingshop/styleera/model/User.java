@@ -1,45 +1,41 @@
 package com.clothingshop.styleera.model;
 
-import java.sql.Timestamp;
-
 public class User {
-    private int userId;
-    private String username;
+    private int id;
+    private String user_name;
     private String email;
-    private String password;
+    private String password_hash;
     private String phone;
-    private String status;
     private String role;
-    private Timestamp created_at;
+    private String status;
+    private String verification_code; // Mã OTP
+    private int enabled;              // 0: Chưa kích hoạt, 1: Đã kích hoạt
+    private String google_id;         // Google ID
 
     public User() {
     }
 
-    public User(int userId, String username, String email, String password, String phone, String status, String role, Timestamp created_at) {
-        this.userId = userId;
-        this.username = username;
+    public User(String email, String password_hash, String user_name, String phone) {
         this.email = email;
-        this.password = password;
+        this.password_hash = password_hash;
+        this.user_name = user_name;
         this.phone = phone;
-        this.status = status;
-        this.role = role;
-        this.created_at = created_at;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public String getEmail() {
@@ -50,12 +46,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword_hash() {
+        return password_hash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword_hash(String password_hash) {
+        this.password_hash = password_hash;
     }
 
     public String getPhone() {
@@ -66,14 +62,6 @@ public class User {
         this.phone = phone;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getRole() {
         return role;
     }
@@ -82,11 +70,46 @@ public class User {
         this.role = role;
     }
 
-    public Timestamp getCreated_at() {
-        return created_at;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCreated_at(Timestamp created_at) {
-        this.created_at = created_at;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getVerification_code() {
+        return verification_code;
+    }
+
+    public void setVerification_code(String verification_code) {
+        this.verification_code = verification_code;
+    }
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getGoogle_id() {
+        return google_id;
+    }
+
+    public void setGoogle_id(String google_id) {
+        this.google_id = google_id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", user_name='" + user_name + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                ", enabled=" + enabled +
+                '}';
     }
 }

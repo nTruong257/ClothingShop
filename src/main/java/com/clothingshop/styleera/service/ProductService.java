@@ -4,7 +4,7 @@ import com.clothingshop.styleera.dao.ProductDAO;
 import com.clothingshop.styleera.model.Product;
 import java.util.List;
 
-public class ServiceProduct {
+public class ProductService {
     private ProductDAO productDAO = new ProductDAO();
 
     public List<Product> findAll(){
