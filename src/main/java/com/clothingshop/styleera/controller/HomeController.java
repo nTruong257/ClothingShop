@@ -1,6 +1,6 @@
 package com.clothingshop.styleera.controller;
 import com.clothingshop.styleera.model.Product;
-import com.clothingshop.styleera.service.ServiceProduct;
+import com.clothingshop.styleera.service.ProductService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -12,13 +12,13 @@ import java.util.List;
 public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServiceProduct serviceProduct = new ServiceProduct();
+        ProductService productService = new ProductService();
 
         // 1. Lấy sản phẩm MỚI (New Arrivals)
-        List<Product> newArrivals = serviceProduct.findNewArrivals();
+        List<Product> newArrivals = productService.findNewArrivals();
 
         // 2. Lấy sản phẩm BÁN CHẠY (Best Sellers)
-        List<Product> bestSellers = serviceProduct.findBestSellers();
+        List<Product> bestSellers = productService.findBestSellers();
 
         // 3. Đẩy dữ liệu sang JSP
         request.setAttribute("newArrivals", newArrivals);

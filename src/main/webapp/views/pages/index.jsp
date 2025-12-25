@@ -205,219 +205,35 @@
     </section>
 
     <!-- Categories Section -->
-    <section class="categories-section py-5">
-        <div class="container">
-            <!-- Header -->
-            <div class="section-header text-center mb-5">
-                <h2 class="fw-bold">Danh Mục Sản Phẩm</h2>
-                <p>Tìm kiếm sản phẩm yêu thích của bạn</p>
-            </div>
+    <section class="categories-section">
+        <div class="categories-container">
 
-            <!-- ===== Nam ===== -->
-            <div class="category-group mb-5">
-                <div class="category-group-header d-flex align-items-center mb-3">
-                    <div class="category-icon male me-3">
-                        <i class="fas fa-mars fa-2x"></i>
+            <c:forEach items="${parents}" var="p">
+                <div class="category-group">
+                    <div class="category-group-header">
+                        <div class="category-icon ${p.id == 1 ? 'male' : (p.id == 2 ? 'female' : 'couple')}">
+                            <i class="fas ${p.id == 1 ? 'fa-mars' : (p.id == 2 ? 'fa-venus' : 'fa-heart')}"></i>
+                        </div>
+                        <h2>Thời Trang ${p.name}</h2>
                     </div>
-                    <h3 class="mb-0">Thời Trang Nam</h3>
-                </div>
-                <div class="category-items-grid row g-4">
-                    <a href="${root}/product?cateId=1" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/man/ao-khoac-nam.png" alt="Áo Khoác Nam"
-                                 class="img-fluid rounded">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Khoác Nam</h4>
-                            <p>Phong cách & ấm áp</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=2" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/man/ao-thun-nam.png" alt="Áo Thun Nam">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Thun Nam</h4>
-                            <p>Thoải mái & năng động</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=3" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/man/ao-polo-nam.png" alt="Áo Polo Nam">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Polo Nam</h4>
-                            <p>Lịch sự & thanh lịch</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=4" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/man/ao-so-mi-nam.png" alt="Áo Sơ Mi Nam">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Sơ Mi Nam</h4>
-                            <p>Chuyên nghiệp & sang trọng</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=5" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/man/quan-short-nam.png"
-                                 alt="Quần Short Nam">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Quần Short Nam</h4>
-                            <p>Mát mẻ & thoải mái</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=6" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/man/quan-tay-nam.png" alt="Quần Dài Nam">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Quần Dài Nam</h4>
-                            <p>Lịch lãm & trẻ trung</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=7" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/man/quan-jean-nam.png"
-                                 alt="Quần Jean Nam">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Quần Jean Nam</h4>
-                            <p>Bền bỉ & thời trang</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
 
-            <!-- Nữ -->
-            <div class="category-group">
-                <div class="category-group-header">
-                    <div class="category-icon female">
-                        <i class="fas fa-venus"></i>
+                    <div class="category-items-grid">
+                        <c:forEach items="${p.subCategories}" var="sub">
+                            <a href="${root}/product?cateId=${sub.id}" class="category-item-card">
+                                <div class="category-item-image">
+                                    <img src="${root}${sub.image != null ? sub.image : '/images/no-image.png'}"
+                                         alt="${sub.name}" loading="lazy">
+                                </div>
+                                <div class="category-item-content">
+                                    <h4>${sub.name}</h4>
+                                    <p>${sub.description}</p>
+                                </div>
+                            </a>
+                        </c:forEach>
                     </div>
-                    <h2>Thời Trang Nữ</h2>
                 </div>
-                <div class="category-items-grid">
-                    <a href="${root}/product?cateId=8" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/woman/ao-khoac-nu.png" alt="Áo Khoác Nữ">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Khoác Nữ</h4>
-                            <p>Sang trọng & ấm áp</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=9" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/woman/ao-thun-nu.png" alt="Áo Thun Nữ">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Thun Nữ</h4>
-                            <p>Năng động & trẻ trung</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=10" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/woman/ao-polo-nu.png" alt="Áo Polo Nữ">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Polo Nữ</h4>
-                            <p>Năng động & thanh lịch</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=11" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/woman/ao-so-mi-nu.png" alt="Áo Sơ Mi Nữ">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Sơ Mi Nữ</h4>
-                            <p>Thanh lịch & nữ tính</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=12" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/woman/vay-nu.png" alt="Váy Nữ">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Váy Nữ</h4>
-                            <p>Duyên dáng & quyến rũ</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=13" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/woman/dam-nu.png" alt="Đầm Nữ">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Đầm Nữ</h4>
-                            <p>Sang trọng & lộng lẫy</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=14" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/woman/quan-short-nu.png"
-                                 alt="Quần Short Nữ">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Quần Short Nữ</h4>
-                            <p>Thoải mái & năng động</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=15" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/woman/quan-dai-nu.png" alt="Quần Dài Nữ">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Quần Dài Nữ</h4>
-                            <p>Thanh lịch & hiện đại</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            </c:forEach>
 
-            <!-- ===== Đồ Đôi ===== -->
-            <div class="category-group">
-                <div class="category-group-header d-flex align-items-center mb-3">
-                    <div class="category-icon couple me-3">
-                        <i class="fas fa-heart fa-2x"></i>
-                    </div>
-                    <h3 class="mb-0">Đồ Đôi</h3>
-                </div>
-                <div class="category-items-grid">
-                    <a href="${root}/product?cateId=16" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/couple/ao-thun-doi.png" alt="Áo Thun Đôi"
-                                 class="img-fluid rounded">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Thun Đôi</h4>
-                            <p>Tình yêu & gắn kết</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=17" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/couple/ao-khoac-doi.png"
-                                 alt="Áo Khoác Đôi"
-                                 class="img-fluid rounded">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Áo Khoác Đôi</h4>
-                            <p>Ấm áp & lãng mạn</p>
-                        </div>
-                    </a>
-                    <a href="${root}/product?cateId=18" class="category-item-card">
-                        <div class="category-item-image">
-                            <img src="${root}/images/category-banner/category/couple/do-bo-doi.png" alt="Đồ Bộ Đôi"
-                                 class="img-fluid rounded">
-                        </div>
-                        <div class="category-item-content">
-                            <h4>Đồ Bộ Đôi</h4>
-                            <p>Hoàn hảo & hài hòa</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
 </main>
