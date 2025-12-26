@@ -112,7 +112,7 @@
                     </div>
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="my_button">
-                            <a href="index.jsp" class="continute_btn">TIẾP TỤC MUA SẮM</a>
+                            <a href="${root}/home" class="continute_btn">TIẾP TỤC MUA SẮM</a>
                         </div>
                     </div>
                 </div>
