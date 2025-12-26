@@ -172,21 +172,20 @@ public class ProductDAO {
     // 11
     public List<Product> findRelatedProducts(int subId, int prodId) {
         return JDBIConnector.getJdbi().withHandle(handle -> {
-            // SQL JOIN để lấy cột path (đường dẫn ảnh) gán tên giả là thumbnail_path
-            String sql = "SELECT p.*, i.path AS thumbnail_path " +
+            // SQL lấy ngẫu nhiên 4 sản phẩm, trừ sản phẩm hiện tại đang xem
+            String sql = "SELECT p.id, p.product_name, p.price, i.path AS thumbnail_path " +
                     "FROM products p " +
                     "JOIN images i ON p.image_id = i.id " +
-                    "WHERE p.category_sub_id = :subId AND p.id != :prodId LIMIT 4";
+                    "WHERE p.id != :prodId ORDER BY RAND() LIMIT 4";
 
             return handle.createQuery(sql)
-                    .bind("subId", subId)
                     .bind("prodId", prodId)
                     .map((rs, ctx) -> {
                         Product p = new Product();
                         p.setProduct_id(rs.getInt("id"));
                         p.setProduct_name(rs.getString("product_name"));
                         p.setPrice(rs.getDouble("price"));
-                        // Gán đường dẫn ảnh từ cột path vào thuộc tính thumbnail
+                        // PHẢI LÀ "thumbnail_path" vì bạn đặt Alias trong SQL là thumbnail_path
                         p.setThumbnail(rs.getString("thumbnail_path"));
                         return p;
                     }).list();

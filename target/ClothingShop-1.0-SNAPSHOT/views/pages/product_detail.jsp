@@ -352,23 +352,28 @@
                     </div>
                 </div>
                 <div class="row">
+                    <%-- Vòng lặp tự động lấy từng sản phẩm từ danh sách relatedProducts --%>
                     <div class="col_1">
-                        <div class="product_item">
-                            <div class="product_item_pic1">
-                                <%-- Chỉ cần contextPath + thumbnail (vì thumbnail đã chứa /images/...) --%>
-                                <img src="${pageContext.request.contextPath}${rp.thumbnail}" alt="${rp.product_name}">
+                            <div class="product_item">
+                                <div class="product_item_pic2">
+                                    <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
+                                        <img src="<c:url value='/images/product_item_nam/1/1.3/trangphuc_nam.png'/>" alt="${rp.product_name}">
+                                    </a>
+                                </div>
+                                <div class="product_item_text">
+                                    <h6>Quần jeans nam natural form tapered dáng suông </h6>
+                                    <h5>810.000đ</h5>
+
+                                    <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
+                                </div>
                             </div>
-                            <div class="product_item_text">
-                                <h6>Quần jeans nam natural form tapered dáng suông </h6>
-                                <h5>1.510.000đ</h5>
-                                <button class="add-to-cart-btn" onclick="location.href='Product_DetailController?id=${relatedProducts[0].product_id}'">Thêm vào giỏ hàng</button>
-                            </div>
-                        </div>
                     </div>
                     <div class="col_2">
                         <div class="product_item">
                             <div class="product_item_pic2">
-                                <img src="../../images/image_product/anh1.3.png">
+                                <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
+                                    <img src="<c:url value='/images/product_item_nam/7/7.3/trangphuc_nam.png'/>" alt="${rp.product_name}">
+                                </a>
                             </div>
                             <div class="product_item_text">
                                 <h6>Quần jeans nam natural form tapered dáng suông </h6>
@@ -380,9 +385,10 @@
                     </div>
                     <div class="col_3">
                         <div class="product_item sale">
-                            <div class="product_item_pic3">
-                                <img src="../../images/image_product/anh1.2.png">
-
+                            <div class="product_item_pic2">
+                                <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
+                                    <img src="<c:url value='/images/product_item_nam/4/4.10/trangphuc_nam.png'/>" alt="${rp.product_name}">
+                                </a>
                             </div>
                             <div class="product_item_text">
                                 <h6>Áo Sơ Mi Nam Tay Dài Chất Liệu BAMBOO Cao Cấp</h6>
@@ -394,8 +400,10 @@
                     </div>
                     <div class="col_4">
                         <div class="product_item">
-                            <div class="product_item_pic4">
-                                <img src="../../images/image_product/anh1.4.png">
+                            <div class="product_item_pic2">
+                                <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
+                                    <img src="<c:url value='/images/product_item_nam/5/5.10/trangphuc_nam.png'/>" alt="${rp.product_name}">
+                                </a>
                             </div>
                             <div class="product_item_text">
                                 <h6>Quần Short Kaki Nam Cotton Spandex Form Straight</h6>

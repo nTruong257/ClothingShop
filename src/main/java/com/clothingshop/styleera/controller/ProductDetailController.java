@@ -1,5 +1,4 @@
 package com.clothingshop.styleera.controller;
-
 import com.clothingshop.styleera.model.Product;
 import com.clothingshop.styleera.model.Variants;
 import com.clothingshop.styleera.service.ServiceProduct;
@@ -26,53 +25,48 @@ public class ProductDetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         request.setCharacterEncoding("UTF-8");
         String productIdStr = request.getParameter("id");
-
-        if (productIdStr == null || productIdStr.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing product ID.");
-            return;
-        }
+        // 1. Khai báo các biến với giá trị mặc định ở ngoài khối try
+        Product product = null;
+        List<String> imageList = null;
+        List<Variants> variantList = null;
+        List<Product> relatedProducts = null;
 
         try {
-            int productId = Integer.parseInt(productIdStr);
+            if (productIdStr != null && !productIdStr.isEmpty()) {
+                int productId = Integer.parseInt(productIdStr);
+                product = serviceProduct.findById(productId);
 
-            // 1. Lấy thông tin sản phẩm từ Service
-            Product product = serviceProduct.findById(productId);
+                if (product != null) {
+                    imageList = serviceProduct.getImagesByProductId(productId);
+                    variantList = serviceProduct.getVariantsByProductId(productId);
 
-            if (product != null) {
-                // 2. Lấy danh sách ảnh (Gallery)
-                List<String> imageList = serviceProduct.getImagesByProductId(productId);
-
-                // 3. Lấy danh sách biến thể (Size/Màu)
-                List<Variants> variantList = serviceProduct.getVariantsByProductId(productId);
-
-                if (product.getSubcategories() != null) {
-                    int subCategoryId = product.getSubcategories().getParentCategoryId();
-
-                    // Gọi Service để lấy danh sách (loại trừ ID sản phẩm hiện tại)
-                    List<Product> relatedProducts = serviceProduct.getRelatedProducts(subCategoryId, productId);
-                    // Lấy ID từ cột category_sub_id của sản phẩm đang xem
-                    int subId = product.getSubcategories().getId();
-                    List<Product> RelatedProducts = serviceProduct.getRelatedProducts(subId, product.getProduct_id());
-                    // Đẩy danh sách liên quan vào request
-                    request.setAttribute("relatedProducts", relatedProducts);
+                    if (product.getSubcategories() != null) {
+                        int subId = product.getSubcategories().getId();
+                        relatedProducts = serviceProduct.getRelatedProducts(subId, productId);
+                    }
                 }
-                // 4. Đặt dữ liệu vào Request Scope
-                request.setAttribute("product", product);
-                request.setAttribute("imageList", imageList); // Đổi tên cho khớp với code JSP trước đó
-                request.setAttribute("variantList", variantList);
-
-                // 5. Chuyển hướng đến JSP
-                request.getRequestDispatcher("/views/pages/product_detail.jsp").forward(request, response);
-            } else {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found.");
             }
-
         } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID.");
+            // Ghi log nhẹ nhàng cho lỗi định dạng ID
+            getServletContext().log("Định dạng ID không hợp lệ: " + productIdStr);
+        } catch (Exception e) {
+            // Thay thế printStackTrace bằng logging của ServletContext (Robust logging)
+            getServletContext().log("Lỗi hệ thống khi lấy chi tiết sản phẩm ID: " + productIdStr, e);
+        }
+
+        // 2. Xử lý gửi dữ liệu (Nằm ngoài try-catch)
+        if (product != null) {
+            request.setAttribute("product", product);
+            request.setAttribute("imageList", imageList);
+            request.setAttribute("variantList", variantList);
+            request.setAttribute("relatedProducts", relatedProducts);
+
+            // Lệnh forward này thực sự ném ra ServletException, giúp xóa lỗi cảnh báo của bạn
+            request.getRequestDispatcher("/views/pages/product_detail.jsp").forward(request, response);
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Sản phẩm không tồn tại.");
         }
     }
-
 }
