@@ -27,43 +27,40 @@ public class ProductDetailController extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String productIdStr = request.getParameter("id");
-        // 1. Khai báo các biến với giá trị mặc định ở ngoài khối try
+
         Product product = null;
         List<String> imageList = null;
         List<Variants> variantList = null;
         List<Product> relatedProducts = null;
+        List<String> colorList = null;
 
         try {
             if (productIdStr != null && !productIdStr.isEmpty()) {
-                int productId = Integer.parseInt(productIdStr);
-                product = serviceProduct.findById(productId);
+                int product_id = Integer.parseInt(productIdStr);
+                product = serviceProduct.findById(product_id);
 
                 if (product != null) {
-                    imageList = serviceProduct.getImagesByProductId(productId);
-                    variantList = serviceProduct.getVariantsByProductId(productId);
+                    imageList = serviceProduct.getImagesByProductId(product_id);
+                    variantList = serviceProduct.getVariantsByProductId(product_id);
+                    // Truyền product_id vào service
+                    colorList = serviceProduct.getColorsByProductId(product_id);
 
                     if (product.getSubcategories() != null) {
                         int subId = product.getSubcategories().getId();
-                        relatedProducts = serviceProduct.getRelatedProducts(subId, productId);
+                        relatedProducts = serviceProduct.getRelatedProducts(subId, product_id);
                     }
                 }
             }
-        } catch (NumberFormatException e) {
-            // Ghi log nhẹ nhàng cho lỗi định dạng ID
-            getServletContext().log("Định dạng ID không hợp lệ: " + productIdStr);
         } catch (Exception e) {
-            // Thay thế printStackTrace bằng logging của ServletContext (Robust logging)
             getServletContext().log("Lỗi hệ thống khi lấy chi tiết sản phẩm ID: " + productIdStr, e);
         }
 
-        // 2. Xử lý gửi dữ liệu (Nằm ngoài try-catch)
         if (product != null) {
             request.setAttribute("product", product);
             request.setAttribute("imageList", imageList);
             request.setAttribute("variantList", variantList);
             request.setAttribute("relatedProducts", relatedProducts);
-
-            // Lệnh forward này thực sự ném ra ServletException, giúp xóa lỗi cảnh báo của bạn
+            request.setAttribute("colorList", colorList);
             request.getRequestDispatcher("/views/pages/product_detail.jsp").forward(request, response);
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Sản phẩm không tồn tại.");

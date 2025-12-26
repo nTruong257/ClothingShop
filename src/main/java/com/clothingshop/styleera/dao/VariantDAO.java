@@ -24,4 +24,17 @@ public class VariantDAO {
                         .list()
         );
     }
+    // Lấy danh sách màu sắc CHỈ của sản phẩm đang xem
+    public List<String> getColorsByProductId(int product_id) { // Đổi tên tham số ở đây
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        return jdbi.withHandle(handle ->
+                // Sử dụng product_id cho cả tên cột và tên biến bind
+                handle.createQuery("SELECT DISTINCT color FROM variants WHERE product_id = :product_id")
+                        .bind("product_id", product_id)
+                        .mapTo(String.class)
+                        .list()
+        );
+
+    }
+
 }

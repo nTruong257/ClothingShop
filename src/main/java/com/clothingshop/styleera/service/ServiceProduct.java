@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ServiceProduct {
     private final ProductDAO productDAO = new ProductDAO();
-
+    private final com.clothingshop.styleera.dao.VariantDAO variantDAO = new com.clothingshop.styleera.dao.VariantDAO();
     public List<Product> findAll(){
         return productDAO.findAll();
     }
@@ -38,8 +38,9 @@ public class ServiceProduct {
 
     public List<Variants> getVariantsByProductId(int id) {return productDAO.findVariantsByProductId(id);}
 
-    public List<Product> getRelatedProducts(int subId, int prodId) {return productDAO.findRelatedProducts(subId, prodId);
-    }
-    public Product getProductDetail(int productId) {return productDAO.findProductDetailById(productId);
-    }
+    public List<Product> getRelatedProducts(int subId, int prodId) {return productDAO.findRelatedProducts(subId, prodId);}
+
+    public Product getProductDetail(int productId) {return productDAO.findProductDetailById(productId);}
+
+    public List<String> getColorsByProductId(int product_id) {return variantDAO.getColorsByProductId(product_id);}
     }

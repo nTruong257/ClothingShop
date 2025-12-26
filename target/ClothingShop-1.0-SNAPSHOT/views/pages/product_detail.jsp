@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 
 <body>
 <!-- ===== HEADER ===== -->
-<jsp:include page="/views/layout/header.jsp" />
+<jsp:include page="/views/layout/header.jsp"/>
 
 <!-- ===== MAIN CONTENT ===== -->
 <main class="main-content">
@@ -84,31 +84,31 @@
 
                     <!-- COLOR -->
                     <div class="product_detail_color">
-                        <span>Color: <strong id="current-color-text">Chưa chọn</strong></span>
-                        <div class="color-wrapper" style="display: flex; gap: 8px; margin-top: 15px;">
-                            <c:forEach items="${colorList}" var="colorName">
-                                <img src="images/image_product/${colorName}.png"
-                                     class="color-option"
-                                     title="${colorName}"
-                                     onclick="selectColor('${colorName}', this)"
-                                     onerror="this.src='images/image_product/default.png'"
-                                     style="width: 35px; height: 35px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; cursor: pointer;">
+                        <span>Color:</span>
+                        <div class="mt-2">
+                            <c:forEach items="${colorList}" var="c">
+                                <button type="button" class="btn btn-outline-secondary btn-sm me-2 color-choice"
+                                        onclick="pickColor(this, '${c}')">${c}</button>
                             </c:forEach>
                         </div>
                     </div>
+                    <input type="hidden" name="color" id="finalColor" value="">
+
                     <div class="product_detail_quantity">
                         <label for="quantity">Số lượng:</label>
                         <button type="button" id="btn-decrease">−</button>
                         <input type="number" id="quantity" value="1" min="1" readonly>
                         <button type="button" id="btn-increase">+</button>
                     </div>
+
+                    <div class="product_detail_actions"
+                         style="margin-top: 25px;"> <%-- Gom nút vào div riêng để dễ căn chỉnh --%>
+                        <button type="button" class="btn btn-primary validate_order"
+                                onclick="window.location.href='${root}/CheckoutController'">Mua hàng
+                        </button>
+                        <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng</a>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary validate_order"
-                        onclick="window.location.href='${root}/CheckoutController'">
-                    Mua hàng
-                </button>
-                <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng
-                </a>
             </div>
         </div>
     </div>
@@ -354,25 +354,27 @@
                 <div class="row">
                     <%-- Vòng lặp tự động lấy từng sản phẩm từ danh sách relatedProducts --%>
                     <div class="col_1">
-                            <div class="product_item">
-                                <div class="product_item_pic2">
-                                    <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
-                                        <img src="<c:url value='/images/product_item_nam/1/1.3/trangphuc_nam.png'/>" alt="${rp.product_name}">
-                                    </a>
-                                </div>
-                                <div class="product_item_text">
-                                    <h6>Quần jeans nam natural form tapered dáng suông </h6>
-                                    <h5>810.000đ</h5>
-
-                                    <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-                                </div>
+                        <div class="product_item">
+                            <div class="product_item_pic2">
+                                <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
+                                    <img src="<c:url value='/images/product_item_nam/1/1.3/trangphuc_nam.png'/>"
+                                         alt="${rp.product_name}">
+                                </a>
                             </div>
+                            <div class="product_item_text">
+                                <h6>Quần jeans nam natural form tapered dáng suông </h6>
+                                <h5>810.000đ</h5>
+
+                                <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="col_2">
                         <div class="product_item">
                             <div class="product_item_pic2">
                                 <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
-                                    <img src="<c:url value='/images/product_item_nam/7/7.3/trangphuc_nam.png'/>" alt="${rp.product_name}">
+                                    <img src="<c:url value='/images/product_item_nam/7/7.3/trangphuc_nam.png'/>"
+                                         alt="${rp.product_name}">
                                 </a>
                             </div>
                             <div class="product_item_text">
@@ -387,7 +389,8 @@
                         <div class="product_item sale">
                             <div class="product_item_pic2">
                                 <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
-                                    <img src="<c:url value='/images/product_item_nam/4/4.10/trangphuc_nam.png'/>" alt="${rp.product_name}">
+                                    <img src="<c:url value='/images/product_item_nam/4/4.10/trangphuc_nam.png'/>"
+                                         alt="${rp.product_name}">
                                 </a>
                             </div>
                             <div class="product_item_text">
@@ -402,7 +405,8 @@
                         <div class="product_item">
                             <div class="product_item_pic2">
                                 <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
-                                    <img src="<c:url value='/images/product_item_nam/5/5.10/trangphuc_nam.png'/>" alt="${rp.product_name}">
+                                    <img src="<c:url value='/images/product_item_nam/5/5.10/trangphuc_nam.png'/>"
+                                         alt="${rp.product_name}">
                                 </a>
                             </div>
                             <div class="product_item_text">
@@ -420,14 +424,15 @@
 </main>
 
 <!-- ===== FOOTER ===== -->
-<jsp:include page="/views/layout/footer.jsp" />
+<jsp:include page="/views/layout/footer.jsp"/>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Custom JavaScript -->
 <script src="../../js/main.js"></script>
-<script src="${root}/js/product_detail.js"></script>
+<%-- Sử dụng pageContext để lấy tên dự án tự động --%>
+<script src="${pageContext.request.contextPath}/js/product_detail.js"></script>
 </body>
 
 </html>
