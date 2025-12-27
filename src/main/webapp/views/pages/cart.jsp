@@ -43,6 +43,7 @@
                             </tr>
                             </thead>
                             <tbody>
+<%--                            Hiển thị danh sách sản phẩm được thêm vào giỏ hàng--%>
                             <c:choose>
                                 <c:when test="${sessionScope.cart == null || sessionScope.cart.item.size() == 0}">
                                     <tr>
@@ -95,6 +96,7 @@
                                                     <div class="cart_price">${item.quantity * item.variant.product.price }VNĐ</div>
                                                 </div>
                                             </td>
+<%--                                            Chức năng xoá sản phẩm ra khỏi giỏ hàng--%>
                                             <td>
                                                 <form method="post" action="${pageContext.request.contextPath}/del-item">
                                                     <input type="hidden" name="variantId" value="${item.variant.variantId}">
@@ -103,6 +105,7 @@
 
                                             </td>
                                         </tr>
+<%--                                        tăng biến count lên 1 khi thêm nhiều vào giỏ hàng--%>
                                         <c:set var="count" value="${count + 1}"/>
                                     </c:forEach>
                                 </c:otherwise>

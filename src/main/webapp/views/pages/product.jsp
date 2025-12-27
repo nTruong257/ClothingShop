@@ -149,7 +149,7 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </div>
-                                    // Nút thêm vào giỏ hàng
+<%--                                    // Nút thêm vào giỏ hàng--%>
                                 <a class="btn-cart" type="button" href="${pageContext.request.contextPath}/addcart?variantId=<%=p.getDefaultVariantId()%>&quantity=1">
                                     <i class="fas fa-shopping-cart"></i>
                                 </a>
@@ -169,7 +169,7 @@
         </section>
     </div>
 </main>
-// Hiển thị thông báo thêm vào giỏ hàng
+<%--Hiển thị thông báo thêm vào giỏ hàng--%>
 <c:if test="${not empty sessionScope.successMsg}">
     <div id="successAlert" class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-4"
          role="alert" style="z-index: 9999;">
@@ -184,7 +184,7 @@
 <jsp:include page="/views/layout/footer.jsp"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-//Hiển thị hộp thông báo thêm giỏ hàng ra 1 giây
+<%--Hiển thị hộp thông báo thêm giỏ hàng ra 1 giây--%>
 <script>
     setTimeout(() => {
         const alert = document.getElementById("successAlert");

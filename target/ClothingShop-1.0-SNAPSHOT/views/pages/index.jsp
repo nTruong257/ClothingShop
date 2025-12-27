@@ -94,26 +94,38 @@
                             // Kiểm tra null cho ảnh
                             String imgPath = (p.getThumbnail() != null) ? request.getContextPath() + p.getThumbnail() : request.getContextPath() + "/images/no-image.png";
                 %>
-                <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
+    <%--                Chỉnh sửa card giao diện Hàng mới về--%>
                     <div class="product-card">
-                        <div class="product-image">
-                            <span class="product-badge badge-new">NEW</span>
-                            <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>">
-                        </div>
-                        <div class="product-info">
-                            <h4><%=p.getProduct_name()%>
-                            </h4>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>"
+                           class="product-card-link">
+
+                            <div class="product-image">
+                                <span class="product-badge badge-new">NEW</span>
+                                <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>">
                             </div>
+
+                            <div class="product-info">
+                                <h4><%=p.getProduct_name()%></h4>
+                            </div>
+                        </a>
+
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+
                             <div class="product-price">
                                 <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
                             </div>
-                            <button class="btn-cart"><i class="fas fa-shopping-cart"></i></button>
+                            <%--Chỉnh sửa Nút thêm vào giỏ hàng--%>
+                            <a class="btn-cart" type="button"
+                               href="${pageContext.request.contextPath}/addcart?variantId=<%=p.getDefaultVariantId()%>&quantity=1">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </div>
                     </div>
-                </a>
                 <% }
                 }
                 %>
@@ -141,8 +153,10 @@
                                     ? request.getContextPath() + p.getThumbnail()
                                     : request.getContextPath() + "/images/no-image.png";
                 %>
-                <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
-                    <div class="product-card">
+                <%-- Chỉnh sửa card giao diện Sản Phẩm Bán Chạy --%>
+                <div class="product-card">
+                    <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
+
                         <div class="product-image">
                             <span class="product-badge badge-bestseller">BEST SELLER</span>
                             <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>">
@@ -150,17 +164,21 @@
                         <div class="product-info">
                             <h4><%=p.getProduct_name()%>
                             </h4>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <div class="product-price">
-                                <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
-                            </div>
-                            <button class="btn-cart"><i class="fas fa-shopping-cart"></i></button>
                         </div>
+                    </a>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                </a>
+                    <div class="product-price">
+                        <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
+                    </div>
+                        <%--Chỉnh sửa Nút thêm vào giỏ hàng--%>
+                    <a class="btn-cart" type="button"
+                       href="${pageContext.request.contextPath}/addcart?variantId=<%=p.getDefaultVariantId()%>&quantity=1">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
                 <% }
                 } else {
                 %>
@@ -208,31 +226,42 @@
     <section class="categories-section">
         <div class="categories-container">
 
-            <c:forEach items="${parents}" var="p">
-                <div class="category-group">
-                    <div class="category-group-header">
-                        <div class="category-icon ${p.id == 1 ? 'male' : (p.id == 2 ? 'female' : 'couple')}">
-                            <i class="fas ${p.id == 1 ? 'fa-mars' : (p.id == 2 ? 'fa-venus' : 'fa-heart')}"></i>
+            <c:if test="${not empty parents}">
+                <c:forEach items="${parents}" var="p">
+                    <div class="category-group">
+                        <div class="category-group-header">
+                            <div class="category-icon ${p.id == 1 ? 'male' : (p.id == 2 ? 'female' : 'couple')}">
+                                <i class="fas ${p.id == 1 ? 'fa-mars' : (p.id == 2 ? 'fa-venus' : 'fa-heart')}"></i>
+                            </div>
+                            <h2>Thời Trang ${p.name}</h2>
                         </div>
-                        <h2>Thời Trang ${p.name}</h2>
-                    </div>
 
-                    <div class="category-items-grid">
-                        <c:forEach items="${p.subCategories}" var="sub">
-                            <a href="${root}/product?cateId=${sub.id}" class="category-item-card">
-                                <div class="category-item-image">
-                                    <img src="${root}${sub.image != null ? sub.image : '/images/no-image.png'}"
-                                         alt="${sub.name}" loading="lazy">
-                                </div>
-                                <div class="category-item-content">
-                                    <h4>${sub.name}</h4>
-                                    <p>${sub.description}</p>
-                                </div>
-                            </a>
-                        </c:forEach>
+                        <div class="category-items-grid">
+                            <c:if test="${not empty p.subCategories}">
+                                <c:forEach items="${p.subCategories}" var="sub">
+                                    <c:set var="categoryImg" value="${not empty sub.image ? sub.image : '/images/no-image.png'}"/>
+                                    <a href="${root}/product?cateId=${sub.id}" class="category-item-card">
+                                        <div class="category-item-image">
+                                            <img src="${root}${categoryImg}"
+                                                 alt="${sub.name}" loading="lazy">
+                                        </div>
+                                        <div class="category-item-content">
+                                            <h4>${sub.name}</h4>
+                                            <p>${sub.description}</p>
+                                        </div>
+                                    </a>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${empty p.subCategories}">
+                                <p class="text-center">Đang cập nhật danh mục...</p>
+                            </c:if>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </c:if>
+            <c:if test="${empty parents}">
+                <p class="text-center">Đang cập nhật danh mục sản phẩm...</p>
+            </c:if>
 
         </div>
     </section>

@@ -17,7 +17,7 @@ public class AddCart extends HttpServlet {
         String quantityRaw  = request.getParameter("quantity");
 
         if (variantIdRaw == null || quantityRaw == null) {
-            response.sendRedirect("error.jsp");
+            response.sendRedirect(request.getContextPath() + "/views/pages/error.jsp");
             return;
         }
 
@@ -28,7 +28,7 @@ public class AddCart extends HttpServlet {
             variantId = Integer.parseInt(variantIdRaw);
             quantity = Integer.parseInt(quantityRaw);
         } catch (NumberFormatException e) {
-            response.sendRedirect("error.jsp");
+            response.sendRedirect(request.getContextPath() + "/views/pages/error.jsp");
             return;
         }
 
