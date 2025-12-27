@@ -277,6 +277,20 @@
 <!-- Custom JavaScript -->
 <script src="${root}/js/main.js"></script>
 <script src="${root}/js/home.js"></script>
+
+<%--Hiển thị thông báo thêm vào giỏ hàng--%>
+<c:if test="${not empty sessionScope.successMsg}">
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-4"
+         role="alert" style="z-index: 9999;">
+        <i class="fa-solid fa-circle-check"></i>
+            ${sessionScope.successMsg}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <c:remove var="successMsg" scope="session"/>
+</c:if>
+<%--Hiển thị hộp thông báo thêm giỏ hàng ra 1 giây--%>
+<script src="${root}/js/product.js"></script>
 <script src="login.jsp"></script>
 
 </body>

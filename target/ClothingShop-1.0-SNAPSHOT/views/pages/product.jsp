@@ -131,16 +131,19 @@
                                     : request.getContextPath() + "/images/no-image.png";
                 %>
                 <div class="col-lg-4 col-md-6 col-6">
-                    <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
                         <div class="product-card">
-                            <div class="product-image">
-                                <span class="product-badge badge-new">NEW</span>
-                                <img src="<%= imgPath %>" alt="<%=p.getProduct_name()%>">
-                            </div>
+                            <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
 
-                            <div class="product-info">
-                                <h5 class="product-name"><%=p.getProduct_name()%></h5>
-                                <p class="product-price"><%=String.format("%,.0f", p.getPrice())%> VNĐ</p>
+                                <div class="product-image">
+                                    <span class="product-badge badge-new">NEW</span>
+                                    <img src="<%= imgPath %>" alt="<%=p.getProduct_name()%>">
+                                </div>
+
+                                <div class="product-info">
+                                    <h5 class="product-name"><%=p.getProduct_name()%></h5>
+                                    <p class="product-price"><%=String.format("%,.0f", p.getPrice())%> VNĐ</p>
+                                </div>
+                          </a>
 
                                 <div class="product-rating">
                                     <i class="fas fa-star"></i>
@@ -150,12 +153,14 @@
                                     <i class="fas fa-star"></i>
                                 </div>
 <%--                                    // Nút thêm vào giỏ hàng--%>
-                                <a class="btn-cart" type="button" href="${pageContext.request.contextPath}/addcart?variantId=<%=p.getDefaultVariantId()%>&quantity=1">
+                                <button class="btn-cart"
+                                        type="button"
+                                        <%= p.getDefaultVariantId() == null ? "disabled" : "" %>
+                                        onclick="addToCart(<%= p.getDefaultVariantId() %>)">
                                     <i class="fas fa-shopping-cart"></i>
-                                </a>
-                            </div>
+                                </button>
                         </div>
-                    </a>
+
                 </div>
                 <%     }
                 } else {
@@ -183,17 +188,12 @@
 
 <jsp:include page="/views/layout/footer.jsp"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<%--Hiển thị hộp thông báo thêm giỏ hàng ra 1 giây--%>
+<%--Truyền contextPath của web app từ JSP sang JavaScript--%>
 <script>
-    setTimeout(() => {
-        const alert = document.getElementById("successAlert");
-        if (alert) {
-            const bsAlert = new bootstrap.Alert(alert);
-            bsAlert.close();
-        }
-    }, 1000);
+    const contextPath = "<%= request.getContextPath() %>";
 </script>
+<%--Xử lý sự kiện trong product--%>
+<script src="${root}/js/product.js"></script>
 
 <script src="${root}/js/main.js"></script>
 

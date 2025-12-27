@@ -8,61 +8,48 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "AddCart", value = "/addcart")
 public class AddCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String variantIdRaw = request.getParameter("variantId");
-        String quantityRaw  = request.getParameter("quantity");
-
-        if (variantIdRaw == null || quantityRaw == null) {
-            response.sendRedirect(request.getContextPath() + "/views/pages/error.jsp");
-            return;
-        }
-
-        int variantId;
-        int quantity;
-
-        try {
-            variantId = Integer.parseInt(variantIdRaw);
-            quantity = Integer.parseInt(quantityRaw);
-        } catch (NumberFormatException e) {
-            response.sendRedirect(request.getContextPath() + "/views/pages/error.jsp");
-            return;
-        }
-
-        if (quantity <= 0) {
-            quantity = 1;
-        }
-
-        HttpSession session = request.getSession();
-        Cart cart = (Cart) session.getAttribute("cart");
-
-        if (cart == null) {
-            cart = new Cart();
-        }
-
-        VariantService variantService = new VariantService();
-        Variants variant = variantService.getById(variantId);
-
-        if (variant == null) {
-            request.setAttribute("msg", "Sản phẩm không tồn tại");
-            request.getRequestDispatcher("/views/pages/cart.jsp").forward(request, response);
-            return;
-        }
-
-        cart.addItem(variant, quantity);
-        session.setAttribute("cart", cart);
-        session.setAttribute("successMsg", "Đã thêm sản phẩm vào giỏ hàng!");
-
-        // Quay lại trang trước
-        String referer = request.getHeader("Referer");
-        response.sendRedirect(referer != null ? referer : "home");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        PrintWriter out = response.getWriter();
+
+        try {
+            int variantId = Integer.parseInt(request.getParameter("variantId"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+            HttpSession session = request.getSession();
+            Cart cart = (Cart) session.getAttribute("cart");
+            if (cart == null) cart = new Cart();
+
+            VariantService variantService = new VariantService();
+            Variants variant = variantService.getById(variantId);
+
+            if (variant == null) {
+                out.print("{\"status\":\"error\",\"msg\":\"Sản phẩm không tồn tại\"}");
+                return;
+            }
+
+            cart.addItem(variant, quantity);
+            session.setAttribute("cart", cart);
+            out.print("{"
+                    + "\"status\":\"success\","
+                    + "\"msg\":\"Đã thêm vào giỏ hàng thành công\","
+                    + "\"totalQuantity\":" + cart.getTotalQuantity()
+                    + "}");
+
+        } catch (Exception e) {
+            out.print("{\"status\":\"error\",\"msg\":\"Lỗi dữ liệu\"}");
+        }
 
     }
 }
