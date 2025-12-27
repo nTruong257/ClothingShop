@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -61,7 +62,7 @@
                 <h3 class="product_price">
                     <fmt:formatNumber value="${product.price}" type="number" maxFractionDigits="0"/>đ
                     <span style="text-decoration: line-through; margin-left: 10px; font-size: 0.8em; color: gray;">
-                    <fmt:formatNumber value="${product.price - 100000}" type="number" maxFractionDigits="0"/>đ
+
                     </span>
                 </h3>
 
@@ -71,43 +72,47 @@
                 </p>
 
                 <div class="product_detail_option">
-
-                    <!-- SIZE -->
-                    <div class="product_detail_size">
-                        <span>Size:</span>
-                        <label>S</label>
-                        <label>M</label>
-                        <label>L</label>
-                        <label class="active">XL</label>
-                        <label>XXL</label>
-                    </div>
-
-                    <!-- COLOR -->
-                    <div class="product_detail_color">
-                        <span>Color:</span>
-                        <div class="mt-2">
-                            <c:forEach items="${colorList}" var="c">
-                                <button type="button" class="btn btn-outline-secondary btn-sm me-2 color-choice"
-                                        onclick="pickColor(this, '${c}')">${c}</button>
-                            </c:forEach>
+                    <form action="${root}/CheckoutController" method="POST" id="checkoutForm">
+                        <!-- SIZE -->
+                        <div class="product_detail_size">
+                            <label class="size-label">S</label>
+                            <label class="size-label">M</label>
+                            <label class="size-label">L</label>
+                            <label class="size-label active">XL</label>
+                            <label class="size-label">XXL</label>
                         </div>
-                    </div>
-                    <input type="hidden" name="color" id="finalColor" value="">
 
-                    <div class="product_detail_quantity">
-                        <label for="quantity">Số lượng:</label>
-                        <button type="button" id="btn-decrease">−</button>
-                        <input type="number" id="quantity" value="1" min="1" readonly>
-                        <button type="button" id="btn-increase">+</button>
-                    </div>
+                        <!-- COLOR -->
+                        <div class="product_detail_color">
+                            <span>Color:</span>
+                            <div class="mt-2">
+                                <c:forEach items="${colorList}" var="c">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm me-2 color-choice"
+                                            onclick="pickColor(this, '${c}')">${c}</button>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selectedColor" id="finalColor" value="">
 
-                    <div class="product_detail_actions"
-                         style="margin-top: 25px;"> <%-- Gom nút vào div riêng để dễ căn chỉnh --%>
-                        <button type="button" class="btn btn-primary validate_order"
-                                onclick="window.location.href='${root}/CheckoutController'">Mua hàng
-                        </button>
-                        <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng</a>
-                    </div>
+                        <div class="product_detail_quantity">
+                            <label for="quantity">Số lượng:</label>
+                            <button type="button" id="btn-decrease">−</button>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" readonly>
+                            <button type="button" id="btn-increase">+</button>
+                        </div>
+                        <input type="hidden" name="productName" value="${product.product_name}">
+                        <input type="hidden" name="productImage" id="hiddenProductImage" value="${imageList[0]}">
+                        <input type="hidden" name="productPrice" value="${product.price}">
+                        <input type="hidden" name="selectedSize" id="finalSize" value="XL">
+
+                        <div class="product_detail_actions"
+                             style="margin-top: 25px;"> <%-- Gom nút vào div riêng để dễ căn chỉnh --%>
+                            <button type="submit" class="btn btn-primary validate_order">
+                                Mua hàng
+                            </button>
+                            <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

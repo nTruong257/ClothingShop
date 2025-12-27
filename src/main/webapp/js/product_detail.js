@@ -7,6 +7,7 @@ function pickColor(element, colorValue) {
     btn.style.backgroundColor = "";
     btn.style.color = "";
     btn.style.borderColor = "";
+    document.getElementById('finalColor').value = colorValue;
   });
 
   // Highlight nút màu đỏ cam #ff6666
@@ -22,7 +23,7 @@ function pickColor(element, colorValue) {
 // 2. Các sự kiện khác bọc trong DOMContentLoaded để tránh lỗi null
 document.addEventListener("DOMContentLoaded", () => {
   // Xử lý chọn Size (Label)
-  const sizeLabels = document.querySelectorAll('.size-label');
+  const sizeLabels = document.querySelectorAll('.product_detail_size label');
   const finalSize = document.getElementById('finalSize');
 
   sizeLabels.forEach(label => {
