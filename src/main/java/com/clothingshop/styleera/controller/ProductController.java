@@ -1,9 +1,8 @@
 package com.clothingshop.styleera.controller;
 
-import com.clothingshop.styleera.dao.CategoryDAO;
-import com.clothingshop.styleera.dao.VariantDAO;
 import com.clothingshop.styleera.model.Product;
-import com.clothingshop.styleera.service.ServiceProduct;
+import com.clothingshop.styleera.service.ProductService;
+import com.clothingshop.styleera.service.VariantService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,10 +17,11 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 1. Khởi tạo Service/DAO
-        ServiceProduct serviceProduct = new ServiceProduct();
+        ProductService productService = new ProductService();
         com.clothingshop.styleera.dao.ProductDAO productDAO = new com.clothingshop.styleera.dao.ProductDAO();
         com.clothingshop.styleera.dao.CategoryDAO categoryDAO = new com.clothingshop.styleera.dao.CategoryDAO();
         com.clothingshop.styleera.dao.VariantDAO variantDAO = new com.clothingshop.styleera.dao.VariantDAO();
+        VariantService variantService = new VariantService();
 
         List<Product> products = null;
         String title = "Tất cả sản phẩm";
@@ -35,13 +35,13 @@ public class ProductController extends HttpServlet {
             if (cateIdParam != null) {
                 // Lọc theo danh mục con
                 int cateId = Integer.parseInt(cateIdParam);
-                products = serviceProduct.findBySubCategoryId(cateId);
+                products = productService.findBySubCategoryId(cateId);
                 title = categoryDAO.getSubNameById(cateId);
 
             } else if (parentIdParam != null) {
                 // Lọc theo danh mục cha
                 int parentId = Integer.parseInt(parentIdParam);
-                products = serviceProduct.findByParentCategoryId(parentId);
+                products = productService.findByParentCategoryId(parentId);
                 String parentName = categoryDAO.getParentNameById(parentId);
                 title = "Tất cả sản phẩm " + parentName;
 
@@ -56,10 +56,17 @@ public class ProductController extends HttpServlet {
 
             } else {
                 // Mặc định lấy tất cả
-                products = serviceProduct.findAll();
+                products = productService.findAll();
             }
         } catch (NumberFormatException e) {
-            products = serviceProduct.findAll();
+            products = productService.findAll();
+        }
+        if(products != null && !products.isEmpty()) {
+            for (Product p: products) {
+                Integer defaultVariantId = variantService.getDefaultVariantId(p.getProduct_id());
+                p.setDefaultVariantId(defaultVariantId);
+
+            }
         }
 
         // 3. Đẩy dữ liệu ra JSP

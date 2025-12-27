@@ -32,54 +32,44 @@
                     </div>
 
                     <div class="auth-body">
-                        <form id="loginForm" onsubmit="handleLogin(event)">
+                        <form id="loginForm" action="${root}/login" method="post">
+
+                            <c:if test="${not empty error}">
+                                <div class="alert alert-danger text-center mb-3">
+                                        ${error}
+                                </div>
+                            </c:if>
+                            <c:if test="${not empty message}">
+                                <div class="alert alert-success text-center mb-3">
+                                        ${message}
+                                </div>
+                            </c:if>
+
                             <div class="form-group">
                                 <label class="form-label">Email <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-envelope form-control-icon"></i>
-                                    <input type="email" class="auth-input" id="loginEmail"
-                                           placeholder="example@email.com" required>
+                                    <input type="email" class="auth-input" name="email" id="loginEmail" placeholder="example@email.com" required>
                                 </div>
-                                <div class="error-message" id="loginEmailError">Vui lòng nhập email hợp lệ</div>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Mật khẩu <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-lock form-control-icon"></i>
-                                    <input type="password" class="auth-input" id="loginPassword"
-                                           placeholder="Nhập mật khẩu" required>
-                                    <button type="button" class="password-toggle"
-                                            onclick="togglePassword('loginPassword')">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </div>
-                                <div class="error-message" id="loginPasswordError">Mật khẩu phải có ít nhất 6 ký tự
+                                    <input type="password" class="auth-input" name="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
                                 </div>
                             </div>
 
                             <div class="form-options">
                                 <div class="remember-me">
-                                    <input type="checkbox" id="rememberMe">
+                                    <input type="checkbox" id="rememberMe" name="remember">
                                     <label for="rememberMe">Ghi nhớ đăng nhập</label>
                                 </div>
-                                <a href="forgot-password.jsp" class="forgot-link" onclick="showPage('forgot'); return false;">Quên mật khẩu?</a>
                             </div>
 
                             <button type="submit" class="auth-btn">Đăng Nhập</button>
 
-                            <div class="divider">
-                                <span>Hoặc đăng nhập với</span>
-                            </div>
-
-                            <div class="social-login">
-                                <button type="button" class="social-btn facebook">
-                                    <i class="fab fa-facebook-f"></i> Facebook
-                                </button>
-                                <button type="button" class="social-btn google">
-                                    <i class="fab fa-google"></i> Google
-                                </button>
-                            </div>
                         </form>
                     </div>
 

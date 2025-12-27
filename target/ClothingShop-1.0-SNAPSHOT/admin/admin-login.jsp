@@ -1,3 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -43,9 +46,6 @@
 
             <button type="submit" class="btn btn-login mb-3">Đăng Nhập</button>
 
-            <div class="text-center text-muted small">
-                <p class="mb-0">Phiên bản test: sử dụng bất kỳ email/password nào</p>
-            </div>
         </form>
 
         <div class="login-footer">Chưa có tài khoản?

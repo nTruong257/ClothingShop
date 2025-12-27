@@ -14,6 +14,7 @@ public class Product implements Serializable {
     private Timestamp created_at;
     private Timestamp updated_at;
     private String thumbnail;
+    private Integer defaultVariantId;
 
     public  Product(){
 
@@ -31,6 +32,13 @@ public class Product implements Serializable {
         this.updated_at = updated_at;
     }
 
+    public Integer getDefaultVariantId() {
+        return defaultVariantId;
+    }
+
+    public void setDefaultVariantId(Integer defaultVariantId) {
+        this.defaultVariantId = defaultVariantId;
+    }
 
     public int getProduct_id() {
         return product_id;

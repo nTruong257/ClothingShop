@@ -1,5 +1,3 @@
-<%@ page import="com.clothingshop.styleera.model.CartItem" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
@@ -35,66 +33,80 @@
                         <table class="table">
                             <thead>
                             <tr class="table-dark">
-                                <th colspan="2">SẢN PHẨM</th>
+                                <th>STT</th>
+                                <th>Hình Ảnh</th>
+                                <th>SẢN PHẨM</th>
+                                <th>GIÁ TIỀN</th>
                                 <th>SỐ LƯỢNG</th>
                                 <th>TỔNG GIÁ TIỀN</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <%
-                                List<CartItem> cartitem = (List<CartItem>) request.getAttribute("cartItems");
-                                if(cartitem == null || cartitem.isEmpty()){
-                            %>
-                            <tr>
-                                <td colspan="5" class="text-center">
-                                    <p>Giỏ hàng bạn đang trống</p>
-                                </td>
-                            </tr>
-                            <%
-                            } else {
+                            <c:choose>
+                                <c:when test="${sessionScope.cart == null || sessionScope.cart.item.size() == 0}">
+                                    <tr>
+                                        <td colspan="7" class="text-center py-4">
+                                            <i class="fa-solid fa-cart-shopping fa-2x mb-2"></i>
+                                            <p class="mt-2 mb-0 fw-bold">Giỏ hàng của bạn đang trống</p>
+                                        </td>
+                                    </tr>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:set var="count" value="1"/>
+                                    <c:forEach items="${sessionScope.cart.item}" var="item">
+                                        <tr>
+                                            <td>${count}</td>
+                                            <td>
+                                                <div class="product-item img_product">
+                                                    <img src="${pageContext.request.contextPath}${item.variant.product.thumbnail}"
+                                                         alt="${item.variant.product.product_name}"
+                                                         style="width: 100px"/>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="product-item">
+                                                    <p>${item.variant.product.product_name}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="product-item">
+                                                    <h6>${item.variant.product.price} VNĐ</h6>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <form method="post"
+                                                      action="${pageContext.request.contextPath}/update-cart"
+                                                      class="quantity-item">
 
-                                for (CartItem c : cartitem){
+                                                    <input type="hidden" name="variantId"
+                                                           value="${item.variant.variantId}" />
 
-                            %>
-                            <tr>
-                                <td>
-                                    <div class="product-item img_product">
-                                        <img src="${root}<%=c.getImageUrl()%>"/>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="product-item">
-                                        <p><%= c.getProductName() %></p>
-                                        <h6><%= c.getPrice() %></h6>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="quantity-item">
-                                        <span class="fa-solid fa-less-than"></span>
-                                        <input type="text" value="<%= c.getQuantity() %>"/>
-                                        <span class="fa-solid fa-greater-than"></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="price-item">
-                                        <div class="cart_price"><%= c.getTotalPrice()%> VNĐ</div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"
-                                       onclick="removeItemCart(<%= c.getUserId()%>)"
-                                    ></i>
+                                                    <button type="submit" name="action" value="decrease" class="qty-btn"><i class="fa-solid fa-minus"></i></button>
 
-                                </td>
-                            </tr>
-                            <%
-                                    }
+                                                    <input type="text" name="quantity"
+                                                           value="${item.quantity}" size="2"/>
 
-                                }
+                                                    <button type="submit" name="action" value="increase" class="qty-btn"><i class="fa-solid fa-plus"></i></button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <div class="price-item">
+                                                    <div class="cart_price">${item.quantity * item.variant.product.price }VNĐ</div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <form method="post" action="${pageContext.request.contextPath}/del-item">
+                                                    <input type="hidden" name="variantId" value="${item.variant.variantId}">
+                                                    <button type="submit"> <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i></button>
+                                                </form>
 
-                            %>
-
+                                            </td>
+                                        </tr>
+                                        <c:set var="count" value="${count + 1}"/>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                             </tbody>
                         </table>
                     </div>
@@ -110,11 +122,11 @@
                         <ul>
                             <li>
                                 <span class="label">TỔNG ĐƠN HÀNG:</span>
-                                <span class="value"><strong>0</strong></span>
+                                <span class="value"><strong>${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 1}</strong></span>
                             </li>
                             <li>
                                 <span class="label">TỔNG GIÁ TIỀN:</span>
-                                <span class="value"><strong>0 VNĐ</strong></span>
+                                <span class="value"><strong>${sessionScope.cart.total()} VNĐ</strong></span>
                             </li>
                         </ul>
                         <div class="cart-actions">

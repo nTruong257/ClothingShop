@@ -5,7 +5,7 @@ import com.clothingshop.styleera.model.Product;
 import com.clothingshop.styleera.model.Variants;
 import java.util.List;
 
-public class ServiceProduct {
+public class ProductService {
     private final ProductDAO productDAO = new ProductDAO();
     private final com.clothingshop.styleera.dao.VariantDAO variantDAO = new com.clothingshop.styleera.dao.VariantDAO();
     public List<Product> findAll(){

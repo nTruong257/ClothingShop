@@ -1,7 +1,7 @@
 package com.clothingshop.styleera.controller;
 import com.clothingshop.styleera.model.Product;
 import com.clothingshop.styleera.model.Variants;
-import com.clothingshop.styleera.service.ServiceProduct;
+import com.clothingshop.styleera.service.ProductService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,11 +15,11 @@ import java.util.List;
 public class ProductDetailController extends HttpServlet {
 
     // Thay đổi từ ProductDetailDao sang ServiceProduct
-    private ServiceProduct serviceProduct;
+    private ProductService serviceProduct;
 
     @Override
     public void init() throws ServletException {
-        this.serviceProduct = new ServiceProduct();
+        this.serviceProduct = new ProductService();
     }
 
     @Override
