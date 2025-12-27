@@ -169,7 +169,7 @@ public class ProductDAO {
                     .list();
         });
     }
-    // 11
+    // 11 lay san pham lien quan
     public List<Product> findRelatedProducts(int subId, int prodId) {
         return JDBIConnector.getJdbi().withHandle(handle -> {
             // SQL lấy ngẫu nhiên 4 sản phẩm, trừ sản phẩm hiện tại đang xem

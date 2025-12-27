@@ -231,7 +231,8 @@
                     <div class="review-content">
                         <div class="item_top">
                             <div class="user">
-                                <img src="../../images/image_product/user.png">
+                                <img src="<c:url value='/images/image_product/user.png'/>"
+                                     alt="${rp.product_name}">
 
                                 <div class="infos">
                                     <p><span class="reviews">T***h</span></p>
@@ -280,8 +281,10 @@
                     <!-- Phần ảnh bên phải -->
                     <div class="right-block">
 
-                        <img src="../../images/image_product/anh1.1.png" alt="Ảnh khối bên phải">
-                        <img src="../../images/image_product/anh1.1.2.png" alt="Ảnh khối bên phải">
+                        <img src="<c:url value='/images/image_product/anh_polo1.png'/>"
+                             alt="${rp.product_name}">
+                        <img src="<c:url value='/images/image_product/anh_polo2.png'/>"
+                             alt="${rp.product_name}">
                     </div>
                 </div>
             </div>
@@ -291,7 +294,8 @@
                 <div class="review-content">
                     <div class="item_top">
                         <div class="user">
-                            <img src="../../images/image_product/user.png">
+                            <img src="<c:url value='/images/image_product/user.png'/>"
+                                 alt="${rp.product_name}">
                             <div class="infos">
                                 <p><span class="reviews">H***h</span></p>
                                 <p><span class="time">2025-21-11</span></p>
@@ -338,8 +342,10 @@
                 <!-- Phần ảnh bên phải -->
                 <div class="right-block">
 
-                    <img src="../../images/image_product/anh_polo1.png" alt="Ảnh khối bên phải">
-                    <img src="../../images/image_product/anh_polo2.png" alt="Ảnh khối bên phải">
+                    <img src="<c:url value='/images/image_product/anh1.1.png'/>"
+                         alt="${rp.product_name}">
+                    <img src="<c:url value='/images/image_product/anh1.1.2.png'/>"
+                         alt="${rp.product_name}">
                 </div>
             </div>
         </div>

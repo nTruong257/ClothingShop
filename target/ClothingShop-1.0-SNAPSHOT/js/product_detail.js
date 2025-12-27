@@ -1,5 +1,10 @@
 // webapp/js/product_detail.js
-
+function changeImage(fullPath) {
+  var mainImg = document.getElementById('mainImage');
+  if (mainImg) {
+    mainImg.src = fullPath;
+  }
+}
 // 1. Hàm chọn màu gọi từ onclick trong JSP
 function pickColor(element, colorValue) {
   const buttons = document.querySelectorAll('.color-choice');
@@ -11,9 +16,9 @@ function pickColor(element, colorValue) {
   });
 
   // Highlight nút màu đỏ cam #ff6666
-  element.style.backgroundColor = "#ff6666";
-  element.style.color = "white";
-  element.style.borderColor = "#ff6666";
+  element.style.backgroundColor = "#ff6f61";
+  element.style.color = "#333";
+  element.style.borderColor = "#ff6f61";
 
   // Lưu vào input hidden
   const hiddenColor = document.getElementById('finalColor');
