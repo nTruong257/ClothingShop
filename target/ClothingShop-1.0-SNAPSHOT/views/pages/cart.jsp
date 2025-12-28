@@ -150,9 +150,13 @@
 <jsp:include page="/views/layout/footer.jsp" />
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<%--Truyền contextPath của web app từ JSP sang JavaScript--%>
 <script> const contextPath = "<%= request.getContextPath() %>";</script>
+<!-- Xử lý xoá sản phẩm khỏi giỏ hàng -->
 <script src="${root}/js/remove-cart.js"></script>
+<!-- Xử lý cập nhật số lượng sản phẩm trong giỏ hàng -->
 <script src="${root}/js/update-cart.js"></script>
+
 <script src="${root}/js/main.js"></script>
 <script src="${root}/js/cartPage.js"></script>
 </body>

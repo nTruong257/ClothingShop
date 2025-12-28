@@ -27,6 +27,21 @@ function removeItem(variantId, btn) {
                 if (totalPriceElement && data.cartTotal !== undefined) {
                     totalPriceElement.innerText = data.cartTotal + " VNĐ";
                 }
+
+                // Kiểm tra nếu giỏ hàng trống
+                if (data.totalQuantity === 0) {
+                    const tbody = document.querySelector("table tbody");
+                    if (tbody) {
+                        tbody.innerHTML = `
+                            <tr>
+                                <td colspan="7" class="text-center py-4">
+                                    <i class="fa-solid fa-cart-shopping fa-2x mb-2"></i>
+                                    <p class="mt-2 mb-0 fw-bold">Giỏ hàng của bạn đang trống</p>
+                                </td>
+                            </tr>
+                        `;
+                    }
+                }
             } else {
                 alert(data.msg);
             }

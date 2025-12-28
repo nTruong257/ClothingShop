@@ -119,11 +119,13 @@
                             <div class="product-price">
                                 <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
                             </div>
+
                             <%--Chỉnh sửa Nút thêm vào giỏ hàng--%>
-                            <a class="btn-cart" type="button"
-                               href="${pageContext.request.contextPath}/addcart?variantId=<%=p.getDefaultVariantId()%>&quantity=1">
+                            <button class="btn-cart" type="button"
+                                    <%= p.getDefaultVariantId() == null ? "disabled" : "" %>
+                                    onclick="addToCart(<%= p.getDefaultVariantId() %>)">
                                 <i class="fas fa-shopping-cart"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 <% }
@@ -174,10 +176,11 @@
                         <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
                     </div>
                         <%--Chỉnh sửa Nút thêm vào giỏ hàng--%>
-                    <a class="btn-cart" type="button"
-                       href="${pageContext.request.contextPath}/addcart?variantId=<%=p.getDefaultVariantId()%>&quantity=1">
+                    <button class="btn-cart" type="button"
+                            <%= p.getDefaultVariantId() == null ? "disabled" : "" %>
+                            onclick="addToCart(<%= p.getDefaultVariantId() %>)">
                         <i class="fas fa-shopping-cart"></i>
-                    </a>
+                    </button>
                 </div>
                 <% }
                 } else {
@@ -289,9 +292,13 @@
 
     <c:remove var="successMsg" scope="session"/>
 </c:if>
-<%--Hiển thị hộp thông báo thêm giỏ hàng ra 1 giây--%>
+<%--Truyền contextPath của web app từ JSP sang JavaScript--%>
+<script>
+    const contextPath = "<%= request.getContextPath() %>";
+</script>
+<%--Xử lý sự kiện trong product--%>
 <script src="${root}/js/add-cart.js"></script>
-<script src="login.jsp"></script>
+<script src="${root}/js/login.js"></script>
 
 </body>
 </html>

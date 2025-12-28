@@ -1,3 +1,4 @@
+// hàm xử lý cập nhật thông tin trong giỏ hàng dùng Ajax:
 function updateCart(variantId, action, btn) {
 
     fetch(contextPath + "/update-cart", {
