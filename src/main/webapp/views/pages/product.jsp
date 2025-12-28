@@ -131,16 +131,19 @@
                                     : request.getContextPath() + "/images/no-image.png";
                 %>
                 <div class="col-lg-4 col-md-6 col-6">
-                    <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
                         <div class="product-card">
-                            <div class="product-image">
-                                <span class="product-badge badge-new">NEW</span>
-                                <img src="<%= imgPath %>" alt="<%=p.getProduct_name()%>">
-                            </div>
+                            <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
 
-                            <div class="product-info">
-                                <h5 class="product-name"><%=p.getProduct_name()%></h5>
-                                <p class="product-price"><%=String.format("%,.0f", p.getPrice())%> VNĐ</p>
+                                <div class="product-image">
+                                    <span class="product-badge badge-new">NEW</span>
+                                    <img src="<%= imgPath %>" alt="<%=p.getProduct_name()%>">
+                                </div>
+
+                                <div class="product-info">
+                                    <h5 class="product-name"><%=p.getProduct_name()%></h5>
+                                    <p class="product-price"><%=String.format("%,.0f", p.getPrice())%> VNĐ</p>
+                                </div>
+                          </a>
 
                                 <div class="product-rating">
                                     <i class="fas fa-star"></i>
@@ -149,13 +152,14 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </div>
-
-                                <a class="btn-cart" type="button" href="${pageContext.request.contextPath}/addcart?variantId=<%=p.getDefaultVariantId()%>&quantity=1">
+<%--                                    // Nút thêm vào giỏ hàng--%>
+                                <button class="btn-cart"
+                                        type="button"
+                                        onclick="addToCart(<%= p.getDefaultVariantId() %>)">
                                     <i class="fas fa-shopping-cart"></i>
-                                </a>
-                            </div>
+                                </button>
                         </div>
-                    </a>
+
                 </div>
                 <%     }
                 } else {
@@ -169,16 +173,9 @@
         </section>
     </div>
 </main>
-
-
-<jsp:include page="/views/layout/footer.jsp"/>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script src="${root}/js/main.js"></script>
-</body>
+<%--Hiển thị thông báo thêm vào giỏ hàng--%>
 <c:if test="${not empty sessionScope.successMsg}">
-    <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-4"
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-4"
          role="alert" style="z-index: 9999;">
         <i class="fa-solid fa-circle-check"></i>
             ${sessionScope.successMsg}
@@ -187,4 +184,19 @@
 
     <c:remove var="successMsg" scope="session"/>
 </c:if>
+
+<jsp:include page="/views/layout/footer.jsp"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<%--Truyền contextPath của web app từ JSP sang JavaScript--%>
+<script>
+    const contextPath = "<%= request.getContextPath() %>";
+</script>
+<%--Xử lý sự kiện trong product--%>
+<script src="${root}/js/add-cart.js"></script>
+
+<script src="${root}/js/main.js"></script>
+
+</body>
+
+
 </html>

@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
+<<<<<<< HEAD
 Built-By: ACER
 Build-Jdk: Oracle OpenJDK 23.0.1
+=======
+Built-By: mphuc
+Build-Jdk: Oracle OpenJDK 24.0.1
+>>>>>>> e563ca4d44912b48f2c34dc023c66cdd436e26c8
 

@@ -1,6 +1,8 @@
     <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
         <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-
+    <c:if test="${empty root}">
+        <c:set var="root" value="${pageContext.request.contextPath}" scope="request"/>
+    </c:if>
         <header class="site-header">
         <div class="header-container">
         <div class="header-main-row">
@@ -154,9 +156,14 @@
 
         <a class="cart-link" href="${root}/views/pages/cart.jsp">
         <i class="fas fa-shopping-bag"></i>
-        <span class="cart-badge">${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</span>
+        <span class="cart-badge" id="cartBadge">${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</span>
         </a>
         </div>
         </div>
         </div>
         </header>
+
+<script>
+    // Định nghĩa contextPath để dùng trong các hàm như addToCart()
+    window.contextPath = "${root}";
+</script>

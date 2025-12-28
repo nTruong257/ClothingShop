@@ -1,6 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
+
+<%--Định dạng tiền tệ VNĐ--%>
+<fmt:setLocale value="vi_VN" />
+<fmt:setTimeZone value="Asia/Ho_Chi_Minh"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="${root}/css/header-footer.css"/>
     <link rel="stylesheet" href="${root}/css/cartstyle.css"/>
+
 </head>
 <body>
 
@@ -43,6 +49,7 @@
                             </tr>
                             </thead>
                             <tbody>
+<%--                            Hiển thị danh sách sản phẩm được thêm vào giỏ hàng--%>
                             <c:choose>
                                 <c:when test="${sessionScope.cart == null || sessionScope.cart.item.size() == 0}">
                                     <tr>
@@ -71,38 +78,43 @@
                                             </td>
                                             <td>
                                                 <div class="product-item">
-                                                    <h6>${item.variant.product.price} VNĐ</h6>
+                                                    <h6> <fmt:formatNumber value="${item.variant.product.price}" pattern="#,##0 'VNĐ'" /></h6>
                                                 </div>
                                             </td>
                                             <td>
-                                                <form method="post"
-                                                      action="${pageContext.request.contextPath}/update-cart"
-                                                      class="quantity-item">
+                                                <div class="quantity-item">
+                                                    <button type="button"
+                                                            class="qty-btn"
+                                                            onclick="updateCart(${item.variant.variantId},'decrease',this)">
+                                                        <i class="fa-solid fa-minus"></i>
+                                                    </button>
 
-                                                    <input type="hidden" name="variantId"
-                                                           value="${item.variant.variantId}" />
+                                                        <input type="text" name="quantity" class="qty-input"
+                                                               value="${item.quantity}" size="2" readonly/>
 
-                                                    <button type="submit" name="action" value="decrease" class="qty-btn"><i class="fa-solid fa-minus"></i></button>
+                                                        <button type="button"
+                                                                class="qty-btn"
+                                                                onclick="updateCart(${item.variant.variantId},'increase',this)">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </button>
+                                                </div>
 
-                                                    <input type="text" name="quantity"
-                                                           value="${item.quantity}" size="2"/>
-
-                                                    <button type="submit" name="action" value="increase" class="qty-btn"><i class="fa-solid fa-plus"></i></button>
-                                                </form>
                                             </td>
                                             <td>
                                                 <div class="price-item">
-                                                    <div class="cart_price">${item.quantity * item.variant.product.price }VNĐ</div>
+                                                    <div class="cart_price"> <fmt:formatNumber value=" ${item.quantity * item.variant.product.price }"  pattern="#,##0 'VNĐ'"/></div>
                                                 </div>
                                             </td>
+<%--                                            Chức năng xoá sản phẩm ra khỏi giỏ hàng--%>
                                             <td>
-                                                <form method="post" action="${pageContext.request.contextPath}/del-item">
-                                                    <input type="hidden" name="variantId" value="${item.variant.variantId}">
-                                                    <button type="submit"> <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i></button>
-                                                </form>
+                                                <button type="button" class="btn-remove"
+                                                        onclick="removeItem(${item.variant.variantId}, this)">
+                                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
+                                                </button>
 
                                             </td>
                                         </tr>
+<%--                                        tăng biến count lên 1 khi thêm nhiều vào giỏ hàng--%>
                                         <c:set var="count" value="${count + 1}"/>
                                     </c:forEach>
                                 </c:otherwise>
@@ -112,7 +124,7 @@
                     </div>
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="my_button">
-                            <a href="index.jsp" class="continute_btn">TIẾP TỤC MUA SẮM</a>
+                            <a href="${root}/home" class="continute_btn">TIẾP TỤC MUA SẮM</a>
                         </div>
                     </div>
                 </div>
@@ -122,11 +134,11 @@
                         <ul>
                             <li>
                                 <span class="label">TỔNG ĐƠN HÀNG:</span>
-                                <span class="value"><strong>${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 1}</strong></span>
+                                <span class="value"><strong id="total-quantity">${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</strong></span>
                             </li>
                             <li>
                                 <span class="label">TỔNG GIÁ TIỀN:</span>
-                                <span class="value"><strong>${sessionScope.cart.total()} VNĐ</strong></span>
+                                <span class="value"><strong id="total-price"> <fmt:formatNumber value="${ sessionScope.cart != null ? sessionScope.cart.total() : 0}" pattern="#,##0 'VNĐ'" /></strong></span>
                             </li>
                         </ul>
                         <div class="cart-actions">
@@ -143,6 +155,13 @@
 <jsp:include page="/views/layout/footer.jsp" />
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<%--Truyền contextPath của web app từ JSP sang JavaScript--%>
+<script> const contextPath = "<%= request.getContextPath() %>";</script>
+<!-- Xử lý xoá sản phẩm khỏi giỏ hàng -->
+<script src="${root}/js/remove-cart.js"></script>
+<!-- Xử lý cập nhật số lượng sản phẩm trong giỏ hàng -->
+<script src="${root}/js/update-cart.js"></script>
+
 <script src="${root}/js/main.js"></script>
 <script src="${root}/js/cartPage.js"></script>
 </body>

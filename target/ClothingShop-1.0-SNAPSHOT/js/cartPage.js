@@ -1,28 +1,21 @@
-document.addEventListener('DOMContentLoaded', function (){
-    const quantityItems = document.querySelectorAll('.quantity-item')
-    quantityItems.forEach(item => {
-        const descreaseBtn = item.querySelector('.fa-less-than');
-        const increaseBtn = item.querySelector('.fa-greater-than');
-        const input = item.querySelector('input[type="text"]')
 
-        descreaseBtn.addEventListener('click', function () {
-            const currValue = parseInt(input.value) || 1;
-            if(currValue > 1){
-                input.value = currValue - 1;
-            }
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    const quantityItems = document.querySelectorAll('.quantity-item');
 
-        increaseBtn.addEventListener('click', function () {
-            const currValue = parseInt(input.value) || 1;
-            input.value = currValue + 1;
-        });
+    quantityItems.forEach(form => {
+        const decreaseBtn = form.querySelector('button[name="action"][value="decrease"]');
+        const increaseBtn = form.querySelector('button[name="action"][value="increase"]');
+        const input = form.querySelector('input[type="text"][name="quantity"]');
+
+        if (!decreaseBtn || !increaseBtn || !input) {
+            return;
+        }
+
+        // Chỉ để tránh lỗi JS; còn tăng/giảm vẫn submit form như hiện tại
         input.addEventListener('change', function () {
-            let currValue = parseInt(this.value) || 1;
-            if (currValue < 1) {
-                currValue = 1;
-            }
+            let currValue = parseInt(this.value, 10) || 1;
+            if (currValue < 1) currValue = 1;
             this.value = currValue;
         });
-
-    })
-})
+    });
+});
