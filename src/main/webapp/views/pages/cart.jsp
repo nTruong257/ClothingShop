@@ -1,6 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
+
+<%--Định dạng tiền tệ VNĐ--%>
+<fmt:setLocale value="vi_VN" />
+<fmt:setTimeZone value="Asia/Ho_Chi_Minh"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +78,7 @@
                                             </td>
                                             <td>
                                                 <div class="product-item">
-                                                    <h6>${item.variant.product.price} VNĐ</h6>
+                                                    <h6> <fmt:formatNumber value="${item.variant.product.price}" pattern="#,##0 'VNĐ'" /></h6>
                                                 </div>
                                             </td>
                                             <td>
@@ -97,7 +102,7 @@
                                             </td>
                                             <td>
                                                 <div class="price-item">
-                                                    <div class="cart_price">${item.quantity * item.variant.product.price }VNĐ</div>
+                                                    <div class="cart_price"> <fmt:formatNumber value=" ${item.quantity * item.variant.product.price }"  pattern="#,##0 'VNĐ'"/></div>
                                                 </div>
                                             </td>
 <%--                                            Chức năng xoá sản phẩm ra khỏi giỏ hàng--%>
@@ -133,7 +138,7 @@
                             </li>
                             <li>
                                 <span class="label">TỔNG GIÁ TIỀN:</span>
-                                <span class="value"><strong id="total-price">${ sessionScope.cart != null ? sessionScope.cart.total() : 0} VNĐ</strong></span>
+                                <span class="value"><strong id="total-price"> <fmt:formatNumber value="${ sessionScope.cart != null ? sessionScope.cart.total() : 0}" pattern="#,##0 'VNĐ'" /></strong></span>
                             </li>
                         </ul>
                         <div class="cart-actions">

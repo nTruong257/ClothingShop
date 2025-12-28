@@ -1,3 +1,12 @@
+// Hàm định dạng tiền tệ
+function formatVND(amount) {
+    const n = Number(String(amount ?? 0).replace(/[^\d-]/g, "")) || 0;
+    return new Intl.NumberFormat("vi-VN", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(n) + " VNĐ";
+}
+
 // Xoá giỏ hàng ko reload lại trang:
 function removeItem(variantId, btn) {
     fetch(contextPath + "/del-item", {
@@ -12,22 +21,18 @@ function removeItem(variantId, btn) {
             if (data.status === "success") {
                 const row = btn.closest("tr");
                 if (row) row.remove();
-
                 const badge = document.querySelector(".cart-badge");
                 if (badge) badge.innerText = data.totalQuantity;
-
                 // cập nhật tổng đơn hàng
                 const totalQtyElement = document.getElementById("total-quantity");
                 if (totalQtyElement) {
                     totalQtyElement.innerText = data.totalQuantity;
                 }
-
                 // cập nhật tổng giá tiền
                 const totalPriceElement = document.getElementById("total-price");
                 if (totalPriceElement && data.cartTotal !== undefined) {
-                    totalPriceElement.innerText = data.cartTotal + " VNĐ";
+                    totalPriceElement.innerText = formatVND(data.cartTotal);
                 }
-
                 // Kiểm tra nếu giỏ hàng trống
                 if (data.totalQuantity === 0) {
                     const tbody = document.querySelector("table tbody");

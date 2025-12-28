@@ -155,7 +155,6 @@
 <%--                                    // Nút thêm vào giỏ hàng--%>
                                 <button class="btn-cart"
                                         type="button"
-                                        <%= p.getDefaultVariantId() == null ? "disabled" : "" %>
                                         onclick="addToCart(<%= p.getDefaultVariantId() %>)">
                                     <i class="fas fa-shopping-cart"></i>
                                 </button>
