@@ -290,7 +290,7 @@
     <c:remove var="successMsg" scope="session"/>
 </c:if>
 <%--Hiển thị hộp thông báo thêm giỏ hàng ra 1 giây--%>
-<script src="${root}/js/product.js"></script>
+<script src="${root}/js/add-cart.js"></script>
 <script src="login.jsp"></script>
 
 </body>

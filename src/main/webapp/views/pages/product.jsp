@@ -193,7 +193,7 @@
     const contextPath = "<%= request.getContextPath() %>";
 </script>
 <%--Xử lý sự kiện trong product--%>
-<script src="${root}/js/product.js"></script>
+<script src="${root}/js/add-cart.js"></script>
 
 <script src="${root}/js/main.js"></script>
 

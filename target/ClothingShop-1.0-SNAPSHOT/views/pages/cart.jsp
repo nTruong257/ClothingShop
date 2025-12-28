@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="${root}/css/header-footer.css"/>
     <link rel="stylesheet" href="${root}/css/cartstyle.css"/>
+
 </head>
 <body>
 
@@ -76,20 +77,23 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <form method="post"
-                                                      action="${pageContext.request.contextPath}/update-cart"
-                                                      class="quantity-item">
+                                                <div class="quantity-item">
+                                                    <button type="button"
+                                                            class="qty-btn"
+                                                            onclick="updateCart(${item.variant.variantId},'decrease',this)">
+                                                        <i class="fa-solid fa-minus"></i>
+                                                    </button>
 
-                                                    <input type="hidden" name="variantId"
-                                                           value="${item.variant.variantId}" />
+                                                        <input type="text" name="quantity" class="qty-input"
+                                                               value="${item.quantity}" size="2" readonly/>
 
-                                                    <button type="submit" name="action" value="decrease" class="qty-btn"><i class="fa-solid fa-minus"></i></button>
+                                                        <button type="button"
+                                                                class="qty-btn"
+                                                                onclick="updateCart(${item.variant.variantId},'increase',this)">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </button>
+                                                </div>
 
-                                                    <input type="text" name="quantity"
-                                                           value="${item.quantity}" size="2"/>
-
-                                                    <button type="submit" name="action" value="increase" class="qty-btn"><i class="fa-solid fa-plus"></i></button>
-                                                </form>
                                             </td>
                                             <td>
                                                 <div class="price-item">
@@ -98,10 +102,10 @@
                                             </td>
 <%--                                            Chức năng xoá sản phẩm ra khỏi giỏ hàng--%>
                                             <td>
-                                                <form method="post" action="${pageContext.request.contextPath}/del-item">
-                                                    <input type="hidden" name="variantId" value="${item.variant.variantId}">
-                                                    <button type="submit"> <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i></button>
-                                                </form>
+                                                <button type="button" class="btn-remove"
+                                                        onclick="removeItem(${item.variant.variantId}, this)">
+                                                    <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
+                                                </button>
 
                                             </td>
                                         </tr>
@@ -125,11 +129,11 @@
                         <ul>
                             <li>
                                 <span class="label">TỔNG ĐƠN HÀNG:</span>
-                                <span class="value"><strong>${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 1}</strong></span>
+                                <span class="value"><strong id="total-quantity">${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</strong></span>
                             </li>
                             <li>
                                 <span class="label">TỔNG GIÁ TIỀN:</span>
-                                <span class="value"><strong>${sessionScope.cart.total()} VNĐ</strong></span>
+                                <span class="value"><strong id="total-price">${ sessionScope.cart != null ? sessionScope.cart.total() : 0} VNĐ</strong></span>
                             </li>
                         </ul>
                         <div class="cart-actions">
@@ -146,6 +150,9 @@
 <jsp:include page="/views/layout/footer.jsp" />
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script> const contextPath = "<%= request.getContextPath() %>";</script>
+<script src="${root}/js/remove-cart.js"></script>
+<script src="${root}/js/update-cart.js"></script>
 <script src="${root}/js/main.js"></script>
 <script src="${root}/js/cartPage.js"></script>
 </body>
