@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-<c:set var="root" value="${pageContext.request.contextPath}" scope="request"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,103 +35,67 @@
                                 </div>
                                 <br/>
                                 <div id="shipping-new">
-                                    <form autocomplete="off" id="form-shipping-address"
-                                          class="section-shipping-address">
-                                        <div class="row row-cols-1 row-cols-md-2">
-                                            <div class="col mb-3 required order-1">
+                                    <form action="${pageContext.request.contextPath}/PlaceOrderController" method="POST" id="form-shipping-address">
+                                        <input type="hidden" name="hPaymentMethod" id="hPaymentMethod" value="">
+                                        <input type="hidden" name="hProductName" value="${cName}">
+                                        <input type="hidden" name="hProductImage" value="${cImage}">
+                                        <input type="hidden" name="hSize" value="${cSize}">
+                                        <input type="hidden" name="hColor" value="${cColor}">
+                                        <input type="hidden" name="hQty" value="${cQty}">
+                                        <input type="hidden" name="hTotal" value="${cTotal}">
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 required">
                                                 <label for="input-shipping-firstname" class="form-label">Họ tên</label>
-                                                <input type="text" name="shipping_firstname" autocomplete="off"
-                                                       value="" placeholder="Họ tên" id="input-shipping-firstname"
-                                                       class="form-control"/>
-                                                <div id="error-shipping-firstname" class="invalid-feedback">
-                                                </div>
+                                                <input type="text" name="shipping_firstname" placeholder="Họ tên" id="input-shipping-firstname" class="form-control" required/>
                                             </div>
-                                            <div class="col col-md-12 mb-3 required order-3">
+                                            <div class="col-md-6 required">
+                                                <label for="input-shipping-phone" class="form-label">Điện thoại</label>
+                                                <input type="text" name="shipping_phone" placeholder="Điện thoại" id="input-shipping-phone" class="form-control" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-12 required">
                                                 <label for="input-shipping-address-1" class="form-label">Địa chỉ</label>
-                                                <input type="text" name="shipping_address_1" autocomplete="off"
-                                                       value="" placeholder="Địa chỉ" id="input-shipping-address-1"
-                                                       class="form-control"/>
-                                                <div id="error-shipping-address-1" class="invalid-feedback">
-                                                </div>
+                                                <input type="text" name="shipping_address_1" placeholder="Địa chỉ" id="input-shipping-address-1" class="form-control" required/>
                                             </div>
-                                            <div class="col mb-3 required d-none"></div>
-                                            <div class="col mb-3 required">
-                                                <label for="input-shipping-zone" class="form-label">Tỉnh / thành
-                                                    phố</label>
-                                                <select name="shipping_zone_id" id="input-shipping-zone"
-                                                        class="form-select">
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 required">
+                                                <label for="input-shipping-zone" class="form-label">Tỉnh / thành phố</label>
+                                                <select name="shipping_zone_id" id="input-shipping-zone" class="form-select">
                                                     <option value="0">Vui lòng chọn tỉnh/thành phố</option>
-                                                    <option value="43">TP.Hồ Chí Minh - Nội thành</option>
-                                                    <option value="44">TP.Hồ Chí Minh - Ngoại thành</option>
-                                                </select>
-                                                <div id="error-shipping-zone" class="invalid-feedback"></div>
+                                                    <option value="43">TP.Hồ Chí Minh - Nội thành</option> <option value="44">TP.Hồ Chí Minh - Ngoại thành</option> </select>
                                             </div>
-                                            <div class="col mb-3 custom-field custom-field-29">
-                                                <label for="input-shipping-custom-field-29"
-                                                       class="form-label">Điện thoại</label>
-                                                <input type="text" autocomplete="off"
-                                                       name="shipping_custom_field[address][29]" value=""
-                                                       placeholder="Điện thoại" id="input-shipping-custom-field-29"
-                                                       class="form-control"/>
-                                                <div id="error-shipping-custom-field-29"
-                                                     class="invalid-feedback"></div>
-                                            </div>
-                                            <div class="col mb-3 custom-field custom-field-30">
-                                                <label for="input-shipping-custom-field-30"
-                                                       class="form-label">Quận / Huyện</label>
-                                                <select name="shipping_custom_field[address][30]"
-                                                        id="input-shipping-custom-field-30" class="form-select">
+                                            <div class="col-md-6 required">
+                                                <label for="input-shipping-district" class="form-label">Quận / Huyện</label>
+                                                <select name="shipping_district" id="input-shipping-district" class="form-select">
                                                     <option value="0">Vui lòng chọn quận/huyện</option>
                                                 </select>
-                                                <div id="error-shipping-custom-field-30"
-                                                     class="invalid-feedback"></div>
                                             </div>
-                                            <div class="col mb-3 custom-field custom-field-31">
-                                                <label for="input-shipping-custom-field-31"
-                                                       class="form-label">Ngày đặt hàng</label>
-                                                <div class="input-group">
-                                                    <input type="text" name="shipping_custom_field[address][31]"
-                                                           value="" placeholder="Ngày đặt hàng"
-                                                           id="input-shipping-custom-field-31"
-                                                           class="form-control date"/>
-                                                    <div class="input-group-text">
-                                                        <i class="fa-regular fa-calendar"></i>
-                                                    </div>
-                                                </div>
-                                                <div id="error-shipping-custom-field-31"
-                                                     class="invalid-feedback"></div>
-                                            </div>
-                                            <div class="col mb-3 custom-field custom-field-32">
-                                                <label for="input-shipping-custom-field-32"
-                                                       class="form-label">Thời gian dự kiến</label>
-                                                <select name="shipping_custom_field[address][32]"
-                                                        id="input-shipping-custom-field-32" class="form-select">
+                                        </div>
 
-                                                    <option value="120">Từ 8:00 - 12:00</option>
-                                                    <option value="121">Từ 12:00 - 20:00</option>
-                                                    <option value="122">Từ 8:00 - 20:00</option>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label for="input-shipping-date" class="form-label">Ngày đặt hàng</label>
+                                                <input type="date" name="shipping_date" id="input-shipping-date" class="form-control"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="input-shipping-time" class="form-label">Thời gian dự kiến</label>
+                                                <select name="shipping_time" id="input-shipping-time" class="form-select">
+                                                    <option value="Từ 8:00 - 12:00">Từ 8:00 - 12:00</option>
+                                                    <option value="Từ 12:00 - 20:00">Từ 12:00 - 20:00</option>
+                                                    <option value="Từ 8:00 - 20:00">Từ 8:00 - 20:00</option>
                                                 </select>
-                                                <div id="error-shipping-custom-field-32"
-                                                     class="invalid-feedback"></div>
                                             </div>
-                                            <div class="col col-md-12 mb-3 custom-field custom-field-33">
-                                                <label for="input-shipping-custom-field-33"
-                                                       class="form-label">Ghi chú [Cho shop]</label>
-                                                <textarea name="shipping_custom_field[address][33]" rows="2"
-                                                          placeholder="" id="input-shipping-custom-field-33"
-                                                          class="form-control"></textarea>
-                                                <div id="error-shipping-custom-field-33"
-                                                     class="invalid-feedback"></div>
-                                            </div>
-                                            <div class="col col-md-12 mb-3 custom-field custom-field-34">
-                                                <label for="input-shipping-custom-field-34"
-                                                       class="form-label">Yêu cầu, lưu ý [cho
-                                                    shop]</label>
-                                                <textarea name="shipping_custom_field[address][34]" rows="2"
-                                                          placeholder="" id="input-shipping-custom-field-34"
-                                                          class="form-control"></textarea>
-                                                <div id="error-shipping-custom-field-34"
-                                                     class="invalid-feedback"></div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-12">
+                                                <label for="input-shipping-note" class="form-label">Ghi chú [Cho shop]</label>
+                                                <textarea name="shipping_note" rows="3" id="input-shipping-note" class="form-control"></textarea>
                                             </div>
                                         </div>
                                     </form>
@@ -255,9 +219,9 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="text-end">
-                                    <button type="button" id="validate_order" class="btn btn-primary"
-                                    >Xác nhận đơn hàng
+                                <div class="text-end mb-5">
+                                    <button type="button" id="validate_order" class="btn btn-primary btn-lg">
+                                        Xác nhận đơn hàng
                                     </button>
                                 </div>
                                 <div class="mt-3" id="paypal-button-container"></div>
@@ -273,14 +237,9 @@
 <!-- ===== FOOTER ===== -->
 <jsp:include page="/views/layout/footer.jsp"/>
 
-<script src="${root}/js/checkout.js"></script>
+<script src="<c:url value='/js/checkout.js'/>"></script>
 <script src="${root}/js/main.js"></script>
-<script>
-    document.getElementById("validate_order").addEventListener("click", function () {
-        // Chuyển sang trang thành công
-        window.location.href = "order_success.jsp";
-    });
-</script>
+
 </body>
 
 </html>
