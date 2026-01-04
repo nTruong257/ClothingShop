@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -17,7 +17,7 @@
 
 <body>
 <!-- ===== HEADER ===== -->
-<jsp:include page="/views/layout/header.jsp" />
+<jsp:include page="/views/layout/header.jsp"/>
 
 <!-- ===== MAIN CONTENT ===== -->
 <main class="main-content">
@@ -28,14 +28,16 @@
             <!-- LEFT: PRODUCT IMAGES -->
             <div class="product_images">
                 <div class="product_main_image">
-                    <img id="mainImage" src="../../images/image_product/anh1.png" alt="Ảnh chính">
+                    <img id="mainImage" src="${root}${imageList[0]}" alt="${product.product_name}">
                 </div>
 
                 <div class="product_thumbs">
-                    <img src="../../images/image_product/anh1.png" alt="Ảnh nhỏ 1">
-                    <img src="../../images/image_product/anh4.png" alt="Ảnh nhỏ 1">
-                    <img src="../../images/image_product/anh2.png" alt="Ảnh nhỏ 2">
-                    <img src="../../images/image_product/anh3.png" alt="Ảnh nhỏ 3">
+                    <c:forEach items="${imageList}" var="imgUrl" begin="0" end="1">
+                        <img src="${root}${imgUrl}"
+                             alt="Thumbnail"
+                             onclick="changeImage('${root}${imgUrl}')"
+                             style="cursor: pointer;">
+                    </c:forEach>
                 </div>
             </div>
 
@@ -45,15 +47,24 @@
                     thanh lịch, sang trọng - POLOMANOR</h2>
 
                 <div class="rating">
-                    <img src="../../images/image_product/start.png">
-                    <img src="../../images/image_product/start.png">
-                    <img src="../../images/image_product/start.png">
-                    <img src="../../images/image_product/start.png">
-                    <img src="../../images/image_product/start.png">
-                    <span>- Đánh giá 5</span>
+                    <c:forEach begin="0" end="5" var="i">
+                        <c:choose>
+                            <c:when test="${i <= product.medium_rating}">
+                                <img src="${root}/images/image_product/start.png" alt="star" width="20">
+                            </c:when>
+
+                        </c:choose>
+                    </c:forEach>
+
+                    <span>- Đánh giá ${product.medium_rating}/5</span>
                 </div>
 
-                <h3 class="product_price">1.173.000đ<span>99.000đ</span></h3>
+                <h3 class="product_price">
+                    <fmt:formatNumber value="${product.price}" type="number" maxFractionDigits="0"/>đ
+                    <span style="text-decoration: line-through; margin-left: 10px; font-size: 0.8em; color: gray;">
+
+                    </span>
+                </h3>
 
                 <p class="product_desc">
                     Áo polo nam chất liệu cá sấu cotton interlock cao cấp, bề mặt mềm mịn, thấm hút tốt;
@@ -61,37 +72,48 @@
                 </p>
 
                 <div class="product_detail_option">
+                    <form action="${root}/CheckoutController" method="POST" id="checkoutForm">
+                        <!-- SIZE -->
+                        <div class="product_detail_size">
+                            <label class="size-label">S</label>
+                            <label class="size-label">M</label>
+                            <label class="size-label">L</label>
+                            <label class="size-label active">XL</label>
+                            <label class="size-label">XXL</label>
+                        </div>
 
-                    <!-- SIZE -->
-                    <div class="product_detail_size">
-                        <span>Size:</span>
-                        <label>S</label>
-                        <label>M</label>
-                        <label>L</label>
-                        <label class="active">XL</label>
-                        <label>XXL</label>
-                    </div>
+                        <!-- COLOR -->
+                        <div class="product_detail_color">
+                            <span>Color:</span>
+                            <div class="mt-2">
+                                <c:forEach items="${colorList}" var="c">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm me-2 color-choice"
+                                            onclick="pickColor(this, '${c}')">${c}</button>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selectedColor" id="finalColor" value="">
 
-                    <!-- COLOR -->
-                    <div class="product_detail_color">
-                        <span>Color:</span>
-                        <img src="../../images/image_product/den.png">
-                        <img src="../../images/image_product/trắng.png">
-                        <img src="../../images/image_product/đỏ.png">
-                        <img src="../../images/image_product/xanhduong.png">
-                    </div>
-                    <div class="product_detail_quantity">
-                        <label for="quantity">Số lượng:</label>
-                        <button type="button" id="btn-decrease">−</button>
-                        <input type="number" id="quantity" value="1" min="1" readonly>
-                        <button type="button" id="btn-increase">+</button>
-                    </div>
+                        <div class="product_detail_quantity">
+                            <label for="quantity">Số lượng:</label>
+                            <button type="button" id="btn-decrease">−</button>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" readonly>
+                            <button type="button" id="btn-increase">+</button>
+                        </div>
+                        <input type="hidden" name="productName" value="${product.product_name}">
+                        <input type="hidden" name="productImage" id="hiddenProductImage" value="${imageList[0]}">
+                        <input type="hidden" name="productPrice" value="${product.price}">
+                        <input type="hidden" name="selectedSize" id="finalSize" value="XL">
+
+                        <div class="product_detail_actions"
+                             style="margin-top: 25px;"> <%-- Gom nút vào div riêng để dễ căn chỉnh --%>
+                            <button type="submit" class="btn btn-primary validate_order">
+                                Mua hàng
+                            </button>
+                            <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng</a>
+                        </div>
+                    </form>
                 </div>
-                <button type="button" class="btn btn-primary validate_order"
-                        onclick="window.location.href='checkout.jsp'">Mua hàng
-                </button>
-                <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng
-                </a>
             </div>
         </div>
     </div>
@@ -209,7 +231,8 @@
                     <div class="review-content">
                         <div class="item_top">
                             <div class="user">
-                                <img src="../../images/image_product/user.png">
+                                <img src="<c:url value='/images/image_product/user.png'/>"
+                                     alt="${rp.product_name}">
 
                                 <div class="infos">
                                     <p><span class="reviews">T***h</span></p>
@@ -258,8 +281,10 @@
                     <!-- Phần ảnh bên phải -->
                     <div class="right-block">
 
-                        <img src="../../images/image_product/anh1.1.png" alt="Ảnh khối bên phải">
-                        <img src="../../images/image_product/anh1.1.2.png" alt="Ảnh khối bên phải">
+                        <img src="<c:url value='/images/image_product/anh_polo1.png'/>"
+                             alt="${rp.product_name}">
+                        <img src="<c:url value='/images/image_product/anh_polo2.png'/>"
+                             alt="${rp.product_name}">
                     </div>
                 </div>
             </div>
@@ -269,7 +294,8 @@
                 <div class="review-content">
                     <div class="item_top">
                         <div class="user">
-                            <img src="../../images/image_product/user.png">
+                            <img src="<c:url value='/images/image_product/user.png'/>"
+                                 alt="${rp.product_name}">
                             <div class="infos">
                                 <p><span class="reviews">H***h</span></p>
                                 <p><span class="time">2025-21-11</span></p>
@@ -316,8 +342,10 @@
                 <!-- Phần ảnh bên phải -->
                 <div class="right-block">
 
-                    <img src="../../images/image_product/anh_polo1.png" alt="Ảnh khối bên phải">
-                    <img src="../../images/image_product/anh_polo2.png" alt="Ảnh khối bên phải">
+                    <img src="<c:url value='/images/image_product/anh1.1.png'/>"
+                         alt="${rp.product_name}">
+                    <img src="<c:url value='/images/image_product/anh1.1.2.png'/>"
+                         alt="${rp.product_name}">
                 </div>
             </div>
         </div>
@@ -331,30 +359,34 @@
             <div class="container">
                 <div class="row">
                     <div class="col_top">
-                        <h3 class="related-title">SẢN PHẨM NỔI BẬT</h3>
+                        <h3 class="related-title">SẢN PHẨM LIÊN QUAN</h3>
                     </div>
                 </div>
                 <div class="row">
+                    <%-- Vòng lặp tự động lấy từng sản phẩm từ danh sách relatedProducts --%>
                     <div class="col_1">
                         <div class="product_item">
-                            <div class="product_item_pic1">
-
-                                <img src="../../images/image_product/anh1.png">
+                            <div class="product_item_pic2">
+                                <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
+                                    <img src="<c:url value='/images/product_item_nam/1/1.3/trangphuc_nam.png'/>"
+                                         alt="${rp.product_name}">
+                                </a>
                             </div>
                             <div class="product_item_text">
-                                <h6>Áo polo nam tay ngắn sọc phối patch.Fitted</h6>
+                                <h6>Quần jeans nam natural form tapered dáng suông </h6>
+                                <h5>810.000đ</h5>
 
-                                <h5>1.690.000đ</h5>
-                                <button class="add-to-cart-btn" onclick="location.href='cart.html'">Thêm vào giỏ
-                                    hàng
-                                </button>
+                                <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     </div>
                     <div class="col_2">
                         <div class="product_item">
                             <div class="product_item_pic2">
-                                <img src="../../images/image_product/anh1.3.png">
+                                <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
+                                    <img src="<c:url value='/images/product_item_nam/7/7.3/trangphuc_nam.png'/>"
+                                         alt="${rp.product_name}">
+                                </a>
                             </div>
                             <div class="product_item_text">
                                 <h6>Quần jeans nam natural form tapered dáng suông </h6>
@@ -366,9 +398,11 @@
                     </div>
                     <div class="col_3">
                         <div class="product_item sale">
-                            <div class="product_item_pic3">
-                                <img src="../../images/image_product/anh1.2.png">
-                                <span class="label">Sale</span>
+                            <div class="product_item_pic2">
+                                <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
+                                    <img src="<c:url value='/images/product_item_nam/4/4.10/trangphuc_nam.png'/>"
+                                         alt="${rp.product_name}">
+                                </a>
                             </div>
                             <div class="product_item_text">
                                 <h6>Áo Sơ Mi Nam Tay Dài Chất Liệu BAMBOO Cao Cấp</h6>
@@ -380,8 +414,11 @@
                     </div>
                     <div class="col_4">
                         <div class="product_item">
-                            <div class="product_item_pic4">
-                                <img src="../../images/image_product/anh1.4.png">
+                            <div class="product_item_pic2">
+                                <a href="<c:url value='/Product_DetailController?id=${rp.product_id}'/>">
+                                    <img src="<c:url value='/images/product_item_nam/5/5.10/trangphuc_nam.png'/>"
+                                         alt="${rp.product_name}">
+                                </a>
                             </div>
                             <div class="product_item_text">
                                 <h6>Quần Short Kaki Nam Cotton Spandex Form Straight</h6>
@@ -398,14 +435,15 @@
 </main>
 
 <!-- ===== FOOTER ===== -->
-<jsp:include page="/views/layout/footer.jsp" />
+<jsp:include page="/views/layout/footer.jsp"/>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Custom JavaScript -->
 <script src="../../js/main.js"></script>
-<script src="../../js/product_detail.js"></script>
+<%-- Sử dụng pageContext để lấy tên dự án tự động --%>
+<script src="<c:url value='/js/product_detail.js'/>"></script>
 </body>
 
 </html>

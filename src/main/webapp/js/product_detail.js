@@ -1,70 +1,54 @@
-const mainImage = document.getElementById('mainImage');
-const thumbnails = document.querySelectorAll('.product_thumbs img');
-
-thumbnails.forEach(img => {
-  img.addEventListener('click', () => {
-    // Thay đổi src ảnh lớn
-    mainImage.src = img.src;
-
-    // Xóa class active ở tất cả ảnh nhỏ
-    thumbnails.forEach(i => i.classList.remove('active'));
-
-    // Thêm class active cho ảnh nhỏ vừa click
-    img.classList.add('active');
+// webapp/js/product_detail.js
+function changeImage(fullPath) {
+  var mainImg = document.getElementById('mainImage');
+  if (mainImg) {
+    mainImg.src = fullPath;
+  }
+}
+// 1. Hàm chọn màu gọi từ onclick trong JSP
+function pickColor(element, colorValue) {
+  const buttons = document.querySelectorAll('.color-choice');
+  buttons.forEach(btn => {
+    btn.style.backgroundColor = "";
+    btn.style.color = "";
+    btn.style.borderColor = "";
+    document.getElementById('finalColor').value = colorValue;
   });
-});
 
+  // Highlight nút màu đỏ cam #ff6666
+  element.style.backgroundColor = "#ff6f61";
+  element.style.color = "#333";
+  element.style.borderColor = "#ff6f61";
 
+  // Lưu vào input hidden
+  const hiddenColor = document.getElementById('finalColor');
+  if (hiddenColor) hiddenColor.value = colorValue;
+}
+
+// 2. Các sự kiện khác bọc trong DOMContentLoaded để tránh lỗi null
 document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".nav-link");
-  const contents = document.querySelectorAll(".tab-pane");
+  // Xử lý chọn Size (Label)
+  const sizeLabels = document.querySelectorAll('.product_detail_size label');
+  const finalSize = document.getElementById('finalSize');
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", e => {
-      e.preventDefault();
-
-      // Bỏ active khỏi tất cả tab
-      tabs.forEach(t => t.classList.remove("active"));
-      // Active tab hiện tại
-      tab.classList.add("active");
-
-      // Ẩn toàn bộ nội dung
-      contents.forEach(c => c.classList.remove("active"));
-
-      // Lấy id cần hiển thị
-      const targetId = tab.getAttribute("data-tab");
-      const targetContent = document.getElementById(targetId);
-
-      // Hiện nội dung tương ứng
-      if (targetContent) targetContent.classList.add("active");
+  sizeLabels.forEach(label => {
+    label.addEventListener('click', () => {
+      sizeLabels.forEach(l => l.classList.remove('active'));
+      label.classList.add('active');
+      if (finalSize) finalSize.value = label.innerText.trim();
     });
   });
-});
-const btnIncrease = document.getElementById('btn-increase');
-const btnDecrease = document.getElementById('btn-decrease');
-const quantityInput = document.getElementById('quantity');
 
-btnIncrease.addEventListener('click', () => {
-  let currentValue = parseInt(quantityInput.value);
-  quantityInput.value = currentValue + 1;
-});
+  // Xử lý tăng giảm số lượng
+  const qtyInput = document.getElementById('quantity');
+  const btnInc = document.getElementById('btn-increase');
+  const btnDec = document.getElementById('btn-decrease');
 
-btnDecrease.addEventListener('click', () => {
-  let currentValue = parseInt(quantityInput.value);
-  if (currentValue > 1) {
-    quantityInput.value = currentValue - 1;
+  if (btnInc && btnDec && qtyInput) {
+    btnInc.onclick = () => qtyInput.value = parseInt(qtyInput.value) + 1;
+    btnDec.onclick = () => {
+      let v = parseInt(qtyInput.value);
+      if (v > 1) qtyInput.value = v - 1;
+    };
   }
 });
-const sizeLabels = document.querySelectorAll('.product_detail_size label');
-
-sizeLabels.forEach(label => {
-  label.addEventListener('click', () => {
-    // Xóa class active ở tất cả label
-    sizeLabels.forEach(l => l.classList.remove('active'));
-    // Thêm class active cho label vừa click
-    label.classList.add('active');
-  });
-});
-
-
-
