@@ -9,8 +9,6 @@ import java.io.IOException;
 @WebServlet("/CheckoutController")
 public class CheckoutController extends HttpServlet {
 
-    // Nếu bạn vô tình chạy GET (gõ URL trực tiếp), nó sẽ báo lỗi như bạn thấy.
-    // Vì vậy mọi logic phải nằm ở doPost
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
@@ -28,7 +26,7 @@ public class CheckoutController extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
         double subTotal = price * quantity;
-        double shipping = 30000.0; // Phí ship cố định theo database hoặc logic riêng
+        double shipping = 30000.0;
         double total = subTotal + shipping;
 
         // Gửi sang checkout.jsp

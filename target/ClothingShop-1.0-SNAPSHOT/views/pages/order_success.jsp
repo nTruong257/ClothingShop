@@ -21,27 +21,28 @@
     <main class="success-card" role="main">
         <div class="success-header">
             <div class="tick-wrap" aria-hidden="true">
-                <span class="tick">
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <path d="M4 12l4 4L20 6"></path>
-                    </svg>
-                </span>
+          <span class="tick">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 12l4 4L20 6"></path>
+            </svg>
+          </span>
             </div>
             <div>
                 <h1 class="success-title">Bạn đã đặt hàng thành công!</h1>
-                <p class="success-sub">Cảm ơn bạn <strong>${uName}</strong> đã mua sắm tại <strong>StyleEra</strong>. Đơn hàng của bạn đang được xử lý.</p>
+                <p class="success-sub">Cảm ơn bạn đã mua sắm tại <strong>StyleEra</strong>. Đơn hàng của bạn đang được
+                    xử lý.
+                </p>
             </div>
         </div>
 
         <div class="order-meta">
-            <div>
-                <div class="order-id" id="orderId">Mã đơn hàng: #ORD-${System.currentTimeMillis() % 1000000}</div>
-                <div class="note">Ngày đặt: <span id="orderDate">${uDate}</span></div>
-            </div>
+            <div class="order-id">Mã đơn hàng: #ORD-${System.currentTimeMillis() % 1000000}</div>
+            <div class="note">Ngày đặt: <span>${uDate}</span></div>
             <div class="order-actions">
                 <button class="btn" id="viewOrderBtn">
                     <a href="order_status.jsp">Xem đơn hàng</a>
                 </button>
+
             </div>
         </div>
 
@@ -50,28 +51,27 @@
             <div class="info-grid">
                 <div class="info-box">
                     <div class="info-label">Tên</div>
-                    <div class="info-val" id="shipName">${uName}</div>
+                    <div class="info-val">${uName}</div>
                 </div>
                 <div class="info-box">
                     <div class="info-label">Số điện thoại</div>
-                    <div class="info-val" id="shipPhone">${uPhone}</div>
+                    <div class="info-val">${uPhone}</div>
                 </div>
                 <div class="info-box" style="grid-column:1 / -1;">
                     <div class="info-label">Địa chỉ</div>
-                    <div class="info-val" id="shipAddress">${uAddress}</div>
+                    <div class="info-val" >${uAddress}</div>
                 </div>
                 <div class="info-box">
                     <div class="info-label">Thời gian dự kiến giao</div>
-                    <div class="info-val" id="shipETA">${uTime}, ${uDate}</div>
+                    <div class="info-val" >${uTime}, ${uDate}</div>
                 </div>
                 <div class="info-box">
                     <div class="info-label">Phương thức thanh toán</div>
-                    <div class="info-val" id="payMethod">
+                    <div class="info-val" >
                         <c:choose>
-                            <c:when test="${uPayment == 'cod'}">Thanh toán khi giao hàng (COD)</c:when>
+                            <c:when test="${uPayment == 'cod'}">Thanh toán khi giao hàng</c:when>
                             <c:when test="${uPayment == 'bank_transfer'}">Chuyển khoản ngân hàng</c:when>
-                            <c:when test="${uPayment == 'cheque'}">Ví điện tử Momo</c:when>
-                            <c:otherwise>Thẻ Visa</c:otherwise>
+                            <c:otherwise>${uPayment}</c:otherwise>
                         </c:choose>
                     </div>
                 </div>
@@ -80,8 +80,9 @@
 
         <section class="section">
             <h4>Ghi chú</h4>
-            <div class="info-box" style="min-height:64px">${uNote != "" ? uNote : "Không có ghi chú"}</div>
+            <div class="info-box" style="min-height:64px">${uNote}</div>
         </section>
+
     </main>
 
     <aside class="summary-card" aria-labelledby="summaryTitle">
@@ -91,26 +92,62 @@
             <img src="${root}${pImage}" alt="${pName}">
             <div style="flex:1">
                 <div class="prod-name">${pName}</div>
-                <div class="prod-meta">Size: ${cSize} | Màu: ${cColor}</div>
+                <div class="prod-meta">Size ${pSize} • Màu: ${pColor}</div>
             </div>
             <div style="text-align:right">
-                <div style="font-weight:600">${pTotal}₫</div>
+                <div style="font-weight:600"> <fmt:formatNumber value="${cTotal}" type="number" groupingUsed="true"/>₫</div>
                 <div class="prod-meta">SL: ${pQty}</div>
             </div>
         </div>
         <hr>
+        <div class="price-row">
+            <div>Tạm tính</div>
+            <div>
+                <fmt:formatNumber value="${cSubTotal}" type="number" groupingUsed="true"/>đ
+            </div>
+        </div>
+        <div class="price-row">
+            <div>Phí vận chuyển</div>
+            <div>
+                <fmt:formatNumber value="${cShipping}" type="number" groupingUsed="true"/>đ
+            </div>
+        </div>
+        <hr>
         <div class="total">
-            <div style="font-weight:800;font-size: 20px; color: #ff6f61;">Tổng cộng</div>
-            <div class="num">${pTotal}₫</div>
+            <h4 class="text-danger">Tổng cộng</h4>
+            <h3 class="text-primary">
+                <fmt:formatNumber value="${cTotal}" type="number" groupingUsed="true"/>₫
+            </h3>
+        </div>
+
+        <div class="payment-method">
+            <h4 style="margin:10px 0 8px 0">Phương thức thanh toán</h4>
+            <div class="pm-item"><img src="../../images/image_product/logoNH.png" alt="bank">
+                <div>Chuyển khoản ngân hàng</div>
+            </div>
+            <div class="pm-item"><img src="../../images/image_product/momo.png" alt="momo">
+                <div>Ví điện tử Momo</div>
+            </div>
+            <div class="pm-item"><img src="../../images/image_product/visa.png" alt="visa">
+                <div>Thẻ Visa</div>
+            </div>
+            <div class="pm-item"><img src="../../images/image_product/logothanhtoan.png" alt="cod">
+                <div>Thanh toán khi giao hàng</div>
+            </div>
         </div>
 
         <div style="display:flex;gap:10px;margin-top:14px;flex-direction: row-reverse;">
-            <button class="btn" onclick="location.href='${root}/index.jsp'">Tiếp tục mua sắm</button>
+            <button class="btn" onclick="location.href='index.html'">Tiếp tục mua sắm</button>
         </div>
+
     </aside>
+
 </div>
 
 <jsp:include page="/views/layout/footer.jsp" />
-<script src="${root}/js/main.js"></script>
+
+<script src="../../js/checkout.js"></script>
+<script src="../../js/main.js"></script>
 </body>
+
 </html>

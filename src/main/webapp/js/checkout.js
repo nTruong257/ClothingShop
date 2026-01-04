@@ -1,35 +1,35 @@
 document.addEventListener('DOMContentLoaded', function () {
   const districts = {
     "43": [
-      {value: 47, text: "Quận 1"},
-      {value: 48, text: "Quận 3"},
-      {value: 49, text: "Quận 4"},
-      {value: 50, text: "Quận 5"},
-      {value: 51, text: "Quận 6"},
-      {value: 52, text: "Quận 7"},
-      {value: 53, text: "Quận 8"},
-      {value: 54, text: "Quận 10"},
-      {value: 55, text: "Quận 11"},
-      {value: 56, text: "Quận 12"},
-      {value: 57, text: "Quận Tân Bình"},
-      {value: 58, text: "Quận Tân Phú"},
-      {value: 59, text: "Quận Bình Thạnh"},
-      {value: 60, text: "Quận Bình Tân"},
-      {value: 61, text: "Quận Phú Nhuận"}
+      { value: 47, text: "Quận 1" },
+      { value: 48, text: "Quận 3" },
+      { value: 49, text: "Quận 4" },
+      { value: 50, text: "Quận 5" },
+      { value: 51, text: "Quận 6" },
+      { value: 52, text: "Quận 7" },
+      { value: 53, text: "Quận 8" },
+      { value: 54, text: "Quận 10" },
+      { value: 55, text: "Quận 11" },
+      { value: 56, text: "Quận 12" },
+      { value: 57, text: "Quận Tân Bình" },
+      { value: 58, text: "Quận Tân Phú" },
+      { value: 59, text: "Quận Bình Thạnh" },
+      { value: 60, text: "Quận Bình Tân" },
+      { value: 61, text: "Quận Phú Nhuận" }
     ],
     "44": [
-      {value: 62, text: "Quận Gò Vấp"},
-      {value: 63, text: "TP Thủ Đức (Quận 2, 9, Thủ Đức)"},
-      {value: 64, text: "Huyện Củ Chi"},
-      {value: 65, text: "Huyện Bình Chánh"},
-      {value: 66, text: "Huyện Nhà Bè"},
-      {value: 67, text: "Huyện Cần Giờ"},
-      {value: 68, text: "Huyện Hóc Môn"}
+      { value: 62, text: "Quận Gò Vấp" },
+      { value: 63, text: "TP Thủ Đức (Quận 2, 9, Thủ Đức)" },
+      { value: 64, text: "Huyện Củ Chi" },
+      { value: 65, text: "Huyện Bình Chánh" },
+      { value: 66, text: "Huyện Nhà Bè" },
+      { value: 67, text: "Huyện Cần Giờ" },
+      { value: 68, text: "Huyện Hóc Môn" }
     ]
   };
 
   const citySelect = document.getElementById("input-shipping-zone");
-  const districtSelect = document.getElementById("input-shipping-district");
+  const districtSelect = document.getElementById("input-shipping-custom-field-30");
 
   if (!citySelect || !districtSelect) {
     console.error("Không tìm thấy element citySelect hoặc districtSelect. Kiểm tra lại id trong HTML.");
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const list = districts[val];
     list.forEach(d => {
       const option = document.createElement("option");
-      option.value = d.value;
+      option.value = d.text; // Sửa thành d.text để gửi CHỮ (ví dụ: "Quận 1")
       option.textContent = d.text;
       districtSelect.appendChild(option);
     });
@@ -65,6 +65,40 @@ document.addEventListener('DOMContentLoaded', function () {
     districtSelect.disabled = false;
   });
 });
+// Thay thế đoạn xử lý click cũ bằng đoạn này
+const btnConfirm = document.getElementById("validate_order");
+if (btnConfirm) {
+  btnConfirm.onclick = function() {
+    console.log("Nút đã được bấm!");
+
+    // 1. Lấy phương thức thanh toán từ cột phải
+    const paymentRadio = document.querySelector('input[name="payment_method"]:checked');
+    if (!paymentRadio) {
+      alert("Vui lòng chọn phương thức thanh toán!");
+      return;
+    }
+
+    // 2. Gán giá trị vào input ẩn ở form trái
+    const hPayment = document.getElementById("hPaymentMethod");
+    if (hPayment) hPayment.value = paymentRadio.value;
+
+    // 3. Kiểm tra các trường bắt buộc ở form trái
+    const nameInput = document.getElementById("input-shipping-firstname");
+    if (!nameInput || nameInput.value.trim() === "") {
+      alert("Vui lòng nhập họ tên khách hàng!");
+      return;
+    }
+
+    // 4. LỆNH QUAN TRỌNG: Gửi form bên trái
+    const mainForm = document.getElementById("form-shipping-address");
+    if (mainForm) {
+      console.log("Đang gửi form...");
+      mainForm.submit(); // Nếu dòng này chạy, trang SẼ PHẢI LOAD SANG TRANG MỚI
+    } else {
+      console.error("Không tìm thấy form với id: form-shipping-address");
+    }
+  };
+}
 const modalBackdrop = document.getElementById('modalBackdrop');
 const viewOrderBtn = document.getElementById('viewOrderBtn');
 const trackBtn = document.getElementById('trackBtn');
@@ -98,28 +132,3 @@ function closeModal() {
   if (params.has('pay')) document.getElementById('payMethod').textContent = params.get('pay');
 })();
 
-//xac nhan don hang
-
-$(document).ready(function() {
-  $('#validate_order').click(function() {
-    // 1. Lấy phương thức thanh toán từ Cột Phải
-    let payment = $('input[name="payment_method"]:checked').val();
-    if (!payment) {
-      alert("Vui lòng chọn phương thức thanh toán!");
-      return;
-    }
-
-    // 2. Gán giá trị vào input ẩn ở Cột Trái
-    $('#hPaymentMethod').val(payment);
-
-    // 3. Kiểm tra thông tin bắt buộc
-    let name = $('#input-shipping-firstname').val();
-    if (name === "") {
-      alert("Vui lòng nhập họ tên!");
-      return;
-    }
-
-    // 4. Gửi form ở Cột Trái đi
-    $('#form-shipping-address').submit();
-  });
-});

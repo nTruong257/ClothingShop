@@ -42,6 +42,8 @@
                                         <input type="hidden" name="hSize" value="${cSize}">
                                         <input type="hidden" name="hColor" value="${cColor}">
                                         <input type="hidden" name="hQty" value="${cQty}">
+                                        <input type="hidden" name="hSubTotal" value="${cSubTotal}">
+                                        <input type="hidden" name="hShipping" value="${cShipping}">
                                         <input type="hidden" name="hTotal" value="${cTotal}">
 
                                         <div class="row mb-3">
@@ -62,19 +64,26 @@
                                             </div>
                                         </div>
 
-                                        <div class="row mb-3">
-                                            <div class="col-md-6 required">
-                                                <label for="input-shipping-zone" class="form-label">Tỉnh / thành phố</label>
-                                                <select name="shipping_zone_id" id="input-shipping-zone" class="form-select">
-                                                    <option value="0">Vui lòng chọn tỉnh/thành phố</option>
-                                                    <option value="43">TP.Hồ Chí Minh - Nội thành</option> <option value="44">TP.Hồ Chí Minh - Ngoại thành</option> </select>
-                                            </div>
-                                            <div class="col-md-6 required">
-                                                <label for="input-shipping-district" class="form-label">Quận / Huyện</label>
-                                                <select name="shipping_district" id="input-shipping-district" class="form-select">
-                                                    <option value="0">Vui lòng chọn quận/huyện</option>
-                                                </select>
-                                            </div>
+                                        <div class="col mb-3 required">
+                                            <label for="input-shipping-zone" class="form-label">Tỉnh / thành
+                                                phố</label>
+                                            <select name="shipping_zone_id" id="input-shipping-zone"
+                                                    class="form-select">
+                                                <option value="0">Vui lòng chọn tỉnh/thành phố</option>
+                                                <option value="43">TP.Hồ Chí Minh - Nội thành</option>
+                                                <option value="44">TP.Hồ Chí Minh - Ngoại thành</option>
+                                            </select>
+                                            <div id="error-shipping-zone" class="invalid-feedback"></div>
+                                        </div>
+                                        <div class="col mb-3 custom-field custom-field-30">
+                                            <label for="input-shipping-custom-field-30"
+                                                   class="form-label">Quận / Huyện</label>
+                                            <select name="shipping_custom_field[address][30]"
+                                                    id="input-shipping-custom-field-30" class="form-select">
+                                                <option value="0">Vui lòng chọn quận/huyện</option>
+                                            </select>
+                                            <div id="error-shipping-custom-field-30"
+                                                 class="invalid-feedback"></div>
                                         </div>
 
                                         <div class="row mb-3">
@@ -97,6 +106,11 @@
                                                 <label for="input-shipping-note" class="form-label">Ghi chú [Cho shop]</label>
                                                 <textarea name="shipping_note" rows="3" id="input-shipping-note" class="form-control"></textarea>
                                             </div>
+                                        </div>
+                                        <div class="text-end mt-4">
+                                            <button type="submit" id="validate_order" class="btn btn-primary btn-lg">
+                                                Xác nhận đơn hàng
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -219,11 +233,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="text-end mb-5">
-                                    <button type="button" id="validate_order" class="btn btn-primary btn-lg">
-                                        Xác nhận đơn hàng
-                                    </button>
-                                </div>
+
                                 <div class="mt-3" id="paypal-button-container"></div>
                             </div>
                         </div>

@@ -30,8 +30,7 @@ public class AuthFilter implements Filter {
         boolean isProtectedPage = path.contains("/account.jsp") ||
                 path.contains("/checkout.jsp") ||
                 path.contains("/order-history.jsp") ||
-                path.contains("/order_status.jsp") ||
-                path.contains("/order_success.jsp");
+                path.contains("/order_status.jsp");
 
         // 3. Logic kiểm tra Session
         HttpSession session = req.getSession(false); // false: Chỉ lấy session cũ, không tạo mới
