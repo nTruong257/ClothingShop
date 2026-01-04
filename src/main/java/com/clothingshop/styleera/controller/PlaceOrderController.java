@@ -32,7 +32,6 @@ public class PlaceOrderController extends HttpServlet {
         String subTotal = request.getParameter("hSubTotal");
         String shipping = request.getParameter("hShipping");
         String pTotal = request.getParameter("hTotal");
-
         // 3. Đóng gói dữ liệu để gửi sang trang order_success.jsp
         request.setAttribute("uName", fullName);
         request.setAttribute("uPhone", phone);

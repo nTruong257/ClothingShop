@@ -65,37 +65,53 @@ document.addEventListener('DOMContentLoaded', function () {
     districtSelect.disabled = false;
   });
 });
-// Thay thế đoạn xử lý click cũ bằng đoạn này
 const btnConfirm = document.getElementById("validate_order");
+
 if (btnConfirm) {
-  btnConfirm.onclick = function() {
-    console.log("Nút đã được bấm!");
+  btnConfirm.onclick = function(e) {
+    // 1. Ngăn chặn hành động mặc định để xử lý logic trước
+    e.preventDefault();
 
-    // 1. Lấy phương thức thanh toán từ cột phải
+    console.log("Bắt đầu kiểm tra đơn hàng...");
+
+    // 2. Lấy radio đang được tích (ở cột phải)
+    // Lưu ý: querySelector này tìm input có name="payment_method" và đang được :checked
     const paymentRadio = document.querySelector('input[name="payment_method"]:checked');
+
     if (!paymentRadio) {
-      alert("Vui lòng chọn phương thức thanh toán!");
-      return;
+      alert("Vui lòng chọn một phương thức thanh toán!");
+      return false;
     }
 
-    // 2. Gán giá trị vào input ẩn ở form trái
+    const selectedValue = paymentRadio.value;
+    console.log("Phương thức khách chọn: " + selectedValue);
+
+    // 3. Tìm ô ẩn ở form bên trái
     const hPayment = document.getElementById("hPaymentMethod");
-    if (hPayment) hPayment.value = paymentRadio.value;
-
-    // 3. Kiểm tra các trường bắt buộc ở form trái
-    const nameInput = document.getElementById("input-shipping-firstname");
-    if (!nameInput || nameInput.value.trim() === "") {
-      alert("Vui lòng nhập họ tên khách hàng!");
-      return;
+    if (hPayment) {
+      hPayment.value = selectedValue;
+      console.log("Đã gán giá trị vào input ẩn thành công.");
+    } else {
+      console.error("LỖI: Không tìm thấy thẻ <input id='hPaymentMethod'>. Hãy kiểm tra lại HTML form trái.");
+      return false;
     }
 
-    // 4. LỆNH QUAN TRỌNG: Gửi form bên trái
+    // 4. Kiểm tra các trường thông tin khách hàng bắt buộc
+    const nameInput = document.getElementById("input-shipping-firstname");
+    const phoneInput = document.getElementById("input-shipping-phone");
+
+    if (!nameInput || nameInput.value.trim() === "" || !phoneInput || phoneInput.value.trim() === "") {
+      alert("Vui lòng nhập đầy đủ Họ tên và Số điện thoại nhận hàng!");
+      return false;
+    }
+
+    // 5. CÂU LỆNH QUAN TRỌNG: Gửi form đi sau khi đã gán đủ dữ liệu
     const mainForm = document.getElementById("form-shipping-address");
     if (mainForm) {
-      console.log("Đang gửi form...");
-      mainForm.submit(); // Nếu dòng này chạy, trang SẼ PHẢI LOAD SANG TRANG MỚI
+      console.log("Dữ liệu hợp lệ, đang chuyển hướng...");
+      mainForm.submit();
     } else {
-      console.error("Không tìm thấy form với id: form-shipping-address");
+      console.error("Không tìm thấy form-shipping-address để submit.");
     }
   };
 }

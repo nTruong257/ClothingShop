@@ -67,11 +67,13 @@
                 </div>
                 <div class="info-box">
                     <div class="info-label">Phương thức thanh toán</div>
-                    <div class="info-val" >
+                    <div class="info-val">
                         <c:choose>
-                            <c:when test="${uPayment == 'cod'}">Thanh toán khi giao hàng</c:when>
                             <c:when test="${uPayment == 'bank_transfer'}">Chuyển khoản ngân hàng</c:when>
-                            <c:otherwise>${uPayment}</c:otherwise>
+                            <c:when test="${uPayment == 'cheque'}">Ví điện tử Momo</c:when>
+                            <c:when test="${uPayment == 'paypal'}">Thẻ Visa</c:when>
+                            <c:when test="${uPayment == 'cod'}">Thanh toán khi giao hàng (COD)</c:when>
+                            <c:otherwise>Chưa xác định (${uPayment})</c:otherwise>
                         </c:choose>
                     </div>
                 </div>
@@ -121,19 +123,39 @@
         </div>
 
         <div class="payment-method">
-            <h4 style="margin:10px 0 8px 0">Phương thức thanh toán</h4>
-            <div class="pm-item"><img src="../../images/image_product/logoNH.png" alt="bank">
-                <div>Chuyển khoản ngân hàng</div>
-            </div>
-            <div class="pm-item"><img src="../../images/image_product/momo.png" alt="momo">
-                <div>Ví điện tử Momo</div>
-            </div>
-            <div class="pm-item"><img src="../../images/image_product/visa.png" alt="visa">
-                <div>Thẻ Visa</div>
-            </div>
-            <div class="pm-item"><img src="../../images/image_product/logothanhtoan.png" alt="cod">
-                <div>Thanh toán khi giao hàng</div>
-            </div>
+            <h4 style="margin:10px 0 8px 0">Phương thức thanh toán đã chọn</h4>
+
+            <c:choose>
+                <c:when test="${uPayment == 'bank_transfer'}">
+                    <div class="pm-item">
+                        <img src="${root}/images/image_product/logoNH.png" alt="bank">
+                        <div>Chuyển khoản ngân hàng</div>
+                    </div>
+                </c:when>
+                <c:when test="${uPayment == 'cheque'}">
+                    <div class="pm-item">
+                        <img src="${root}/images/image_product/momo.png" alt="momo">
+                        <div>Ví điện tử Momo</div>
+                    </div>
+                </c:when>
+                <c:when test="${uPayment == 'paypal'}">
+                    <div class="pm-item">
+                        <img src="${root}/images/image_product/visa.png" alt="visa">
+                        <div>Thẻ Visa</div>
+                    </div>
+                </c:when>
+                <c:when test="${uPayment == 'cod'}">
+                    <div class="pm-item">
+                        <img src="${root}/images/image_product/logothanhtoan.png" alt="cod">
+                        <div>Thanh toán khi giao hàng</div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="pm-item">
+                        <div>Chưa xác định phương thức</div>
+                    </div>
+                </c:otherwise>
+            </c:choose>
         </div>
 
         <div style="display:flex;gap:10px;margin-top:14px;flex-direction: row-reverse;">
@@ -146,7 +168,7 @@
 
 <jsp:include page="/views/layout/footer.jsp" />
 
-<script src="../../js/checkout.js"></script>
+<script src="<c:url value='/js/checkout.js'/>"></script>
 <script src="../../js/main.js"></script>
 </body>
 
