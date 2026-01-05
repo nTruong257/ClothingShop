@@ -36,12 +36,21 @@ document.querySelectorAll('.nav-item').forEach(item => {
     });
 });
 
-// Cart functionality (demo UI update)
+// Chức năng giỏ hàng
+window.setCartBadgeCount = function (count) {
+    const qty = Number.parseInt(String(count ?? "0"), 10) || 0;
+
+    document.querySelectorAll('.cart-badge').forEach((badge) => {
+        badge.textContent = String(qty);
+        badge.style.display = qty > 0 ? 'flex' : 'none';
+    });
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     const cartBadge = document.querySelector('.cart-badge');
     if (cartBadge) {
         const count = parseInt(cartBadge.textContent.trim(), 10);
-        cartBadge.style.display = count > 0 ? 'flex' : 'none';
+        window.setCartBadgeCount(count);
     }
 });
 

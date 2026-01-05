@@ -16,15 +16,43 @@ public class RemoveItem extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int variantId = Integer.parseInt(request.getParameter("variantId"));
-        Cart cart = (Cart) request.getSession().getAttribute("cart");
-        if(cart == null){
-            cart = new Cart();
-            request.getSession().setAttribute("cart",cart);
+        response.setContentType("application/json;charset=UTF-8");
+        HttpSession session = request.getSession();
+        String variantIdRaw = request.getParameter("variantId");
+
+        if (variantIdRaw == null || variantIdRaw.isBlank()) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.getWriter().print("{\"status\":\"error\",\"msg\":\"Thiếu variantId\"}");
             return;
         }
+
+        final int variantId;
+        try {
+            variantId = Integer.parseInt(variantIdRaw);
+        } catch (NumberFormatException e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.getWriter().print("{\"status\":\"error\",\"msg\":\"variantId không hợp lệ\"}");
+            return;
+        }
+
+        Cart cart = (Cart) session.getAttribute("cart");
+        if (cart == null) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.getWriter().print("{\"status\":\"error\",\"msg\":\"Giỏ hàng trống\"}");
+            return;
+        }
+
         cart.removeItem(variantId);
-        request.getSession().setAttribute("cart",cart);
-        response.sendRedirect(request.getContextPath() + "/views/pages/cart.jsp");
+
+        if (cart.getTotalQuantity() <= 0) {
+            session.removeAttribute("cart");
+        } else {
+            session.setAttribute("cart", cart);
+        }
+
+        response.getWriter().print(
+                "{\"status\":\"success\",\"totalQuantity\":" + cart.getTotalQuantity() + ",\"cartTotal\":" + cart.total() + "}"
+        );
+
     }
 }

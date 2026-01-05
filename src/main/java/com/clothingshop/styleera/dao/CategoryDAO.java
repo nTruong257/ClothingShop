@@ -21,8 +21,7 @@ public class CategoryDAO {
 
             // 2. Lấy Sub (Áo thun, Quần jean...)
             // CHÚ Ý: Cột category_parent_id
-            String sqlSubs = "SELECT id, sub_name AS name, category_parent_id AS parentCategoryId, " +
-                    "image, description " +
+            String sqlSubs = "SELECT id, sub_name AS name, category_parent_id AS parentCategoryId " +
                     "FROM subcategories WHERE category_parent_id = :parentId";
 
             for (ParentCategory parent : parents) {
@@ -56,4 +55,5 @@ public class CategoryDAO {
                         .findOne().orElse("Sản phẩm")
         );
     }
+
 }

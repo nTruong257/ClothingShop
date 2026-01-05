@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<c:set var="root" value="${pageContext.request.contextPath}" scope="request"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,7 @@
 
 <body>
 
-<jsp:include page="/views/layout/header.jsp" />
+<jsp:include page="/views/layout/header.jsp"/>
 
 <div id="checkout-checkout" class="container">
     <div class="row">
@@ -55,7 +56,8 @@
                                             </div>
                                             <div class="col mb-3 required d-none"></div>
                                             <div class="col mb-3 required">
-                                                <label for="input-shipping-zone" class="form-label">Tỉnh / thành phố</label>
+                                                <label for="input-shipping-zone" class="form-label">Tỉnh / thành
+                                                    phố</label>
                                                 <select name="shipping_zone_id" id="input-shipping-zone"
                                                         class="form-select">
                                                     <option value="0">Vui lòng chọn tỉnh/thành phố</option>
@@ -142,29 +144,42 @@
                     <div id="checkout-confirm">
                         <legend>Chi tiết đơn hàng</legend>
                         <div class="order-summary">
-                            <div class="order-item d-flex align-items-center mb-3">
-                                <img src="${root}/images/image_product/quanjeans_checkout.png" class="img-thumbnail me-3"
-                                     alt="Quần jean">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="${pageContext.request.contextPath}${cImage}"
+                                     alt="${cName}"
+                                     style="width: 80px; height: 100px; object-fit: cover;"
+                                     class="me-3 border">
                                 <div class="flex-grow-1">
-                                    <div class="fw-bold">Quần jeans nam đen basic</div>
-                                    <div class="text-muted small d-flex align-items-center">
-                                        <lable>Số lượng : </lable>
-                                        <span>1</span>
-                                    </div>
+                                    <h5 class="mb-0">${cName}</h5>
+                                    <small class="text-muted">Size: ${cSize} | Màu: ${cColor}</small><br>
+                                    <small class="text-muted">Số lượng: ${cQty}</small>
                                 </div>
-                                <div class="fw-semibold">470.000₫</div>
+                                <div class="text-end">
+                                    <strong>
+                                        <fmt:formatNumber value="${cSubTotal}" type="number" groupingUsed="true"/>₫
+                                    </strong>
+                                </div>
                             </div>
 
                             <hr>
                             <div class="d-flex justify-content-between">
-                                <span>Tạm tính</span><span>470.000₫</span>
+                                <span>Tạm tính</span>
+                                <span>
+                                <fmt:formatNumber value="${cSubTotal}" type="number" groupingUsed="true"/>₫
+                                </span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <span>Phí vận chuyển</span><span>30.000₫</span>
+                                <span>Phí vận chuyển</span>
+                                <span>
+                                <fmt:formatNumber value="${cShipping}" type="number" groupingUsed="true"/>₫
+                                </span>
                             </div>
                             <hr>
-                            <div class="d-flex justify-content-between fw-bold fs-5">
-                                <span>Tổng cộng</span><span class="text-primary">500.000₫</span>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="text-danger">Tổng cộng</h4>
+                                <h3 class="text-primary">
+                                    <fmt:formatNumber value="${cTotal}" type="number" groupingUsed="true"/>₫
+                                </h3>
                             </div>
                             <div id="checkout-payment-method" class="mb-4">
                                 <h4 class="payment-title">Phương thức thanh toán</h4>
@@ -180,7 +195,8 @@
                                                     <label for="input-payment-method-bank_transfer"
                                                            class="form-check-label">
                                                         <img class="payment-method-icon"
-                                                             src="${root}/images/image_product/logoNH.png">Chuyển khoản ngân hàng
+                                                             src="${root}/images/image_product/logoNH.png">Chuyển khoản
+                                                        ngân hàng
                                                         <span class="payment-brand-icon-bank_transfer"></span>
                                                     </label>
                                                 </div>
@@ -255,7 +271,7 @@
 </div>
 
 <!-- ===== FOOTER ===== -->
-<jsp:include page="/views/layout/footer.jsp" />
+<jsp:include page="/views/layout/footer.jsp"/>
 
 <script src="${root}/js/checkout.js"></script>
 <script src="${root}/js/main.js"></script>
