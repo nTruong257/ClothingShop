@@ -55,4 +55,58 @@ public class UserDAO {
                         .findOne().orElse(null)
         );
     }
+
+    // 5. Lưu user không cần mật khẩu
+    public void registerUserGoogle(User user) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        jdbi.useHandle(handle -> {
+            String sql = "INSERT INTO users (user_name, email, role, status, enabled, google_id) " +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
+            handle.createUpdate(sql)
+                    .bind(0, user.getUser_name())
+                    .bind(1, user.getEmail())
+                    .bind(2, "User")
+                    .bind(3, "Hoạt Động")
+                    .bind(4, 1) // Google đã xác thực nên enable luôn
+                    .bind(5, user.getGoogle_id())
+                    .execute();
+        });
+    }
+
+    // 6. Lưu verification_code
+    public void updateOtp(String email, String otp) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        jdbi.useHandle(handle -> {
+            // Cập nhật mã OTP mới cho email tương ứng
+            String sql = "UPDATE users SET verification_code = ? WHERE email = ?";
+            handle.createUpdate(sql)
+                    .bind(0, otp)
+                    .bind(1, email)
+                    .execute();
+        });
+    }
+
+    // 7. Cập nhật mật khẩu
+    public void updatePassword(String email, String newPasswordHash) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        jdbi.useHandle(handle -> {
+            String sql = "UPDATE users SET password_hash = ?, verification_code = NULL WHERE email = ?";
+            handle.createUpdate(sql)
+                    .bind(0, newPasswordHash)
+                    .bind(1, email)
+                    .execute();
+        });
+    }
+
+    // 8. Cập nhật google_id
+    public void updateGoogleId(String email, String googleId) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        jdbi.useHandle(handle -> {
+            String sql = "UPDATE users SET google_id = ? WHERE email = ?";
+            handle.createUpdate(sql)
+                    .bind(0, googleId)
+                    .bind(1, email)
+                    .execute();
+        });
+    }
 }

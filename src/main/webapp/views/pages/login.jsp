@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.clothingshop.styleera.util.GoogleUtils" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
 
@@ -86,7 +87,7 @@
                                     <i class="fab fa-facebook-f"></i> Facebook
                                 </button>
 
-                                <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8080/StyleEra/login-google&response_type=code&client_id=YOUR_GOOGLE_CLIENT_ID_HERE&approval_prompt=force"
+                                <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=<%= GoogleUtils.GOOGLE_REDIRECT_URI %>&response_type=code&client_id=<%= GoogleUtils.GOOGLE_CLIENT_ID %>&approval_prompt=force"
                                    class="social-btn google" style="text-decoration: none;">
                                     <i class="fab fa-google"></i> Google
                                 </a>
