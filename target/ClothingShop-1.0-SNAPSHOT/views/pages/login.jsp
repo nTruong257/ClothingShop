@@ -77,6 +77,21 @@
 
                             <button type="submit" class="auth-btn">Đăng Nhập</button>
 
+                            <div class="divider">
+                                <span>Hoặc đăng nhập với</span>
+                            </div>
+
+                            <div class="social-login">
+                                <button type="button" class="social-btn facebook">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </button>
+
+                                <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8080/StyleEra/login-google&response_type=code&client_id=YOUR_GOOGLE_CLIENT_ID_HERE&approval_prompt=force"
+                                   class="social-btn google" style="text-decoration: none;">
+                                    <i class="fab fa-google"></i> Google
+                                </a>
+                            </div>
+
                         </form>
                     </div>
 
