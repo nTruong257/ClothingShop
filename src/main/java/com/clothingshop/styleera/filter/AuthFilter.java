@@ -44,9 +44,7 @@ public class AuthFilter implements Filter {
                 return;
             } else {
                 // B. Nếu đã đăng nhập -> Chặn Cache để khi Logout không Back lại được
-                res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-                res.setHeader("Pragma", "no-cache");
-                res.setDateHeader("Expires", 0);
+                disableCache(res);
             }
         }
 
@@ -57,7 +55,28 @@ public class AuthFilter implements Filter {
             return;
         }
 
+        // 5. Logic cho trang Reset Password
+        // Trang này cho phép vào nếu: (Đã đăng nhập) HOẶC (Đang trong quy trình Quên mật khẩu hợp lệ)
+        if (path.contains("/reset-pasword.jsp")) {
+            String verifyType = (session != null) ? (String) session.getAttribute("verifyType") : null;
+            boolean isResetFlow = "RESET_PASSWORD".equals(verifyType);
+
+            // Nếu KHÔNG phải user đang đăng nhập VÀ KHÔNG phải đang reset pass từ email
+            if (!isLoggedIn && !isResetFlow) {
+                res.sendRedirect(req.getContextPath() + "/views/pages/login.jsp");
+                return;
+            }
+            // Nếu được phép vào thì cũng chặn cache
+            disableCache(res);
+        }
+
         // Cho phép đi tiếp
         chain.doFilter(request, response);
+    }
+
+    private void disableCache(HttpServletResponse res) {
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setDateHeader("Expires", 0);
     }
 }
