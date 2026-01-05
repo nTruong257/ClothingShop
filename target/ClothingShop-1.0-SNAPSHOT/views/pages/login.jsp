@@ -57,7 +57,13 @@
                                 <label class="form-label">Mật khẩu <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-lock form-control-icon"></i>
-                                    <input type="password" class="auth-input" name="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
+
+                                    <input type="password" class="auth-input" name="password" id="loginPassword"
+                                           placeholder="Nhập mật khẩu" required>
+
+                                    <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
                                 </div>
                             </div>
 
@@ -66,6 +72,7 @@
                                     <input type="checkbox" id="rememberMe" name="remember">
                                     <label for="rememberMe">Ghi nhớ đăng nhập</label>
                                 </div>
+                                <a href="${root}/views/pages/forgot-password.jsp" class="forgot-link">Quên mật khẩu?</a>
                             </div>
 
                             <button type="submit" class="auth-btn">Đăng Nhập</button>
@@ -89,7 +96,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Custom JavaScript -->
-<script src="../../js/main.js"></script>
-<script src="../../js/login.js"></script>
+<script src="${root}/js/main.js"></script>
+<script src="${root}/js/login.js"></script>
+<script src="${root}/js/password-utils.js"></script>
 </body>
 </html>

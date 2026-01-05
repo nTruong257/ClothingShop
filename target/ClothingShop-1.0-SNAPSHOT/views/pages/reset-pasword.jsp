@@ -15,13 +15,11 @@
 </head>
 
 <body>
-<!-- ===== HEADER ===== -->
 <jsp:include page="/views/layout/header.jsp" />
 
-<!-- ===== MAIN CONTENT ===== -->
 <main class="main-content">
     <div class="auth-container">
-        <div class="auth-wrapper"> <!-- ===== RESET PASSWORD PAGE ===== -->
+        <div class="auth-wrapper">
             <div id="resetPage" class="page-content">
                 <div class="auth-card">
                     <div class="auth-header">
@@ -30,26 +28,31 @@
                     </div>
 
                     <div class="auth-body">
-                        <form id="resetForm" onsubmit="handleResetPassword(event)">
+                        <form action="${root}/reset-password" method="post" id="resetForm">
+
+                            <c:if test="${not empty error}">
+                                <div class="alert alert-danger text-center mb-3">
+                                        ${error}
+                                </div>
+                            </c:if>
+
                             <div class="form-group">
                                 <label class="form-label">Mật khẩu mới <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-lock form-control-icon"></i>
-                                    <input type="password" class="auth-input" id="resetPassword"
+                                    <input type="password" class="auth-input" id="resetPassword" name="password"
                                            placeholder="Nhập mật khẩu mới" required
                                            oninput="checkPasswordStrength(this.value, 'reset')">
-                                    <button type="button" class="password-toggle"
-                                            onclick="togglePassword('resetPassword')">
+                                    <button type="button" class="password-toggle" onclick="togglePassword('resetPassword')">
                                         <i class="fas fa-eye"></i>
                                     </button>
                                 </div>
+
                                 <div class="password-strength">
                                     <div class="strength-bar">
                                         <div class="strength-bar-fill" id="resetStrengthBar"></div>
                                     </div>
                                     <div class="strength-text" id="resetStrengthText">Độ mạnh mật khẩu: Chưa nhập</div>
-                                </div>
-                                <div class="error-message" id="resetPasswordError">Mật khẩu phải có ít nhất 8 ký tự
                                 </div>
                             </div>
 
@@ -57,14 +60,12 @@
                                 <label class="form-label">Xác nhận mật khẩu mới <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-lock form-control-icon"></i>
-                                    <input type="password" class="auth-input" id="resetConfirmPassword"
+                                    <input type="password" class="auth-input" id="resetConfirmPassword" name="confirmPassword"
                                            placeholder="Nhập lại mật khẩu mới" required>
-                                    <button type="button" class="password-toggle"
-                                            onclick="togglePassword('resetConfirmPassword')">
+                                    <button type="button" class="password-toggle" onclick="togglePassword('resetConfirmPassword')">
                                         <i class="fas fa-eye"></i>
                                     </button>
                                 </div>
-                                <div class="error-message" id="resetConfirmError">Mật khẩu không khớp</div>
                             </div>
 
                             <button type="submit" class="auth-btn">Đặt Lại Mật Khẩu</button>
@@ -76,13 +77,12 @@
     </div>
 </main>
 
-<!-- ===== FOOTER ===== -->
 <jsp:include page="/views/layout/footer.jsp" />
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom JavaScript -->
 <script src="${root}/js/main.js"></script>
+<script src="${root}/js/password-utils.js"></script>
+
 </body>
 </html>
