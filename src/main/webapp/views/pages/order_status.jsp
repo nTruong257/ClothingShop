@@ -55,7 +55,16 @@
                     </div>
                 </div>
             </div>
-    <div class="box-header">
+        <c:choose>
+            <c:when test="${empty sessionScope.lastOrder}">
+<%--                Thông báo nếu chưa thanh toán--%>
+                <div class="text-center text-muted py-5">
+                    <i class="fa-solid fa-receipt fa-2x mb-3"></i>
+                    <p>Chưa có đơn hàng nào được thanh toán</p>
+                </div>
+            </c:when>
+            <c:otherwise>
+            <div class="box-header">
         <div class="header">        
             <h4>Chi tiết đơn hàng</h4>
         </div>
@@ -98,7 +107,7 @@
        
 
     </div>
-    <div class="box-footer">
+            <div class="box-footer">
             <div class="header">
                  <h4>Tổng quan đơn hàng</h4>
             </div>
@@ -121,6 +130,9 @@
             <strong>130.000 đ</strong>
         </div>
     </div>
+            </c:otherwise>
+        </c:choose>
+
     <div class="box-btn">
         <a class="btn btn-primary btn-back" href="cart.jsp">
             <i class="fas fa-arrow-left"></i> Quay lại
