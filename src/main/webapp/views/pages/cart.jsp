@@ -97,6 +97,7 @@
                                                                 onclick="updateCart(${item.variant.variantId},'increase',this)">
                                                             <i class="fa-solid fa-plus"></i>
                                                         </button>
+
                                                 </div>
 
                                             </td>
@@ -111,6 +112,10 @@
                                                         onclick="removeItem(${item.variant.variantId}, this)">
                                                     <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
                                                 </button>
+<%--                                                Nút thanh toán--%>
+                                                <a type="button" class="btn-cart" href="checkout.jsp">
+                                                    <i class="fa-solid fa-cart-shopping"></i>
+                                                </a>
 
                                             </td>
                                         </tr>
@@ -142,7 +147,6 @@
                             </li>
                         </ul>
                         <div class="cart-actions">
-                            <a href="checkout.jsp" class="btn btn-success">THANH TOÁN</a>
                             <a href="order_status.jsp" class="btn btn-danger">TRẠNG THÁI ĐƠN HÀNG</a>
                         </div>
                     </div>
