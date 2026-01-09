@@ -1,5 +1,6 @@
 package com.clothingshop.styleera.controller;
 
+import com.clothingshop.styleera.service.EmailService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -10,7 +11,14 @@ import java.io.IOException;
 public class ContactController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
 
+        if (session.getAttribute("successOnce") != null) {
+            request.setAttribute("success", true);
+            session.removeAttribute("successOnce");
+        }
+        request.getRequestDispatcher("/views/pages/contact.jsp")
+                .forward(request, response);
     }
 
     @Override
@@ -27,7 +35,7 @@ public class ContactController extends HttpServlet {
         if (name == null || name.trim().isEmpty()) {
             request.setAttribute("nameError", "Vui lòng nhập tên");
             valid = false;
-        }else if (!name.matches(nameRegex)) {
+        } else if (!name.matches(nameRegex)) {
             request.setAttribute("nameError", "Lỗi, Vui lòng nhập tên chỉ được chứa chữ cái!");
             valid = false;
         }
@@ -49,12 +57,37 @@ public class ContactController extends HttpServlet {
             valid = false;
         }
 
-        if (valid) {
-            request.setAttribute("success", true);
+        if (!valid) {
+            request.getRequestDispatcher("/views/pages/contact.jsp")
+                    .forward(request, response);
+            return;
         }
 
-        request.getRequestDispatcher("/views/pages/contact.jsp")
-                .forward(request, response);
+        // Gửi email qua lớp EmailService xử lý
+        try {
+            String subject = "StyleEra - Liên hệ từ Khách hàng";
+            String content = String.format(
+                    "<h3>Thông tin liên hệ</h3>"
+                            + "<p><b>Tên khách hàng:</b> %s</p>"
+                            + "<p><b>Nội dung:</b></p>"
+                            + "<p>%s</p>",
+                    name, mess
+            );
 
+            EmailService.sendEmail(email, subject, content);
+
+            request.getSession().setAttribute("successOnce", true);
+
+            response.sendRedirect(request.getContextPath() + "/ContactController");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute(
+                    "messageError",
+                    "Không thể gửi email. Vui lòng thử lại sau!"
+            );
+            request.getRequestDispatcher("/views/pages/contact.jsp")
+                    .forward(request, response);
+        }
     }
 }

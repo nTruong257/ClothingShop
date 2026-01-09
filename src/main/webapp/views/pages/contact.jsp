@@ -57,7 +57,7 @@
 
                                     <div class="col-12 col-sm-6">
                                         <input class="input_txt" type="email" id="userEmail" name="email"
-                                               placeholder="Nhập Email" required/>
+                                               placeholder="Nhập Email liên hệ của trang" required/>
                                         <c:if test="${not empty emailError}">
                                             <span class="text-danger" style="font-weight: bold">${emailError}</span>
                                         </c:if>
@@ -96,7 +96,7 @@
                             <strong><i class="fa-solid fa-phone-volume"></i> Số Điện Thoại:</strong>0904899626
                         </p>
                         <p class="address">
-                            <strong><i class="fa-solid fa-envelope"></i> Email liên hệ:</strong>vp@hcmuaf.edu.vn
+                            <strong><i class="fa-solid fa-envelope"></i> Email liên hệ:</strong>22130306@st.hcmuaf.edu.vn
                         </p>
                     </div>
                     <div id="gg_map">
