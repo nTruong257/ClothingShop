@@ -6,46 +6,37 @@ function addToCart(variantId) {
         const parts = window.location.pathname.split("/").filter(Boolean);
         contextPath = parts.length > 0 ? `/${parts[0]}` : "";
     }
+
+    const quantityInput = document.getElementById("quantity");
+    const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+
     fetch(`${contextPath}/addcart`, {
         method: "POST",
         credentials: "same-origin",
-        cache: "no-store",
         headers: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" },
-        body: new URLSearchParams({ variantId: String(variantId), quantity: "1" })
-    })
-        .then(async (r) => {
-            if (!r.ok) {
-                const txt = await r.text().catch(() => "");
-                console.error("addcart failed:", r.status, txt);
-                throw new Error(`HTTP ${r.status}`);
-            }
-            return r.json();
+        body: new URLSearchParams({
+            variantId: String(variantId),
+            quantity: String(quantity)
         })
-        .then((data) => {
+    })
+        .then(r => r.json())
+        .then(data => {
             if (data.status !== "success") {
-                console.warn("addcart error:", data);
                 alert(data.msg || "Không thể thêm vào giỏ hàng");
                 return;
             }
+           const totalItems = data.totalItems || quantity;
+            document.querySelectorAll(".cart-badge").forEach(el => {
+                el.textContent = totalItems;
+                el.style.display = totalItems > 0 ? "flex" : "none";
+            });
 
-            const qty = data.totalQuantity ?? 0;
-
-            if (typeof window.setCartBadgeCount === "function") {
-                window.setCartBadgeCount(qty);
-            } else {
-                document.querySelectorAll(".cart-badge").forEach((el) => {
-                    el.textContent = String(qty);
-                    el.style.display = Number(qty) > 0 ? "flex" : "none";
-                });
-            }
-            if (typeof showToast === "function" && data.msg) showToast(data.msg);
+            showToast("Đã thêm vào giỏ hàng!");
         })
-        .catch((err) => {
-            console.error("Lỗi thêm vào giỏ hàng:", err);
+        .catch(() => {
             alert("Có lỗi xảy ra. Vui lòng thử lại!");
         });
 }
-
 //Hiển thị hộp thông báo thêm giỏ hàng ra 1 giây
 function showToast(msg) {
     const toast = document.createElement("div");

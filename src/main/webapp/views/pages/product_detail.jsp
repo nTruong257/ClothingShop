@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -110,7 +111,10 @@
                             <button type="submit" class="btn btn-primary validate_order">
                                 Mua hàng
                             </button>
-                            <a href="${root}/CartController" class="btn btn-primary validate_order">Thêm vào giỏ hàng</a>
+                            <%-- Nút thêm vào giỏ hàng--%>
+                            <button class="btn btn-primary validate_order" type="button" onclick="addToCart(${product.getDefaultVariantId()})">
+                                Thêm vào giỏ hàng
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -444,6 +448,12 @@
 <script src="../../js/main.js"></script>
 <%-- Sử dụng pageContext để lấy tên dự án tự động --%>
 <script src="<c:url value='/js/product_detail.js'/>"></script>
+<%--Truyền contextPath của web app từ JSP sang JavaScript--%>
+<script>
+    const contextPath = "<%= request.getContextPath() %>";
+</script>
+<%--Xử lý sự kiện trong product - thêm giỏ hàng--%>
+<script src="${root}/js/add-cart.js"></script>
 </body>
 
 </html>
