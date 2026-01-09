@@ -113,7 +113,7 @@
                                                     <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
                                                 </button>
 <%--                                                Nút thanh toán--%>
-                                                <a type="button" class="btn-cart" href="checkout.jsp">
+                                                <a type="button" href="checkout.jsp">
                                                     <i class="fa-solid fa-cart-shopping"></i>
                                                 </a>
 
