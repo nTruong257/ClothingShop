@@ -16,8 +16,6 @@ public class HomeController extends HttpServlet {
         ProductService productService = new ProductService();
         VariantService variantService = new VariantService();
 
-
-
         // 1. Lấy sản phẩm MỚI (New Arrivals)
         List<Product> newArrivals = productService.findNewArrivals();
 

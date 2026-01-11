@@ -4,13 +4,13 @@ function toggleMobileMenu() {
     menu.classList.toggle("active");
 }
 
-// ==== NEW: Toggle Account Dropdown ====
+// ==== Toggle Account Dropdown ====
 function toggleAccountDropdown() {
     const dropdown = document.querySelector(".account-dropdown-menu");
     dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
 }
 
-// ==== NEW: Handle Logout ====
+// ==== Handle Logout ====
 function handleLogout() {
     localStorage.removeItem('loggedIn'); // Xóa trạng thái login
     localStorage.removeItem('userType');
@@ -18,7 +18,7 @@ function handleLogout() {
     window.location.href = "login.jsp"; // Chuyển về login
 }
 
-// ==== NEW: Initialize Account Link (chạy khi trang tải) ====
+// ==== Initialize Account Link (chạy khi trang tải) ====
 window.onload = function() {
     const accountLink = document.querySelector(".account-link");
     const loggedIn = localStorage.getItem('loggedIn');
@@ -32,7 +32,7 @@ window.onload = function() {
         });
 
         // Thêm event cho logout nếu có
-        const logoutLink = document.querySelector(".account-dropdown-menu a[href='#logout']"); // Giả sử bạn thêm href="#logout" cho link Đăng xuất
+        const logoutLink = document.querySelector(".account-dropdown-menu a[href='#logout']");
         if (logoutLink) {
             logoutLink.addEventListener('click', function(event) {
                 event.preventDefault();
