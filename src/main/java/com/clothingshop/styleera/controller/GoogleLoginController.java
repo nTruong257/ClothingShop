@@ -19,7 +19,7 @@ public class GoogleLoginController extends HttpServlet {
 
         // Nếu người dùng nhấn "Hủy" hoặc không có mã code trả về
         if (code == null || code.isEmpty()) {
-            response.sendRedirect(request.getContextPath() + "/views/pages/login.jsp?error=GoogleLoginFailed");
+            response.sendRedirect(request.getContextPath() + "/login?error=GoogleLoginFailed");
             return;
         }
 
@@ -78,7 +78,7 @@ public class GoogleLoginController extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             // Nếu có lỗi hệ thống, chuyển về login và báo lỗi
-            response.sendRedirect(request.getContextPath() + "/views/pages/login.jsp?error=SystemError");
+            response.sendRedirect(request.getContextPath() + "/login?error=SystemError");
         }
     }
 }

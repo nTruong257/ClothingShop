@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductDetailController", urlPatterns = {"/Product_DetailController"})
+@WebServlet(name = "ProductDetailController", urlPatterns = {"/product_detail"})
 public class ProductDetailController extends HttpServlet {
 
     // Thay đổi từ ProductDetailDao sang ServiceProduct

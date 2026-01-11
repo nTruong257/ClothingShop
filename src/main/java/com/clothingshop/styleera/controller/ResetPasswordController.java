@@ -17,7 +17,7 @@ public class ResetPasswordController extends HttpServlet {
 
         // Bảo mật: Nếu không phải đang trong luồng reset thì đá về login
         if (email == null || !"RESET_PASSWORD".equals(verifyType)) {
-            response.sendRedirect("views/pages/login.jsp");
+            response.sendRedirect("/login");
             return;
         }
 
@@ -26,7 +26,7 @@ public class ResetPasswordController extends HttpServlet {
 
         if (!newPass.equals(confirmPass)) {
             request.setAttribute("error", "Mật khẩu xác nhận không khớp!");
-            request.getRequestDispatcher("/views/pages/reset-password.jsp").forward(request, response);
+            request.getRequestDispatcher("/reset-password").forward(request, response);
             return;
         }
 
@@ -39,6 +39,6 @@ public class ResetPasswordController extends HttpServlet {
         session.removeAttribute("resetEmail");
 
         request.setAttribute("message", "Đổi mật khẩu thành công! Hãy đăng nhập lại.");
-        request.getRequestDispatcher("/views/pages/login.jsp").forward(request, response);
+        request.getRequestDispatcher("/login").forward(request, response);
     }
 }

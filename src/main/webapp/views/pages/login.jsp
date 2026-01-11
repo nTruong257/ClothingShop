@@ -73,7 +73,7 @@
                                     <input type="checkbox" id="rememberMe" name="remember">
                                     <label for="rememberMe">Ghi nhớ đăng nhập</label>
                                 </div>
-                                <a href="${root}/views/pages/forgot-password.jsp" class="forgot-link">Quên mật khẩu?</a>
+                                <a href="forgot-password" class="forgot-link">Quên mật khẩu?</a>
                             </div>
 
                             <button type="submit" class="auth-btn">Đăng Nhập</button>
@@ -97,7 +97,7 @@
                     </div>
 
                     <div class="auth-footer">
-                        Chưa có tài khoản? <a href="register.jsp" onclick="showPage('register'); return false;">Đăng ký ngay</a>
+                        Chưa có tài khoản? <a href="register" onclick="showPage('register'); return false;">Đăng ký ngay</a>
                     </div>
                 </div>
             </div>

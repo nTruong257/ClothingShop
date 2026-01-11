@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="auth-footer">
-                        Đã có tài khoản? <a href="login.jsp" onclick="showPage('login'); return false;">Đăng nhập</a>
+                        Đã có tài khoản? <a href="login" onclick="showPage('login'); return false;">Đăng nhập</a>
                     </div>
                 </div>
             </div>

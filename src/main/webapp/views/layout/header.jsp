@@ -96,7 +96,7 @@
         </c:forEach>
 
         <li class="nav-item">
-        <a class="nav-link-primary" href="${root}/views/pages/contact.jsp"
+        <a class="nav-link-primary" href="${root}/contact"
         style=" color: #000; font-weight: 500;">LIÊN HỆ</a>
         </li>
         </ul>
@@ -138,7 +138,7 @@
 
                 <ul class="account-dropdown-menu">
                 <li>
-                <a href="${root}/views/pages/account.jsp">
+                <a href="${root}/account">
                 <i class="fas fa-id-card"></i> Thông tin tài khoản
                 </a>
                 </li>

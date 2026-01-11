@@ -12,6 +12,11 @@ import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterController extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/views/pages/register.jsp").forward(request, response);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
@@ -24,12 +29,12 @@ public class RegisterController extends HttpServlet {
         // 1. Validation
         if (!pass.equals(confirmPass)) {
             request.setAttribute("error", "Mật khẩu xác nhận không khớp!");
-            request.getRequestDispatcher("views/pages/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register").forward(request, response);
             return;
         }
         if (userDAO.findByEmail(email) != null) {
             request.setAttribute("error", "Email này đã được sử dụng!");
-            request.getRequestDispatcher("views/pages/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register").forward(request, response);
             return;
         }
 
@@ -54,6 +59,6 @@ public class RegisterController extends HttpServlet {
         // 4. Chuyển hướng sang trang verify.jsp
         request.setAttribute("email", email);
         request.setAttribute("message", "Mã xác thực đã được gửi đến email của bạn.");
-        request.getRequestDispatcher("views/pages/verify.jsp").forward(request, response);
+        request.getRequestDispatcher("/verify").forward(request, response);
     }
 }

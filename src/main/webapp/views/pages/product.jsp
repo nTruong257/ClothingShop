@@ -132,7 +132,7 @@
                 %>
                 <div class="col-lg-4 col-md-6 col-6">
                         <div class="product-card">
-                            <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
+                            <a href="${root}/product_detail?id=<%=p.getProduct_id()%>" class="product-card-link">
 
                                 <div class="product-image">
                                     <span class="product-badge badge-new">NEW</span>

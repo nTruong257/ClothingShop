@@ -40,7 +40,7 @@ public class AuthFilter implements Filter {
         if (isProtectedPage) {
             if (!isLoggedIn) {
                 // A. Nếu chưa đăng nhập mà cố vào trang bảo mật -> Đá về Login
-                res.sendRedirect(req.getContextPath() + "/views/pages/login.jsp");
+                res.sendRedirect(req.getContextPath() + "/login");
                 return;
             } else {
                 // B. Nếu đã đăng nhập -> Chặn Cache để khi Logout không Back lại được
@@ -63,7 +63,7 @@ public class AuthFilter implements Filter {
 
             // Nếu KHÔNG phải user đang đăng nhập VÀ KHÔNG phải đang reset pass từ email
             if (!isLoggedIn && !isResetFlow) {
-                res.sendRedirect(req.getContextPath() + "/views/pages/login.jsp");
+                res.sendRedirect(req.getContextPath() + "/login");
                 return;
             }
             // Nếu được phép vào thì cũng chặn cache

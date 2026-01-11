@@ -10,6 +10,12 @@ import java.io.IOException;
 
 @WebServlet("/forgot-password")
 public class ForgotPasswordController extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/views/pages/forgot-password.jsp").forward(request, response);
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
@@ -18,7 +24,7 @@ public class ForgotPasswordController extends HttpServlet {
 
         if (user == null) {
             request.setAttribute("error", "Email không tồn tại trong hệ thống!");
-            request.getRequestDispatcher("/views/pages/forgot-password.jsp").forward(request, response);
+            request.getRequestDispatcher("/forgot-password").forward(request, response);
             return;
         }
 
@@ -42,6 +48,6 @@ public class ForgotPasswordController extends HttpServlet {
         // 5. Chuyển sang trang nhập OTP
         request.setAttribute("email", email); // Hiển thị email ở trang verify
         request.setAttribute("message", "Mã OTP khôi phục mật khẩu đã được gửi!");
-        request.getRequestDispatcher("/views/pages/verify.jsp").forward(request, response);
+        request.getRequestDispatcher("verify").forward(request, response);
     }
 }

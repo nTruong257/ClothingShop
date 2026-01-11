@@ -25,10 +25,10 @@
             <div class="col-md-3">
                 <div class="sidebar">
                     <h4>TÀI KHOẢN</h4>
-                    <a href="${root}/views/pages/account.jsp">Thông tin tài khoản</a>
-                    <a href="${root}/views/pages/reset-password.jsp">Đổi mật khẩu</a>
-                    <a href="${root}/views/pages/order_status.jsp">Trạng thái đơn hàng</a>
-                    <a href="${root}/views/pages/order-history.jsp">Xem lịch sử mua hàng</a>
+                    <a href="${root}/account">Thông tin tài khoản</a>
+                    <a href="${root}reset-password">Đổi mật khẩu</a>
+                    <a href="${root}order_status">Trạng thái đơn hàng</a>
+                    <a href="${root}order-history">Xem lịch sử mua hàng</a>
                     <a href="${root}/logout" id="logoutBtn">Đăng xuất</a>
                 </div>
             </div>

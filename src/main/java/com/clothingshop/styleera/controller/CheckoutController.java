@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@WebServlet("/CheckoutController")
+@WebServlet("/checkout")
 public class CheckoutController extends HttpServlet {
 
     // Nếu bạn vô tình chạy GET (gõ URL trực tiếp), nó sẽ báo lỗi như bạn thấy.
