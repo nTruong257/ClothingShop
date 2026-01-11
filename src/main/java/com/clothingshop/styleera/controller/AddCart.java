@@ -48,6 +48,7 @@ public class AddCart extends HttpServlet {
                     + "}");
 
         } catch (Exception e) {
+            e.printStackTrace();
             out.print("{\"status\":\"error\",\"msg\":\"Lỗi dữ liệu\"}");
         }
 

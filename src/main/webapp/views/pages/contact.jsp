@@ -45,27 +45,43 @@
                     <div class="mt-3 mt-md-4">
                         <!--contact_form-->
                         <div class="contact_form">
-                            <div class="row g-3 g-md-3">
-                                <div class="col-12 col-sm-6">
-                                    <input class="input_txt" type="text" id="userName" name="name"
-                                           placeholder="Tên của bạn" required/>
-                                </div>
+                            <form action="${root}/ContactController" method="post" class="contact-form">
+                                <div class="row g-3 g-md-3">
+                                    <div class="col-12 col-sm-6">
+                                        <input class="input_txt" type="text" id="userName" name="name"
+                                               placeholder="Tên của bạn" required/>
+                                        <c:if test="${not empty nameError}">
+                                            <span class="text-danger" style="font-weight: bold">${nameError}</span>
+                                        </c:if>
+                                    </div>
 
-                                <div class="col-12 col-sm-6">
-                                    <input class="input_txt" type="email" id="userEmail" name="email"
-                                           placeholder="Nhập Email" required/>
-                                </div>
+                                    <div class="col-12 col-sm-6">
+                                        <input class="input_txt" type="email" id="userEmail" name="email"
+                                               placeholder="Nhập Email liên hệ của trang" required/>
+                                        <c:if test="${not empty emailError}">
+                                            <span class="text-danger" style="font-weight: bold">${emailError}</span>
+                                        </c:if>
+                                    </div>
 
-                                <div class="col-12">
+                                    <div class="col-12">
                                     <textarea class="input_textArea" id="userMessage" name="message"
                                               placeholder="Nội dung tin nhắn" required></textarea>
+                                        <c:if test="${not empty messageError}">
+                                            <span class="text-danger" style="font-weight: bold">${messageError}</span>
+                                        </c:if>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="mybutton" type="submit">
+                                            <i class="fas fa-paper-plane"></i> Gửi thông tin
+                                        </button>
+                                    </div>
+                                    <c:if test="${success}">
+                                        <div class="text-success mt-3" style="font-weight: bold">
+                                            Đã gửi thông tin thành công!
+                                        </div>
+                                    </c:if>
                                 </div>
-                                <div class="col-12">
-                                    <button class="mybutton">
-                                        <i class="fas fa-paper-plane"></i> Gửi thông tin
-                                    </button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -80,7 +96,7 @@
                             <strong><i class="fa-solid fa-phone-volume"></i> Số Điện Thoại:</strong>0904899626
                         </p>
                         <p class="address">
-                            <strong><i class="fa-solid fa-envelope"></i> Email liên hệ:</strong>vp@hcmuaf.edu.vn
+                            <strong><i class="fa-solid fa-envelope"></i> Email liên hệ:</strong>22130306@st.hcmuaf.edu.vn
                         </p>
                     </div>
                     <div id="gg_map">
@@ -97,9 +113,7 @@
 
 <!--Footer-->
 <jsp:include page="/views/layout/footer.jsp" />
-
-<script src="../../js/contactPages.js"></script>
-<script src="../../js/main.js"></script>
+<script src="${root}/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
