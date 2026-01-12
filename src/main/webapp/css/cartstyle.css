@@ -175,7 +175,10 @@ body {
     text-align: center;
     text-decoration: none;
 }
-
+.form-check-input {
+    transform: scale(1.5);
+    margin-right: 6px;
+}
 .btn-success,
 .btn-danger{
     display: block;
