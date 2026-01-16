@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="${root}/admin/admin-products.jsp"
+                    <a href="${root}/admin-products"
                        class="menu-link ${currentPage == 'products' ? 'active' : ''}">
                         <i class="fas fa-box"></i>
                         <span>Sản Phẩm</span>
@@ -55,12 +55,16 @@
                 </li>
             </ul>
         </nav>
-
+        <!-- ===== FOOTER ===== -->
         <div class="sidebar-footer">
             <button class="btn-logout" onclick="logout()">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Đăng Xuất</span>
             </button>
+
+            <p class="mb-0 copyright">
+                &copy; 2025 StyleEra Admin. All rights reserved.
+            </p>
         </div>
     </aside>
 
@@ -113,6 +117,7 @@
                     </ul>
                 </div>
             </div>
+
         </header>
 
 <%--        <main class="admin-content">    --%>

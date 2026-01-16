@@ -219,8 +219,6 @@
             </div>
         </div>
 
-        <!-- ===== FOOTER ===== -->
-        <%@ include file="/admin/layout/Footeradmin.jsp" %>
 
     </div>
 </div>

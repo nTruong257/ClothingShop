@@ -2,6 +2,7 @@ package com.clothingshop.styleera.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Product implements Serializable {
     private int product_id;
@@ -15,6 +16,7 @@ public class Product implements Serializable {
     private Timestamp updated_at;
     private String thumbnail;
     private Integer defaultVariantId;
+    private List<Variants> variants;
 
     public  Product(){
 
@@ -30,6 +32,13 @@ public class Product implements Serializable {
         this.price = price;
         this.created_at = created_at;
         this.updated_at = updated_at;
+    }
+    public List<Variants> getVariants() {
+        return variants;
+    }
+
+    public void setVariants(List<Variants> variants) {
+        this.variants = variants;
     }
 
     public Integer getDefaultVariantId() {

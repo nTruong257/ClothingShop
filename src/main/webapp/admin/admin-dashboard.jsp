@@ -258,8 +258,6 @@
     </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
-<%@ include file="/admin/layout/Footeradmin.jsp" %>
 
 
 <!-- Bootstrap JS -->
