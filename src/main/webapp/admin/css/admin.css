@@ -22,6 +22,8 @@
 
 html {
   scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;  /* Ẩn scroll ngang HTML */
 }
 
 body {
@@ -29,6 +31,8 @@ body {
   background-color: var(--light-color);
   color: var(--dark-color);
   line-height: 1.6;
+    width: 100%;
+    overflow-x: hidden;  /* Ẩn scroll ngang Body */
 }
 .product-img-wrapper {
   width: 60px;
@@ -172,8 +176,9 @@ body {
 }
 
 .table-responsive {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
 }
 
 .badge {
@@ -280,6 +285,19 @@ body {
 footer {
   margin-top: auto;
   border-top: 1px solid #e0e0e0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer .container-fluid {
+    width: 100%;
+    max-width: 100%;
+}
+
+footer p {
+    font-size: 14px;
 }
 
 .admin-container {
@@ -599,10 +617,11 @@ footer {
 
 /* ===== CONTENT ===== */
 .admin-content {
-  flex: 1;
-  padding: 30px;
-  overflow-y: auto;
-  background-color: #f8f9fa;
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;  /* Ẩn scroll ngang trong content */
+    background-color: #f8f9fa;
 }
 
 /* ===== PAGE HEADER ===== */
@@ -640,7 +659,6 @@ footer {
     display: flex !important;
   }
 }
-
 @media (max-width: 992px) {
   .admin-sidebar {
     width: var(--sidebar-width);
@@ -732,7 +750,6 @@ footer {
     padding: 10px 8px;
   }
 }
-
 /* Mobile Devices (576px - 768px) */
 @media (max-width: 768px) {
   :root {

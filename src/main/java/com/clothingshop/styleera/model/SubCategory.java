@@ -6,6 +6,7 @@ public class SubCategory {
     private int parentCategoryId;
     private String image;
     private String description;
+    private ParentCategory category;
 
     public SubCategory() {
     }
@@ -16,6 +17,13 @@ public class SubCategory {
         this.parentCategoryId = parentCategoryId;
         this.image = image;
         this.description = description;
+    }
+    public ParentCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ParentCategory category) {
+        this.category = category;
     }
 
     public int getId() {
