@@ -5,6 +5,17 @@
 
 <c:set var="root" value="${pageContext.request.contextPath}" scope="request"/>
 
+<c:if test="${not empty sessionScope.successMsg}">
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-4"
+         role="alert" style="z-index: 9999;">
+        <i class="fa-solid fa-circle-check"></i>
+            ${sessionScope.successMsg}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <c:remove var="successMsg" scope="session"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -18,12 +29,9 @@
 </head>
 
 <body>
-<!-- ===== HEADER ===== -->
 <jsp:include page="/views/layout/header.jsp"/>
 
-<!-- ===== MAIN CONTENT ===== -->
 <main class="main-content">
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-slider">
             <div class="hero-slide active">
@@ -45,7 +53,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features-section">
         <div class="features-grid">
             <div class="feature-card">
@@ -79,7 +86,6 @@
         </div>
     </section>
 
-    <!-- New Arrivals Section -->
     <section id="new-arrivals" class="products-section">
         <div class="products-container">
             <div class="section-header">
@@ -91,43 +97,44 @@
                     List<Product> newArrivals = (List<Product>) request.getAttribute("newArrivals");
                     if (newArrivals != null) {
                         for (Product p : newArrivals) {
-                            // Kiểm tra null cho ảnh
                             String imgPath = (p.getThumbnail() != null) ? request.getContextPath() + p.getThumbnail() : request.getContextPath() + "/images/no-image.png";
                 %>
-    <%--                Chỉnh sửa card giao diện Hàng mới về--%>
-                    <div class="product-card">
-                        <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>"
-                           class="product-card-link">
+                <div class="product-card">
+                    <a href="${root}/product_detail?id=<%=p.getProduct_id()%>" class="product-card-link">
+                        <div class="product-image">
+                            <span class="product-badge badge-new">NEW</span>
+                            <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>" loading="lazy">
+                        </div>
+                    </a>
 
-                            <div class="product-image">
-                                <span class="product-badge badge-new">NEW</span>
-                                <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>">
-                            </div>
-
-                            <div class="product-info">
+                    <div class="product-details">
+                        <div class="product-info">
+                            <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" style="text-decoration: none;">
                                 <h4><%=p.getProduct_name()%></h4>
-                            </div>
-                        </a>
+                            </a>
 
-                        <div class="product-meta">
                             <div class="product-rating">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                             </div>
+                        </div>
 
+                        <div class="product-bottom">
                             <div class="product-price">
                                 <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
                             </div>
 
-                            <%--Chỉnh sửa Nút thêm vào giỏ hàng--%>
-                            <button class="btn-cart" type="button"
+                            <button class="btn-cart" type="button" title="Thêm vào giỏ"
                                     <%= p.getDefaultVariantId() == null ? "disabled" : "" %>
                                     onclick="addToCart(<%= p.getDefaultVariantId() %>)">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
                     </div>
+                </div>
                 <% }
                 }
                 %>
@@ -138,7 +145,6 @@
         </div>
     </section>
 
-    <!-- Best Sellers Section -->
     <section class="products-section bg-light">
         <div class="products-container">
             <div class="section-header">
@@ -150,37 +156,45 @@
                     List<Product> bestSellers = (List<Product>) request.getAttribute("bestSellers");
                     if (bestSellers != null && !bestSellers.isEmpty()) {
                         for (Product p : bestSellers) {
-                            // Xử lý ảnh thumbnail
                             String imgPath = (p.getThumbnail() != null)
                                     ? request.getContextPath() + p.getThumbnail()
                                     : request.getContextPath() + "/images/no-image.png";
                 %>
-                <%-- Chỉnh sửa card giao diện Sản Phẩm Bán Chạy --%>
                 <div class="product-card">
-                    <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" class="product-card-link">
-
+                    <a href="${root}/product_detail?id=<%=p.getProduct_id()%>" class="product-card-link">
                         <div class="product-image">
                             <span class="product-badge badge-bestseller">BEST SELLER</span>
-                            <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>">
-                        </div>
-                        <div class="product-info">
-                            <h4><%=p.getProduct_name()%>
-                            </h4>
+                            <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>" loading="lazy">
                         </div>
                     </a>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                    <div class="product-details">
+                        <div class="product-info">
+                            <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" style="text-decoration: none;">
+                                <h4><%=p.getProduct_name()%></h4>
+                            </a>
+
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
+                            </div>
+
+                            <button class="btn-cart" type="button" title="Thêm vào giỏ"
+                                    <%= p.getDefaultVariantId() == null ? "disabled" : "" %>
+                                    onclick="addToCart(<%= p.getDefaultVariantId() %>)">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-price">
-                        <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
-                    </div>
-                        <%--Chỉnh sửa Nút thêm vào giỏ hàng--%>
-                    <button class="btn-cart" type="button"
-                            <%= p.getDefaultVariantId() == null ? "disabled" : "" %>
-                            onclick="addToCart(<%= p.getDefaultVariantId() %>)">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
                 </div>
                 <% }
                 } else {
@@ -194,7 +208,6 @@
         </div>
     </section>
 
-    <!-- Collections Banner -->
     <section id="collections" class="collections-section">
         <div class="section-header">
             <h2>Bộ Sưu Tập Nổi Bật</h2>
@@ -225,7 +238,6 @@
         </div>
     </section>
 
-    <!-- Categories Section -->
     <section class="categories-section">
         <div class="categories-container">
 
@@ -271,32 +283,16 @@
 </main>
 
 
-<!-- ===== FOOTER ===== -->
 <jsp:include page="/views/layout/footer.jsp"/>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom JavaScript -->
 <script src="${root}/js/main.js"></script>
 <script src="${root}/js/home.js"></script>
-
-<%--Hiển thị thông báo thêm vào giỏ hàng--%>
-<c:if test="${not empty sessionScope.successMsg}">
-    <div id="successAlert" class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-4"
-         role="alert" style="z-index: 9999;">
-        <i class="fa-solid fa-circle-check"></i>
-            ${sessionScope.successMsg}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-
-    <c:remove var="successMsg" scope="session"/>
-</c:if>
-<%--Truyền contextPath của web app từ JSP sang JavaScript--%>
+<script src="${root}/js/add-cart.js"></script>
+<script src="${root}/js/login.js"></script>
 <script>
     const contextPath = "<%= request.getContextPath() %>";
 </script>
-<%--Xử lý sự kiện trong product - thêm giỏ hàng--%>
-<script src="${root}/js/add-cart.js"></script>
 </body>
 </html>
