@@ -135,7 +135,7 @@
                                             </c:when>
                                         </c:choose>
                                     </td>
-                                    <td> <span>${s.name}</span> </td>
+                                    <td> <strong>${s.name}</strong> </td>
 
                                     <td>${empty s.description ? "—" : s.description}</td>
                                     <td>
