@@ -71,14 +71,6 @@
                                 <option value="doi">Đồ bộ Đôi</option>
                             </select>
                         </div>
-                        <div class="col-md-2">
-                            <label class="form-label">Trạng Thái</label>
-                            <select class="form-select" id="statusFilter">
-                                <option value="">Tất Cả Trạng Thái</option>
-                                <option value="active">Hoạt Động</option>
-                                <option value="outofstock">Hết Hàng</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -103,7 +95,6 @@
                                 <th>Màu Sắc</th>
                                 <th>Giá</th>
                                 <th>Số lượng</th>
-                                <th>Trạng Thái</th>
                                 <th style="width: 150px">Hành Động</th>
                             </tr>
                             </thead>
@@ -163,8 +154,15 @@
                                                 </c:if>
                                             </td>
                                             <td><strong><fmt:formatNumber value="${p.price}" type="currency" currencySymbol="₫"/></strong></td>
-                                            <td><span class="badge bg-success">Có sẵn</span></td>
-                                            <td><span class="badge bg-success">Hoạt Động</span></td>
+                                            <td class="text-center">
+                                                <c:set var="totalQuantity" value="0" />
+                                                <c:if test="${not empty p.variants}">
+                                                    <c:forEach items="${p.variants}" var="v">
+                                                        <c:set var="totalQuantity" value="${totalQuantity + v.quantity}" />
+                                                    </c:forEach>
+                                                </c:if>
+                                                <span>${totalQuantity}</span>
+                                            </td>
                                             <td>
                                                 <a href="${root}/admin-form?id=${p.product_id}" class="btn btn-sm btn-warning" title="Chỉnh sửa">
                                                     <i class="fas fa-edit"></i>
