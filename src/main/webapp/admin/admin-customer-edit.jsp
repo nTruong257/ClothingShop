@@ -14,6 +14,7 @@
 
 <body>
 <!-- ===== HEADER ===== -->
+<c:set var="currentPage" value="customer" scope="request"/>
 <%@ include file="/admin/layout/Headeradmin.jsp" %>
 
         <!-- ===== CONTENT ===== -->

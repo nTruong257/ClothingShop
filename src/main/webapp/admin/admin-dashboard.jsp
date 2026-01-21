@@ -14,6 +14,7 @@
 <body>
 
 <!-- ===== HEADER ===== -->
+<c:set var="currentPage" value="dashboard" scope="request"/>
 
     <%@ include file="/admin/layout/Headeradmin.jsp" %>
 
