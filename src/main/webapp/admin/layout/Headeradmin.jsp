@@ -33,6 +33,13 @@
                     </a>
                 </li>
                 <li class="menu-item">
+                    <a href="${root}/admin-category"
+                       class="menu-link ${currentPage == 'category' ? 'active' : ''}">
+                        <i class="fa-solid fa-list"></i>
+                        <span>Danh Mục</span>
+                    </a>
+                </li>
+                <li class="menu-item">
                     <a href="${root}/admin/admin-orders.jsp"
                        class="menu-link ${currentPage == 'orders' ? 'active' : ''}">
                         <i class="fas fa-shopping-cart"></i>
@@ -61,10 +68,6 @@
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Đăng Xuất</span>
             </button>
-
-            <p class="mb-0 copyright">
-                &copy; 2025 StyleEra Admin. All rights reserved.
-            </p>
         </div>
     </aside>
 
