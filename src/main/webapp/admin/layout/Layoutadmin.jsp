@@ -68,6 +68,9 @@
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Đăng Xuất</span>
             </button>
+            <div class="container-fluid text-center">
+                <p class="mb-0">&copy; 2025 StyleEra Admin. All rights reserved.</p>
+            </div>
         </div>
     </aside>
 

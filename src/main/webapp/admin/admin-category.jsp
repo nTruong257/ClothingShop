@@ -14,7 +14,7 @@
 <body>
 <c:set var="currentPage" value="category" scope="request"/>
 <!-- ===== HEADER ===== -->
-<%@ include file="/admin/layout/Headeradmin.jsp" %>
+<%@ include file="/admin/layout/Layoutadmin.jsp" %>
 
 <main class="admin-content">
     <div class="page-header mb-5">
@@ -170,7 +170,5 @@
     </nav>
 </div>
 
-<!-- ===== FOOTER ===== -->
-<%@ include file="/admin/layout/Footeradmin.jsp" %>
 </body>
 </html>

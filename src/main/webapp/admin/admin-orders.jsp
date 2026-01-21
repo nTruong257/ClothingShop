@@ -16,7 +16,7 @@
 <body>
 <!-- ===== HEADER ===== -->
 <c:set var="currentPage" value="orders" scope="request"/>
-<%@ include file="/admin/layout/Headeradmin.jsp" %>
+<%@ include file="/admin/layout/Layoutadmin.jsp" %>
 
         <!-- ===== CONTENT ===== -->
         <main class="admin-content">
@@ -267,8 +267,6 @@
         </div>
     </div>
 </div>
-<!-- ===== FOOTER ===== -->
-<%@ include file="/admin/layout/Footeradmin.jsp" %>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
