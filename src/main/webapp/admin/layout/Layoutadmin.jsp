@@ -33,6 +33,13 @@
                     </a>
                 </li>
                 <li class="menu-item">
+                    <a href="${root}/admin-category"
+                       class="menu-link ${currentPage == 'category' ? 'active' : ''}">
+                        <i class="fa-solid fa-list"></i>
+                        <span>Danh Mục</span>
+                    </a>
+                </li>
+                <li class="menu-item">
                     <a href="${root}/admin/admin-orders.jsp"
                        class="menu-link ${currentPage == 'orders' ? 'active' : ''}">
                         <i class="fas fa-shopping-cart"></i>
@@ -53,6 +60,13 @@
                         <span>Người Dùng</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="${root}/admin/admin-user-comment.jsp"
+                       class="menu-link ${currentPage == 'comment' ? 'active' : ''}">
+                        <i class="fa-solid fa-comment"></i>
+                        <span>Bình Luận Khách hàng</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- ===== FOOTER ===== -->
@@ -61,10 +75,9 @@
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Đăng Xuất</span>
             </button>
-
-            <p class="mb-0 copyright">
-                &copy; 2025 StyleEra Admin. All rights reserved.
-            </p>
+            <div class="container-fluid text-center">
+                <p class="mb-0">&copy; 2025 StyleEra Admin. All rights reserved.</p>
+            </div>
         </div>
     </aside>
 

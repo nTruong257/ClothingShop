@@ -14,8 +14,9 @@
 <body>
 
 <!-- ===== HEADER ===== -->
+<c:set var="currentPage" value="dashboard" scope="request"/>
 
-    <%@ include file="/admin/layout/Headeradmin.jsp" %>
+    <%@ include file="/admin/layout/Layoutadmin.jsp" %>
 
 
     <!-- ===== CONTENT ===== -->
@@ -257,7 +258,6 @@
         </main>
     </div>
 </div>
-
 
 
 <!-- Bootstrap JS -->

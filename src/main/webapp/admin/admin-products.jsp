@@ -18,7 +18,7 @@
 <body>
 <c:set var="currentPage" value="products" scope="request"/>
 <!-- ===== HEADER ===== -->
-<%@ include file="/admin/layout/Headeradmin.jsp" %>
+<%@ include file="/admin/layout/Layoutadmin.jsp" %>
         <!-- ===== CONTENT ===== -->
         <main class="admin-content">
             <!-- Page Header -->
@@ -44,14 +44,14 @@
                         <div class="col-md-3">
                             <label class="form-label">Phân Loại</label>
                             <select class="form-select categoryFilter">
-                                <option value="">Phân Loại</option>
+                                <option value="">Danh Mục</option>
                                 <option value="nam">Nam</option>
                                 <option value="nu">Nữ</option>
                                 <option value="doi">Đồ Đôi</option>
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label">Danh Mục</label>
+                            <label class="form-label">Phân Loại</label>
                             <select class="form-select categoryFilter">
                                 <option value="">Tất Cả Danh Mục</option>
                                 <option value="nam">Áo Thun Nam</option>
@@ -97,8 +97,8 @@
                                 <th>ID</th>
                                 <th>Ảnh Sản Phẩm</th>
                                 <th style="min-width: 250px">Tên Sản Phẩm</th>
-                                <th>Phân Loại</th>
                                 <th>Danh Mục</th>
+                                <th>Phân Loại</th>
                                 <th>Size</th>
                                 <th>Màu Sắc</th>
                                 <th>Giá</th>
@@ -134,8 +134,20 @@
                                                 </div>
                                             </td>
                                             <td><strong>${p.product_name}</strong></td>
-                                            <td><span class="badge bg-secondary">${p.subcategories.name}</span></td>
-                                            <td><span class="badge bg-info">${p.subcategories.category.name}</span></td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${p.subcategories.category.name eq 'Nam'}">
+                                                        <span class="badge bg-primary">${p.subcategories.category.name}</span>
+                                                    </c:when>
+                                                    <c:when test="${p.subcategories.category.name eq 'Nữ'}">
+                                                        <span class="badge bg-danger">${p.subcategories.category.name}</span>
+                                                    </c:when>
+                                                    <c:when test="${p.subcategories.category.name eq 'Đồ Đôi'}">
+                                                        <span class="badge bg-dark">${p.subcategories.category.name}</span>
+                                                    </c:when>
+                                                </c:choose>
+                                            </td>
+                                            <td><span>${p.subcategories.name}</span></td>
                                             <td>
                                                 <c:if test="${not empty p.variants}">
                                                     <c:forEach items="${p.variants}" var="v">
@@ -294,7 +306,6 @@
         </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <%--<script src="js/admin_Product.js"></script>--%>
 </body>
