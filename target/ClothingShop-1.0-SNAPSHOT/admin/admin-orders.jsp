@@ -14,110 +14,9 @@
 </head>
 
 <body>
-<div class="admin-container">
-    <!-- ===== SIDEBAR ===== -->
-    <aside class="admin-sidebar">
-        <div class="sidebar-header">
-            <div class="brand-logo">
-                <i class="fas fa-tshirt" style="font-size: 28px"></i>
-            </div>
-            <h2 class="brand-name">Admin</h2>
-        </div>
-
-        <nav class="sidebar-menu">
-            <div class="menu-label">MENU</div>
-            <ul class="menu-list">
-                <li class="menu-item">
-                    <a href="admin-dashboard.jsp" class="menu-link">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Bảng Điều Khiển</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="admin-products.jsp" class="menu-link">
-                        <i class="fas fa-box"></i>
-                        <span>Sản Phẩm</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="admin-orders.html" class="menu-link active">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span>Đơn Hàng</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="admin-profile.jsp" class="menu-link">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Quản Trị Viên</span>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="admin-customer-edit.jsp" class="menu-link">
-                        <i class="fas fa-users"></i>
-                        <span> Người Dùng</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="sidebar-footer">
-            <button class="btn-logout" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Đăng Xuất</span>
-            </button>
-        </div>
-    </aside>
-
-    <!-- ===== MAIN CONTENT ===== -->
-    <div class="admin-main">
-        <!-- ===== HEADER ===== -->
-        <header class="admin-header">
-            <div class="header-left">
-                <button class="icon-btn d-lg-none" id="sidebarToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="header-search">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder=" Tìm kiếm..."/>
-                    </div>
-                </div>
-            </div>
-
-            <div class="header-right">
-                <div class="header-icons">
-                    <button class="icon-btn" title="Notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
-                </div>
-
-                <div class="admin-profile">
-                    <img src="images/logoadm.png" alt="Admin" class="profile-img"/>
-                    <div class="profile-info">
-                        <div class="profile-name">Quản Trị Viên</div>
-                        <div class="profile-role">Admin</div>
-                    </div>
-                    <button class="icon-btn profile-dropdown" type="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li>
-                            <a class="dropdown-item" href="admin-profile.jsp">Hồ Sơ</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="admin-profile.jsp">Cài Đặt</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider"/>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="admin-login.jsp">Đăng Xuất</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
+<!-- ===== HEADER ===== -->
+<c:set var="currentPage" value="orders" scope="request"/>
+<%@ include file="/admin/layout/Layoutadmin.jsp" %>
 
         <!-- ===== CONTENT ===== -->
         <main class="admin-content">
@@ -368,12 +267,6 @@
         </div>
     </div>
 </div>
-<footer class="bg-dark text-white py-3">
-    <div class="container-fluid text-center">
-        <p class="mb-0">&copy; 2025 StyleEra Admin. All rights reserved.</p>
-    </div>
-</footer>
-
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

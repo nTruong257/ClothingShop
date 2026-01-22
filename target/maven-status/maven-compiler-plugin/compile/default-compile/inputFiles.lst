@@ -1,6 +1,9 @@
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\controller\AddCart.java
+D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\controller\Admin\AdminCategoryController.java
+D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\controller\Admin\AdminProductsController.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\controller\CartController.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\controller\CheckoutController.java
+D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\controller\ContactController.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\controller\HomeController.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\controller\LoginController.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\controller\LogoutController.java
@@ -15,7 +18,6 @@ D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\dao\CartDao.j
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\dao\CategoryDAO.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\dao\ImageDao.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\dao\ProductDAO.java
-D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\dao\ProductDetailDao.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\dao\UserDAO.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\dao\VariantDAO.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\filter\AuthFilter.java
@@ -26,7 +28,6 @@ D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\model\CartIte
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\model\Image.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\model\ParentCategory.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\model\Product.java
-D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\model\ProductDetail.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\model\SubCategory.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\model\User.java
 D:\LTW_CuoiKi\ClothingShop\src\main\java\com\clothingshop\styleera\model\Variants.java

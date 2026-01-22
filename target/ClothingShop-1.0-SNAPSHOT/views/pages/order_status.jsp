@@ -19,7 +19,6 @@
     <div class="status-container">
         <div class="order-header">
             <h2>Đơn Hàng của bạn</h2>
-            <p class="order-id">Mã đơn hàng: <strong>#985106</strong></p>
         </div>
         <div class="timeline">
                 <div class="timeline-item completed">
@@ -55,7 +54,16 @@
                     </div>
                 </div>
             </div>
-    <div class="box-header">
+        <c:choose>
+            <c:when test="${sessionScope.cart == null || sessionScope.cart.item.size() == 0}">
+<%--                Thông báo nếu chưa thanh toán--%>
+                <div class="text-center text-muted py-5">
+                    <i class="fa-solid fa-receipt fa-2x mb-3"></i>
+                    <p>Chưa có đơn hàng nào được thanh toán</p>
+                </div>
+            </c:when>
+            <c:otherwise>
+            <div class="box-header">
         <div class="header">        
             <h4>Chi tiết đơn hàng</h4>
         </div>
@@ -98,7 +106,7 @@
        
 
     </div>
-    <div class="box-footer">
+            <div class="box-footer">
             <div class="header">
                  <h4>Tổng quan đơn hàng</h4>
             </div>
@@ -121,6 +129,9 @@
             <strong>130.000 đ</strong>
         </div>
     </div>
+            </c:otherwise>
+        </c:choose>
+
     <div class="box-btn">
         <a class="btn btn-primary btn-back" href="cart.jsp">
             <i class="fas fa-arrow-left"></i> Quay lại
@@ -136,13 +147,12 @@
 
 <jsp:include page="/views/layout/footer.jsp" />
 
-<script src="src/main/webapp/js/cancel_order.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../js/order_status.js"></script>
-<script src="../../js/main.js"></script>
-
-
+<script src="${root}/js/order_status.js"></script>
+<script src="${root}/js/main.js"></script>
 </body>
+
+<%--Hiển thị thông báo huỷ đơn hàng--%>
 <div class="modal fade" id="cancelSuccessModal" tabindex="-1" aria-labelledby="cancelSuccessLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">

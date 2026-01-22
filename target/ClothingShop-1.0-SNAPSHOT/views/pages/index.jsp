@@ -296,7 +296,7 @@
 <script>
     const contextPath = "<%= request.getContextPath() %>";
 </script>
-<%--Xử lý sự kiện trong product--%>
+<%--Xử lý sự kiện trong product - thêm giỏ hàng--%>
 <script src="${root}/js/add-cart.js"></script>
 <script src="${root}/js/login.js"></script>
 

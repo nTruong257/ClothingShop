@@ -133,6 +133,7 @@ body {
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: var(--transition);
+  overflow: visible;
 }
 
 .card:hover {
@@ -146,6 +147,7 @@ body {
 /* ===== TABLES ===== */
 .table {
   margin-bottom: 0;
+  min-width: 100%;
 }
 
 .table thead th {
@@ -155,12 +157,14 @@ body {
   padding: 15px;
   background-color: #f8f9fa;
   white-space: nowrap;
+  min-width: 80px;
 }
 
 .table tbody td {
   padding: 15px;
   vertical-align: middle;
   border-bottom: 1px solid #e0e0e0;
+  min-width: 80px;
 }
 
 .table tbody tr {
@@ -172,8 +176,30 @@ body {
 }
 
 .table-responsive {
-  overflow-x: auto;
+  display: block !important;
+  width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
   -webkit-overflow-scrolling: touch;
+  margin-bottom: 10px;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
 }
 
 .badge {
@@ -445,7 +471,7 @@ footer {
 
 .admin-header {
   background-color: white;
-  padding: 20px 30px;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -454,19 +480,21 @@ footer {
   top: 0;
   z-index: 100;
   flex-wrap: wrap;
+  gap: 10px;
+  min-height: auto;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   flex: 1;
   min-width: 0;
 }
 
 .header-search {
-  flex: 0 1 300px;
-  min-width: 200px;
+  flex: 0 1 250px;
+  min-width: 150px;
 }
 
 .search-box {
@@ -474,9 +502,9 @@ footer {
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 8px;
-  padding: 10px 15px;
+  padding: 8px 12px;
   border: 1px solid #e0e0e0;
-  min-height: 44px;
+  min-height: 38px;
 }
 
 .search-box input {
@@ -484,7 +512,7 @@ footer {
   background: none;
   outline: none;
   width: 100%;
-  font-size: 14px;
+  font-size: 12px;
   min-width: 0;
 }
 
@@ -675,9 +703,9 @@ footer {
   }
 
   /* .admin-header {
-    padding: 15px 20px;
-    flex-wrap: wrap;
-  } */
+      padding: 15px 20px;
+      flex-wrap: wrap;
+    } */
 
   .header-left {
     width: auto;
@@ -741,10 +769,10 @@ footer {
   }
 
   /* .admin-header {
-    padding: 12px 15px;
-    height: auto;
-    min-height: 60px;
-  } */
+      padding: 12px 15px;
+      height: auto;
+      min-height: 60px;
+    } */
 
   .header-left {
     width: 100%;
@@ -850,6 +878,28 @@ footer {
 
   .table-responsive {
     font-size: 11px;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .table-responsive::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  .table-responsive::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 4px;
+  }
+
+  .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
   }
 
   .admin-profile {
@@ -890,9 +940,9 @@ footer {
   }
 
   /* .admin-header {
-    padding: 10px 12px;
-    min-height: 50px;
-  } */
+      padding: 10px 12px;
+      min-height: 50px;
+    } */
 
   .sidebar-toggle {
     min-width: 40px;

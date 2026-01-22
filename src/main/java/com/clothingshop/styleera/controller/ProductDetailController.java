@@ -2,6 +2,7 @@ package com.clothingshop.styleera.controller;
 import com.clothingshop.styleera.model.Product;
 import com.clothingshop.styleera.model.Variants;
 import com.clothingshop.styleera.service.ProductService;
+import com.clothingshop.styleera.service.VariantService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,11 +29,16 @@ public class ProductDetailController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String productIdStr = request.getParameter("id");
 
+
         Product product = null;
         List<String> imageList = null;
         List<Variants> variantList = null;
         List<Product> relatedProducts = null;
         List<String> colorList = null;
+
+        VariantService variantService = new VariantService();
+
+
 
         try {
             if (productIdStr != null && !productIdStr.isEmpty()) {
@@ -44,6 +50,9 @@ public class ProductDetailController extends HttpServlet {
                     variantList = serviceProduct.getVariantsByProductId(product_id);
                     // Truyền product_id vào service
                     colorList = serviceProduct.getColorsByProductId(product_id);
+                    //Xử lý thêm giỏ hàng trong trang chi tiết
+                    Integer defaultVariantId = variantService.getDefaultVariantId(product_id);
+                    product.setDefaultVariantId(defaultVariantId);
 
                     if (product.getSubcategories() != null) {
                         int subId = product.getSubcategories().getId();

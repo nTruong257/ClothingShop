@@ -39,6 +39,7 @@
                         <table class="table">
                             <thead>
                             <tr class="table-dark">
+                                <th><input type="checkbox" class="form-check-input" id="checkAllCart"/></th>
                                 <th>STT</th>
                                 <th>Hình Ảnh</th>
                                 <th>SẢN PHẨM</th>
@@ -63,6 +64,8 @@
                                     <c:set var="count" value="1"/>
                                     <c:forEach items="${sessionScope.cart.item}" var="item">
                                         <tr>
+<%--                                            tạo checkbox để chọn thanh toán--%>
+                                            <td><input type="checkbox" class="form-check-input cart-item-checkbox"/></td>
                                             <td>${count}</td>
                                             <td>
                                                 <div class="product-item img_product">
@@ -97,6 +100,7 @@
                                                                 onclick="updateCart(${item.variant.variantId},'increase',this)">
                                                             <i class="fa-solid fa-plus"></i>
                                                         </button>
+
                                                 </div>
 
                                             </td>
@@ -111,7 +115,6 @@
                                                         onclick="removeItem(${item.variant.variantId}, this)">
                                                     <i class="fa-solid fa-circle-xmark closed" style="color: #b61111ff"></i>
                                                 </button>
-
                                             </td>
                                         </tr>
 <%--                                        tăng biến count lên 1 khi thêm nhiều vào giỏ hàng--%>
@@ -142,7 +145,8 @@
                             </li>
                         </ul>
                         <div class="cart-actions">
-                            <a href="checkout.jsp" class="btn btn-success">THANH TOÁN</a>
+                             <%-- NÚT THANH TOÁN--%>
+                            <a href="checkout.jsp" class="btn btn-success">MUA HÀNG</a>
                             <a href="order_status.jsp" class="btn btn-danger">TRẠNG THÁI ĐƠN HÀNG</a>
                         </div>
                     </div>
@@ -155,14 +159,33 @@
 <jsp:include page="/views/layout/footer.jsp" />
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="${root}/js/main.js"></script>
 <%--Truyền contextPath của web app từ JSP sang JavaScript--%>
 <script> const contextPath = "<%= request.getContextPath() %>";</script>
 <!-- Xử lý xoá sản phẩm khỏi giỏ hàng -->
 <script src="${root}/js/remove-cart.js"></script>
 <!-- Xử lý cập nhật số lượng sản phẩm trong giỏ hàng -->
 <script src="${root}/js/update-cart.js"></script>
+<%--Xử lý checkbox nếu chọn All sản phẩm và ngược lại--%>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkAll = document.getElementById("checkAllCart");
+        if (!checkAll) return;
 
-<script src="${root}/js/main.js"></script>
-<script src="${root}/js/cartPage.js"></script>
+        checkAll.addEventListener("change", function () {
+            document.querySelectorAll(".cart-item-checkbox").forEach(cb => {
+                cb.checked = this.checked;
+            });
+        });
+
+        document.addEventListener("change", function (e) {
+            if (e.target.classList.contains("cart-item-checkbox")) {
+                const all = document.querySelectorAll(".cart-item-checkbox");
+                const checked = document.querySelectorAll(".cart-item-checkbox:checked");
+                checkAll.checked = all.length === checked.length;
+            }
+        });
+    });
+</script>
 </body>
 </html>

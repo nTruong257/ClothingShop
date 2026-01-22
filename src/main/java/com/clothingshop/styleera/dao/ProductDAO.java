@@ -1,5 +1,7 @@
 package com.clothingshop.styleera.dao;
 
+import com.clothingshop.styleera.model.ParentCategory;
+import com.clothingshop.styleera.model.SubCategory;
 import com.clothingshop.styleera.model.Variants;
 import com.clothingshop.styleera.JDBiConnector.JDBIConnector;
 import com.clothingshop.styleera.model.Product;
@@ -37,14 +39,57 @@ public class ProductDAO {
     }
 
     // 3. Lấy tất cả sản phẩm (Trang Product)
-    public List<Product> findAll(){
+    public List<Product> findAll() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
             String sql = "SELECT p.id AS product_id, p.product_name, p.price, " +
-                    "p.average_rating AS medium_rating, i.path AS thumbnail " +
+                    "sc.id AS sub_id, sc.sub_name, sc.category_parent_id, " +
+                    "pc.id AS parent_id, pc.parent_name, " +
+                    "i.path AS thumbnail " +
                     "FROM products p " +
+                    "LEFT JOIN subcategories sc ON p.category_sub_id = sc.id " +
+                    "LEFT JOIN parentcategories pc ON sc.category_parent_id = pc.id " +
                     "LEFT JOIN images i ON p.image_id = i.id";
-            return handle.createQuery(sql).mapToBean(Product.class).list();
+
+            return handle.createQuery(sql)
+                    .map((rs, ctx) -> {
+                        // Tạo ParentCategory
+                        ParentCategory parent = null;
+                        int parentId = rs.getInt("parent_id");
+                        if (parentId != 0) {  // Kiểm tra NULL
+                            parent = new ParentCategory(
+                                    parentId,
+                                    rs.getString("parent_name")
+                            );
+                        }
+
+                        // Tạo SubCategory
+                        SubCategory subcat = null;
+                        int subId = rs.getInt("sub_id");
+                        if (subId != 0) {
+                            subcat = new SubCategory(
+                                    subId,
+                                    rs.getString("sub_name"),
+                                    rs.getInt("category_parent_id"),
+                                    null,
+                                    null
+                            );
+                            subcat.setCategory(parent);
+                        }
+
+                        // Tạo Product
+                        Product product = new Product();
+                        product.setProduct_id(rs.getInt("product_id"));
+                        product.setProduct_name(rs.getString("product_name"));
+                        product.setPrice(rs.getDouble("price"));
+                        product.setThumbnail(rs.getString("thumbnail"));
+                        product.setSubcategories(subcat);
+
+                        List<Variants> variants = findVariantsByProductId(rs.getInt("product_id"));
+                        product.setVariants(variants);
+                        return product;
+                    })
+                    .list();
         });
     }
 

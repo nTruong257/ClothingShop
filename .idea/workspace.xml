@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ClothingShop:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="aeb977dc-6ac7-4be4-b5ea-7c1a5b0bb047" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/controller/Admin/AdminCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/controller/Admin/AdminProductsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/controller/ContactController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/admin-category.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/admin-user-comment.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/layout/Layoutadmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/controller/AddCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/controller/AddCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/controller/ProductDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/controller/ProductDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/dao/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/dao/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/dao/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/dao/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/model/SubCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/model/SubCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingshop/styleera/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/admin-customer-edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/admin-customer-edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/admin-dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/admin-dashboard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/admin-orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/admin-orders.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/admin-products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/admin-products.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/admin-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/admin-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/js/admin_Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/js/admin_Product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/cartstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/cartstyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/product_item_nam/1/1.3/aokhoac_nam.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/product_item_nam/1/1.3/aokhoac_nam.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/add-cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/add-cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/cartPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/contactPages.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/layout/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/layout/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/pages/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/pages/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/pages/contact.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/pages/contact.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/pages/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/pages/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/pages/order_status.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/pages/order_status.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/pages/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/pages/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/pages/product_detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/pages/product_detail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/JDBiConnector/JDBIConnector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/AddCart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/CartController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/CheckoutController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/HomeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/LogoutController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/ProductController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/ProductDetailController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/RegisterController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/RemoveItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/UpdateCart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/controller/VerifyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/dao/CartDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/dao/CategoryDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/dao/ImageDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/dao/ProductDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/dao/ProductDetailDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/dao/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/dao/VariantDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/filter/AuthFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/filter/GlobalDataFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/Cart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/CartItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/Image.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/ParentCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/ProductDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/Productdetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/Productdetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/SubCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/model/Variants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/service/CartService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/service/CategoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/service/EmailService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/service/EmailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/service/ImageService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/service/ProductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/service/VariantService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/util/PasswordUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/com/clothingshop/styleera/util/SessionManage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/classes/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/commons-codec-1.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/fluent-hc-4.5.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/geantyref-2.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/gson-2.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/httpclient-4.5.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/httpcore-4.4.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/jakarta.activation-2.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/jakarta.el-api-5.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/jakarta.mail-2.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/jakarta.servlet-api-6.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/jakarta.servlet.jsp.jstl-3.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-3.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/jbcrypt-0.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/jdbi3-core-3.50.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/logback-classic-1.5.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/logback-core-1.5.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/mysql-connector-j-8.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/protobuf-java-3.25.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/lib/slf4j-api-2.0.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-customer-edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-dashboard.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-forgot-password.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-form-user.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-form.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-orders.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-products.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-profile.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/admin-register.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/css/admin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/css/admin_forgot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/css/admin_login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/css/admin_order.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/css/admin_register.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/images/logoadm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin-common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin-dashboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin_Forgot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin_Form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin_Form_user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin_Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin_Orders.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin_Product.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin_Profile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin_Register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/admin/js/admin_customer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/account.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/auth.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/cartstyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/checkout.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/contact.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/header-footer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/oder_success.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/order-history.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/order_status.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/product.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/product_detail.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/review.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/css/verify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/app-download/appstore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/app-download/googleplaystore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/banner/female-fashion.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/banner/male-fashion.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/couple/ao-khoac-doi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/couple/ao-thun-doi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/couple/do-bo-doi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/man/ao-khoac-nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/man/ao-polo-nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/man/ao-so-mi-nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/man/ao-thun-nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/man/quan-dai-nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/man/quan-jean-nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/man/quan-short-nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/woman/ao-khoac-nu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/woman/ao-polo-nu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/woman/ao-so-mi-nu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/woman/ao-thun-nu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/woman/dam-nu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/woman/quan-dai-nu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/woman/quan-short-nu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/category-banner/category/woman/vay-nu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/Xanh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh1.1.2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh1.1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh1.2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh1.3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh1.4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh_polo1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/anh_polo2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/cam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/logoNH.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/logothanhtoan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/momo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/quanjean.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/quanjeans_checkout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/trắng.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/visa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/Đen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/image_product/Đỏ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.1/aokhoac_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.1/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.10/aokhoac_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.10/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.2/aokhoac_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.2/trangohuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.3/aokhoac_nam.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.3/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.4/aokhoac_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.4/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.5/aokhoac_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.5/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.6/aokhoac_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.6/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.7/aokhoac_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.7/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.8/aokhoac_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.8/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.9/aokhoac_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/1/1.9/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.1/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.1/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.10/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.10/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.2/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.2/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.3/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.3/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.4/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.4/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.5/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.5/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.6/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.6/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.7/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.7/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.8/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.8/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.9/aothun_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/2/2.9/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.1/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.1/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.10/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.10/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.2/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.2/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.3/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.3/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.4/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.4/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.5/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.5/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.6/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.6/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.7/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.7/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.8/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.8/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.9/aopolo_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/3/3.9/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.1/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.1/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.10/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.10/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.2/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.2/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.3/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.3/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.4/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.4/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.5/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.5/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.6/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.6/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.7/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.7/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.8/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.8/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.9/aosomi_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/4/4.9/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.1/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.1/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.10/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.10/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.2/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.2/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.3/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.3/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.4/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.4/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.5/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.5/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.6/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.6/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.7/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.7/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.8/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.8/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.9/quanngan_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/5/5.9/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.1/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.1/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.10/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.10/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.2/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.2/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.3/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.3/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.4/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.4/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.5/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.5/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.6/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.6/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.7/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.7/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.8/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.8/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.9/quandai_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/6/6.9/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.1/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.1/trangphuc_nam.png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.10/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.10/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.2/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.2/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.3/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.3/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.4/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.4/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.5/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.5/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.6/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.6/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.7/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.7/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.8/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.8/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.9/quanjeans_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_nam/7/7.9/trangphuc_nam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-1/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-1/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-10/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-10/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-2/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-2/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-3/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-3/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-4/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-4/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-5/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-5/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-6/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-6/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-7/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-7/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-8/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-8/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-9/aokhoacnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/1/1-9/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-1/aothunnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-1/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-2/aothunnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-2/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-3/aothunnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-3/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-4/aothunnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-4/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-5/aothunnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-5/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-6/aothunu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-6/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-7/aothunnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-7/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-8/aothunnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/2/2-8/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-1/aopolonu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-1/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-2/aopolonu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-2/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-3/aopolonu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-3/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-4/aopolonu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-4/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-5/aopolonu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-5/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-6/aopolonu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-6/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-7/aopolonu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-7/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-8/aopolonu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-8/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-9/aopolonu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/3/3-9/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-1/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-1/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-10/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-10/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-2/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-2/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-3/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-3/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-4/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-4/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-5/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-5/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-6/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-6/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-7/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-7/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-8/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-8/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-9/aosominu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/4/4-9/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-1/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-1/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-10/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-10/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-2/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-2/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-3/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-3/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-4/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-4/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-5/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-5/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-6/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-6/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-7/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-7/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-8/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-8/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-9/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/5/5-9/vaynu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-1/damnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-1/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-2/damnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-2/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-3/damnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-3/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-4/damnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-4/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-5/damnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-5/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-6/damnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-6/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-7/damnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-7/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-8/damnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/6/6-8/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-1/quanshortnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-1/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-2/quanshortnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-2/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-3/quanshortnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-3/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-4/quanshortnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-4/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-5/quanshortnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-5/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-6/quanshortnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-6/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-7/quanshortnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-7/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-8/quanshortnu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/7/7-8/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-1/quandainu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-1/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-10/quandainu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-10/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-2/quandainu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-2/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-3/quandai.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-3/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-4/quandainu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-4/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-5/quandainu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-5/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-6/quandainu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-6/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-7/quandainu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-7/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-8/quandainu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-8/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-9/quandainu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/product_item_women/8/8-9/trangphuc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/slide/slide-01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/images/slide/slide-02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/add-cart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/cartPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/contactPages.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/order-history.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/order_status.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/product_detail.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/remove-cart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/review.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/js/update-cart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/layout/footer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/layout/header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/account.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/cart.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/checkout.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/contact.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/forgot-password.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/order-history.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/order_status.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/product.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/product_detail.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/register.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/reset-pasword.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/review.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ClothingShop-1.0-SNAPSHOT/views/pages/verify.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/JDBiConnector/JDBIConnector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/AddCart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/CartController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/CheckoutController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/HomeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/LogoutController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/ProductController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/ProductDetailController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/RegisterController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/RemoveItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/UpdateCart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/controller/VerifyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/dao/CartDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/dao/CategoryDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/dao/ImageDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/dao/ProductDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/dao/ProductDetailDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/dao/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/dao/VariantDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/filter/AuthFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/filter/GlobalDataFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/Cart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/CartItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/Image.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/ParentCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/ProductDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/Productdetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/Productdetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/SubCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/model/Variants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/service/CartService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/service/CategoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/service/EmailService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/service/EmailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/service/ImageService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/service/ProductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/service/VariantService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/util/PasswordUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingshop/styleera/util/SessionManage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;letanthanh2004&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/nTruong257/ClothingShop.git&quot;,
+    &quot;accountId&quot;: &quot;c0a94770-703c-4e31-8eb1-c0168a406dbf&quot;
+  }
+}</component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="38bkTPxhZ3yHFpIAkhXuqb46oZL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.ClothingShop [clean].executor": "Run",
+    "Maven.ClothingShop [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "TomEE Server.TomEE 10.1.49.executor": "Run",
+    "Tomcat Server.Tomcat 10.1.34.executor": "Run",
+    "git-widget-placeholder": "Merging 22130255__LeTanThanh",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/ClothingShop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Tomcat 10.1.34" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.34" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="23" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="ClothingShop:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ClothingShop" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="ea379be2-2837-49d9-adba-f065d33921e2" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49289" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ClothingShop:war" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aeb977dc-6ac7-4be4-b5ea-7c1a5b0bb047" name="Changes" comment="" />
+      <created>1769075666340</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769075666340</updated>
+      <workItem from="1769075668579" duration="4034000" />
+      <workItem from="1769079739362" duration="701000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
