@@ -1,14 +1,14 @@
 package com.clothingshop.styleera.model;
 import java.util.List;
 
-public class ProductDetail {
+public class Productdetail {
     private int id;
     private String name;
     private String description;
     private double price;
     private List<String> images; //
 
-    public ProductDetail() {}
+    public Productdetail() {}
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
