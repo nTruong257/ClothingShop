@@ -67,6 +67,13 @@
                         <span>Bình Luận Khách hàng</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="${root}/admin-contact"
+                       class="menu-link ${currentPage == 'contact' ? 'active' : ''}">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span>Quản lý Liên Hệ</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- ===== FOOTER ===== -->
