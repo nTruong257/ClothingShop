@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="${root}/admin/admin-customer-edit.jsp"
+                    <a href="${root}/admin-user"
                        class="menu-link ${currentPage == 'customer' ? 'active' : ''}">
                         <i class="fas fa-users"></i>
                         <span>Người Dùng</span>

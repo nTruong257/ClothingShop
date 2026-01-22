@@ -85,7 +85,7 @@
                     <div class="table-responsive">
                         <table class="table table-hover mb-0" id="productsTable">
                             <thead class="table-light">
-                            <tr>
+                            <tr class="text-center align-middle">
                                 <th>ID</th>
                                 <th>Ảnh Sản Phẩm</th>
                                 <th style="min-width: 250px">Tên Sản Phẩm</th>
@@ -110,7 +110,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach items="${productsAdmin}" var="p">
-                                        <tr>
+                                        <tr class="text-center align-middle">
                                             <td>#${p.product_id}</td>
                                             <td>
                                                 <div class="product-img-wrapper">

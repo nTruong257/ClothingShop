@@ -88,7 +88,7 @@
         <div class="table-responsive">
             <table class="table table-hover mb-0" id="productsTable">
                 <thead class="table-light">
-                <tr>
+                <tr class="text-center align-middle">
                     <th>ID</th>
                     <th>Ảnh Danh Mục</th>
                     <th>Tên Danh Mục</th>
@@ -111,7 +111,7 @@
 
                         <c:forEach items="${parentCategoryList}" var="p">
                             <c:forEach items="${p.subCategories}" var="s">
-                                <tr>
+                                <tr class="text-center align-middle">
                                     <td>${s.id}</td>
                                     <td>
                                         <c:if test ="${not empty s.image}">
