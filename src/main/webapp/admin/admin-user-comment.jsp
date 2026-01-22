@@ -47,48 +47,59 @@
         </div>
     </div>
     <div>
-        <div class="tab-pane">
-            <div class="card shadow-sm">
-                <div class="card-header bg-light border-bottom d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0">Danh Sách Bình Luận</h6>
-                    <span class="text-muted small">Tổng cộng: <strong>1</strong> Người dùng</span>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover mb-0">
-                            <thead class="table-light">
-                            <tr>
-                                <th>ID</th>
-                                <th>Tên khách hàng</th>
-                                <th>Ngày bình luận</th>
-                                <th>Ảnh bình luận</th>
-                                <th>Màu</th>
-                                <th>Size</th>
-                                <th>Lời bình luận</th>
-                                <th>Hành Động</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>#3</td>
-                                <td>T***h</td>
-                                <td>2025-20-11</td>
-                                <td><img src="" alt="no picture"></td>
-                                <td>Xanh</td>
-                                <td>L</td>
-                                <td>0904899626</td>
-                                <td>
-                                    <button class="btn btn-sm btn-danger" title="Xóa">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <tbody>
+        <c:forEach items="${reviews}" var="r">
+            <tr>
+                    <%-- Hiển thị ID của bình luận --%>
+                <td>#${r.id}</td>
+
+                    <%-- Hiển thị Tên khách hàng --%>
+                <td>${r.userName}</td>
+
+                    <%-- Hiển thị Ngày bình luận (đã định dạng ngày/tháng/năm) --%>
+                <td><fmt:formatDate value="${r.createdAt}" pattern="dd-MM-yyyy HH:mm"/></td>
+
+                    <%-- Hiển thị Ảnh bình luận --%>
+                <td>
+                    <c:choose>
+                        <c:when test="${not empty r.imageUrl}">
+                            <img src="${root}${r.imageUrl}"
+                                 style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+                        </c:when>
+                        <c:otherwise>
+                            <span class="text-muted small">no picture</span>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+
+                    <%-- Hiển thị Màu và Size (Sử dụng badge Bootstrap cho đẹp) --%>
+                <td><span class="badge bg-info text-dark">${not empty r.color ? r.color : 'N/A'}</span></td>
+                <td><span class="badge bg-secondary">${not empty r.size ? r.size : 'N/A'}</span></td>
+
+                    <%-- Hiển thị Nội dung lời bình luận --%>
+                <td style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        ${r.content}
+                </td>
+
+                    <%-- Nút hành động Xóa --%>
+                <td>
+                    <button class="btn btn-sm btn-danger"
+                            onclick="if(confirm('Bạn có chắc chắn muốn xóa bình luận này?')) { window.location.href='delete-review?id=${r.id}'; }"
+                            title="Xóa">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </c:forEach>
+
+        <%-- Hiển thị dòng thông báo nếu không có dữ liệu --%>
+        <c:if test="${empty reviews}">
+            <tr>
+                <td colspan="8" class="text-center py-4 text-muted">Hiện chưa có bình luận nào để quản lý.</td>
+            </tr>
+        </c:if>
+        </tbody>
+
     </div>
 </main>
 </body>
