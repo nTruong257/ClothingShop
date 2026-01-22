@@ -39,8 +39,9 @@
             <div class="order-id">Mã đơn hàng: #ORD-${System.currentTimeMillis() % 1000000}</div>
             <div class="note">Ngày đặt: <span>${uDate}</span></div>
             <div class="order-actions">
-                <button class="btn" id="viewOrderBtn">
-                    <a href="order_status.jsp">Xem đơn hàng</a>
+                <button class="btn" id="viewOrderBtn"
+                        onclick="window.location.href='${pageContext.request.contextPath}/views/pages/order_status.jsp'">
+                    Xem đơn hàng
                 </button>
 
             </div>
@@ -158,9 +159,9 @@
             </c:choose>
         </div>
 
-        <div style="display:flex;gap:10px;margin-top:14px;flex-direction: row-reverse;">
-            <button class="btn" onclick="location.href='index.html'">Tiếp tục mua sắm</button>
-        </div>
+        <button class="btn" onclick="location.href='${pageContext.request.contextPath}/views/pages/index.jsp'">
+            Tiếp tục mua sắm
+        </button>
 
     </aside>
 
