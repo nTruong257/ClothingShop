@@ -1,5 +1,6 @@
 package com.clothingshop.styleera.controller.Admin;
 
+import com.clothingshop.styleera.dao.ProductDAO;
 import com.clothingshop.styleera.model.Product;
 import com.clothingshop.styleera.service.ProductService;
 import jakarta.servlet.*;
@@ -18,6 +19,18 @@ public class AdminProductsController extends HttpServlet {
         if (productsAdmin == null) {
             productsAdmin = new java.util.ArrayList<>();
         }
+
+        //lọc theo danh mục:
+        String parent = request.getParameter("parent");
+        ProductDAO dao = new ProductDAO();
+        if(parent == null){
+            productsAdmin = dao.findAll();
+        }else if(parent != null && !parent.isEmpty()){
+            productsAdmin = dao.filterParentCategory(parent);
+        }else {
+            productsAdmin = dao.findAll();
+        }
+
 
         request.setAttribute("productsAdmin", productsAdmin);
         request.getRequestDispatcher("/admin/admin-products.jsp").forward(request, response);

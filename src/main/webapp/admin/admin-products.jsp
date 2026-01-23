@@ -41,34 +41,50 @@
                             <label class="form-label">Tìm Kiếm</label>
                             <input type="text" class="form-control" id="searchInput" placeholder="Tên sản phẩm..."/>
                         </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Phân Loại</label>
-                            <select class="form-select categoryFilter">
-                                <option value="">Danh Mục</option>
-                                <option value="nam">Nam</option>
-                                <option value="nu">Nữ</option>
-                                <option value="doi">Đồ Đôi</option>
+                        <div class="col-md-2">
+                            <label class="form-label">Danh Mục</label>
+                            <select class="form-select categoryFilter" name="parent">
+                                <option value="">Tất Cả Danh Mục</option>
+                                <option value="nam" ${param.parent == 'nam' ? 'selected' : ''}>Nam</option>
+                                <option value="nu" ${param.parent == 'nu' ? 'selected' : ''}>Nữ</option>
+                                <option value="doi" ${param.parent == 'doi' ? 'selected' : ''}>Đồ Đôi</option>
                             </select>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label class="form-label">Phân Loại</label>
-                            <select class="form-select categoryFilter">
-                                <option value="">Tất Cả Danh Mục</option>
-                                <option value="nam">Áo Thun Nam</option>
-                                <option value="nam">Áo Polo Nam</option>
-                                <option value="nam">Áo Khoác Nam</option>
-                                <option value="nam">Quần Jean Nam</option>
-                                <option value="nam">Quần Ngắn Nam</option>
-                                <option value="nam">Áo Thun Nữ</option>
-                                <option value="nam">Áo Polo Nữ</option>
-                                <option value="nu">Áo Khoác Nữ</option>
-                                <option value="nu">Váy Nữ</option>
-                                <option value="nu">Đầm Nữ</option>
-                                <option value="nu">Quần dài Nữ</option>
-                                <option value="nu">Quần ngắn Nữ</option>
-                                <option value="doi">Áo khoác đôi</option>
-                                <option value="doi">Áo thun đôi</option>
-                                <option value="doi">Đồ bộ Đôi</option>
+                            <select class="form-select categoryFilter" name="sub">
+                                <option value="">Tất Cả Phân Loại</option>
+                                <option value="Áo Thun">Áo Thun</option>
+                                <option value="Áo Polo">Áo Polo</option>
+                                <option value="Áo Khoác Nam">Áo Khoác Nam</option>
+                                <option value="Quần Jean">Quần Jean</option>
+                                <option value="Quần Ngắn">Quần Ngắn</option>
+                                <option value="Áo Khoác">Áo Khoác</option>
+                                <option value="Váy">Váy</option>
+                                <option value="Đầm">Đầm</option>
+                                <option value="Áo khoác đôi">Áo khoác đôi</option>
+                                <option value="Áo thun đôi">Áo thun đôi</option>
+                                <option value="Đồ bộ Đôi">Đồ bộ Đôi</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Size</label>
+                            <select class="form-select categoryFilter" name="size">
+                                <option value="">Tất Cả các Size</option>
+                                <option value="M" ${param.size == 'M' ? 'selected' : ''}>M</option>
+                                <option value="L" ${param.size == 'L' ? 'selected' : ''}>L</option>
+                                <option value="XL" ${param.size == 'XL' ? 'selected' : ''}>XL</option>
+                                <option value="S" ${param.size == 'S' ? 'selected' : ''}>S</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Màu sắc</label>
+                            <select class="form-select categoryFilter" name="color">
+                                <option value="">Tất Cả các Màu</option>
+                                <option value="Đen" ${param.color == 'Đen' ? 'selected' : ''}>Đen</option>
+                                <option value="Trắng" ${param.color == 'Trắng' ? 'selected' : ''}>Trắng</option>
+                                <option value="Xanh" ${param.color == 'Xanh' ? 'selected' : ''}>Xanh</option>
+                                <option value="Đỏ" ${param.color == 'Đỏ' ? 'selected' : ''}>Đỏ</option>
                             </select>
                         </div>
                     </div>
@@ -222,19 +238,19 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Thể Loại</label>
-                                <select class="form-select" id="addCategory" required>
-                                    <option value="">-- Chọn Thể Loại --</option>
-                                    <option value="nam">Nam</option>
-                                    <option value="nu">Nữ</option>
-                                    <option value="doi">Đồ Đôi</option>
+                            <div class="col-md-2">
+                                <label class="form-label">Danh Mục</label>
+                                <select class="form-select categoryFilter" name="parent">
+                                    <option value="">Tất cả Danh Mục</option>
+                                    <option value="nam" ${param.parent == 'nam' ? 'selected' : ''}>Nam</option>
+                                    <option value="nu" ${param.parent == 'nu' ? 'selected' : ''}>Nữ</option>
+                                    <option value="doi" ${param.parent == 'doi' ? 'selected' : ''}>Đồ Đôi</option>
                                 </select>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Danh Mục</label>
-                                <select class="form-select" id="addSubcategory" required>
-                                    <option value="">-- Chọn Danh Mục --</option>
+                            <div class="col-md-2">
+                                <label class="form-label">Phân Loại</label>
+                                <select class="form-select categoryFilter" name="sub">
+                                    <option value="">Tất Cả Phân Loại</option>
                                     <option value="Áo Thun Nam">Áo Thun Nam</option>
                                     <option value="Áo Polo Nam">Áo Polo Nam</option>
                                     <option value="Áo Khoác Nam">Áo Khoác Nam</option>
@@ -245,11 +261,29 @@
                                     <option value="Áo Khoác Nữ">Áo Khoác Nữ</option>
                                     <option value="Váy Nữ">Váy Nữ</option>
                                     <option value="Đầm Nữ">Đầm Nữ</option>
-                                    <option value="Quần dài Nữ">Quần dài Nữ</option>
-                                    <option value="Quần ngắn Nữ">Quần ngắn Nữ</option>
                                     <option value="Áo khoác đôi">Áo khoác đôi</option>
                                     <option value="Áo thun đôi">Áo thun đôi</option>
                                     <option value="Đồ bộ Đôi">Đồ bộ Đôi</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Size</label>
+                                <select class="form-select categoryFilter" name="size">
+                                    <option value="">Tất Cả các Size</option>
+                                    <option value="M" ${param.size == 'M' ? 'selected' : ''}>M</option>
+                                    <option value="L" ${param.size == 'L' ? 'selected' : ''}>L</option>
+                                    <option value="XL" ${param.size == 'XL' ? 'selected' : ''}>XL</option>
+                                    <option value="S" ${param.size == 'S' ? 'selected' : ''}>S</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Màu sắc</label>
+                                <select class="form-select categoryFilter" name="color">
+                                    <option value="">Tất Cả các Màu</option>
+                                    <option value="Đen" ${param.color == 'Đen' ? 'selected' : ''}>Đen</option>
+                                    <option value="Trắng" ${param.color == 'Trắng' ? 'selected' : ''}>Trắng</option>
+                                    <option value="Xanh" ${param.color == 'Xanh' ? 'selected' : ''}>Xanh</option>
+                                    <option value="Đỏ" ${param.color == 'Đỏ' ? 'selected' : ''}>Đỏ</option>
                                 </select>
                             </div>
                         </div>
@@ -305,6 +339,6 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<%--<script src="js/admin_Product.js"></script>--%>
+<script src="${root}/admin/js/admin_Product.js"></script>
 </body>
 </html>
