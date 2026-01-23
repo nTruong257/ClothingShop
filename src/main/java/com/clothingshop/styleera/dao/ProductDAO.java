@@ -7,6 +7,7 @@ import com.clothingshop.styleera.JDBiConnector.JDBIConnector;
 import com.clothingshop.styleera.model.Product;
 import org.jdbi.v3.core.Jdbi;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProductDAO {
 
@@ -293,6 +294,115 @@ public class ProductDAO {
                     .list();
         });
     }
+    //13. lọc theo Phân Loại
+    public List<Product> filterSubCategory(String subName) {
+        return JDBIConnector.getJdbi().withHandle(h -> {
 
+            String sql =
+                    "SELECT p.id AS product_id, p.product_name, p.price, " +
+                            "sc.id AS sub_id, sc.sub_name, sc.category_parent_id, " +
+                            "pc.id AS parent_id, pc.parent_name, " +
+                            "i.path AS thumbnail " +
+                            "FROM products p " +
+                            "JOIN subcategories sc ON p.category_sub_id = sc.id " +
+                            "LEFT JOIN parentcategories pc ON sc.category_parent_id = pc.id " +
+                            "LEFT JOIN images i ON p.image_id = i.id " +
+                            "WHERE sc.sub_name = :subName";
+
+            return h.createQuery(sql)
+                    .bind("subName", subName)
+                    .map((rs, ctx) -> {
+
+                        ParentCategory parent = new ParentCategory(
+                                rs.getInt("parent_id"),
+                                rs.getString("parent_name")
+                        );
+
+                        SubCategory sub = new SubCategory(
+                                rs.getInt("sub_id"),
+                                rs.getString("sub_name"),
+                                rs.getInt("category_parent_id"),
+                                null,
+                                null
+                        );
+                        sub.setCategory(parent);
+
+                        Product product = new Product();
+                        product.setProduct_id(rs.getInt("product_id"));
+                        product.setProduct_name(rs.getString("product_name"));
+                        product.setPrice(rs.getDouble("price"));
+                        product.setThumbnail(rs.getString("thumbnail"));
+                        product.setSubcategories(sub);
+
+                        product.setVariants(findVariantsByProductId(
+                                rs.getInt("product_id")
+                        ));
+
+                        return product;
+                    })
+                    .list();
+        });
+    }
+    //14.Lọc sản phẩm theo Size và Color:
+    public List<Product> filterVariants(List<Product> products, String size, String color) {
+        return products.stream()
+                .filter(product -> {
+                    if (product.getVariants() == null || product.getVariants().isEmpty()) {
+                        return false;
+                    }
+                    return product.getVariants().stream()
+                            .anyMatch(variant -> {
+                                boolean matchSize = (size == null || size.isEmpty() || variant.getSize().equalsIgnoreCase(size));
+                                boolean matchColor = (color == null || color.isEmpty() || variant.getColor().equalsIgnoreCase(color));
+                                return matchSize && matchColor;
+                            });
+                })
+                .collect(Collectors.toList());
+    }
+    //15. Lọc sản phẩm theo cả ParentCategory và SubCategory
+    public List<Product> filterParentAndSubCategory(String parentName, String subName) {
+        return JDBIConnector.getJdbi().withHandle(h -> {
+            String sql =
+                    "SELECT p.id AS product_id, p.product_name, p.price, " +
+                            "sc.id AS sub_id, sc.sub_name, sc.category_parent_id, " +
+                            "pc.id AS parent_id, pc.parent_name, " +
+                            "i.path AS thumbnail " +
+                            "FROM products p " +
+                            "JOIN subcategories sc ON p.category_sub_id = sc.id " +
+                            "JOIN parentcategories pc ON sc.category_parent_id = pc.id " +
+                            "LEFT JOIN images i ON p.image_id = i.id " +
+                            "WHERE pc.parent_name = :parentName AND sc.sub_name = :subName";
+
+            return h.createQuery(sql)
+                    .bind("parentName", parentName)
+                    .bind("subName", subName)
+                    .map((rs, ctx) -> {
+                        ParentCategory parent = new ParentCategory(
+                                rs.getInt("parent_id"),
+                                rs.getString("parent_name")
+                        );
+
+                        SubCategory sub = new SubCategory(
+                                rs.getInt("sub_id"),
+                                rs.getString("sub_name"),
+                                rs.getInt("category_parent_id"),
+                                null,
+                                null
+                        );
+                        sub.setCategory(parent);
+
+                        Product product = new Product();
+                        product.setProduct_id(rs.getInt("product_id"));
+                        product.setProduct_name(rs.getString("product_name"));
+                        product.setPrice(rs.getDouble("price"));
+                        product.setThumbnail(rs.getString("thumbnail"));
+                        product.setSubcategories(sub);
+                        product.setVariants(findVariantsByProductId(rs.getInt("product_id")));
+
+                        return product;
+                    })
+                    .list();
+        });
+    }
 
 }

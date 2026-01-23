@@ -54,17 +54,20 @@
                             <label class="form-label">Phân Loại</label>
                             <select class="form-select categoryFilter" name="sub">
                                 <option value="">Tất Cả Phân Loại</option>
-                                <option value="Áo Thun">Áo Thun</option>
-                                <option value="Áo Polo">Áo Polo</option>
-                                <option value="Áo Khoác Nam">Áo Khoác Nam</option>
-                                <option value="Quần Jean">Quần Jean</option>
-                                <option value="Quần Ngắn">Quần Ngắn</option>
-                                <option value="Áo Khoác">Áo Khoác</option>
-                                <option value="Váy">Váy</option>
-                                <option value="Đầm">Đầm</option>
-                                <option value="Áo khoác đôi">Áo khoác đôi</option>
-                                <option value="Áo thun đôi">Áo thun đôi</option>
-                                <option value="Đồ bộ Đôi">Đồ bộ Đôi</option>
+
+                                <option value="Áo Thun" ${param.sub == 'Áo Thun' ? 'selected' : ''}>Áo Thun</option>
+                                <option value="Áo Polo" ${param.sub == 'Áo Polo' ? 'selected' : ''}>Áo Polo</option>
+                                <option value="Áo Khoác Nam" ${param.sub == 'Áo Khoác Nam' ? 'selected' : ''}>Áo Khoác Nam</option>
+                                <option value="Quần Jean" ${param.sub == 'Quần Jean' ? 'selected' : ''}>Quần Jean</option>
+                                <option value="Quần Ngắn" ${param.sub == 'Quần Ngắn' ? 'selected' : ''}>Quần Ngắn</option>
+
+                                <option value="Áo Khoác" ${param.sub == 'Áo Khoác' ? 'selected' : ''}>Áo Khoác</option>
+                                <option value="Váy" ${param.sub == 'Váy' ? 'selected' : ''}>Váy</option>
+                                <option value="Đầm" ${param.sub == 'Đầm' ? 'selected' : ''}>Đầm</option>
+
+                                <option value="Áo khoác đôi" ${param.sub == 'Áo khoác đôi' ? 'selected' : ''}>Áo khoác đôi</option>
+                                <option value="Áo thun đôi" ${param.sub == 'Áo thun đôi' ? 'selected' : ''}>Áo thun đôi</option>
+                                <option value="Đồ bộ Đôi" ${param.sub == 'Đồ bộ Đôi' ? 'selected' : ''}>Đồ bộ Đôi</option>
                             </select>
                         </div>
                         <div class="col-md-2">

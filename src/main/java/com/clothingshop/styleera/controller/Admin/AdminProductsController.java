@@ -19,16 +19,44 @@ public class AdminProductsController extends HttpServlet {
         if (productsAdmin == null) {
             productsAdmin = new java.util.ArrayList<>();
         }
-
+        ProductDAO dao = new ProductDAO();
         //lọc theo danh mục:
         String parent = request.getParameter("parent");
-        ProductDAO dao = new ProductDAO();
-        if(parent == null){
+        String sub = request.getParameter("sub");
+        String size = request.getParameter("size");
+        String color = request.getParameter("color");
+
+        // Nếu tất cả filter đều trống, lấy tất cả sản phẩm
+        if ((parent == null || parent.isEmpty()) &&
+                (sub == null || sub.isEmpty()) &&
+                (size == null || size.isEmpty()) &&
+                (color == null || color.isEmpty())) {
             productsAdmin = dao.findAll();
-        }else if(parent != null && !parent.isEmpty()){
-            productsAdmin = dao.filterParentCategory(parent);
-        }else {
-            productsAdmin = dao.findAll();
+        } else {
+            // Nếu có cả ParentCategory và SubCategory
+            if ((parent != null && !parent.isEmpty()) && (sub != null && !sub.isEmpty())) {
+                productsAdmin = dao.filterParentAndSubCategory(parent, sub);
+            }
+            // Lọc theo danh mục SubCategory
+            else if (sub != null && !sub.isEmpty()) {
+                productsAdmin = dao.filterSubCategory(sub);
+            }
+            // Lọc theo danh mục ParentCategory
+            else if (parent != null && !parent.isEmpty()) {
+                productsAdmin = dao.filterParentCategory(parent);
+            }
+            // Nếu không có cả hai, lấy tất cả
+            else {
+                productsAdmin = dao.findAll();
+            }
+        }
+        // Lọc theo biến thể Size và Color
+        if ((size != null && !size.isEmpty()) || (color != null && !color.isEmpty())) {
+            productsAdmin = dao.filterVariants(productsAdmin, size, color);
+        }
+
+        if (productsAdmin == null) {
+            productsAdmin = new java.util.ArrayList<>();
         }
 
 
