@@ -54,6 +54,21 @@
                     </div>
                 </div>
             </div>
+        <div class="order-actions mt-4 text-end">
+            <c:choose>
+                <%-- Giả sử biến order của bạn có thuộc tính status --%>
+                <c:when test="${order.status == 'Đã Giao'}">
+                    <a href="${root}/review?orderId=${order.id}" class="btn btn-danger btn-lg">
+                        <i class="fas fa-star"></i> Đánh giá ngay
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <button class="btn btn-secondary btn-lg" disabled title="Bạn chỉ có thể đánh giá sau khi nhận hàng">
+                        Đánh giá
+                    </button>
+                </c:otherwise>
+            </c:choose>
+        </div>
         <c:choose>
             <c:when test="${sessionScope.cart == null || sessionScope.cart.item.size() == 0}">
 <%--                Thông báo nếu chưa thanh toán--%>

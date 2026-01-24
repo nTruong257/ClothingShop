@@ -19,56 +19,18 @@
 <div class="review-container">
     <h2>Đánh giá sản phẩm</h2>
 
-    <!-- Chọn sao -->
-    <div class="rating-section">
-        <label>Chất lượng sản phẩm</label>
-        <div class="stars">
-            <span class="star" data-value="1">&#9733;</span>
-            <span class="star" data-value="2">&#9733;</span>
-            <span class="star" data-value="3">&#9733;</span>
-            <span class="star" data-value="4">&#9733;</span>
-            <span class="star" data-value="5">&#9733;</span>
-        </div>
-    </div>
+    <form action="${root}/submit-review" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="productId" value="${param.productId}">
 
-    <!-- Màu sắc -->
-    <div class="input-group">
-        <label>Màu sắc</label>
-        <select id="color">
-            <option value="Đen">Đen</option>
-            <option value="Trắng">Trắng</option>
-            <option value="Xám">Đỏ</option>
-            <option value="Xanh Navy">Xanh</option>
-        </select>
-    </div>
+        <input type="hidden" name="rating" id="ratingInput" value="5">
 
-    <!-- Size -->
-    <div class="input-group">
-        <label>Size</label>
-        <select id="size">
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XL">XXL</option>
-        </select>
-    </div>
+        <select name="color" id="color">...</select>
+        <select name="size" id="size">...</select>
+        <textarea name="content" id="note"></textarea>
+        <input type="file" name="images">
 
-    <!-- Ghi chú -->
-    <div class="input-group">
-        <label>Ghi chú</label>
-        <textarea id="note" placeholder="Hãy chia sẻ cảm nhận của bạn..."></textarea>
-    </div>
-
-    <!-- Tải ảnh -->
-    <div class="input-group">
-        <label>Ảnh sản phẩm</label>
-        <input type="file" id="images" multiple accept="image/*">
-        <div id="preview"></div>
-    </div>
-
-    <!-- Submit -->
-    <button class="btn-submit">Gửi đánh giá</button>
+        <button type="submit" class="btn-submit">Gửi đánh giá</button>
+    </form>
     <!-- Popup thông báo thành công -->
     <div class="success-popup" id="successPopup">
         <div class="popup-box">
@@ -84,5 +46,13 @@
 <jsp:include page="/views/layout/footer.jsp" />
 
 <script src="${root}/js/review.js"></script>
+<script>
+    // Thêm đoạn script này để khi click vào ngôi sao thì cập nhật giá trị vào input ẩn
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', function() {
+            document.getElementById('ratingInput').value = this.getAttribute('data-value');
+        });
+    });
+</script>
 </body>
 </html>
