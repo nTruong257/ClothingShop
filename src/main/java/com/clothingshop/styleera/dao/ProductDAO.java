@@ -404,5 +404,103 @@ public class ProductDAO {
                     .list();
         });
     }
+    //16. Câp nhật sản phẩm (edit)
+    public boolean updateProducts(Product p){
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        String sql = "Update Products" +
+                " Set product_name = :name," +
+                " price = :price," +
+                " category_sub_id = :subID," +
+                " updated_at = NOW()" +
+                " Where id = :id";
+        return jdbi.withHandle(h ->
+            h.createUpdate(sql)
+                    .bind("name", p.getProduct_name())
+                    .bind("price", p.getPrice())
+                    .bind("subID", p.getSubcategories().getId())
+                    .bind("id", p.getProduct_id())
+                    .execute() > 0
+        );
+    }
+    //17. Câp nhật biến thể (edit)
+    public boolean updateVariantQuantity(int variantId, int quantity) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+
+        String sql = "UPDATE variants SET quantity = :qty WHERE id = :id";
+
+        return jdbi.withHandle(h ->
+                h.createUpdate(sql)
+                        .bind("qty", quantity)
+                        .bind("id", variantId)
+                        .execute() > 0
+        );
+    }
+        //17. Edit sản phẩm
+        public void editProduct(Product product, int qty, int variantId) {
+            Jdbi jdbi = JDBIConnector.getJdbi();
+
+            jdbi.useTransaction(handle -> {
+
+                boolean updatedProduct = handle.attach(ProductDAO.class)
+                        .updateProducts(product);
+
+                if (!updatedProduct) {
+                    throw new RuntimeException("Không cập nhật được product");
+                }
+
+                if (variantId > 0) {
+                    boolean updatedVariant = handle.attach(ProductDAO.class)
+                            .updateVariantQuantity(variantId, qty);
+
+                    if (!updatedVariant) {
+                        throw new RuntimeException("Không cập nhật được variant");
+                    }
+                }
+            });
+        }
+    // 18. tìm  id theo product để edit
+    public Product findProductEditById(int id) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+
+        return jdbi.withHandle(handle -> {
+            String sql =
+                    "SELECT p.id AS product_id, p.product_name, p.price, " +
+                            "sc.id AS sub_id, sc.sub_name, sc.category_parent_id, " +
+                            "pc.id AS parent_id, pc.parent_name " +
+                            "FROM products p " +
+                            "JOIN subcategories sc ON p.category_sub_id = sc.id " +
+                            "JOIN parentcategories pc ON sc.category_parent_id = pc.id " +
+                            "WHERE p.id = ?";
+
+            return handle.createQuery(sql)
+                    .bind(0, id)
+                    .map((rs, ctx) -> {
+
+                        ParentCategory parent = new ParentCategory(
+                                rs.getInt("parent_id"),
+                                rs.getString("parent_name")
+                        );
+
+                        SubCategory sub = new SubCategory(
+                                rs.getInt("sub_id"),
+                                rs.getString("sub_name"),
+                                rs.getInt("category_parent_id"),
+                                null,
+                                null
+                        );
+                        sub.setCategory(parent);
+
+                        Product p = new Product();
+                        p.setProduct_id(rs.getInt("product_id"));
+                        p.setProduct_name(rs.getString("product_name"));
+                        p.setPrice(rs.getDouble("price"));
+                        p.setSubcategories(sub);
+
+                        return p;
+                    })
+                    .findOne()
+                    .orElse(null);
+        });
+    }
 
 }

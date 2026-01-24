@@ -183,7 +183,9 @@
                                                 <span>${totalQuantity}</span>
                                             </td>
                                             <td>
-                                                <a href="${root}/admin-form?id=${p.product_id}" class="btn btn-sm btn-warning" title="Chỉnh sửa">
+                                                <a href="${pageContext.request.contextPath}/AdminEditProduct?id=${p.product_id}"
+                                                   class="btn btn-sm btn-warning"
+                                                   title="Chỉnh sửa">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                                 <button class="btn btn-sm btn-danger" title="Xóa">
