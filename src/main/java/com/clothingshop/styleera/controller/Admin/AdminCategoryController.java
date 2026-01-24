@@ -17,17 +17,31 @@ public class AdminCategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CategoryService categoryService = new CategoryService();
-        List<ParentCategory> parentCategoryList = categoryService.getAllCategories();
 
-
-        ProductDAO dao = new ProductDAO();
-
-        request.setAttribute("parentCategoryList", parentCategoryList);
+        String parentCategory = request.getParameter("parentCategory");
+        String subCategory = request.getParameter("subCategory");
+        
+        // Lấy tất cả danh mục để hiển thị
+        List<ParentCategory> allCategories = categoryService.getAllCategories();
+        request.setAttribute("parentCategoryList", allCategories);
+        
+        // Nếu có filter, lọc dữ liệu
+        List<ParentCategory> filteredList;
+        if ((parentCategory != null && !parentCategory.isEmpty()) || (subCategory != null && !subCategory.isEmpty())) {
+            filteredList = categoryService.filterCategories(parentCategory, subCategory);
+        } else {
+            filteredList = allCategories;
+        }
+        
+        request.setAttribute("filteredCategoryList", filteredList);
+        request.setAttribute("parentCategoryValue", parentCategory != null ? parentCategory : "");
+        request.setAttribute("subCategoryValue", subCategory != null ? subCategory : "");
+        
         request.getRequestDispatcher("admin/admin-category.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 }
