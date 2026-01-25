@@ -502,5 +502,22 @@ public class ProductDAO {
                     .orElse(null);
         });
     }
+    // 19. Lấy top 5 sản phẩm bán chạy (Admin)
+    public List<Product> findBestSellersAdmin() {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        return jdbi.withHandle(handle -> {
+            String sql = "SELECT p.id AS product_id,\n" +
+                    "                   p.product_name,\n" +
+                    "                   p.price,\n" +
+                    "                   p.short_description,\n" +
+                    "                   p.average_rating AS medium_rating,\n" +
+                    "                   i.path AS thumbnail\n" +
+                    "            FROM products p\n" +
+                    "            LEFT JOIN images i ON p.image_id = i.id\n" +
+                    "            ORDER BY p.average_rating DESC\n" +
+                    "            LIMIT 5";
+            return handle.createQuery(sql).mapToBean(Product.class).list();
+        });
+    }
 
 }

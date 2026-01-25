@@ -19,7 +19,7 @@
             <div class="menu-label">MENU</div>
             <ul class="menu-list">
                 <li class="menu-item">
-                    <a href="${root}/admin/admin-dashboard.jsp"
+                    <a href="${root}/AdminDashboard"
                        class="menu-link ${currentPage == 'dashboard' ? 'active' : ''}">
                         <i class="fas fa-chart-line"></i>
                         <span>Bảng Điều Khiển</span>

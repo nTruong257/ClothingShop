@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -9,7 +10,8 @@
     <title>StyleEra - Bảng Điều Khiển Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link rel="stylesheet" href="css/admin.css"/>
+    <link rel="stylesheet" href="${root}/admin/css/admin.css"/>
+
 </head>
 <body>
 
@@ -208,7 +210,7 @@
                     </div>
                 </div>
 
-                <!-- Top Products -->
+                <!-- Top 5 Products bán chạy nhất -->
                 <div class="col-lg-4">
                     <div class="card shadow-sm">
                         <div class="card-header bg-light border-bottom">
@@ -216,41 +218,28 @@
                         </div>
                         <div class="card-body p-0">
                             <ol class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center text-bg-light">
-                                    <span><strong>1.</strong> Áo Khoác Nam</span>
-                                    <div class="product-img-wrapper me-3">
-                                        <img src="../images/product_item_nam/1/1.1/aokhoac_nam.avif" alt="Áo Khoác Nam" class="product-img"/>
-                                    </div>
-                                </li>
+                                <c:forEach items="${bestSellers}" var="p" varStatus="st">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center text-bg-light">
 
-                                <li class="list-group-item d-flex justify-content-between align-items-center text-bg-light">
-                                    <span><strong>2.</strong> Đầm Nữ</span>
-                                    <div class="product-img-wrapper me-3">
-                                        <img src="../images/product_item_women/6/6-1/trangphuc.png" alt="Đầm Nữ" class="product-img"/>
-                                    </div>
-                                </li>
+                                        <div>
+                                            <strong>${st.index + 1}.</strong>
+                                                ${p.product_name}
+                                            <div class="text-danger small"> Đánh giá: ${p.medium_rating}
+                                            </div>
+                                        </div>
 
-                                <li class="list-group-item d-flex justify-content-between align-items-center text-bg-light">
-                                    <span><strong>3.</strong> Quần dài Nữ</span>
-                                    <div class="product-img-wrapper me-3">
-                                        <img src="../images/product_item_women/8/8-1/trangphuc.png" alt="Quần dài Nữ" class="product-img"/>
-                                    </div>
-                                </li>
+                                        <c:if test="${not empty p.thumbnail}">
+                                            <div class="product-img-wrapper me-3">
+                                                <img src="${pageContext.request.contextPath}${p.thumbnail}"
+                                                     alt="${p.product_name}"
+                                                     class="product-img"/>
+                                            </div>
+                                        </c:if>
 
-                                <li class="list-group-item d-flex justify-content-between align-items-center text-bg-light">
-                                    <span><strong>4.</strong> Áo Sơ Mi nữ</span>
-                                    <div class="product-img-wrapper me-3">
-                                        <img src="../images/product_item_women/4/4-6/trangphuc.png" alt="Áo Sơ Mi nữ" class="product-img"/>
-                                    </div>
-                                </li>
-
-                                <li class="list-group-item d-flex justify-content-between align-items-center text-bg-light">
-                                    <span><strong>5.</strong> Váy nữ</span>
-                                    <div class="product-img-wrapper me-3">
-                                        <img src="../images/product_item_women/5/5-6/trangphuc.png" alt="Váy nữ" class="product-img"/>
-                                    </div>
-                                </li>
+                                    </li>
+                                </c:forEach>
                             </ol>
+
                         </div>
                     </div>
                 </div>
@@ -267,7 +256,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 
 <!-- Custom JS -->
-<script src="js/admin-common.js"></script>
-<script src="js/admin-dashboard.js"></script>
+<script src="${root}/admin/js/admin-common.js"></script>
+<script src="${root}/admin/js/admin-dashboard.js"></script>
 </body>
 </html>
