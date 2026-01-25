@@ -120,8 +120,8 @@
                                         <label class="form-label fw-bold">Số Lượng Kho</label>
                                         <input type="number"
                                                class="form-control"
-                                               name="quantity"
-                                               value="${variant != null ? variant.quantity : 0}"
+                                               name="totalQuantity"
+                                               value="${totalQuantity}"
                                                min="0"
                                                required>
                                     </div>
@@ -149,7 +149,9 @@
                     </div>
 
                     <div class="d-flex gap-2">
-                        <button type="submit" form="productForm" class="btn btn-primary btn-lg flex-grow-1">
+                        <button type="submit"
+                                form="productForm"
+                                class="btn btn-primary btn-lg flex-grow-1">
                             <i class="fas fa-save"></i> Cập Nhật Sản Phẩm
                         </button>
                         <a href="${root}/admin-products" class="btn btn-outline-secondary btn-lg flex-grow-1">
@@ -170,9 +172,5 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom JS -->
-<script src="js/admin-common.js"></script>
-<script src="js/admin-dashboard.js"></script>
-<%--<script src="js/admin_Form.js"></script>--%>
 </body>
 </html>

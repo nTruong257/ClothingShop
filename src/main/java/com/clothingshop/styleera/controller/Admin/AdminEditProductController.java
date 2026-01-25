@@ -31,7 +31,13 @@ public class AdminEditProductController extends HttpServlet {
         if (variants != null && !variants.isEmpty()) {
             variant = variants.get(0);
         }
-
+        int totalQuantity = 0;
+        if (variants != null) {
+            for (Variants v : variants) {
+                totalQuantity += v.getQuantity();
+            }
+        }
+        request.setAttribute("totalQuantity", totalQuantity);
         request.setAttribute("variant", variant);
         request.getRequestDispatcher("/admin/admin-form.jsp").forward(request, response);
     }
@@ -50,21 +56,17 @@ public class AdminEditProductController extends HttpServlet {
             double price = Double.parseDouble(request.getParameter("price"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-            // ===== Build SubCategory =====
             SubCategory sub = new SubCategory();
             sub.setId(subCategoryId);
 
-            // ===== Build Product =====
             Product product = new Product();
             product.setProduct_id(productId);
             product.setProduct_name(productName);
             product.setPrice(price);
             product.setSubcategories(sub);
 
-            // ===== Update =====
             productDAO.editProduct(product, quantity, variantId);
 
-            // ===== Redirect =====
             response.sendRedirect(request.getContextPath() + "/admin-products");
 
         } catch (Exception e) {

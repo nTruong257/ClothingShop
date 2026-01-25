@@ -183,7 +183,7 @@
                                                 <span>${totalQuantity}</span>
                                             </td>
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/AdminEditProduct?id=${p.product_id}"
+                                                <a href="${root}/AdminEditProduct?id=${p.product_id}"
                                                    class="btn btn-sm btn-warning"
                                                    title="Chỉnh sửa">
                                                     <i class="fas fa-edit"></i>
