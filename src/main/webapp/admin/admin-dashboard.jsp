@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
 
 <!DOCTYPE html>
@@ -38,16 +39,13 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <div>
-                                    <p class="text-muted small mb-1">Người dùng</p>
-                                    <h3 class="mb-0">3,782</h3>
+                                    <p class="text-muted small mb-1">Tổng số Người dùng</p>
+                                    <h3 class="mb-0">${totalUser.size()} người dùng</h3>
                                 </div>
                                 <div class="stat-icon bg-primary text-white rounded-circle p-3">
                                     <i class="fas fa-users fa-lg"></i>
                                 </div>
                             </div>
-                            <small class="text-success">
-                                <i class="fas fa-arrow-up"></i> 11.01% từ tháng trước
-                            </small>
                         </div>
                     </div>
                 </div>
@@ -58,16 +56,13 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <div>
-                                    <p class="text-muted small mb-1">Đơn Hàng</p>
-                                    <h3 class="mb-0">3,000</h3>
+                                    <p class="text-muted small mb-1">Tổng số Đơn Hàng</p>
+                                    <h3 class="mb-0">${totalOrders} đơn hàng</h3>
                                 </div>
                                 <div class="stat-icon bg-success text-white rounded-circle p-3">
                                     <i class="fas fa-shopping-cart fa-lg"></i>
                                 </div>
                             </div>
-                            <small class="text-danger">
-                                <i class="fas fa-arrow-down"></i> 9.05% từ tháng trước
-                            </small>
                         </div>
                     </div>
                 </div>
@@ -78,16 +73,13 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <div>
-                                    <p class="text-muted small mb-1">Doanh Thu</p>
-                                    <h3 class="mb-0">$45M</h3>
+                                    <p class="text-muted small mb-1">Tổng giá tiền các sản phẩm</p>
+                                    <h3 class="mb-0"><fmt:formatNumber value="${totalProductPrice}" pattern="#,### VNĐ"/></h3>
                                 </div>
                                 <div class="stat-icon bg-warning text-white rounded-circle p-3">
                                     <i class="fas fa-dollar-sign fa-lg"></i>
                                 </div>
                             </div>
-                            <small class="text-success">
-                                <i class="fas fa-arrow-up"></i> 8.5% từ tháng trước
-                            </small>
                         </div>
                     </div>
                 </div>
@@ -98,8 +90,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <div>
-                                    <p class="text-muted small mb-1">Sản Phẩm</p>
-                                    <h3 class="mb-0">1,000</h3>
+                                    <p class="text-muted small mb-1">Tổng Sản Phẩm hiện có</p>
+                                    <h3 class="mb-0">${totalQuantity} sản phẩm</h3>
                                 </div>
                                 <div class="stat-icon bg-danger text-white rounded-circle p-3">
                                     <i class="fas fa-box fa-lg"></i>
@@ -129,23 +121,20 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="card shadow-sm h-100">
                         <div class="card-header bg-light border-bottom">
-                            <h6 class="mb-0">Danh Mục Bán Chạy</h6>
+                            <h6 class="mb-0">Thống kê Danh Mục hiện có</h6>
                         </div>
                         <div class="card-body">
                             <div class="category-list">
-                                <div class="category-item">
-                                    <span>Nam</span>
-                                    <span class="badge bg-primary">45%</span>
-                                </div>
-                                <div class="category-item">
-                                    <span>Nữ</span>
-                                    <span class="badge bg-success">35%</span>
-                                </div>
-                                <div class="category-item">
-                                    <span>Đồ Đôi</span>
-                                    <span class="badge bg-warning">20%</span>
-                                </div>
+                                <c:forEach items="${categoryStats}" var="c">
+                                    <div class="category-item d-flex justify-content-between align-items-center mb-2">
+                                        <span>${c.name}</span>
+                                        <span class="badge bg-primary">
+                                             ${c.percent}%
+                                        </span>
+                                    </div>
+                                </c:forEach>
                             </div>
+
                         </div>
                     </div>
                 </div>

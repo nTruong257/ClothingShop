@@ -94,4 +94,15 @@ public class VariantDAO {
         );
 
     }
+    // tính tổng quantity trong thống kê dashboard admin
+    public int getTotalQuantity() {
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT SUM(quantity) FROM variants")
+                        .mapTo(Integer.class)
+                        .findOne()
+                        .orElse(0)
+        );
+    }
+
+
 }

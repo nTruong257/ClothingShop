@@ -43,4 +43,7 @@ public class CategoryService {
 
         return allCategories;
     }
+    public List<ParentCategory> getParentCategoryStats() {
+        return categoryDAO.getParentCategoryStats();
+    }
 }

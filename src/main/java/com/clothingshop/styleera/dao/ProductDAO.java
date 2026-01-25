@@ -519,5 +519,14 @@ public class ProductDAO {
             return handle.createQuery(sql).mapToBean(Product.class).list();
         });
     }
-
+    //20. tính tổng giá tiền của sản phẩm:
+    public double getTotalProductPrice() {
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT SUM(price) AS price FROM products")
+                        .mapToBean(Product.class)
+                        .findOne()
+                        .map(Product::getPrice)
+                        .orElse(0.0)
+        );
+    }
 }

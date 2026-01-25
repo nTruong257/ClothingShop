@@ -11,4 +11,7 @@ public class VariantService {
     public Integer getDefaultVariantId(int productId){
         return variantDAO.getDefaultVariantId(productId);
     }
+    public int getTotalQuantity() {
+        return variantDAO.getTotalQuantity();
+    }
 }
