@@ -145,53 +145,52 @@
                     <div class="card shadow-sm">
                         <div class="card-header bg-light border-bottom d-flex justify-content-between align-items-center">
                             <h6 class="mb-0">Đơn Hàng Gần Đây</h6>
-                            <a href="admin-orders.jsp" class="btn btn-sm btn-primary">Xem tất cả</a>
+                            <a href="${root}/admin/admin-orders.jsp" class="btn btn-sm btn-primary">Xem tất cả</a>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table table-hover mb-0">
                                     <thead class="table-light">
-                                    <tr>
+                                    <tr class="text-center align-middle">
                                         <th>Mã ĐH</th>
-                                        <th>Khách Hàng</th>
                                         <th>Ngày Đặt</th>
                                         <th>Tổng Tiền</th>
                                         <th>Trạng Thái</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>#985106</td>
-                                        <td>Nguyễn Văn A</td>
-                                        <td>14/11/2025</td>
-                                        <td>500,000đ</td>
-                                        <td>
-                                            <span class="badge bg-info">Chờ Vận Chuyển</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>#985105</td>
-                                        <td>Trần Thị B</td>
-                                        <td>13/11/2025</td>
-                                        <td>750,000đ</td>
-                                        <td>
-                                            <span class="badge bg-warning text-dark">Đang Vận Chuyển</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>#985104</td>
-                                        <td>Lê Văn C</td>
-                                        <td>12/11/2025</td>
-                                        <td>1,200,000đ</td>
-                                        <td><span class="badge bg-success">Đã Giao</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>#985103</td>
-                                        <td>Phạm Văn D</td>
-                                        <td>11/11/2025</td>
-                                        <td>890,000đ</td>
-                                        <td><span class="badge bg-danger">Đã Hủy</span></td>
-                                    </tr>
+                                    <c:forEach var="order" items="${latestOrders}">
+                                        <tr class="text-center align-middle">
+                                            <td>#${order.id}</td>
+                                            <td> <strong>${order.createdAt.toString().replace('T', ' ')}</strong></td>
+                                            <td>
+                                                <fmt:formatNumber value="${order.totalPrice}" pattern="#,### VNĐ"/>
+                                            </td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${order.status == 'Chờ vận chuyển'}">
+                                                        <span class="badge bg-info">${order.status}</span>
+                                                    </c:when>
+
+                                                    <c:when test="${order.status == 'Đang vận chuyển'}">
+                                                        <span class="badge bg-warning text-dark">${order.status}</span>
+                                                    </c:when>
+
+                                                    <c:when test="${order.status == 'Đã hủy'}">
+                                                        <span class="badge bg-danger">${order.status}</span>
+                                                    </c:when>
+
+                                                    <c:when test="${order.status == 'Đã Giao'}">
+                                                        <span class="badge bg-success">${order.status}</span>
+                                                    </c:when>
+
+                                                    <c:otherwise>
+                                                        <span class="badge bg-secondary">${order.status}</span>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

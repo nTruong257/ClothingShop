@@ -2,6 +2,7 @@ package com.clothingshop.styleera.controller.Admin;
 
 import com.clothingshop.styleera.dao.CategoryDAO;
 import com.clothingshop.styleera.dao.ProductDAO;
+import com.clothingshop.styleera.model.Orders;
 import com.clothingshop.styleera.model.ParentCategory;
 import com.clothingshop.styleera.model.Product;
 import com.clothingshop.styleera.model.User;
@@ -30,8 +31,10 @@ public class AdminDashboardController extends HttpServlet {
         int totalOrders = ordersService.getTotalOrders();
         List<User> userTotal = userService.getAllUsers();
         double totalProductPrice = productService.getTotalProductPrice();
+        List<Orders> latestOrders = ordersService.getLatestOrders(4);
 
 
+        request.setAttribute("latestOrders", latestOrders);
         request.setAttribute("totalProductPrice", totalProductPrice);
         request.setAttribute("totalOrders", totalOrders);
         request.setAttribute("totalUser", userTotal);
