@@ -7,6 +7,7 @@ import com.clothingshop.styleera.JDBiConnector.JDBIConnector;
 import com.clothingshop.styleera.model.Product;
 import org.jdbi.v3.core.Jdbi;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProductDAO {
 
@@ -234,5 +235,328 @@ public class ProductDAO {
                     .list();
         });
     }
+    //12. lọc theo Danh Mục
+    public List<Product> filterParentCategory(String parentName) {
+        return JDBIConnector.getJdbi().withHandle(h -> {
 
+            String sql =
+                    "SELECT p.id AS product_id, p.product_name, p.price, " +
+                            "sc.id AS sub_id, sc.sub_name, sc.category_parent_id, " +
+                            "pc.id AS parent_id, pc.parent_name, " +
+                            "i.path AS thumbnail " +
+                            "FROM products p " +
+                            "JOIN subcategories sc ON p.category_sub_id = sc.id " +
+                            "JOIN parentcategories pc ON sc.category_parent_id = pc.id " +
+                            "LEFT JOIN images i ON p.image_id = i.id " +
+                            "WHERE pc.parent_name = :parentName";
+
+            return h.createQuery(sql)
+                    .bind("parentName", parentName)
+                    .map((rs, ctx) -> {
+                        // Tạo ParentCategory
+                        ParentCategory parent = null;
+                        int parentId = rs.getInt("parent_id");
+                        if (parentId != 0) {
+                            parent = new ParentCategory(
+                                    parentId,
+                                    rs.getString("parent_name")
+                            );
+                        }
+
+                        // Tạo SubCategory
+                        SubCategory subcat = null;
+                        int subId = rs.getInt("sub_id");
+                        if (subId != 0) {
+                            subcat = new SubCategory(
+                                    subId,
+                                    rs.getString("sub_name"),
+                                    rs.getInt("category_parent_id"),
+                                    null,
+                                    null
+                            );
+                            subcat.setCategory(parent);
+                        }
+
+                        // Tạo Product
+                        Product product = new Product();
+                        product.setProduct_id(rs.getInt("product_id"));
+                        product.setProduct_name(rs.getString("product_name"));
+                        product.setPrice(rs.getDouble("price"));
+                        product.setThumbnail(rs.getString("thumbnail"));
+                        product.setSubcategories(subcat);
+
+                        List<Variants> variants = findVariantsByProductId(rs.getInt("product_id"));
+                        product.setVariants(variants);
+                        return product;
+                    })
+                    .list();
+        });
+    }
+    //13. lọc theo Phân Loại
+    public List<Product> filterSubCategory(String subName) {
+        return JDBIConnector.getJdbi().withHandle(h -> {
+
+            String sql =
+                    "SELECT p.id AS product_id, p.product_name, p.price, " +
+                            "sc.id AS sub_id, sc.sub_name, sc.category_parent_id, " +
+                            "pc.id AS parent_id, pc.parent_name, " +
+                            "i.path AS thumbnail " +
+                            "FROM products p " +
+                            "JOIN subcategories sc ON p.category_sub_id = sc.id " +
+                            "LEFT JOIN parentcategories pc ON sc.category_parent_id = pc.id " +
+                            "LEFT JOIN images i ON p.image_id = i.id " +
+                            "WHERE sc.sub_name = :subName";
+
+            return h.createQuery(sql)
+                    .bind("subName", subName)
+                    .map((rs, ctx) -> {
+
+                        ParentCategory parent = new ParentCategory(
+                                rs.getInt("parent_id"),
+                                rs.getString("parent_name")
+                        );
+
+                        SubCategory sub = new SubCategory(
+                                rs.getInt("sub_id"),
+                                rs.getString("sub_name"),
+                                rs.getInt("category_parent_id"),
+                                null,
+                                null
+                        );
+                        sub.setCategory(parent);
+
+                        Product product = new Product();
+                        product.setProduct_id(rs.getInt("product_id"));
+                        product.setProduct_name(rs.getString("product_name"));
+                        product.setPrice(rs.getDouble("price"));
+                        product.setThumbnail(rs.getString("thumbnail"));
+                        product.setSubcategories(sub);
+
+                        product.setVariants(findVariantsByProductId(
+                                rs.getInt("product_id")
+                        ));
+
+                        return product;
+                    })
+                    .list();
+        });
+    }
+    //14.Lọc sản phẩm theo Size và Color:
+    public List<Product> filterVariants(List<Product> products, String size, String color) {
+        return products.stream()
+                .filter(product -> {
+                    if (product.getVariants() == null || product.getVariants().isEmpty()) {
+                        return false;
+                    }
+                    return product.getVariants().stream()
+                            .anyMatch(variant -> {
+                                boolean matchSize = (size == null || size.isEmpty() || variant.getSize().equalsIgnoreCase(size));
+                                boolean matchColor = (color == null || color.isEmpty() || variant.getColor().equalsIgnoreCase(color));
+                                return matchSize && matchColor;
+                            });
+                })
+                .collect(Collectors.toList());
+    }
+    //15. Lọc sản phẩm theo cả ParentCategory và SubCategory
+    public List<Product> filterParentAndSubCategory(String parentName, String subName) {
+        return JDBIConnector.getJdbi().withHandle(h -> {
+            String sql =
+                    "SELECT p.id AS product_id, p.product_name, p.price, " +
+                            "sc.id AS sub_id, sc.sub_name, sc.category_parent_id, " +
+                            "pc.id AS parent_id, pc.parent_name, " +
+                            "i.path AS thumbnail " +
+                            "FROM products p " +
+                            "JOIN subcategories sc ON p.category_sub_id = sc.id " +
+                            "JOIN parentcategories pc ON sc.category_parent_id = pc.id " +
+                            "LEFT JOIN images i ON p.image_id = i.id " +
+                            "WHERE pc.parent_name = :parentName AND sc.sub_name = :subName";
+
+            return h.createQuery(sql)
+                    .bind("parentName", parentName)
+                    .bind("subName", subName)
+                    .map((rs, ctx) -> {
+                        ParentCategory parent = new ParentCategory(
+                                rs.getInt("parent_id"),
+                                rs.getString("parent_name")
+                        );
+
+                        SubCategory sub = new SubCategory(
+                                rs.getInt("sub_id"),
+                                rs.getString("sub_name"),
+                                rs.getInt("category_parent_id"),
+                                null,
+                                null
+                        );
+                        sub.setCategory(parent);
+
+                        Product product = new Product();
+                        product.setProduct_id(rs.getInt("product_id"));
+                        product.setProduct_name(rs.getString("product_name"));
+                        product.setPrice(rs.getDouble("price"));
+                        product.setThumbnail(rs.getString("thumbnail"));
+                        product.setSubcategories(sub);
+                        product.setVariants(findVariantsByProductId(rs.getInt("product_id")));
+
+                        return product;
+                    })
+                    .list();
+        });
+    }
+    //16. Câp nhật sản phẩm (edit)
+    public boolean updateProducts(Product p){
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        String sql = "Update Products" +
+                " Set product_name = :name," +
+                " price = :price," +
+                " category_sub_id = :subID," +
+                " updated_at = NOW()" +
+                " Where id = :id";
+        return jdbi.withHandle(h ->
+            h.createUpdate(sql)
+                    .bind("name", p.getProduct_name())
+                    .bind("price", p.getPrice())
+                    .bind("subID", p.getSubcategories().getId())
+                    .bind("id", p.getProduct_id())
+                    .execute() > 0
+        );
+    }
+    //17. Câp nhật biến thể (edit)
+    public boolean updateVariantQuantity(int variantId, int quantity) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+
+        String sql = "UPDATE variants SET quantity = :qty WHERE id = :id";
+
+        return jdbi.withHandle(h ->
+                h.createUpdate(sql)
+                        .bind("qty", quantity)
+                        .bind("id", variantId)
+                        .execute() > 0
+        );
+    }
+        //17. Edit sản phẩm
+        public void editProduct(Product product, int qty, int variantId) {
+            Jdbi jdbi = JDBIConnector.getJdbi();
+
+            jdbi.useTransaction(handle -> {
+
+                boolean updatedProduct = handle.attach(ProductDAO.class)
+                        .updateProducts(product);
+
+                if (!updatedProduct) {
+                    throw new RuntimeException("Không cập nhật được product");
+                }
+
+                if (variantId > 0) {
+                    boolean updatedVariant = handle.attach(ProductDAO.class)
+                            .updateVariantQuantity(variantId, qty);
+
+                    if (!updatedVariant) {
+                        throw new RuntimeException("Không cập nhật được variant");
+                    }
+                }
+            });
+        }
+    // 18. tìm  id theo product để edit
+    public Product findProductEditById(int id) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+
+        return jdbi.withHandle(handle -> {
+            String sql =
+                    "SELECT p.id AS product_id, p.product_name, p.price, " +
+                            "sc.id AS sub_id, sc.sub_name, sc.category_parent_id, " +
+                            "pc.id AS parent_id, pc.parent_name " +
+                            "FROM products p " +
+                            "JOIN subcategories sc ON p.category_sub_id = sc.id " +
+                            "JOIN parentcategories pc ON sc.category_parent_id = pc.id " +
+                            "WHERE p.id = ?";
+
+            return handle.createQuery(sql)
+                    .bind(0, id)
+                    .map((rs, ctx) -> {
+
+                        ParentCategory parent = new ParentCategory(
+                                rs.getInt("parent_id"),
+                                rs.getString("parent_name")
+                        );
+
+                        SubCategory sub = new SubCategory(
+                                rs.getInt("sub_id"),
+                                rs.getString("sub_name"),
+                                rs.getInt("category_parent_id"),
+                                null,
+                                null
+                        );
+                        sub.setCategory(parent);
+
+                        Product p = new Product();
+                        p.setProduct_id(rs.getInt("product_id"));
+                        p.setProduct_name(rs.getString("product_name"));
+                        p.setPrice(rs.getDouble("price"));
+                        p.setSubcategories(sub);
+
+                        return p;
+                    })
+                    .findOne()
+                    .orElse(null);
+        });
+    }
+    // 19. Lấy top 5 sản phẩm bán chạy (Admin)
+    public List<Product> findBestSellersAdmin() {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        return jdbi.withHandle(handle -> {
+            String sql = "SELECT p.id AS product_id,\n" +
+                    "                   p.product_name,\n" +
+                    "                   p.price,\n" +
+                    "                   p.short_description,\n" +
+                    "                   p.average_rating AS medium_rating,\n" +
+                    "                   i.path AS thumbnail\n" +
+                    "            FROM products p\n" +
+                    "            LEFT JOIN images i ON p.image_id = i.id\n" +
+                    "            ORDER BY p.average_rating DESC\n" +
+                    "            LIMIT 5";
+            return handle.createQuery(sql).mapToBean(Product.class).list();
+        });
+    }
+    //20. tính tổng giá tiền của sản phẩm:
+    public double getTotalProductPrice() {
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT SUM(price) AS price FROM products")
+                        .mapToBean(Product.class)
+                        .findOne()
+                        .map(Product::getPrice)
+                        .orElse(0.0)
+        );
+    }
+    //21. Xoá product theo id dung trong trang admin quan ly san pham
+    public void deleleteProduct(int productId){
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        jdbi.useTransaction(handle -> {
+
+            // 1. Xoá orderdetails
+            handle.createUpdate(
+                            "DELETE od FROM orderdetails od " +
+                                    "JOIN variants v ON od.variant_id = v.id " +
+                                    "WHERE v.product_id = ?")
+                    .bind(0, productId)
+                    .execute();
+
+            // 2. Xoá review
+            handle.createUpdate(
+                            "DELETE FROM review WHERE product_id = ?")
+                    .bind(0, productId)
+                    .execute();
+
+            // 3. Xoá variants
+            handle.createUpdate(
+                            "DELETE FROM variants WHERE product_id = ?")
+                    .bind(0, productId)
+                    .execute();
+
+            // 4. Xoá product
+            handle.createUpdate(
+                            "DELETE FROM products WHERE id = ?")
+                    .bind(0, productId)
+                    .execute();
+        });
+    }
 }

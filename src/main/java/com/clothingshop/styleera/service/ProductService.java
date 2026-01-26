@@ -53,4 +53,17 @@ public class ProductService {
     public List<String> getColorsByProductId(int id) {
         return variantDAO.getColorsByProductId(id);
     }
+
+    public Product getProductEditById(int id) {
+        return productDAO.findProductEditById(id);
+    }
+    public double getTotalProductPrice() {
+        return productDAO.getTotalProductPrice();
+    }
+    public List<Product> findBestSellersAdmin() {
+        return productDAO.findBestSellersAdmin();
+    }
+    public void deleteProduct(int productId){
+        productDAO.deleleteProduct(productId);
+    }
 }

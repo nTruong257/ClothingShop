@@ -1,5 +1,8 @@
 package com.clothingshop.styleera.model;
 
+
+import java.util.List;
+
 public class User {
     private int id;
     private String user_name;
@@ -11,6 +14,7 @@ public class User {
     private String verification_code; // Mã OTP
     private int enabled;              // 0: Chưa kích hoạt, 1: Đã kích hoạt
     private String google_id;         // Google ID
+    private List<Address> addresses;  // lấy address
 
     public User() {
     }
@@ -20,6 +24,13 @@ public class User {
         this.password_hash = password_hash;
         this.user_name = user_name;
         this.phone = phone;
+    }
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public int getId() {
