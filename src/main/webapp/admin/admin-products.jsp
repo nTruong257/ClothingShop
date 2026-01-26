@@ -27,10 +27,10 @@
                     <h1 class="page-title">Quản Lý Sản Phẩm</h1>
                 </div>
                 <div class="page-actions">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
-                        <i class="fas fa-plus"></i> Thêm Sản Phẩm
-                    </button>
-                </div>
+                <a href="${root}/admin/admin-form.jsp" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Thêm Sản Phẩm
+                </a>
+            </div>
             </div>
 
             <!-- Filters & Search -->
