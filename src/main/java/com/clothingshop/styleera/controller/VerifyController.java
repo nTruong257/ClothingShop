@@ -11,9 +11,24 @@ public class VerifyController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Lấy email từ URL (?email=...)
+        String email = request.getParameter("email");
+        if(email != null) {
+            request.setAttribute("email", email);
+        }
+
+        // Lấy thông báo từ session (nếu có) rồi xóa ngay
+        HttpSession session = request.getSession();
+        String msg = (String) session.getAttribute("verifyMessage");
+        if(msg != null) {
+            request.setAttribute("message", msg);
+            session.removeAttribute("verifyMessage");
+        }
+
         request.getRequestDispatcher("/views/pages/verify.jsp").forward(request, response);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String inputOtp = request.getParameter("otp");
@@ -26,20 +41,27 @@ public class VerifyController extends HttpServlet {
             String verifyType = (String) session.getAttribute("verifyType");
 
             if ("RESET_PASSWORD".equals(verifyType)) {
-                // == TRƯỜNG HỢP QUÊN MẬT KHẨU ==
-                // OTP đúng -> Cho phép qua trang đổi mật khẩu
+                // == TRƯỜNG HỢP 1: QUÊN MẬT KHẨU ==
+                // SỬA: Chuyển hướng về Controller (/reset-password), KHÔNG được trỏ thẳng vào JSP
                 response.sendRedirect(request.getContextPath() + "/reset-password");
+
             } else {
-                // == TRƯỜNG HỢP ĐĂNG KÝ MỚI (Mặc định) ==
+                // == TRƯỜNG HỢP 2: ĐĂNG KÝ MỚI ==
                 userDAO.activeUser(email);
-                request.setAttribute("message", "Kích hoạt thành công! Vui lòng đăng nhập.");
-                request.getRequestDispatcher("/login").forward(request, response);
+
+                // Lưu thông báo vào Session (vì Redirect sẽ làm mất request attribute)
+                session.setAttribute("successMsg", "Kích hoạt thành công! Vui lòng đăng nhập.");
+
+                // SỬA: Dùng sendRedirect thay vì forward để tránh gửi method POST sang trang Login
+                response.sendRedirect(request.getContextPath() + "/login");
             }
         } else {
-            // OTP Sai
+            // == OTP SAI ==
             request.setAttribute("error", "Mã xác thực không chính xác!");
             request.setAttribute("email", email);
-            request.getRequestDispatcher("/verify").forward(request, response);
+
+            // Forward lại trang verify để hiển thị lỗi (Đúng)
+            request.getRequestDispatcher("/views/pages/verify.jsp").forward(request, response);
         }
     }
 }

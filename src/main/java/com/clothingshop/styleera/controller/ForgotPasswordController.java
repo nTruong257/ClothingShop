@@ -48,6 +48,7 @@ public class ForgotPasswordController extends HttpServlet {
         // 5. Chuyển sang trang nhập OTP
         request.setAttribute("email", email); // Hiển thị email ở trang verify
         request.setAttribute("message", "Mã OTP khôi phục mật khẩu đã được gửi!");
-        request.getRequestDispatcher("verify").forward(request, response);
+        request.getSession().setAttribute("verifyMessage", "Mã OTP đã được gửi!"); // Lưu thông báo vào session tạm
+        response.sendRedirect(request.getContextPath() + "/verify?email=" + email); // Chuyển hướng sang URL /verify
     }
 }

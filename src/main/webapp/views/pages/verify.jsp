@@ -20,7 +20,7 @@
             <strong>${email}</strong>
         </p>
 
-        <form action="${pageContext.request.contextPath}/verify-otp" method="post">
+        <form action="${root}/verify" method="post">
             <input type="hidden" name="email" value="${email}">
 
             <div class="mb-4">
