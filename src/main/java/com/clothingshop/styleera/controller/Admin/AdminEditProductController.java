@@ -63,7 +63,7 @@ public class AdminEditProductController extends HttpServlet {
             product.setProduct_id(productId);
             product.setProduct_name(productName);
             product.setPrice(price);
-            product.setSubcategories(sub);
+            product.setSubcategory(sub);
 
             productDAO.editProduct(product, quantity, variantId);
 
