@@ -55,4 +55,24 @@ public class ProductService {
     public void deleteProduct(int productId){
         productDAO.deleleteProduct(productId);
     }
+    public void addProduct(
+            String name,
+            int subCategoryId,
+            double price,
+            String shortDesc,
+            String detailDesc,
+            String size,
+            String color,
+            int quantity,
+            String imageName,
+            String imagePath
+    ) {
+        productDAO.insertProductFull(
+                name, subCategoryId, price,
+                shortDesc, detailDesc,
+                size, color, quantity,
+                imageName, imagePath
+        );
+    }
+
     }

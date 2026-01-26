@@ -532,7 +532,7 @@ public class ProductDAO {
     //21. Xoá product theo id dung trong trang admin quan ly san pham
     public void deleleteProduct(int productId){
         Jdbi jdbi = JDBIConnector.getJdbi();
-        jdbi.useTransaction(handle -> {
+            jdbi.useTransaction(handle -> {
 
             // 1. Xoá orderdetails
             handle.createUpdate(
@@ -561,4 +561,53 @@ public class ProductDAO {
                     .execute();
         });
     }
+    //22. Thêm product  trong trang admin quan ly san pham
+    public void insertProductFull(
+            String productName,
+            int subCategoryId,
+            double price,
+            String shortDesc,
+            String detailDesc,
+            String size,
+            String color,
+            int quantity,
+            String imageName,
+            String imagePath
+    ) {
+
+        JDBIConnector.getJdbi().useTransaction(handle -> {
+
+            // thêm dl sản phẩm
+            int productId = handle.createUpdate("  INSERT INTO products\n" +
+                            "                (category_sub_id, product_name, average_rating,\n" +
+                            "                 short_description, detail_description, price, created_at)\n" +
+                            "                VALUES (?, ?, 0, ?, ?, ?, NOW())")
+                    .bind(0, subCategoryId)
+                    .bind(1, productName)
+                    .bind(2, shortDesc)
+                    .bind(3, detailDesc)
+                    .bind(4, price)
+                    .executeAndReturnGeneratedKeys("id")
+                    .mapTo(Integer.class)
+                    .one();
+            // thêm dl biến thể
+
+            handle.createUpdate(" INSERT INTO variants\n" +
+                            "                (product_id, size, color, quantity)\n" +
+                            "                VALUES (?, ?, ?, ?)")
+                    .bind(0, productId)
+                    .bind(1, size)
+                    .bind(2, color)
+                    .bind(3, quantity)
+                    .execute();
+
+            // thêm dl ảnh
+            handle.createUpdate(" INSERT INTO images (product_id, image_name, path, updated_at)VALUES (?, ?, ?, NOW())")
+                    .bind(0, productId)
+                    .bind(1, imageName)
+                    .bind(2, imagePath)
+                    .execute();
+        });
+    }
+
 }
