@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class ProductDAO {
 
     // 1. Lấy sản phẩm mới nhất (Home)
+    // Sắp xếp theo created_at giảm dần
     public List<Product> findNewArrivals() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
@@ -26,6 +27,7 @@ public class ProductDAO {
     }
 
     // 2. Lấy sản phẩm bán chạy (Home)
+    // Sắp xếp theo average_rating giảm dần (giả lập bán chạy)
     public List<Product> findBestSellers() {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
@@ -53,12 +55,14 @@ public class ProductDAO {
 
             return handle.createQuery(sql)
                     .map((rs, ctx) -> {
+                        // Tạo ParentCategory
                         ParentCategory parent = null;
                         int parentId = rs.getInt("parent_id");
                         if (parentId != 0) {
                             parent = new ParentCategory(parentId, rs.getString("parent_name"));
                         }
 
+                        // Tạo SubCategory
                         SubCategory subcat = null;
                         int subId = rs.getInt("sub_id");
                         if (subId != 0) {
@@ -66,6 +70,7 @@ public class ProductDAO {
                             subcat.setCategory(parent);
                         }
 
+                        // Tạo Product
                         Product product = new Product();
                         product.setProduct_id(rs.getInt("product_id"));
                         product.setProduct_name(rs.getString("product_name"));
@@ -81,7 +86,8 @@ public class ProductDAO {
         });
     }
 
-    // 4. Lọc theo danh mục con
+    // 4. Lọc theo danh mục con (Trang Product)
+    // Cột trong DB của bạn là: category_sub_id
     public List<Product> findBySubCategoryId(int subId) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
@@ -94,7 +100,8 @@ public class ProductDAO {
         });
     }
 
-    // 5. Lọc theo danh mục cha
+    // 5. Lọc theo danh mục cha (Trang Product)
+    // JOIN bảng subcategories qua cột id, lọc bằng category_parent_id
     public List<Product> findByParentCategoryId(int parentId) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
@@ -108,8 +115,8 @@ public class ProductDAO {
         });
     }
 
-    // 6. Tìm chi tiết theo ID
-    public List<Product> findById(int id) {
+    // 6. Tìm chi tiết theo ID (Trang Detail)
+    public List<Product> findById(int id){
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
             String sql = "SELECT p.id AS product_id, p.product_name, p.price, p.short_description, " +
@@ -123,7 +130,7 @@ public class ProductDAO {
         });
     }
 
-    // 7. Lấy tất cả sản phẩm có sắp xếp
+    // 7. Lấy tất cả sản phẩm có sắp xếp (Dùng cho bộ lọc trang Product)
     public List<Product> findAllSorted(String sortType) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
@@ -134,6 +141,7 @@ public class ProductDAO {
                             "LEFT JOIN images i ON p.image_id = i.id "
             );
 
+            // Logic nối chuỗi SQL dựa trên loại sắp xếp
             switch (sortType) {
                 case "price_asc":
                     sql.append("ORDER BY p.price ASC");
@@ -234,12 +242,14 @@ public class ProductDAO {
             return h.createQuery(sql)
                     .bind("parentName", parentName)
                     .map((rs, ctx) -> {
+                        // Tạo ParentCategory
                         ParentCategory parent = null;
                         int parentId = rs.getInt("parent_id");
                         if (parentId != 0) {
                             parent = new ParentCategory(parentId, rs.getString("parent_name"));
                         }
 
+                        // Tạo SubCategory
                         SubCategory subcat = null;
                         int subId = rs.getInt("sub_id");
                         if (subId != 0) {
@@ -247,6 +257,7 @@ public class ProductDAO {
                             subcat.setCategory(parent);
                         }
 
+                        // Tạo Product
                         Product product = new Product();
                         product.setProduct_id(rs.getInt("product_id"));
                         product.setProduct_name(rs.getString("product_name"));
@@ -370,7 +381,9 @@ public class ProductDAO {
     //17. Cập nhật biến thể (edit)
     public boolean updateVariantQuantity(int variantId, int quantity) {
         Jdbi jdbi = JDBIConnector.getJdbi();
+
         String sql = "UPDATE variants SET quantity = :qty WHERE id = :id";
+
         return jdbi.withHandle(h ->
                 h.createUpdate(sql)
                         .bind("qty", quantity)
@@ -399,6 +412,7 @@ public class ProductDAO {
     // 18. tìm id theo product để edit
     public Product findProductEditById(int id) {
         Jdbi jdbi = JDBIConnector.getJdbi();
+
         return jdbi.withHandle(handle -> {
             String sql = "SELECT p.id AS product_id, p.product_name, p.price, " +
                     "sc.id AS sub_id, sc.sub_name, sc.category_parent_id, " +
@@ -462,4 +476,53 @@ public class ProductDAO {
             handle.createUpdate("DELETE FROM products WHERE id = ?").bind(0, productId).execute();
         });
     }
+    //22. Thêm product  trong trang admin quan ly san pham
+    public void insertProductFull(
+            String productName,
+            int subCategoryId,
+            double price,
+            String shortDesc,
+            String detailDesc,
+            String size,
+            String color,
+            int quantity,
+            String imageName,
+            String imagePath
+    ) {
+
+        JDBIConnector.getJdbi().useTransaction(handle -> {
+
+            // thêm dl sản phẩm
+            int productId = handle.createUpdate("  INSERT INTO products\n" +
+                            "                (category_sub_id, product_name, average_rating,\n" +
+                            "                 short_description, detail_description, price, created_at)\n" +
+                            "                VALUES (?, ?, 0, ?, ?, ?, NOW())")
+                    .bind(0, subCategoryId)
+                    .bind(1, productName)
+                    .bind(2, shortDesc)
+                    .bind(3, detailDesc)
+                    .bind(4, price)
+                    .executeAndReturnGeneratedKeys("id")
+                    .mapTo(Integer.class)
+                    .one();
+            // thêm dl biến thể
+
+            handle.createUpdate(" INSERT INTO variants\n" +
+                            "                (product_id, size, color, quantity)\n" +
+                            "                VALUES (?, ?, ?, ?)")
+                    .bind(0, productId)
+                    .bind(1, size)
+                    .bind(2, color)
+                    .bind(3, quantity)
+                    .execute();
+
+            // thêm dl ảnh
+            handle.createUpdate(" INSERT INTO images (product_id, image_name, path, updated_at)VALUES (?, ?, ?, NOW())")
+                    .bind(0, productId)
+                    .bind(1, imageName)
+                    .bind(2, imagePath)
+                    .execute();
+        });
+    }
+
 }
