@@ -109,4 +109,17 @@ public class UserDAO {
                     .execute();
         });
     }
+
+    // 9. Cập nhật thông tin cá nhân (Tên, SĐT)
+    public void updateProfile(int userId, String fullName, String phone) {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        jdbi.useHandle(handle -> {
+            String sql = "UPDATE users SET user_name = ?, phone = ? WHERE id = ?";
+            handle.createUpdate(sql)
+                    .bind(0, fullName)
+                    .bind(1, phone)
+                    .bind(2, userId)
+                    .execute();
+        });
+    }
 }
