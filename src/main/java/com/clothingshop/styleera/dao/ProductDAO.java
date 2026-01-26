@@ -83,7 +83,7 @@ public class ProductDAO {
                         product.setProduct_name(rs.getString("product_name"));
                         product.setPrice(rs.getDouble("price"));
                         product.setThumbnail(rs.getString("thumbnail"));
-                        product.setSubcategories(subcat);
+                        product.setSubcategory(subcat);
 
                         List<Variants> variants = findVariantsByProductId(rs.getInt("product_id"));
                         product.setVariants(variants);
@@ -123,12 +123,16 @@ public class ProductDAO {
     }
 
     // 6. Tìm chi tiết theo ID (Trang Detail)
-    public List<Product> findById(int id){
+    public List<Product> findById(int id) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
-            String sql = "SELECT id AS product_id, product_name, price, detail_description, short_description, " +
-                    "average_rating AS medium_rating, image_id " +
-                    "FROM products WHERE id = ?";
+            String sql = "SELECT p.id AS product_id, p.product_name, p.price, p.short_description, " +
+                    "p.detail_description, p.average_rating AS medium_rating, " +
+                    "p.category_sub_id, p.created_at, p.updated_at, " +
+                    "i.path AS thumbnail " +
+                    "FROM products p " +
+                    "LEFT JOIN images i ON p.image_id = i.id " +
+                    "WHERE p.id = ?";
             return handle.createQuery(sql).bind(0, id).mapToBean(Product.class).list();
         });
     }
@@ -184,25 +188,24 @@ public class ProductDAO {
         });
     }
 
-    // 9. Lấy danh sách ảnh (List<String>)
-    public List<String> findImagesByProductId(int productId) {
-        Jdbi jdbi = JDBIConnector.getJdbi();
-        return jdbi.withHandle(handle -> {
-            String sql = "SELECT path FROM images WHERE product_id = ?";
-            return handle.createQuery(sql)
-                    .bind(0, productId)
-                    .mapTo(String.class)
-                    .list();
-        });
-    }
+    // 9. Lấy danh sách ảnh phụ của sản phẩm
+        public List<String> findImagesByProductId(int productId) {
+            Jdbi jdbi = JDBIConnector.getJdbi();
+            return jdbi.withHandle(handle ->
+                handle.createQuery("SELECT path FROM images WHERE product_id = :id")
+                      .bind("id", productId)
+                      .mapTo(String.class)
+                      .list()
+            );
+        }
 
     // 10. Lấy danh sách Variants
     public List<Variants> findVariantsByProductId(int productId) {
         Jdbi jdbi = JDBIConnector.getJdbi();
         return jdbi.withHandle(handle -> {
-            String sql = "SELECT id, size, color, quantity FROM variants WHERE product_id = ?";
+            String sql = "SELECT id, size, color, quantity FROM variants WHERE product_id = :pid";
             return handle.createQuery(sql)
-                    .bind(0, productId)
+                    .bind("pid", productId)
                     .map((rs, ctx) -> {
                         Variants v = new Variants();
                         v.setVariantId(rs.getInt("id"));
@@ -214,26 +217,21 @@ public class ProductDAO {
                     .list();
         });
     }
-    // 11 lay san pham lien quan
+
+    // 11. Lấy sản phẩm liên quan (Cùng sub-category)
     public List<Product> findRelatedProducts(int subId, int prodId) {
         return JDBIConnector.getJdbi().withHandle(handle -> {
-            // SQL lấy ngẫu nhiên 4 sản phẩm, trừ sản phẩm hiện tại đang xem
-            String sql = "SELECT p.id, p.product_name, p.price, i.path AS thumbnail_path " +
+            String sql = "SELECT p.id AS product_id, p.product_name, p.price, i.path AS thumbnail " +
                     "FROM products p " +
-                    "JOIN images i ON p.image_id = i.id " +
-                    "WHERE p.id != :prodId ORDER BY RAND() LIMIT 4";
+                    "LEFT JOIN images i ON p.image_id = i.id " +
+                    "WHERE p.category_sub_id = :subId AND p.id != :prodId " +
+                    "ORDER BY RAND() LIMIT 4";
 
             return handle.createQuery(sql)
+                    .bind("subId", subId)
                     .bind("prodId", prodId)
-                    .map((rs, ctx) -> {
-                        Product p = new Product();
-                        p.setProduct_id(rs.getInt("id"));
-                        p.setProduct_name(rs.getString("product_name"));
-                        p.setPrice(rs.getDouble("price"));
-                        // PHẢI LÀ "thumbnail_path" vì bạn đặt Alias trong SQL là thumbnail_path
-                        p.setThumbnail(rs.getString("thumbnail_path"));
-                        return p;
-                    }).list();
+                    .mapToBean(Product.class)
+                    .list();
         });
     }
 

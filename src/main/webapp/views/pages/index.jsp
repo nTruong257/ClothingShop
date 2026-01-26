@@ -290,7 +290,6 @@
 <script src="${root}/js/main.js"></script>
 <script src="${root}/js/home.js"></script>
 <script src="${root}/js/add-cart.js"></script>
-<script src="${root}/js/login.js"></script>
 <script>
     const contextPath = "<%= request.getContextPath() %>";
 </script>

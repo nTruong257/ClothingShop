@@ -35,15 +35,16 @@
                     <div class="auth-body">
                         <form id="loginForm" action="${root}/login" method="post">
 
-                            <c:if test="${not empty error}">
+                            <c:if test="${not empty sessionScope.error}">
                                 <div class="alert alert-danger text-center mb-3">
-                                        ${error}
+                                        ${sessionScope.error}
                                 </div>
                             </c:if>
-                            <c:if test="${not empty message}">
+                            <c:if test="${not empty sessionScope.successMsg}">
                                 <div class="alert alert-success text-center mb-3">
-                                        ${message}
+                                        ${sessionScope.successMsg}
                                 </div>
+                                <c:remove var="successMsg" scope="session"/>
                             </c:if>
 
                             <div class="form-group">
