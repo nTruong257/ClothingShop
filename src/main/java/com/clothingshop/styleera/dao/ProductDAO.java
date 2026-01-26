@@ -529,4 +529,36 @@ public class ProductDAO {
                         .orElse(0.0)
         );
     }
+    //21. Xoá product theo id dung trong trang admin quan ly san pham
+    public void deleleteProduct(int productId){
+        Jdbi jdbi = JDBIConnector.getJdbi();
+        jdbi.useTransaction(handle -> {
+
+            // 1. Xoá orderdetails
+            handle.createUpdate(
+                            "DELETE od FROM orderdetails od " +
+                                    "JOIN variants v ON od.variant_id = v.id " +
+                                    "WHERE v.product_id = ?")
+                    .bind(0, productId)
+                    .execute();
+
+            // 2. Xoá review
+            handle.createUpdate(
+                            "DELETE FROM review WHERE product_id = ?")
+                    .bind(0, productId)
+                    .execute();
+
+            // 3. Xoá variants
+            handle.createUpdate(
+                            "DELETE FROM variants WHERE product_id = ?")
+                    .bind(0, productId)
+                    .execute();
+
+            // 4. Xoá product
+            handle.createUpdate(
+                            "DELETE FROM products WHERE id = ?")
+                    .bind(0, productId)
+                    .execute();
+        });
+    }
 }

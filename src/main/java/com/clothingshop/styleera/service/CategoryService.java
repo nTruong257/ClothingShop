@@ -11,6 +11,15 @@ public class CategoryService {
     public List<ParentCategory> getAllCategories() {
         return categoryDAO.getAllParentCategoriesWithSubs();
     }
+    // xoá danh mục dựa vào subId parentcategory
+    public void deleteSubCategory(int subId) {
+        categoryDAO.deleteSubCategory(subId);
+    }
+    // thống kê danh mục cha
+    public List<ParentCategory> getParentCategoryStats() {
+        return categoryDAO.getParentCategoryStats();
+    }
+
     // xử lý bộ lọc Danh Mục theo phân loại và tên danh mục
     public List<ParentCategory> filterCategories(String parentCategory, String subCategory) {
         List<ParentCategory> allCategories = getAllCategories();
@@ -43,7 +52,5 @@ public class CategoryService {
 
         return allCategories;
     }
-    public List<ParentCategory> getParentCategoryStats() {
-        return categoryDAO.getParentCategoryStats();
-    }
+
 }

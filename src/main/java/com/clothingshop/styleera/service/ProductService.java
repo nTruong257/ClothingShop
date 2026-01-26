@@ -52,4 +52,7 @@ public class ProductService {
     public List<Product> findBestSellersAdmin() {
         return productDAO.findBestSellersAdmin();
     }
+    public void deleteProduct(int productId){
+        productDAO.deleleteProduct(productId);
+    }
     }

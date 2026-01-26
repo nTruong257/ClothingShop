@@ -188,9 +188,12 @@
                                                    title="Chỉnh sửa">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <button class="btn btn-sm btn-danger" title="Xóa">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
+                                                <form action="${root}/AdminDeleteProduct" method="post" onsubmit="return confirm('Bạn chắc chắn muốn xoá sản phẩm này?')" style="display: inline">
+                                                    <input type="hidden" name="id" value="${p.product_id}">
+                                                    <button type="submit" class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     </c:forEach>

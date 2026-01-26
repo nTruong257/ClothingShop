@@ -98,5 +98,39 @@ public class CategoryDAO {
             return list;
         });
     }
+    // xoá category (quản lý danh mục) trong trang admin
+    public void deleteSubCategory(int subId) {
+        JDBIConnector.getJdbi().useTransaction(handle -> {
+
+            // orderdetails
+            handle.createUpdate("  DELETE od FROM orderdetails od\n" +
+                    "            JOIN variants v ON od.variant_id = v.id\n" +
+                    "            WHERE v.product_id IN (\n" +
+                    "                SELECT id FROM products WHERE category_sub_id = ?\n" +
+                    "            )").bind(0, subId).execute();
+
+            // variants
+            handle.createUpdate("   DELETE FROM variants\n" +
+                    "            WHERE product_id IN (\n" +
+                    "                SELECT id FROM products WHERE category_sub_id = ?\n" +
+                    "            )").bind(0, subId).execute();
+
+            // review
+            handle.createUpdate("     DELETE FROM review\n" +
+                    "            WHERE product_id IN (\n" +
+                    "                SELECT id FROM products WHERE category_sub_id = ?\n" +
+                    "            )").bind(0, subId).execute();
+
+            // products
+            handle.createUpdate(
+                    "DELETE FROM products WHERE category_sub_id = ?"
+            ).bind(0, subId).execute();
+
+            // subcategory
+            handle.createUpdate(
+                    "DELETE FROM subcategories WHERE id = ?"
+            ).bind(0, subId).execute();
+        });
+    }
 
 }

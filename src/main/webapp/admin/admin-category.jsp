@@ -130,9 +130,16 @@
 
                                         <td>${empty s.description ? "—" : s.description}</td>
                                         <td>
-                                            <button class="btn btn-sm btn-danger" title="Xóa">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+                                            <form action="${root}/AdminDeleteCategory"
+                                                  method="post"
+                                                  onsubmit="return confirm('Bạn chắc chắn muốn xoá danh mục này?')">
+
+                                                <input type="hidden" name="id" value="${s.id}">
+
+                                                <button type="submit" class="btn btn-sm btn-danger" title="Xóa">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 </c:forEach>

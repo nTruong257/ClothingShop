@@ -80,16 +80,23 @@
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label fw-bold">Danh Mục</label>
-                                        <select class="form-select"
-                                                name="subCategoryId"
-                                                required>
-                                            <option value="">-- Chọn Danh Mục --</option>
-                                            <option value="1" ${product.subcategories.id == 1 ? "selected" : ""}>Áo Thun Nam</option>
-                                            <option value="2" ${product.subcategories.id == 2 ? "selected" : ""}>Áo Polo Nam</option>
-                                            <option value="3" ${product.subcategories.id == 3 ? "selected" : ""}>Áo Khoác Nam</option>
-                                            <option value="4" ${product.subcategories.id == 4 ? "selected" : ""}>Quần Jean Nam</option>
-                                            <option value="5" ${product.subcategories.id == 5 ? "selected" : ""}>Quần Ngắn Nam</option>
+                                        <label class="form-label">Phân Loại</label>
+                                        <select class="form-select categoryFilter" name="sub">
+                                            <option value="">Tất Cả Phân Loại</option>
+
+                                            <option value="Áo Thun" ${param.sub == 'Áo Thun' ? 'selected' : ''}>Áo Thun</option>
+                                            <option value="Áo Polo" ${param.sub == 'Áo Polo' ? 'selected' : ''}>Áo Polo</option>
+                                            <option value="Áo Khoác Nam" ${param.sub == 'Áo Khoác Nam' ? 'selected' : ''}>Áo Khoác Nam</option>
+                                            <option value="Quần Jean" ${param.sub == 'Quần Jean' ? 'selected' : ''}>Quần Jean</option>
+                                            <option value="Quần Ngắn" ${param.sub == 'Quần Ngắn' ? 'selected' : ''}>Quần Ngắn</option>
+
+                                            <option value="Áo Khoác" ${param.sub == 'Áo Khoác' ? 'selected' : ''}>Áo Khoác</option>
+                                            <option value="Váy" ${param.sub == 'Váy' ? 'selected' : ''}>Váy</option>
+                                            <option value="Đầm" ${param.sub == 'Đầm' ? 'selected' : ''}>Đầm</option>
+
+                                            <option value="Áo khoác đôi" ${param.sub == 'Áo khoác đôi' ? 'selected' : ''}>Áo khoác đôi</option>
+                                            <option value="Áo thun đôi" ${param.sub == 'Áo thun đôi' ? 'selected' : ''}>Áo thun đôi</option>
+                                            <option value="Đồ bộ Đôi" ${param.sub == 'Đồ bộ Đôi' ? 'selected' : ''}>Đồ bộ Đôi</option>
                                         </select>
                                     </div>
                                 </div>
