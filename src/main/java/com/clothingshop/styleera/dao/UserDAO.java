@@ -1,8 +1,11 @@
 package com.clothingshop.styleera.dao;
 
+import com.clothingshop.styleera.model.Address;
 import com.clothingshop.styleera.model.User;
 import com.clothingshop.styleera.JDBiConnector.JDBIConnector;
 import org.jdbi.v3.core.Jdbi;
+
+import java.util.List;
 
 public class UserDAO {
 
@@ -53,6 +56,22 @@ public class UserDAO {
                         .bind(0, email)
                         .mapToBean(User.class)
                         .findOne().orElse(null)
+        );
+    }
+    //5. Lấy tất cả User
+    public List<User> findAllUsers() {
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM users")
+                        .mapToBean(User.class)
+                        .list()
+        );
+    }
+    // 6. Lấy Địa chỉ Address User
+    public List<Address> findAllAddresses() {
+        return JDBIConnector.getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM addresses")
+                        .mapToBean(Address.class)
+                        .list()
         );
     }
 }

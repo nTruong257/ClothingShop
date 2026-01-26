@@ -6,6 +6,9 @@ public class ParentCategory {
     private int id;
     private String name;
     private List<SubCategory> subCategories;
+    // thêm tính tổng % danh mục cho trang admin dashboard
+    private int totalProduct;
+    private double percent;
 
     public ParentCategory() {
     }
@@ -38,5 +41,20 @@ public class ParentCategory {
 
     public void setSubCategories(List<SubCategory> subCategories) {
         this.subCategories = subCategories;
+    }
+    public int getTotalProduct() {
+        return totalProduct;
+    }
+
+    public void setTotalProduct(int totalProduct) {
+        this.totalProduct = totalProduct;
+    }
+
+    public double getPercent() {
+        return percent;
+    }
+
+    public void setPercent(double percent) {
+        this.percent = percent;
     }
 }

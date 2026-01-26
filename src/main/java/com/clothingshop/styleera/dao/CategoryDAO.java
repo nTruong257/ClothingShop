@@ -61,4 +61,76 @@ public class CategoryDAO {
         );
     }
 
+    // Thống kê % danh mục cho dashboard
+    public List<ParentCategory> getParentCategoryStats() {
+        Jdbi jdbi = JDBIConnector.getJdbi();
+
+        return jdbi.withHandle(handle -> {
+
+            String sql ="SELECT\n" +
+                    "    pc.id,\n" +
+                    "    pc.parent_name AS name,\n" +
+                    "    COUNT(p.id) AS totalProduct\n" +
+                    "FROM parentcategories pc\n" +
+                    "JOIN subcategories sc ON sc.category_parent_id = pc.id\n" +
+                    "JOIN products p ON p.category_sub_id = sc.id\n" +
+                    "GROUP BY pc.id, pc.parent_name";
+
+            List<ParentCategory> list = handle.createQuery(sql)
+                    .map((rs, ctx) -> {
+                        ParentCategory pc = new ParentCategory();
+                        pc.setId(rs.getInt("id"));
+                        pc.setName(rs.getString("name"));
+                        pc.setTotalProduct(rs.getInt("totalProduct"));
+                        return pc;
+                    }).list();
+
+            int totalAll = list.stream()
+                    .mapToInt(ParentCategory::getTotalProduct)
+                    .sum();
+
+            for (ParentCategory pc : list) {
+                double percent = totalAll == 0 ? 0
+                        : (pc.getTotalProduct() * 100.0 / totalAll);
+                pc.setPercent(Math.round(percent));
+            }
+
+            return list;
+        });
+    }
+    // xoá category (quản lý danh mục) trong trang admin
+    public void deleteSubCategory(int subId) {
+        JDBIConnector.getJdbi().useTransaction(handle -> {
+
+            // orderdetails
+            handle.createUpdate("  DELETE od FROM orderdetails od\n" +
+                    "            JOIN variants v ON od.variant_id = v.id\n" +
+                    "            WHERE v.product_id IN (\n" +
+                    "                SELECT id FROM products WHERE category_sub_id = ?\n" +
+                    "            )").bind(0, subId).execute();
+
+            // variants
+            handle.createUpdate("   DELETE FROM variants\n" +
+                    "            WHERE product_id IN (\n" +
+                    "                SELECT id FROM products WHERE category_sub_id = ?\n" +
+                    "            )").bind(0, subId).execute();
+
+            // review
+            handle.createUpdate("     DELETE FROM review\n" +
+                    "            WHERE product_id IN (\n" +
+                    "                SELECT id FROM products WHERE category_sub_id = ?\n" +
+                    "            )").bind(0, subId).execute();
+
+            // products
+            handle.createUpdate(
+                    "DELETE FROM products WHERE category_sub_id = ?"
+            ).bind(0, subId).execute();
+
+            // subcategory
+            handle.createUpdate(
+                    "DELETE FROM subcategories WHERE id = ?"
+            ).bind(0, subId).execute();
+        });
+    }
+
 }

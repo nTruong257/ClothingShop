@@ -19,7 +19,7 @@
             <div class="menu-label">MENU</div>
             <ul class="menu-list">
                 <li class="menu-item">
-                    <a href="${root}/admin/admin-dashboard.jsp"
+                    <a href="${root}/AdminDashboard"
                        class="menu-link ${currentPage == 'dashboard' ? 'active' : ''}">
                         <i class="fas fa-chart-line"></i>
                         <span>Bảng Điều Khiển</span>
@@ -29,21 +29,21 @@
                     <a href="${root}/admin-products"
                        class="menu-link ${currentPage == 'products' ? 'active' : ''}">
                         <i class="fas fa-box"></i>
-                        <span>Sản Phẩm</span>
+                        <span>Quản lý Sản Phẩm</span>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="${root}/admin-category"
                        class="menu-link ${currentPage == 'category' ? 'active' : ''}">
                         <i class="fa-solid fa-list"></i>
-                        <span>Danh Mục</span>
+                        <span>Quản lý Danh Mục</span>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="${root}/admin/admin-orders.jsp"
                        class="menu-link ${currentPage == 'orders' ? 'active' : ''}">
                         <i class="fas fa-shopping-cart"></i>
-                        <span>Đơn Hàng</span>
+                        <span>Quản lý Đơn Hàng</span>
                     </a>
                 </li>
                 <li class="menu-item">
@@ -54,17 +54,24 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="${root}/admin/admin-customer-edit.jsp"
+                    <a href="${root}/admin-user"
                        class="menu-link ${currentPage == 'customer' ? 'active' : ''}">
                         <i class="fas fa-users"></i>
-                        <span>Người Dùng</span>
+                        <span>Quản lý Người Dùng</span>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="${root}/admin/admin-user-comment.jsp"
                        class="menu-link ${currentPage == 'comment' ? 'active' : ''}">
                         <i class="fa-solid fa-comment"></i>
-                        <span>Bình Luận Khách hàng</span>
+                        <span>Quản lý Bình Luận</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="${root}/admin-contact"
+                       class="menu-link ${currentPage == 'contact' ? 'active' : ''}">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span>Quản lý Liên Hệ</span>
                     </a>
                 </li>
             </ul>

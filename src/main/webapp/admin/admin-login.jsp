@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -9,8 +10,8 @@
     <title>StyleEra - Đăng Nhập Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link rel="stylesheet" href="css/admin.css"/>
-    <link rel="stylesheet" href="css/admin_login.css"/>
+    <link rel="stylesheet" href="${root}/admin/css/admin.css"/>
+    <link rel="stylesheet" href="${root}/admin/css/admin_login.css"/>
 </head>
 
 <body>
@@ -24,28 +25,20 @@
             <p class="login-subtitle">Đăng nhập vào tài khoản quản trị</p>
         </div>
 
-        <form class="login-form" id="loginForm">
+        <form class="login-form" id="loginForm" onsubmit="return handleLogin(event)">
             <div class="mb-3">
                 <label class="form-label fw-bold">Email</label>
-                <input type="email" class="form-control" placeholder="admin@styleera.com" required/>
+                <input type="email" class="form-control" id="emailInput"
+                       placeholder="admin@styleera.com" required/>
             </div>
 
             <div class="mb-2">
                 <label class="form-label fw-bold">Mật Khẩu</label>
-                <input type="password" class="form-control" placeholder="Nhập mật khẩu" required/>
-            </div>
-
-            <div class="forgot-password">
-                <a href="admin-forgot-password.jsp">Quên mật khẩu?</a>
-            </div>
-
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="rememberMe"/>
-                <label class="form-check-label" for="rememberMe">Ghi nhớ tôi</label>
+                <input type="password" class="form-control" id="passwordInput"
+                       placeholder="Nhập mật khẩu" required/>
             </div>
 
             <button type="submit" class="btn btn-login mb-3">Đăng Nhập</button>
-
         </form>
 
         <div class="login-footer">Chưa có tài khoản?
@@ -56,6 +49,23 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="js/admin_Login.js"></script>
+<script>
+    function handleLogin(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('emailInput').value;
+        const password = document.getElementById('passwordInput').value;
+
+        if (email && password) {
+            alert("Đã Đăng nhập thành công vào Admin!");
+            window.location.href = "${root}/AdminDashboard";
+            return false;
+        } else {
+            alert("Vui lòng điền đầy đủ thông tin!");
+            return false;
+        }
+    }
+</script>
+
 </body>
 </html>

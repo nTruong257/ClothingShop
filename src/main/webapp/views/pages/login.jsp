@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="auth-footer">
-                        Chưa có tài khoản? <a href="register.jsp" onclick="showPage('register'); return false;">Đăng ký ngay</a>
+                        Chưa có tài khoản? <a href="${root}/register" onclick="showPage('register'); return false;">Đăng ký ngay</a>
                     </div>
                 </div>
             </div>
