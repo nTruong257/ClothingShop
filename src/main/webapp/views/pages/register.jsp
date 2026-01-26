@@ -65,7 +65,18 @@
                                 <label class="form-label">Mật khẩu <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-lock form-control-icon"></i>
-                                    <input type="password" class="auth-input" name="password" id="registerPassword" placeholder="Nhập mật khẩu" required oninput="checkPasswordStrength(this.value)">
+
+                                    <input type="password" class="auth-input" name="password" id="registerPassword"
+                                           placeholder="Nhập mật khẩu" required oninput="checkPasswordStrength(this.value, 'register')">
+
+                                    <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+
+                                <div class="password-strength">
+                                    <div class="strength-bar"><div class="strength-bar-fill" id="registerStrengthBar"></div></div>
+                                    <div class="strength-text" id="registerStrengthText"></div>
                                 </div>
                             </div>
 
@@ -73,7 +84,13 @@
                                 <label class="form-label">Xác nhận mật khẩu <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-lock form-control-icon"></i>
-                                    <input type="password" class="auth-input" name="confirmPassword" id="registerConfirmPassword" placeholder="Nhập lại mật khẩu" required>
+
+                                    <input type="password" class="auth-input" name="confirmPassword" id="registerConfirmPassword"
+                                           placeholder="Nhập lại mật khẩu" required>
+
+                                    <button type="button" class="password-toggle" onclick="togglePassword('registerConfirmPassword')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
                                 </div>
                             </div>
 
@@ -82,7 +99,7 @@
                     </div>
 
                     <div class="auth-footer">
-                        Đã có tài khoản? <a href="login.jsp" onclick="showPage('login'); return false;">Đăng nhập</a>
+                        Đã có tài khoản? <a href="login" onclick="showPage('login'); return false;">Đăng nhập</a>
                     </div>
                 </div>
             </div>
@@ -98,5 +115,6 @@
 
 <!-- Custom JavaScript -->
 <script src="../../js/main.js"></script>
+<script src="${root}/js/password-utils.js"></script>
 </body>
 </html>

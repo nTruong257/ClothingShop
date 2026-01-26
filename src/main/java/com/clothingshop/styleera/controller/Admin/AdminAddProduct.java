@@ -29,12 +29,12 @@ public class AdminAddProduct extends HttpServlet {
         String imagePath = request.getParameter("image_path");
 
         ProductService service = new ProductService();
-        service.addProduct(
-                name, subId, price,
-                shortDesc, detailDesc,
-                size, color, quantity,
-                imageName, imagePath
-        );
+//        service.addProduct(
+//                name, subId, price,
+//                shortDesc, detailDesc,
+//                size, color, quantity,
+//                imageName, imagePath
+//        );
 
         response.sendRedirect(request.getContextPath() + "/admin-products");
     }

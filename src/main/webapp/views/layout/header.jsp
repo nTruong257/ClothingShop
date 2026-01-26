@@ -1,8 +1,6 @@
     <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
         <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-    <c:if test="${empty root}">
-        <c:set var="root" value="${pageContext.request.contextPath}" scope="request"/>
-    </c:if>
+
         <header class="site-header">
         <div class="header-container">
         <div class="header-main-row">
@@ -98,7 +96,7 @@
         </c:forEach>
 
         <li class="nav-item">
-        <a class="nav-link-primary" href="${root}/views/pages/contact.jsp"
+        <a class="nav-link-primary" href="${root}/contact"
         style=" color: #000; font-weight: 500;">LIÊN HỆ</a>
         </li>
         </ul>
@@ -123,7 +121,7 @@
         <c:choose>
             <%-- TRƯỜNG HỢP 1: CHƯA ĐĂNG NHẬP --%>
             <c:when test="${sessionScope.auth == null}">
-                <a href="${root}/views/pages/login.jsp" class="account-link" title="Đăng nhập">
+                <a href="${root}/login" class="account-link" title="Đăng nhập">
                 <i class="fas fa-user"></i>
                 </a>
             </c:when>
@@ -133,13 +131,14 @@
                 <div class="account-dropdown-wrapper" style="position: relative;">
                 <div class="account-link logged-in" style="cursor: pointer; display: flex; align-items: center;">
                 <i class="fas fa-user"></i>
-                <span class="user-name" style="margin-left: 5px; font-weight: 600;">Hello, ${sessionScope.auth.user_name}</span>
+                <span class="user-name" style="margin-left: 5px; font-weight:
+                600;">Hello, ${sessionScope.auth.user_name}</span>
                 <i class="fas fa-caret-down dropdown-arrow" style="margin-left: 5px;"></i>
                 </div>
 
                 <ul class="account-dropdown-menu">
                 <li>
-                <a href="${root}/views/pages/account.jsp">
+                <a href="${root}/account">
                 <i class="fas fa-id-card"></i> Thông tin tài khoản
                 </a>
                 </li>
@@ -156,14 +155,10 @@
 
         <a class="cart-link" href="${root}/views/pages/cart.jsp">
         <i class="fas fa-shopping-bag"></i>
-        <span class="cart-badge" id="cartBadge">${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</span>
+        <span class="cart-badge" id="cartBadge">${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}
+        </span>
         </a>
         </div>
         </div>
         </div>
         </header>
-
-<script>
-    // Định nghĩa contextPath để dùng trong các hàm như addToCart()
-    window.contextPath = "${root}";
-</script>

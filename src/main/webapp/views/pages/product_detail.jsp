@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-<c:set var="root" value="${pageContext.request.contextPath}" scope="request" />
+<c:set var="root" value="${pageContext.request.contextPath}" scope="request"/>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -73,7 +73,7 @@
                 </p>
 
                 <div class="product_detail_option">
-                    <form action="${root}/CheckoutController" method="POST" id="checkoutForm">
+                    <form action="${root}/checkout" method="POST" id="checkoutForm">
                         <!-- SIZE -->
                         <div class="product_detail_size">
                             <label class="size-label">S</label>
@@ -112,7 +112,8 @@
                                 Mua hàng
                             </button>
                             <%-- Nút thêm vào giỏ hàng--%>
-                            <button class="btn btn-primary validate_order" type="button" onclick="addToCart(${product.getDefaultVariantId()})">
+                            <button class="btn btn-primary validate_order" type="button"
+                                    onclick="addToCart(${product.getDefaultVariantId()})">
                                 Thêm vào giỏ hàng
                             </button>
                         </div>

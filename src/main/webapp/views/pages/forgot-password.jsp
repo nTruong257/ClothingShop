@@ -15,14 +15,11 @@
 </head>
 
 <body>
-<!-- ===== HEADER ===== -->
 <jsp:include page="/views/layout/header.jsp" />
 
-<!-- ===== MAIN CONTENT ===== -->
 <main class="main-content">
     <div class="auth-container">
         <div class="auth-wrapper">
-            <!-- ===== FORGOT PASSWORD PAGE ===== -->
             <div id="forgotPage" class="page-content">
                 <div class="auth-card">
                     <div class="auth-header">
@@ -31,28 +28,34 @@
                     </div>
 
                     <div class="auth-body">
-                        <form id="forgotForm" onsubmit="handleForgotPassword(event)">
+                        <form action="${root}/forgot-password" method="post">
+
+                            <c:if test="${not empty error}">
+                                <div class="alert alert-danger text-center mb-3">
+                                        ${error}
+                                </div>
+                            </c:if>
+
                             <div class="form-group">
                                 <label class="form-label">Email đăng ký <span class="required">*</span></label>
                                 <div class="form-control-wrapper">
                                     <i class="fas fa-envelope form-control-icon"></i>
-                                    <input type="email" class="auth-input" id="forgotEmail"
+                                    <input type="email" class="auth-input" id="forgotEmail" name="email"
                                            placeholder="example@email.com" required>
                                 </div>
-                                <div class="error-message" id="forgotEmailError">Vui lòng nhập email hợp lệ</div>
                             </div>
 
                             <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #2196f3;">
                                 <i class="fas fa-info-circle" style="color: #2196f3;"></i>
                                 <span style="font-size: 13px; color: #1976d2; margin-left: 8px;">
-                                    Chúng tôi sẽ gửi link đặt lại mật khẩu đến email của bạn
+                                    Chúng tôi sẽ gửi mã OTP đặt lại mật khẩu đến email của bạn
                                 </span>
                             </div>
 
                             <button type="submit" class="auth-btn">Gửi</button>
 
                             <div style="text-align: center; margin-top: 20px;">
-                                <a href="login.jsp" class="forgot-link" onclick="showPage('login'); return false;">
+                                <a href="login.jsp" class="forgot-link">
                                     <i class="fas fa-arrow-left"></i> Quay lại đăng nhập
                                 </a>
                             </div>
@@ -64,13 +67,10 @@
     </div>
 </main>
 
-<!-- ===== FOOTER ===== -->
 <jsp:include page="/views/layout/footer.jsp" />
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom JavaScript -->
-<script src="../../js/main.js"></script>
+<script src="${root}/js/main.js"></script>
 </body>
 </html>

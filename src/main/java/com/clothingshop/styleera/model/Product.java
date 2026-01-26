@@ -8,6 +8,7 @@ public class Product implements Serializable {
     private int product_id;
     private SubCategory subcategory;
     private String product_name;
+    private int category_sub_id;
     private double medium_rating;
     private String short_description;
     private String detail_description;
@@ -18,13 +19,13 @@ public class Product implements Serializable {
     private Integer defaultVariantId;
     private List<Variants> variants;
 
-    public  Product(){
-
+    public Product() {
     }
 
-    public Product(int product_id, SubCategory subcategories, String product_name, double medium_rating, String short_description, String detail_description, double price, Timestamp created_at, Timestamp updated_at) {
+    public Product(int product_id, int category_sub_id, SubCategory subcategory, String product_name, double medium_rating, String short_description, String detail_description, double price, Timestamp created_at, Timestamp updated_at) {
         this.product_id = product_id;
-        this.subcategory = subcategories;
+        this.category_sub_id = category_sub_id;
+        this.subcategory = subcategory;
         this.product_name = product_name;
         this.medium_rating = medium_rating;
         this.short_description = short_description;
@@ -32,21 +33,6 @@ public class Product implements Serializable {
         this.price = price;
         this.created_at = created_at;
         this.updated_at = updated_at;
-    }
-    public List<Variants> getVariants() {
-        return variants;
-    }
-
-    public void setVariants(List<Variants> variants) {
-        this.variants = variants;
-    }
-
-    public Integer getDefaultVariantId() {
-        return defaultVariantId;
-    }
-
-    public void setDefaultVariantId(Integer defaultVariantId) {
-        this.defaultVariantId = defaultVariantId;
     }
 
     public int getProduct_id() {
@@ -57,12 +43,12 @@ public class Product implements Serializable {
         this.product_id = product_id;
     }
 
-    public SubCategory getSubcategories() {
+    public SubCategory getSubcategory() {
         return subcategory;
     }
 
-    public void setSubcategories(SubCategory subcategories) {
-        this.subcategory = subcategories;
+    public void setSubcategory(SubCategory subcategory) {
+        this.subcategory = subcategory;
     }
 
     public String getProduct_name() {
@@ -71,6 +57,14 @@ public class Product implements Serializable {
 
     public void setProduct_name(String product_name) {
         this.product_name = product_name;
+    }
+
+    public int getCategory_sub_id() {
+        return category_sub_id;
+    }
+
+    public void setCategory_sub_id(int category_sub_id) {
+        this.category_sub_id = category_sub_id;
     }
 
     public double getMedium_rating() {
@@ -127,5 +121,21 @@ public class Product implements Serializable {
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public Integer getDefaultVariantId() {
+        return defaultVariantId;
+    }
+
+    public void setDefaultVariantId(Integer defaultVariantId) {
+        this.defaultVariantId = defaultVariantId;
+    }
+
+    public List<Variants> getVariants() {
+        return variants;
+    }
+
+    public void setVariants(List<Variants> variants) {
+        this.variants = variants;
     }
 }

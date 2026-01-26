@@ -1,4 +1,5 @@
 package com.clothingshop.styleera.controller;
+
 import com.clothingshop.styleera.model.Product;
 import com.clothingshop.styleera.model.Variants;
 import com.clothingshop.styleera.service.ProductService;
@@ -12,67 +13,70 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductDetailController", urlPatterns = {"/Product_DetailController"})
+@WebServlet(name = "ProductDetailController", urlPatterns = {"/product_detail"})
 public class ProductDetailController extends HttpServlet {
 
-    // Thay đổi từ ProductDetailDao sang ServiceProduct
-    private ProductService serviceProduct;
+    private ProductService productService;
+    private VariantService variantService;
 
     @Override
     public void init() throws ServletException {
-        this.serviceProduct = new ProductService();
+        this.productService = new ProductService();
+        this.variantService = new VariantService();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String productIdStr = request.getParameter("id");
 
-
-        Product product = null;
-        List<String> imageList = null;
-        List<Variants> variantList = null;
-        List<Product> relatedProducts = null;
-        List<String> colorList = null;
-
-        VariantService variantService = new VariantService();
-
-
-
-        try {
-            if (productIdStr != null && !productIdStr.isEmpty()) {
-                int product_id = Integer.parseInt(productIdStr);
-                product = serviceProduct.findById(product_id);
-
-                if (product != null) {
-                    imageList = serviceProduct.getImagesByProductId(product_id);
-                    variantList = serviceProduct.getVariantsByProductId(product_id);
-                    // Truyền product_id vào service
-                    colorList = serviceProduct.getColorsByProductId(product_id);
-                    //Xử lý thêm giỏ hàng trong trang chi tiết
-                    Integer defaultVariantId = variantService.getDefaultVariantId(product_id);
-                    product.setDefaultVariantId(defaultVariantId);
-
-                    if (product.getSubcategories() != null) {
-                        int subId = product.getSubcategories().getId();
-                        relatedProducts = serviceProduct.getRelatedProducts(subId, product_id);
-                    }
-                }
-            }
-        } catch (Exception e) {
-            getServletContext().log("Lỗi hệ thống khi lấy chi tiết sản phẩm ID: " + productIdStr, e);
+        String idParam = request.getParameter("id");
+        if (idParam == null || idParam.isEmpty()) {
+            response.sendRedirect(request.getContextPath() + "/home");
+            return;
         }
 
-        if (product != null) {
-            request.setAttribute("product", product);
-            request.setAttribute("imageList", imageList);
-            request.setAttribute("variantList", variantList);
-            request.setAttribute("relatedProducts", relatedProducts);
-            request.setAttribute("colorList", colorList);
-            request.getRequestDispatcher("/views/pages/product_detail.jsp").forward(request, response);
-        } else {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Sản phẩm không tồn tại.");
+        try {
+            int productId = Integer.parseInt(idParam);
+
+            // 1. Lấy thông tin sản phẩm (Dùng model Product chuẩn)
+            Product product = productService.findById(productId);
+
+            if (product != null) {
+                // 2. Lấy các dữ liệu phụ
+                List<String> imageList = productService.getImagesByProductId(productId);
+                List<Variants> variantList = productService.getVariantsByProductId(productId);
+                List<String> colorList = productService.getColorsByProductId(productId);
+
+                // Lấy sản phẩm liên quan (nếu có sub-category)
+                List<Product> relatedProducts = null;
+                // Lưu ý: Logic này phụ thuộc vào việc query findById có join bảng subcategory hay không
+                // Nếu product.getCategory_sub_id() > 0 thì gọi related
+                if(product.getCategory_sub_id() > 0) { // Giả sử bạn đã thêm getter này vào Model Product hoặc lấy từ DB
+                    relatedProducts = productService.getRelatedProducts(product.getCategory_sub_id(), productId);
+                }
+
+                // Xử lý variant mặc định
+                Integer defaultVariantId = variantService.getDefaultVariantId(productId);
+                product.setDefaultVariantId(defaultVariantId);
+
+                // 3. Đẩy dữ liệu ra JSP
+                request.setAttribute("product", product);
+                request.setAttribute("imageList", imageList);
+                request.setAttribute("variantList", variantList);
+                request.setAttribute("colorList", colorList);
+                request.setAttribute("relatedProducts", relatedProducts);
+
+                request.getRequestDispatcher("/views/pages/product_detail.jsp").forward(request, response);
+            } else {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Sản phẩm không tồn tại");
+            }
+
+        } catch (NumberFormatException e) {
+            response.sendRedirect(request.getContextPath() + "/home");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi hệ thống");
         }
     }
 }

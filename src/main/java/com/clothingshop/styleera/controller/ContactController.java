@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "ContactController", value = "/ContactController")
+@WebServlet("/contact")
 public class ContactController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,7 +58,7 @@ public class ContactController extends HttpServlet {
         }
 
         if (!valid) {
-            request.getRequestDispatcher("/views/pages/contact.jsp")
+            request.getRequestDispatcher("/contact")
                     .forward(request, response);
             return;
         }
@@ -78,7 +78,7 @@ public class ContactController extends HttpServlet {
 
             request.getSession().setAttribute("successOnce", true);
 
-            response.sendRedirect(request.getContextPath() + "/ContactController");
+            response.sendRedirect(request.getContextPath() + "/contact");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,7 +86,7 @@ public class ContactController extends HttpServlet {
                     "messageError",
                     "Không thể gửi email. Vui lòng thử lại sau!"
             );
-            request.getRequestDispatcher("/views/pages/contact.jsp")
+            request.getRequestDispatcher("/contact")
                     .forward(request, response);
         }
     }
